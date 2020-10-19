@@ -3,7 +3,6 @@ package com.app.todolist.domain.todo;
 import static com.app.todolist.domain.todo.QTodo.todo;
 import static com.app.todolist.domain.user.QUser.user;
 
-import com.app.todolist.domain.user.QUser;
 import com.app.todolist.util.QdslSupport;
 import com.app.todolist.web.dto.QTodoDTO;
 import com.app.todolist.web.dto.TodoDTO;

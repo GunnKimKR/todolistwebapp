@@ -16,8 +16,8 @@ public abstract class AbstractException extends RuntimeException {
     super(e);
   }
 
-  public AbstractException(String errorMessge, Throwable e) {
-    super(errorMessge, e);
+  public AbstractException(String errorMessage, Throwable e) {
+    super(errorMessage, e);
   }
 
   public abstract HttpStatus getHttpStatus();

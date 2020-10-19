@@ -23,12 +23,29 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/todo")
-public class TodoApiResetController extends AbstractRestController {
+public class TodoApiRestController extends AbstractRestController {
 
   private final TodoService todoService;
 
+
+  private Response todoListResponse(TodoParams param) {
+    List<TodoDTO> todoList = todoService.selectTodoDto(param);
+
+    if (todoList.size() == 0) {
+      throw new BaseException("데이터가 존재하지 않습니다.");
+    }
+
+    return new Response("todoList", todoList);
+  }
+
+  private Todo findTodo(Long todoId) {
+    return todoService.findById(todoId)
+        .orElseThrow(() -> new BaseException("존재하지 않는 Todo입니다."));
+  }
+
+
   @GetMapping
-  public Response selectTodoAll(){
+  public Response selectTodoAll() {
 
     TodoParams param = new TodoParams();
 
@@ -36,16 +53,15 @@ public class TodoApiResetController extends AbstractRestController {
   }
 
   @GetMapping("/{todoId}")
-  public Response selectTodoById(@PathVariable Long todoId){
+  public Response selectTodoById(@PathVariable Long todoId) {
 
-    if(todoId < 1){
+    if (todoId < 1) {
       throw new InvalidRequestException("유효하지 않은 Todo번호입니다.");
     }
 
-
     TodoDTO todo = todoService.selectTodoDtoById(todoId);
 
-    if(todo == null){
+    if (todo == null) {
       throw new BaseException("데이터가 존재하지 않습니다.");
     }
 
@@ -53,9 +69,9 @@ public class TodoApiResetController extends AbstractRestController {
   }
 
   @GetMapping("/user/{userId}")
-  public Response selectTodoByUserId(@PathVariable Long userId){
+  public Response selectTodoByUserId(@PathVariable Long userId) {
 
-    if(userId < 1){
+    if (userId < 1) {
       throw new InvalidRequestException("유효하지 않은 회원번호입니다.");
     }
 
@@ -65,9 +81,8 @@ public class TodoApiResetController extends AbstractRestController {
     return todoListResponse(param);
   }
 
-
   @PostMapping
-  public Response writeTodo(TodoParams param){
+  public Response writeTodo(TodoParams param) {
 
     Todo todo = new Todo(param.getUserId(), param.getTitle(), param.getCompletedYn());
     todoService.save(todo);
@@ -75,9 +90,8 @@ public class TodoApiResetController extends AbstractRestController {
     return new Response(CREATED);
   }
 
-
   @PutMapping("/{todoId}")
-  public Response updateTodo(@PathVariable Long todoId, TodoParams param){
+  public Response updateTodo(@PathVariable Long todoId, TodoParams param) {
 
     Todo todo = findTodo(todoId);
     todoService.updateTodo(todo, param);
@@ -85,24 +99,13 @@ public class TodoApiResetController extends AbstractRestController {
     return new Response();
   }
 
-  private Todo findTodo(Long todoId) {
-    return todoService.findById(todoId).orElseThrow(() -> new BaseException("존재하지 않는 TOdo입니다."));
-  }
-
   @DeleteMapping("/{todoId}")
-  public Response deletedTodo(@PathVariable Long todoId){
+  public Response deleteTodo(@PathVariable Long todoId) {
+
     Todo todo = findTodo(todoId);
-    todoService.deletedTodo(todo);
+    todoService.deleteTodo(todo);
 
     return new Response();
-  }
-
-
-
-  private Response todoListResponse(TodoParams param) {
-    List<TodoDTO> todoList =  todoService.selectTodoDto(param);
-
-    return new Response("todoList", todoList);
   }
 
 }

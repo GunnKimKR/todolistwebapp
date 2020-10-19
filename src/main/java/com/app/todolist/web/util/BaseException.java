@@ -12,12 +12,12 @@ public class BaseException extends AbstractException {
     super(e);
   }
 
-  public BaseException(String errorMessge) {
-    super(errorMessge);
+  public BaseException(String errorMessage) {
+    super(errorMessage);
   }
 
-  public BaseException(String errorMessge, Throwable e) {
-    super(errorMessge, e);
+  public BaseException(String errorMessage, Throwable e) {
+    super(errorMessage, e);
   }
 
   public HttpStatus getHttpStatus() {

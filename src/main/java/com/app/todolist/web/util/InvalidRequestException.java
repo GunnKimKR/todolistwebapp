@@ -12,12 +12,12 @@ public class InvalidRequestException extends AbstractException {
     super(e);
   }
 
-  public InvalidRequestException(String errorMessge) {
-    super(errorMessge);
+  public InvalidRequestException(String errorMessage) {
+    super(errorMessage);
   }
 
-  public InvalidRequestException(String errorMessge, Throwable e) {
-    super(errorMessge, e);
+  public InvalidRequestException(String errorMessage, Throwable e) {
+    super(errorMessage, e);
   }
 
   public HttpStatus getHttpStatus() {

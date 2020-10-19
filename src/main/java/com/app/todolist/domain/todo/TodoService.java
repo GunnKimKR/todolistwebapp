@@ -36,7 +36,7 @@ public class TodoService {
     todo.updateTodo(param.getTitle(), param.getCompletedYn());
   }
 
-  public void deletedTodo(Todo todo) {
+  public void deleteTodo(Todo todo) {
     todo.deleteTodo();
   }
 }
