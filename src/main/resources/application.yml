@@ -1,0 +1,24 @@
+
+spring:
+  thymeleaf:
+    prefix: classpath:templates/
+    suffix: .html
+    check-template-location: true
+    mode: HTML
+    order: 0
+    cache: false
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/todolistdb?serverTimezone=Asia/Seoul
+    username: geon
+    password: 15359177
+
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+
+server:
+  port: 80

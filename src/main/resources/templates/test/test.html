@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Login &lt; To Do List App</title>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;500;700&family=Noto+Sans+KR:wght@300;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="/assets/js/test.js" defer></script>
+</head>
+<body>
+<div id="wrap">
+  <main id="form-container">
+    <div class="form-group">
+      TEST1231212
+
+<!--      <span th:text="${message}"></span>-->
+      <th:block th:text="${message}"></th:block>
+
+
+      <table>
+        <tr>
+          <th>회원번호</th>
+          <th>닉네임</th>
+          <th>이메일</th>
+        </tr>
+        <tr th:each="user : ${userList}">
+          <td th:text="${user.userId}"></td>
+          <td th:text="${user.nickname}"></td>
+          <td th:text="${user.email}"></td>
+        </tr>
+      </table>
+
+      <button id="testButton">TEST</button>
+      <span id="testSpan"></span>
+
+    </div>
+  </main>
+</div>
+</body>
+</html>
