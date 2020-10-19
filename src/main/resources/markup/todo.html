@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>To do :: To Do List</title>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;700&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+  <link rel="stylesheet" href="../assets/css/common.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script src="../assets/js/script.js" defer></script>
+</head>
+<body>
+  <div id="wrap">
+
+    <!---------------------- Header ---------------------->
+    <nav id="nav">
+      <h2 class="blind">메뉴</h2>
+      <div class="tabmenu-underline"></div>
+      <ul class="nav__tabmenu">
+        <li class="nav__tabmenu__item" data-index="0">
+          <a href="./timetable.html">Timetable</a>
+        </li>
+        <li class="nav__tabmenu__item" data-index="1">
+          <a href="../index.html">Calendar</a>
+        </li>
+        <li class="nav__tabmenu__item" data-index="2">
+          <a href="./todo.html">To do</a>
+        </li>
+      </ul>
+    </nav>
+    <!---------------------- //Header ---------------------->
+
+    <!---------------------- Main Container ---------------------->
+    <main id="main" class="main-container">
+
+      <!---------------------- Calendar Container ---------------------->
+      <section class="calendar-container">
+        <h2 class="blind">달력</h2>
+        
+        <div class="calendar-header-group timetable">
+          <ol class="calendar-month-list">
+            <li class="calendar-month-list__item">
+              <a href="#">Sep</a>
+            </li>
+          </ol>
+          <ul class="calendar-date-list">
+            <li class="calendar-date-list__item">
+              <a href="#;">
+                <i class="fas fa-chevron-left"></i>
+              </a>
+            </li>
+            <li class="calendar-date-list__item">
+              <a href="#">14</a>
+            </li>
+            <li class="calendar-date-list__item today">
+              <a href="#">15</a>
+            </li>
+            <li class="calendar-date-list__item">
+              <a href="#">16</a>
+            </li>
+            <li class="calendar-date-list__item">
+              <a href="#">17</a>
+            </li>
+            <li class="calendar-date-list__item">
+              <a href="#">18</a>
+            </li>
+            <li class="calendar-date-list__item">
+              <a href="#">19</a>
+            </li>
+            <li class="calendar-date-list__item">
+              <a href="#">20</a>
+            </li>
+            <li class="calendar-date-list__item">
+              <a href="#;">
+                <i class="fas fa-chevron-right"></i>
+              </a>
+            </li>
+          </ul>
+          <button type="button" class="btn-calendar-drop"></button>
+        </div>
+
+        <div class="calendar-body-group timetable">
+          <table class="table-calendar">
+            <thead>
+              <tr>
+                <th scope="col">
+                  <div class="th-cell">SUN</div>
+                </th>
+                <th scope="col">
+                  <div class="th-cell">MON</div>
+                </th>
+                <th scope="col">
+                  <div class="th-cell">TUE</div>
+                </th>
+                <th scope="col">
+                  <div class="th-cell">WED</div>
+                </th>
+                <th scope="col">
+                  <div class="th-cell">THU</div>
+                </th>
+                <th scope="col">
+                  <div class="th-cell">FRI</div>
+                </th>
+                <th scope="col">
+                  <div class="th-cell">SAT</div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="td-cell">
+                    <div class="td-style prev-month">
+                      30
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <div class="td-style">
+                      1
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <div class="td-style">
+                      2
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <div class="td-style">
+                      3
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <div class="td-style">
+                      4
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <div class="td-style">
+                      5
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <div class="td-style">
+                      6
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="td-cell">
+                    <div class="td-style">
+                      7
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <div class="td-style">
+                      8
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <div class="td-style plans">
+                      9
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <div class="td-style plans">
+                      10
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <div class="td-style plans">
+                      11
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <div class="td-style">
+                      12
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <div class="td-style">
+                      13
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="td-cell">
+                    <div class="td-style">
+                      14
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <div class="td-style plans today">
+                      15
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <div class="td-style plans">
+                      16
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <div class="td-style">
+                      17
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <div class="td-style">
+                      18
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <div class="td-style">
+                      19
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <div class="td-style">
+                      20
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="td-cell">
+                    <div class="td-style plans">
+                      21
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <div class="td-style">
+                      22
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <div class="td-style plans">
+                      23
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <div class="td-style">
+                      24
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <div class="td-style plans">
+                      25
+                    </div>
+                  </div>
+                </td>
+                <td class="plannig-bg first">
+                  <div class="td-cell">
+                    <div class="td-style">
+                      26
+                    </div>
+                  </div>
+                </td>
+                <td class="plannig-bg end">
+                  <div class="td-cell">
+                    <div class="td-style">
+                      27
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="plannig-bg first">
+                  <div class="td-cell">
+                    <div class="td-style">
+                      28
+                    </div>
+                  </div>
+                </td>
+                <td class="plannig-bg end">
+                  <div class="td-cell">
+                    <div class="td-style">
+                      29
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <div class="td-style">
+                      30
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <div class="td-style">
+                      31
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <div class="td-style next-month">
+                      1
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <div class="td-style next-month">
+                      2
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <div class="td-style next-month">
+                      3
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <!---------------------- //Calendar Container ---------------------->
+
+      <!---------------------- Todo Container ---------------------->
+      <section class="todo-container">
+        <h2 class="blind">투두 리스트</h2>
+        <strong>Monday. 15</strong>
+        <ul class="todo-list completed">
+          <li class="todo-list__item">
+            <div class="todo-list__item__inner">
+              <div class="label-todo"></div>
+              <div class="text-todo" style="text-decoration: line-through;">
+                To Do List Webapp Project
+                <div class="time-todo">11:00 - 15:00</div>
+              </div>
+              <div class="buttons-box">
+                <button type="button" class="btn-check completed">
+                  
+                </button>
+                <button type="button" class="btn-delete">
+                  <i class="far fa-trash-alt"></i>
+                </button>
+              </div>
+            </div>
+          </li>
+          <li class="todo-list__item">
+            <div class="todo-list__item__inner">
+              <div class="label-todo"></div>
+              <div class="text-todo">
+                투두 리스트 웹앱 프로젝트
+              </div>
+              <div class="buttons-box">
+                <button type="button" class="btn-check">
+                </button>
+                <button type="button" class="btn-delete">
+                  <i class="far fa-trash-alt"></i>
+                </button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
+      <!---------------------- //Todo Container ---------------------->
+      
+      <!-- Add button -->
+      <div class="todo-add-container">
+        <input type="text" placeholder="Add Todo..." class="input-todo-add">
+        <button type="button" class="btn-todo-add">Add</button>
+      </div>
+    </main>
+    <!---------------------- //Main Container ---------------------->
+
+  </div>
+</body>
+</html>
