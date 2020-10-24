@@ -2,28 +2,43 @@
 
 /******************** Login page *********************/
 if(document.querySelector('.sign-form-group')) {
-    const toggleBtnBg = document.querySelector('.btn-toggle-bg');
-    const toggleBtn = document.querySelectorAll('.btn-toggle');
-    const sginForm = document.querySelectorAll('.sign-form');
-
-    toggleBtn[1].addEventListener('click', () => {
-        toggleBtnBg.style.left = '50%';
-        toggleBtn[0].classList.remove('active');
-        toggleBtn[1].classList.add('active');
-        for(var slide of sginForm) {
-            slide.classList.add('active');
+    
+    // Toggle Button
+    const toggleBtnBox = document.querySelector('.toggle-btn-box');
+    const toggleBtnBg = document.querySelector('.toggle-btn-bg');
+    
+    toggleBtnBox.addEventListener('click', (e) => {
+        if(e.target.nextElementSibling === null) {
+            e.target.previousElementSibling.classList.remove('active');
+            e.target.classList.add('active');
+            toggleBtnBg.classList.add('active');
+            document.querySelector('.sign-in-form').classList.add('active');
+            document.querySelector('.sign-up-form').classList.add('active');
+        } else {
+            e.target.nextElementSibling.classList.remove('active');
+            e.target.classList.add('active');
+            toggleBtnBg.classList.remove('active');
+            document.querySelector('.sign-in-form').classList.remove('active');
+            document.querySelector('.sign-up-form').classList.remove('active');
         }
     });
 
-    toggleBtn[0].addEventListener('click', () => {
-        toggleBtnBg.style.left = '0';
-        toggleBtn[1].classList.remove('active');
-        toggleBtn[0].classList.add('active');
-        for(var slide of sginForm) {
-            slide.classList.remove('active');
+    // Input Placeholder
+    const signFormContainer = document.querySelector('.sign-form-slider-container');
+    signFormContainer.addEventListener('focusin', (e) => {
+        const signFormInput = e.target;
+        if(signFormInput.className.includes('input-sign-form') && e.target.value === '') {
+            signFormInput.parentElement.classList.add('active');
         }
+
+        signFormInput.addEventListener('focusout', () => {
+            if(signFormInput.value === ''){
+                signFormInput.parentElement.classList.remove('active');
+            }
+        });
     });
 }
+
 
 /********************* Nav tabmenu *********************/
 if(document.querySelector('#nav')) {
@@ -37,11 +52,10 @@ if(document.querySelector('#nav')) {
 }
 
 
-/********************* Timetable, To do Page *********************/
-
+/********************* Calendar drop button *********************/
 if(document.querySelector('.btn-calendar-drop')) {
     const calendarDropBtn = document.querySelector('.btn-calendar-drop');
-    const calendarBodyGroup = document.querySelector('.calendar-body-group.timetable');
+    const calendarBodyGroup = document.querySelector('.calendar-body-group');
     
     calendarDropBtn.addEventListener('click', () => {
         calendarDropBtn.classList.toggle('active');

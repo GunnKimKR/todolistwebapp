@@ -17,53 +17,76 @@
     <!-- form-container -->
     <main id="main" class="sign-form-container">
       <div class="sign-form-group">
-        <div class="sign-form-btn-toggle-box">
-          <div class="btn-toggle-bg"></div>
-          <strong class="btn-primary btn-toggle active" data-sign-btn="sign-in">Sign in</strong>
-          <strong class="btn-primary btn-toggle" data-sign-btn="sign-up">Sign up</strong>
+
+        <div class="toggle-btn-box">
+          <div class="toggle-btn-bg"></div>
+          <strong class="btn-primary btn-toggle active">Sign in</strong>
+          <strong class="btn-primary btn-toggle">Sign up</strong>
         </div>
 
         <div class="sign-form-slider-container">
-          <section class="sign-form">
+
+          <!-- Sign In Form -->
+          <section class="sign-form sign-in-form">
             <h2 class="blind">Sign in</h2>
-            <div class="sign-form-row">
-              <input type="text" placeholder="Email">
+            <div class="sign-form__row">
+              <div class="input-box">
+                <label for="input-email" class="placeholder-input">Email</label>
+                <input type="text" id="input-email" class="input-sign-form">
+              </div>
             </div>
-            <div class="sign-form-row">
-              <input type="password" placeholder="Password">
+            <div class="sign-form__row">
+              <div class="input-box">
+                <label for="input-password" class="placeholder-input">Password</label>
+                <input type="password" id="input-password" class="input-sign-form">
+              </div>
             </div>
-            <div class="sign-form-row btn-area">
-              <a href="../index.html" class="btn-primary btn-login">Sign in</a>
+            <div class="sign-form__row btn-area">
+              <a href="./index.html" class="btn-primary">Sign in</a>
             </div>
-            <div class="sign-form-row">
-              <a href="#;">Forgot your password?</a>
+            <div class="sign-form__row">
+              <a href="#;" class="btn-ps-search">Forgot your password?</a>
             </div>
           </section>
-          <section class="sign-form register-form">
+          <!-- //Sign In Form -->
+
+          <!-- Sign Up Form -->
+          <section class="sign-form sign-up-form">
             <h2 class="blind">Sign up</h2>
-            <div class="sign-form-row">
-              <input type="text" placeholder="User name" class="input-success">
+            <div class="sign-form__row">
+              <div class="input-box">
+                <label for="user-name" class="placeholder-input">User name</label>
+                <input type="text" id="user-name" class="input-sign-form input-success">
+              </div>
             </div>
-            <div class="sign-form-row">
-              <input type="text" placeholder="Email" class="input-error">
+            <div class="sign-form__row">
+              <div class="input-box">
+                <label for="input-join-email" class="placeholder-input">Email</label>
+                <input type="text" id="input-join-email" class="input-sign-form input-error">
+              </div>
               <div class="error-message">
                 <p>
                   Mandatory field
                 </p>
               </div>
             </div>
-            <div class="sign-form-row">
-              <input type="password" placeholder="Password" class="input-error">
+            <div class="sign-form__row">
+              <div class="input-box">
+                <label for="input-join-password" class="placeholder-input">Password</label>
+                <input type="text" id="input-join-password" class="input-sign-form input-error">
+              </div>
               <div class="error-message">
                 <p>
                   The format is incorrect.
                 </p>
               </div>
             </div>
-            <div class="sign-form-row btn-area">
-              <button type="submit" class="btn-primary btn-login">Sign up</button>
+            <div class="sign-form__row btn-area">
+              <button type="submit" class="btn-primary">Sign up</button>
             </div>
           </section>
+          <!-- //Sign Up Form -->
+
         </div>
 
         <div class="btn-sns-box">

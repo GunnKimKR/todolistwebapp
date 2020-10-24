@@ -4,11 +4,6 @@
 /********************* login > To Do List *********************/
 
 /* sign-form-container */
-.sign-form-container input:focus {
-  outline: 1px dashed rgba(0,0,0,.45);
-  outline-offset: -1px;
-}
-
 .sign-form-container {
   display: flex;
   justify-content: center;
@@ -40,7 +35,7 @@
   margin-top: 2rem;
 }
 
-.sign-form-btn-toggle-box {
+.toggle-btn-box {
   display: flex;
   position: relative;
   width: 75%;
@@ -49,7 +44,7 @@
   box-shadow: 0 0 15px rgba(0,0,0,.15);
 }
 
-.btn-toggle-bg {
+.toggle-btn-bg {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -62,7 +57,7 @@
   content:'';
 }
 
-.sign-form-btn-toggle-box .btn-toggle {
+.toggle-btn-box .btn-toggle {
   width: 50%;
   background-color: transparent;
   color: #333;
@@ -70,11 +65,11 @@
   transition: color .5s ease;
 }
 
-.btn-toggle-bg.active {
+.toggle-btn-bg.active {
   left: 50%;
 }
 
-.sign-form-btn-toggle-box .btn-toggle.active {
+.toggle-btn-box .btn-toggle.active {
   color: #fff;
   
 }
@@ -84,7 +79,7 @@
   display: flex;
   overflow: hidden;
   width: 100%;
-  margin-top: 3.5rem;
+  margin-top: 1.5rem;
 }
 
 .sign-form {
@@ -93,7 +88,7 @@
   align-items: center;
   flex-shrink: 0;
   width: 100%;
-  padding: 0 3rem;
+  padding: 2rem 3rem 0;
   transition: transform .5s ease;
 }
 
@@ -101,19 +96,35 @@
   transform: translateX(-100%);
 }
 
-.sign-form-row {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.sign-form__row {
   width: 100%;
+  text-align: center;
 }
 
-.sign-form-row + .sign-form-row {
+.sign-form__row + .sign-form__row {
   margin-top: 1.2rem;
 }
 
-.sign-form-row.btn-area {
+.sign-form__row.btn-area {
   margin-top: 2rem;
+}
+
+.input-box {
+  position: relative;
+}
+
+.placeholder-input {
+  position: absolute;
+  bottom: 50%;
+  left: 5px;
+  transform: translateY(50%);
+  transition: .4s ease;
+  transition-property: bottom, font-size;
+}
+
+.input-box.active .placeholder-input {
+  bottom: 100%;
+  font-size: 1rem;
 }
 
 .sign-form-group input {
@@ -124,12 +135,17 @@
   text-indent: 5px;
 }
 
-.sign-form-row .input-error {
+.sign-form__row .input-success {
+  border-bottom-color: #34a853;
+  color: #34a853;
+}
+
+.sign-form__row .input-error {
   border-bottom-color: #ea4335;
   color: #ea4335;
 }
 
-.sign-form-row .error-message {
+.sign-form__row .error-message {
   width: 100%;
   margin-top: .2rem;
   font-size: 1.2rem;
@@ -137,9 +153,8 @@
   color: #e32a37;
 }
 
-.sign-form-row .input-success {
-  border-bottom-color: #34a853;
-  color: #34a853;
+.btn-ps-search {
+  font-size: 1.2rem;
 }
 
 .btn-sns-box {
@@ -227,42 +242,87 @@
 }
 
 /* calendar-container */
+
+/* calendar-header-group */
 .calendar-header-group {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
   position: relative;
   padding: .7em 6% .7em;
   background-color: #333;
+  color: #fff;
 }
 
-.calendar-month-list {
+.calendar-year {
+  flex: 1 0 100%;
+  margin-bottom: .5rem;
+  text-align: center;
+}
+
+.calendar-month {
+  flex: 0 0 auto;
+  margin: 0 .3rem 0 .9rem;
+  font-weight: 500;
+}
+
+.calendar-date-list {
+  flex: 1 1 auto;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  overflow-x: auto;
-  width: 100%;
 }
 
-.calendar-month-list__item {
-  flex-shrink: 0;
-  width: 33.33%
+.calendar-date-list .calendar-date-list__item {
+  width: 2.7rem;
+  height: 2.7rem;
 }
 
-.calendar-month-list__item a {
+.calendar-date-list .calendar-date-list__item.today a {
+  border-radius: 50%;
+  background-color: #fbbc05;
+}
+
+.calendar-date-list .calendar-date-list__item a {
   display: block;
-  font-weight: 500;
+  width: 100%;
+  height: 100%;
+  line-height: 2.7rem;
   color: #fff;
   text-align: center;
 }
 
-.calendar-month-list__item:nth-child(2) a {
-  font-size: 1.6rem;
+.btn-calendar-drop {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 1.3rem;
+  height: 1.3rem;
+  margin-top: .7rem;
+  color: #333;
+  transform: translateX(-50%);
 }
 
-.calendar-year {
-  margin-top: .25em;
-  color: #fff;
+.btn-calendar-drop:before {
+  display: inline-block;
+  font-weight: 900;
+  font-size: 2rem;
+  line-height: 1.3rem;
+  font-family: 'Font Awesome 5 Free';
+  content: '\f0d7';
+}
+
+.btn-calendar-drop.active:before {
+  content: '\f0de';
+}
+
+.calendar-body-group {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height .5s ease;
+}
+
+.calendar-body-group.active {
+  max-height: 26rem;
 }
 
 /* calendar-body-group */
@@ -320,36 +380,6 @@
   content: '';
 }
 
-.table-calendar .plannig-bg {
-  color: #fff;
-  opacity: .75;
-}
-
-.table-calendar .plannig-bg:after,
-.table-calendar .plannig-bg:before {
-  position: absolute;
-  top: 50%;
-  z-index: -1;
-  width: 100%;
-  height: 3rem;
-  border-radius: 0;
-  background-color: #4285f4;
-  transform: translateY(-50%);
-  content: '';
-}
-
-.table-calendar .plannig-bg.first:after,
-.table-calendar .plannig-bg.first:before {
-  border-top-left-radius: 2rem;
-  border-bottom-left-radius: 2rem;
-}
-
-.table-calendar .plannig-bg.end:after,
-.table-calendar .plannig-bg.end:before {
-  border-top-right-radius: 2rem;
-  border-bottom-right-radius: 2rem;
-}
-
 .td-cell .prev-month,
 .td-cell .next-month {
   opacity: .5;
@@ -395,77 +425,6 @@
 }
 
 /*************** Timetable > To Do List ***************/
-.calendar-header-group.timetable {
-  flex-direction: row;
-  align-items: center;
-}
-
-.calendar-header-group.timetable .calendar-month-list {
-  flex-shrink: 0;
-  width: fit-content;
-}
-
-.calendar-header-group.timetable .calendar-month-list__item {
-  width: auto;
-}
-
-.calendar-date-list {
-  display: flex;
-  justify-content: space-between;
-  flex: 1 0 auto;
-  margin-left: 1.5rem;
-}
-
-.calendar-date-list .calendar-date-list__item {
-  width: 2.7rem;
-  height: 2.7rem;
-}
-
-.calendar-date-list .calendar-date-list__item.today a {
-  border-radius: 50%;
-  background-color: #fbbc05;
-}
-
-.calendar-date-list .calendar-date-list__item a {
-  display: block;
-  width: 100%;
-  height: 100%;
-  line-height: 2.7rem;
-  color: #fff;
-  text-align: center;
-}
-
-.btn-calendar-drop {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  width: 1.3rem;
-  height: 1.3rem;
-  margin-top: .7rem;
-  color: #333;
-  transform: translateX(-50%);
-}
-
-.btn-calendar-drop:before {
-  display: inline-block;
-  font-weight: 900;
-  font-size: 2rem;
-  line-height: 1.3rem;
-  font-family: 'Font Awesome 5 Free';
-  content: '\f0d7';
-}
-
-.btn-calendar-drop.active:before {
-  content: '\f0de';
-}
-
-.calendar-body-group.timetable {
-  display: none;
-}
-
-.calendar-body-group.timetable.active {
-  display: block;
-}
 
 /* timetable-container */
 .table-timetable {

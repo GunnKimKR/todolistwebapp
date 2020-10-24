@@ -23,7 +23,7 @@
           <a href="./timetable.html">Timetable</a>
         </li>
         <li class="nav__tabmenu__item" data-index="1">
-          <a href="../index.html">Calendar</a>
+          <a href="./index.html">Calendar</a>
         </li>
         <li class="nav__tabmenu__item" data-index="2">
           <a href="./todo.html">To do</a>
@@ -38,13 +38,10 @@
       <!---------------------- Calendar Container ---------------------->
       <section class="calendar-container">
         <h2 class="blind">달력</h2>
-        
-        <div class="calendar-header-group timetable">
-          <ol class="calendar-month-list">
-            <li class="calendar-month-list__item">
-              <a href="#">Sep</a>
-            </li>
-          </ol>
+
+        <div class="calendar-header-group">
+          <a href="#;" class="calendar-year">2020</a>
+          <a href="#;" class="calendar-month">Sep</a>
           <ul class="calendar-date-list">
             <li class="calendar-date-list__item">
               <a href="#;">
@@ -81,7 +78,7 @@
           <button type="button" class="btn-calendar-drop"></button>
         </div>
 
-        <div class="calendar-body-group timetable">
+        <div class="calendar-body-group">
           <table class="table-calendar">
             <thead>
               <tr>
@@ -298,14 +295,14 @@
                     </div>
                   </div>
                 </td>
-                <td class="plannig-bg first">
+                <td>
                   <div class="td-cell">
                     <div class="td-style">
                       26
                     </div>
                   </div>
                 </td>
-                <td class="plannig-bg end">
+                <td>
                   <div class="td-cell">
                     <div class="td-style">
                       27
@@ -314,14 +311,14 @@
                 </td>
               </tr>
               <tr>
-                <td class="plannig-bg first">
+                <td>
                   <div class="td-cell">
                     <div class="td-style">
                       28
                     </div>
                   </div>
                 </td>
-                <td class="plannig-bg end">
+                <td>
                   <div class="td-cell">
                     <div class="td-style">
                       29
@@ -411,11 +408,13 @@
       </section>
       <!---------------------- //Todo Container ---------------------->
       
-      <!-- Add button -->
+      <!-- Plan Add button -->
       <div class="todo-add-container">
         <input type="text" placeholder="Add Todo..." class="input-todo-add">
         <button type="button" class="btn-todo-add">Add</button>
       </div>
+      <!-- //Plan Add button -->
+      
     </main>
     <!---------------------- //Main Container ---------------------->
 
