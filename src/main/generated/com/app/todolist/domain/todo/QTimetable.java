@@ -10,20 +10,20 @@ import com.querydsl.core.types.Path;
 
 
 /**
- * QTodo is a Querydsl query type for Todo
+ * QTimetable is a Querydsl query type for Timetable
  */
 @Generated("com.querydsl.codegen.EntitySerializer")
-public class QTodo extends EntityPathBase<Todo> {
+public class QTimetable extends EntityPathBase<Timetable> {
 
-    private static final long serialVersionUID = 837607924L;
+    private static final long serialVersionUID = 380044339L;
 
-    public static final QTodo todo = new QTodo("todo");
+    public static final QTimetable timetable = new QTimetable("timetable");
 
     public final com.app.todolist.domain.util.QBaseEntity _super = new com.app.todolist.domain.util.QBaseEntity(this);
 
     public final NumberPath<Integer> clipYn = createNumber("clipYn", Integer.class);
 
-    public final NumberPath<Integer> completedYn = createNumber("completedYn", Integer.class);
+    public final StringPath contents = createString("contents");
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> createdDt = _super.createdDt;
@@ -33,6 +33,8 @@ public class QTodo extends EntityPathBase<Todo> {
     public final StringPath labelCd = createString("labelCd");
 
     public final NumberPath<Integer> orderNo = createNumber("orderNo", Integer.class);
+
+    public final StringPath sectionNo = createString("sectionNo");
 
     public final DateTimePath<java.time.LocalDateTime> startDt = createDateTime("startDt", java.time.LocalDateTime.class);
 
@@ -48,16 +50,16 @@ public class QTodo extends EntityPathBase<Todo> {
 
     public final NumberPath<Long> userId = createNumber("userId", Long.class);
 
-    public QTodo(String variable) {
-        super(Todo.class, forVariable(variable));
+    public QTimetable(String variable) {
+        super(Timetable.class, forVariable(variable));
     }
 
-    public QTodo(Path<? extends Todo> path) {
+    public QTimetable(Path<? extends Timetable> path) {
         super(path.getType(), path.getMetadata());
     }
 
-    public QTodo(PathMetadata metadata) {
-        super(Todo.class, metadata);
+    public QTimetable(PathMetadata metadata) {
+        super(Timetable.class, metadata);
     }
 
 }

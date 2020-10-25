@@ -10,6 +10,9 @@ $(function(){
           todoList = response.data.todoList;
           appendStr = todoListAppendStr(todoList);
           showTodoData(appendStr);
+        },
+        error : function(response) {
+          showErrorMessage(response);
         }
     });
   });

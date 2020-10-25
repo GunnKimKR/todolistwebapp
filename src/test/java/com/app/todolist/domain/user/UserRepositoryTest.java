@@ -76,11 +76,11 @@ public class UserRepositoryTest {
   }
 
   @Test
-  public void savaTodo(){
-    Todo todo1 = new Todo(Long.valueOf(1), "투두리스트 마크업", "Y");
-    Todo todo2 = new Todo(Long.valueOf(1), "텝스공부", "N");
-    Todo todo3 = new Todo(Long.valueOf(3), "백엔드설정", "Y");
-    Todo todo4 = new Todo(Long.valueOf(3), "토익공부", "N");
+  public void saveTodo(){
+    Todo todo1 = new Todo(Long.valueOf(1), "투두리스트 마크업", 1);
+    Todo todo2 = new Todo(Long.valueOf(1), "텝스공부", 0);
+    Todo todo3 = new Todo(Long.valueOf(3), "백엔드설정", 1);
+    Todo todo4 = new Todo(Long.valueOf(3), "토익공부", 0);
 
     todoRepository.save(todo1);
     todoRepository.save(todo2);

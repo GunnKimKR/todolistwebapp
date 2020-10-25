@@ -12,11 +12,11 @@ public class TodoDTO {
   Long todoId;
   String nickname;
   String title;
-  String compeledYn;
+  int compeledYn;
   LocalDateTime createdDt;
 
   @QueryProjection
-  public TodoDTO(Long todoId, String nickname, String title, String compeledYn,
+  public TodoDTO(Long todoId, String nickname, String title, int compeledYn,
       LocalDateTime createdDt) {
     this.todoId = todoId;
     this.nickname = nickname;

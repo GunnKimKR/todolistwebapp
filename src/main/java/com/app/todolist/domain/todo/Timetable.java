@@ -12,32 +12,19 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @NoArgsConstructor
-public class Todo extends BaseEntity {
+public class Timetable extends BaseEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long todoId;
   private Long userId;
   private String title;
+  private String contents;
   private String labelCd;
   private int clipYn;
-  private int completedYn;
+  private int sectionNo;
   private LocalDateTime startDt;
   private LocalDateTime endDt;
   private int orderNo;
 
-  public Todo(Long userId, String title, int completedYn) {
-    this.userId = userId;
-    this.title = title;
-    this.completedYn = completedYn;
-  }
-
-  public void updateTodo(String title, int completedYn) {
-    this.title = title;
-    this.completedYn = completedYn;
-  }
-
-  public void deleteTodo() {
-    this.stateNo = 1;
-  }
 }

@@ -8,6 +8,6 @@ public class TodoParams {
 
   Long userId;
   String title;
-  String completedYn;
+  int completedYn;
 
 }

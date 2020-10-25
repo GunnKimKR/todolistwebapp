@@ -13,8 +13,8 @@ public class QTodoDTO extends ConstructorExpression<TodoDTO> {
 
     private static final long serialVersionUID = -1484353696L;
 
-    public QTodoDTO(com.querydsl.core.types.Expression<Long> todoId, com.querydsl.core.types.Expression<String> nickname, com.querydsl.core.types.Expression<String> title, com.querydsl.core.types.Expression<String> compeledYn, com.querydsl.core.types.Expression<java.time.LocalDateTime> createdDt) {
-        super(TodoDTO.class, new Class<?>[]{long.class, String.class, String.class, String.class, java.time.LocalDateTime.class}, todoId, nickname, title, compeledYn, createdDt);
+    public QTodoDTO(com.querydsl.core.types.Expression<Long> todoId, com.querydsl.core.types.Expression<String> nickname, com.querydsl.core.types.Expression<String> title, com.querydsl.core.types.Expression<Integer> compeledYn, com.querydsl.core.types.Expression<java.time.LocalDateTime> createdDt) {
+        super(TodoDTO.class, new Class<?>[]{long.class, String.class, String.class, int.class, java.time.LocalDateTime.class}, todoId, nickname, title, compeledYn, createdDt);
     }
 
 }

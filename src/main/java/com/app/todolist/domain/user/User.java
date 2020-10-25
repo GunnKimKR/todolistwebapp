@@ -13,8 +13,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class User extends BaseEntity {
 
-  @Id //기본키
-  @GeneratedValue(strategy = GenerationType.IDENTITY) //자동 증가 값
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long userId;
   private String nickname;
   private String email;
