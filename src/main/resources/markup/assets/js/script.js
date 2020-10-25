@@ -25,18 +25,25 @@ if(document.querySelector('.sign-form-group')) {
 
     // Input Placeholder
     const signFormContainer = document.querySelector('.sign-form-slider-container');
-    signFormContainer.addEventListener('focusin', (e) => {
-        const signFormInput = e.target;
-        if(signFormInput.className.includes('input-sign-form') && e.target.value === '') {
-            signFormInput.parentElement.classList.add('active');
-        }
+    const popFormContainer = document.querySelector('.pop-container');
 
-        signFormInput.addEventListener('focusout', () => {
-            if(signFormInput.value === ''){
-                signFormInput.parentElement.classList.remove('active');
+    signFormContainer.addEventListener('focusin', inputPlaceholderAnim(this));
+    popFormContainer.addEventListener('focusin', inputPlaceholderAnim(this));
+
+    function inputPlaceholderAnim(form) {
+        form.addEventListener('focusin', (e) => {
+            const signFormInput = e.target;
+            if(signFormInput.className.includes('input-sign-form') && e.target.value === '') {
+                signFormInput.parentElement.classList.add('active');
             }
+    
+            signFormInput.addEventListener('focusout', () => {
+                if(signFormInput.value === ''){
+                    signFormInput.parentElement.classList.remove('active');
+                }
+            });
         });
-    });
+    }
 }
 
 

@@ -98,8 +98,8 @@ dt, th, strong, b {
 .btn-primary {
   display: block;
   width: 100%;
-  padding: .5em 1.2em;
-  border-radius: 2rem;
+  padding: .6em 1.2em;
+  border-radius: 3px;
   background-color: #333;
   font-weight: 700;
   color: #fff;

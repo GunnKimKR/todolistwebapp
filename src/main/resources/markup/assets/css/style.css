@@ -31,10 +31,6 @@
   box-shadow: 2px 2px 5px rgba(0,0,0,.3);
 }
 
-.sign-form-group > div + div {
-  margin-top: 2rem;
-}
-
 .toggle-btn-box {
   display: flex;
   position: relative;
@@ -102,11 +98,11 @@
 }
 
 .sign-form__row + .sign-form__row {
-  margin-top: 1.2rem;
+  margin-top: 2rem;
 }
 
-.sign-form__row.btn-area {
-  margin-top: 2rem;
+.sign-form__row.hyperlink-area {
+  margin-top: .8rem;
 }
 
 .input-box {
@@ -115,37 +111,38 @@
 
 .placeholder-input {
   position: absolute;
-  bottom: 50%;
+  bottom: 0;
   left: 5px;
-  transform: translateY(50%);
+  padding: .5rem 0 .6rem;
   transition: .4s ease;
-  transition-property: bottom, font-size;
+  transition-property: bottom, padding, font-size;
 }
 
 .input-box.active .placeholder-input {
-  bottom: 100%;
+  bottom: 85%;
+  padding: 0;
   font-size: 1rem;
 }
 
-.sign-form-group input {
+.input-sign-form {
   display: block;
   width: 100%;
-  height: 3.4rem;
+  padding: .5rem 0;
   border-bottom: 1px solid #333;
   text-indent: 5px;
 }
 
-.sign-form__row .input-success {
+.input-success {
   border-bottom-color: #34a853;
   color: #34a853;
 }
 
-.sign-form__row .input-error {
+.input-error {
   border-bottom-color: #ea4335;
   color: #ea4335;
 }
 
-.sign-form__row .error-message {
+.error-message {
   width: 100%;
   margin-top: .2rem;
   font-size: 1.2rem;
@@ -157,40 +154,97 @@
   font-size: 1.2rem;
 }
 
-.btn-sns-box {
+.sns-btn-area {
   display: flex;
   flex-direction: column;
   width: 100%;
+  margin-top: 3rem;
   padding: 0 3rem;
 }
 
-.btn-sns-box .btn-primary {
+.sns-btn-area .btn-primary {
   display: flex;
   align-items: center;
   width: 100%;
   color: #fff;
 }
 
-.btn-sns-box .btn-primary + .btn-primary {
+.sns-btn-area .btn-primary + .btn-primary {
   margin-top: 1.2rem;
 }
 
-.btn-sns-box .btn-primary.google {
+.sns-btn-area .btn-primary.google {
   background: linear-gradient(-120deg, #4285f4, #34a853, #fbbc05, #ea4335);
 }
 
-.btn-sns-box .btn-primary.facebook {
+.sns-btn-area .btn-primary.facebook {
   background: linear-gradient(180deg, #3b5998, #2b4170);
 }
 
-.btn-sns-box .btn-primary.instagram {
+.sns-btn-area .btn-primary.instagram {
   background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
 }
 
-.btn-sns-box .btn-primary i {
+.sns-btn-area .btn-primary i {
   margin-right: 1.2rem;
   font-size: 1.6rem;
 }
+
+/* Popup Section */
+.pop-container {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  padding: 0 6%;
+}
+
+.pop__form {
+  width: 100%;
+  max-width: 40rem;
+  padding: 2.5rem;
+  background-color: #fff;
+  text-align: center;
+}
+
+.pop__form > strong {
+  font-size: 2rem;
+}
+
+.pop__form > :not(:first-child) {
+  margin-top: 2rem;
+}
+
+.pop__form .pop-btn-close {
+  display: block;
+  margin-top: .8rem;
+  font-size: 1.2rem;
+}
+
+.pop__form .pop-btn-close:after {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  background-color: rgba(0,0,0,.6);
+  cursor: default;
+  content: '';
+}
+
+#popup:target {
+  display: flex;
+}
+
 
 /********************* Calendar > To Do List *********************/
 
