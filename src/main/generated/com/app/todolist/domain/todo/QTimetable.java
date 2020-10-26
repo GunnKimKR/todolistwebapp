@@ -34,7 +34,7 @@ public class QTimetable extends EntityPathBase<Timetable> {
 
     public final NumberPath<Integer> orderNo = createNumber("orderNo", Integer.class);
 
-    public final StringPath sectionNo = createString("sectionNo");
+    public final NumberPath<Integer> sectionNo = createNumber("sectionNo", Integer.class);
 
     public final DateTimePath<java.time.LocalDateTime> startDt = createDateTime("startDt", java.time.LocalDateTime.class);
 
