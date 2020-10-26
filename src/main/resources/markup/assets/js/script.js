@@ -46,19 +46,6 @@ if(document.querySelector('.sign-form-group')) {
     }
 }
 
-
-/********************* Nav tabmenu *********************/
-if(document.querySelector('#nav')) {
-    const nav = document.querySelector('#nav');
-    const tabMenuUnderline = document.querySelector('.tabmenu-underline');
-
-    nav.addEventListener('click', (e) => {
-        const tabMenuIndex = e.target.parentNode.dataset.index;
-        tabMenuUnderline.style.left = 33.33 * tabMenuIndex + '%';
-    });
-}
-
-
 /********************* Calendar drop button *********************/
 if(document.querySelector('.btn-calendar-drop')) {
     const calendarDropBtn = document.querySelector('.btn-calendar-drop');
