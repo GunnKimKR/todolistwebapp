@@ -1,0 +1,594 @@
+@charset "UTF-8";
+
+
+/********************* login > To Do List *********************/
+
+/* sign-form-container */
+.sign-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url(../images/bg_login-page.jpg) 50% 50%/cover no-repeat;
+}
+
+.sign-form-container:before {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0,0,0,.1);
+  content: '';
+}
+
+.sign-form-group {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 40rem;
+  padding: 3rem 0;
+  background-color: #fff;
+  box-shadow: 2px 2px 5px rgba(0,0,0,.3);
+}
+
+.toggle-btn-box {
+  display: flex;
+  position: relative;
+  width: 75%;
+  margin: 0 auto;
+  border-radius: 2rem;
+  box-shadow: 0 0 15px rgba(0,0,0,.15);
+}
+
+.toggle-btn-bg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  width: 50%;
+  border-radius: 2rem;
+  background-color: #333;
+  transition: left .5s ease;
+  content:'';
+}
+
+.toggle-btn-box .btn-toggle {
+  width: 50%;
+  background-color: transparent;
+  color: #333;
+  text-align: center;
+  transition: color .5s ease;
+}
+
+.toggle-btn-bg.active {
+  left: 50%;
+}
+
+.toggle-btn-box .btn-toggle.active {
+  color: #fff;
+  
+}
+
+/* sign-form-slider-container */
+.sign-form-group .sign-form-slider-container {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+.sign-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 100%;
+  padding: 2rem 3rem 0;
+  transition: transform .5s ease;
+}
+
+.sign-form.active {
+  transform: translateX(-100%);
+}
+
+.sign-form__row {
+  width: 100%;
+  text-align: center;
+}
+
+.sign-form__row + .sign-form__row {
+  margin-top: 2rem;
+}
+
+.sign-form__row.hyperlink-area {
+  margin-top: .8rem;
+}
+
+.input-box {
+  position: relative;
+}
+
+.placeholder-input {
+  position: absolute;
+  bottom: 0;
+  left: 5px;
+  padding: .5rem 0 .6rem;
+  transition: .4s ease;
+  transition-property: bottom, padding, font-size;
+}
+
+.input-box.active .placeholder-input {
+  bottom: 85%;
+  padding: 0;
+  font-size: 1rem;
+}
+
+.input-sign-form {
+  display: block;
+  width: 100%;
+  padding: .5rem 0;
+  border-bottom: 1px solid #333;
+  text-indent: 5px;
+}
+
+.input-success {
+  border-bottom-color: #34a853;
+  color: #34a853;
+}
+
+.input-error {
+  border-bottom-color: #ea4335;
+  color: #ea4335;
+}
+
+.error-message {
+  width: 100%;
+  margin-top: .2rem;
+  font-size: 1.2rem;
+  text-align: left;
+  color: #e32a37;
+}
+
+.btn-ps-search {
+  font-size: 1.2rem;
+}
+
+.sns-btn-area {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 3rem;
+  padding: 0 3rem;
+}
+
+.sns-btn-area .btn-primary {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  color: #fff;
+}
+
+.sns-btn-area .btn-primary + .btn-primary {
+  margin-top: 1.2rem;
+}
+
+.sns-btn-area .btn-primary.google {
+  background: linear-gradient(-120deg, #4285f4, #34a853, #fbbc05, #ea4335);
+}
+
+.sns-btn-area .btn-primary.facebook {
+  background: linear-gradient(180deg, #3b5998, #2b4170);
+}
+
+.sns-btn-area .btn-primary.instagram {
+  background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+}
+
+.sns-btn-area .btn-primary i {
+  margin-right: 1.2rem;
+  font-size: 1.6rem;
+}
+
+/* Popup Section */
+.pop-container {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  padding: 0 6%;
+}
+
+.pop__form {
+  width: 100%;
+  max-width: 40rem;
+  padding: 2.5rem;
+  background-color: #fff;
+  text-align: center;
+}
+
+.pop__form > strong {
+  font-size: 2rem;
+}
+
+.pop__form > :not(:first-child) {
+  margin-top: 2rem;
+}
+
+.pop__form .pop-btn-close {
+  display: block;
+  margin-top: .8rem;
+  font-size: 1.2rem;
+}
+
+.pop__form .pop-btn-close:after {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  background-color: rgba(0,0,0,.6);
+  cursor: default;
+  content: '';
+}
+
+#popup:target {
+  display: flex;
+}
+
+
+/********************* Calendar > To Do List *********************/
+
+/* nav */
+#nav {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  background-color: #fff;
+}
+
+.nav__tabmenu {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1px solid #f1f1f1;
+}
+
+.nav__tabmenu__item a {
+  display: block;
+  width: 3.8rem;
+  padding: .5em;
+  text-align: center;
+}
+
+.nav__tabmenu__item a img {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* main-container */
+#main.main-container {
+  overflow-y: auto;
+  padding: 0 0 3.9rem;
+}
+
+/* calendar-header-group */
+.calendar-header-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  position: relative;
+  padding: .7em 6% .9em;
+  background-color: #333;
+  color: #fff;
+}
+
+.calendar-year {
+  flex: 1 0 100%;
+  margin-bottom: .5rem;
+  text-align: center;
+}
+
+.calendar-month {
+  flex: 0 0 auto;
+  margin: 0 .3rem 0 .9rem;
+  font-weight: 500;
+}
+
+.calendar-date-list {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.calendar-date-list .calendar-date-list__item {
+  width: 2.7rem;
+  height: 2.7rem;
+}
+
+.calendar-date-list .calendar-date-list__item.today a {
+  border-radius: 50%;
+  background-color: #fbbc05;
+}
+
+.calendar-date-list .calendar-date-list__item a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  line-height: 2.7rem;
+  color: #fff;
+  text-align: center;
+}
+
+.btn-calendar-drop {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 1.3rem;
+  height: 1.3rem;
+  margin-top: .7rem;
+  color: #333;
+  transform: translateX(-50%);
+}
+
+.btn-calendar-drop:before {
+  display: inline-block;
+  font-weight: 900;
+  font-size: 2rem;
+  line-height: 1.3rem;
+  font-family: 'Font Awesome 5 Free';
+  content: '\f0d7';
+}
+
+.btn-calendar-drop.active:before {
+  content: '\f0de';
+}
+
+.calendar-body-group {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height .5s ease;
+}
+
+.calendar-body-group.active {
+  max-height: 26rem;
+}
+
+/* calendar-body-group */
+.calendar-body-group {
+  padding: 1rem 6% 0;
+}
+
+.table-calendar td {
+  position: relative;
+}
+
+.table-calendar .th-cell, 
+.table-calendar .td-cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4rem;
+  height: 4rem;
+  margin: 0 auto;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.table-calendar .td-style {
+  position: relative;
+}
+
+.table-calendar .td-style {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 4rem;
+  height: 4rem;
+  padding: 1rem;
+  border-radius: 50%;
+}
+
+.table-calendar .today.plans {
+  box-shadow: 0 2px 10px rgba(66,133,244,.65);
+  background-color: #4285f4;
+  color: #fff;
+}
+
+.table-calendar .plans:after {
+  position: absolute;
+  right: 0;
+  bottom: .5rem;
+  left: 0;
+  width: .4rem;
+  height: .4rem;
+  margin: 0 auto;
+  border-radius: 50%;
+  background-color: #fbbc05;
+  content: '';
+}
+
+.td-cell .prev-month,
+.td-cell .next-month {
+  opacity: .5;
+}
+
+/* clip-plans-container */
+.clip-plans-container, 
+.timetable-container, 
+.todo-container{
+  margin-top: 1rem;
+  padding: 1rem 6%;
+}
+
+.clip-plans-list {
+  padding: 1rem 0;
+}
+
+.clip-plans-list__item {
+  display: flex;
+  align-items: center;
+}
+
+.clip-plans-list__item + .clip-plans-list__item{
+  margin-top: 1rem;
+}
+
+.clip-icon,
+.clip-plan-time {
+  flex-shrink: 0;
+  margin-right: 1.4rem;
+}
+
+.clip-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  font-size: 1rem;
+  background-color: #fbbc05;
+  color: #fff;
+}
+
+/*************** Timetable > To Do List ***************/
+
+/* timetable-container */
+.table-timetable {
+  table-layout: fixed;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.table-timetable,
+.table-timetable th,
+.table-timetable td {
+  border: 1px solid #f3f3f3;
+}
+
+.table-timetable th {
+  width: 3rem;
+  font-weight: 500;
+  vertical-align: middle;
+}
+
+.table-timetable .td-cell {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  font-size: 1.2rem;
+}
+
+.table-timetable .td-cell:empty {
+  height: 4rem;
+}
+
+.table-timetable .td-cell .time-plan {
+  overflow: hidden;
+  position: relative;
+  width: 70%;
+  padding-left: 7px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.table-timetable .td-cell .time-plan[data-time="0030"] {
+  height: 2rem;
+}
+
+.table-timetable .td-cell .time-plan[data-time="0100"] {
+  height: 4rem;
+}
+
+.table-timetable .td-cell .time-plan[data-time="0130"] {
+  height: 6rem;
+}
+
+.table-timetable .td-cell .time-plan[data-time="0200"] {
+  height: 8rem;
+}
+
+/* label color */
+.table-timetable .label--orange {
+  box-shadow: inset 4px 0 #ffe600;
+}
+
+.table-timetable .label--skyblue {
+  box-shadow: inset 4px 0 #65caf1;
+}
+
+.table-timetable .label--darkgreen {
+  box-shadow: inset 4px 0 #a8a8a8;
+}
+
+.table-timetable .label--tomato {
+  box-shadow: inset 4px 0 #ff6347;
+}
+
+.table-timetable .label--yellowgreen {
+  box-shadow: inset 4px 0 #afee32;
+}
+
+/*************** To do > To Do List ***************/
+.todo-list__item {
+  margin-top: 1.5rem;
+  padding: 1rem 1.5rem;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0,0,0,.3);
+  background-color: #fff;
+}
+
+.todo-list__item__inner {
+  display: flex;
+  font-size: 1.2rem;
+}
+
+.todo-list__item__inner .label-todo {
+  flex: 0 0 auto;
+  width: .8rem;
+  border-radius: 4px;
+  background-color: tomato;
+}
+
+.todo-list__item__inner .text-todo {
+  flex-basis: 100%;
+  padding-left: 1rem;
+}
+
+.todo-list__item__inner .buttons-box {
+  flex: 0 0 auto;
+  margin-left: auto;
+}
+
+.todo-list__item__inner .buttons-box .btn-check:after {
+  font-weight: 400;
+  font-family: 'Font Awesome 5 Free';
+  color: #34a853;
+  content:'\f058';
+}
+
+.todo-list__item__inner .buttons-box .btn-check.completed:after {
+  font-weight: 900;
+}
+
+.todo-list__item__inner .buttons-box .btn-delete {
+  color: #c4c4c4;
+}
+
+.todo-list__item__inner .buttons-box button {
+  width: 2rem;
+}
