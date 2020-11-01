@@ -2,10 +2,6 @@ const duration = 1;
 const op_0 = { opacity: 0, ease: Linear.ease };
 const op_1 = { opacity: 1 };
 
-function fadeIn() {
-   TweenLite.fromTo($el, duration, from, to);
-}
-
 $(function(){
 
   $('.add-item a').click(function(){
@@ -24,6 +20,24 @@ $(function(){
     $('.add-item').css('visibility', 'visible');
     TweenLite.fromTo($('.add-item-enter'), duration, op_1, op_0);
     $('.add-item-enter').css('visibility', 'hidden');
+  });
+
+  $('.input-clip-icon').click(function(){
+    $(this).toggleClass('input-clip-icon-active');
+  });
+
+  $('#colorPicker').tinycolorpicker();
+  $('#colorPicker').change(function(){
+    $('#colorPicker').hide();
+    $('.input-label-icon').css({
+      'background': 'none ' + $('.colorInput').val(),
+      'border': $('.colorInput').val() == '#FFFFFF' ? '1px solid lightgray' : 'none'
+    });
+  });
+
+  $('.input-label-icon').click(function(){
+    $('#colorPicker').show();
+    $('#colorPicker .color').trigger('touchstart');
   });
 
 });
