@@ -27,7 +27,7 @@ $(function(){
   });
 
   $('#colorPicker').tinycolorpicker();
-  $('#colorPicker').change(function(){
+  $('#colorPicker canvas').bind('touchend', function(){
     $('#colorPicker').hide();
     $('.input-label-icon').css({
       'background': 'none ' + $('.colorInput').val(),
