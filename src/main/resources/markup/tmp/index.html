@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Calendar :: To Do List</title>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;700&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+  <link rel="stylesheet" href="./assets/css/common.css">
+  <link rel="stylesheet" href="./assets/css/test.css">
+  <script src="./assets/js/test.js" defer></script>
+</head>
+<body>
+  <div id="wrap">
+
+    <!---------------------- Nav ---------------------->
+    <nav id="nav">
+      <h2 class="blind">메뉴</h2>
+      <ul class="nav__tabmenu">
+        <li class="nav__tabmenu__item">
+          <a href="./index.html">
+            <img src="https://img.icons8.com/fluent-systems-regular/124/333333/clipboard.png" alt="클립보드" />
+          </a>
+        </li>
+        <li class="nav__tabmenu__item">
+          <a href="./timetable.html">
+            <img src="https://img.icons8.com/fluent-systems-regular/124/333333/overtime.png" alt="타임테이블" />
+          </a>
+        </li>
+        <li class="nav__tabmenu__item">
+          <a href="./todo.html">
+            <img src="https://img.icons8.com/material-rounded/124/333333/list.png" alt="투두 리스트" />
+          </a>
+        </li>
+        <li class="nav__tabmenu__item">
+          <a href="#;">
+            <img src="https://img.icons8.com/fluent-systems-regular/124/333333/search.png" alt="검색" />
+          </a>
+        </li>
+        <li class="nav__tabmenu__item">
+          <a href="#;">
+            <img src="https://img.icons8.com/windows/124/333333/gender-neutral-user.png"/>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <!---------------------- //Nav ---------------------->
+
+    <!---------------------- Main Container ---------------------->
+    <main id="main" class="main-container">
+
+      <!---------------------- Calendar Container ---------------------->
+      <section class="calendar-container">
+        <h2 class="blind">달력</h2>
+
+        <div class="calendar-header-group">
+          <a href="#;" class="calendar-year">2020</a>
+          <a href="#;" class="calendar-month">Sep</a>
+          <ul class="calendar-date-list">
+            <li class="calendar-date-list__item">
+              <a href="#;">
+                <i class="fas fa-chevron-left"></i>
+              </a>
+            </li>
+            <li class="calendar-date-list__item">
+              <a href="#">14</a>
+            </li>
+            <li class="calendar-date-list__item today">
+              <a href="#">15</a>
+            </li>
+            <li class="calendar-date-list__item">
+              <a href="#">16</a>
+            </li>
+            <li class="calendar-date-list__item">
+              <a href="#">17</a>
+            </li>
+            <li class="calendar-date-list__item">
+              <a href="#">18</a>
+            </li>
+            <li class="calendar-date-list__item">
+              <a href="#">19</a>
+            </li>
+            <li class="calendar-date-list__item">
+              <a href="#">20</a>
+            </li>
+            <li class="calendar-date-list__item">
+              <a href="#;">
+                <i class="fas fa-chevron-right"></i>
+              </a>
+            </li>
+          </ul>
+          <button type="button" class="btn-calendar-drop"></button>
+        </div>
+
+        <div class="calendar-body-group">
+          <table class="table-calendar">
+            <thead>
+              <tr>
+                <th scope="col">
+                  <div class="th-cell">SUN</div>
+                </th>
+                <th scope="col">
+                  <div class="th-cell">MON</div>
+                </th>
+                <th scope="col">
+                  <div class="th-cell">TUE</div>
+                </th>
+                <th scope="col">
+                  <div class="th-cell">WED</div>
+                </th>
+                <th scope="col">
+                  <div class="th-cell">THU</div>
+                </th>
+                <th scope="col">
+                  <div class="th-cell">FRI</div>
+                </th>
+                <th scope="col">
+                  <div class="th-cell">SAT</div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="td-cell">
+                    <a href="#;" class="td-style prev-month">
+                      30
+                    </a>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <a href="#;" class="td-style">
+                      1
+                    </a>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <a href="#;" class="td-style">
+                      2
+                    </a>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <a href="#;" class="td-style">
+                      3
+                    </a>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <a href="#;" class="td-style">
+                      4
+                    </a>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <a href="#;" class="td-style">
+                      5
+                    </a>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <a href="#;" class="td-style">
+                      6
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="td-cell">
+                    <a href="#;" class="td-style">
+                      7
+                    </a>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <a href="#;" class="td-style">
+                      8
+                    </a>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <a href="#;" class="td-style plans">
+                      9
+                    </a>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <a href="#;" class="td-style plans">
+                      10
+                    </a>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <a href="#;" class="td-style plans">
+                      11
+                    </a>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <a href="#;" class="td-style">
+                      12
+                    </a>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <a href="#;" class="td-style">
+                      13
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="td-cell">
+                    <a href="#;" class="td-style">
+                      14
+                    </a>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <a href="#;" class="td-style plans today">
+                      15
+                    </a>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <a href="#;" class="td-style plans">
+                      16
+                    </a>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <a href="#;" class="td-style">
+                      17
+                    </a>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <a href="#;" class="td-style">
+                      18
+                    </a>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <a href="#;" class="td-style">
+                      19
+                    </a>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <a href="#;" class="td-style">
+                      20
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="td-cell">
+                    <a href="#;" class="td-style plans">
+                      21
+                    </a>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <a href="#;" class="td-style">
+                      22
+                    </a>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <a href="#;" class="td-style plans">
+                      23
+                    </a>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <a href="#;" class="td-style">
+                      24
+                    </a>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <a href="#;" class="td-style plans">
+                      25
+                    </a>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <a href="#;" class="td-style">
+                      26
+                    </a>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <a href="#;" class="td-style">
+                      27
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="td-cell">
+                    <a href="#;" class="td-style">
+                      28
+                    </a>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <a href="#;" class="td-style">
+                      29
+                    </a>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <a href="#;" class="td-style">
+                      30
+                    </a>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <a href="#;" class="td-style">
+                      31
+                    </a>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <a href="#;" class="td-style next-month">
+                      1
+                    </a>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <a href="#;" class="td-style next-month">
+                      2
+                    </a>
+                  </div>
+                </td>
+                <td>
+                  <div class="td-cell">
+                    <a href="#;" class="td-style next-month">
+                      3
+                    </a>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <!---------------------- //Calendar Container ---------------------->
+
+      <!---------------- clip-plans-container ---------------->
+      <section class="clip-plans-container">
+        <h2 class="blind">주요 일정</h2>
+        <strong>Monday. 15</strong>
+        <ul class="clip-plans-list">
+          <li class="clip-plans-list__item">
+            <span class="clip-icon">
+              <i class="fas fa-star"></i>
+            </span>
+            <span class="clip-plan-time">09:00</span>
+            <a href="#;" class="clip-plan">To Do List App 배포</a>
+          </li>
+          <li class="clip-plans-list__item">
+            <span class="clip-icon">
+              <i class="fas fa-star"></i>
+            </span>
+            <span class="clip-plan-time">09:00</span>
+            <a href="#;" class="clip-plan">To Do List App 배포</a>
+          </li>
+          <li class="clip-plans-list__item">
+            <span class="clip-icon">
+              <i class="fas fa-star"></i>
+            </span>
+            <span class="clip-plan-time">09:00</span>
+            <a href="#;" class="clip-plan">To Do List App 배포</a>
+          </li>
+        </ul>
+      </section>
+      <!---------------- //clip-plans-container ---------------->
+
+    </main>
+    <!---------------------- //Main Container ---------------------->
+
+  </div>
+</body>
+</html>
