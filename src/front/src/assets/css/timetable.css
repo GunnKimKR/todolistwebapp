@@ -1,0 +1,77 @@
+@charset "UTF-8";
+
+/********************* timetable.css *********************/
+
+.table-timetable {
+  table-layout: fixed;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.table-timetable,
+.table-timetable th,
+.table-timetable td {
+  border: 1px solid #f3f3f3;
+}
+
+.table-timetable th {
+  width: 3rem;
+  font-weight: 500;
+  vertical-align: middle;
+}
+
+.table-timetable .td-cell {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  font-size: 1.2rem;
+}
+
+.table-timetable .td-cell:empty {
+  height: 4rem;
+}
+
+.table-timetable .td-cell .time-plan {
+  overflow: hidden;
+  position: relative;
+  width: 70%;
+  padding-left: 7px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.table-timetable .td-cell .time-plan[data-time="0030"] {
+  height: 2rem;
+}
+
+.table-timetable .td-cell .time-plan[data-time="0100"] {
+  height: 4rem;
+}
+
+.table-timetable .td-cell .time-plan[data-time="0130"] {
+  height: 6rem;
+}
+
+.table-timetable .td-cell .time-plan[data-time="0200"] {
+  height: 8rem;
+}
+
+.table-timetable .label--orange {
+  box-shadow: inset 4px 0 #ffe600;
+}
+
+.table-timetable .label--skyblue {
+  box-shadow: inset 4px 0 #65caf1;
+}
+
+.table-timetable .label--darkgreen {
+  box-shadow: inset 4px 0 #a8a8a8;
+}
+
+.table-timetable .label--tomato {
+  box-shadow: inset 4px 0 #ff6347;
+}
+
+.table-timetable .label--yellowgreen {
+  box-shadow: inset 4px 0 #afee32;
+}

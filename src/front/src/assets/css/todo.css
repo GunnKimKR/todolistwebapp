@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+/********************* todo.css *********************/
+
+.todo-list__item {
+  margin-top: 1.5rem;
+  padding: 1rem 1.5rem;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0,0,0,.3);
+  background-color: #fff;
+}
+
+.todo-list__item__inner {
+  display: flex;
+  font-size: 1.2rem;
+}
+
+.todo-list__item__inner .label-todo {
+  flex: 0 0 auto;
+  width: .8rem;
+  border-radius: 4px;
+  background-color: tomato;
+}
+
+.todo-list__item__inner .text-todo {
+  flex-basis: 100%;
+  padding-left: 1rem;
+}
+
+.todo-list__item__inner .buttons-box {
+  flex: 0 0 auto;
+  margin-left: auto;
+}
+
+.todo-list__item__inner .buttons-box .btn-check:after {
+  font-weight: 400;
+  font-family: 'Font Awesome 5 Free';
+  color: #34a853;
+  content:'\f058';
+}
+
+.todo-list__item__inner .buttons-box .btn-check.completed:after {
+  font-weight: 900;
+}
+
+.todo-list__item__inner .buttons-box .btn-delete {
+  color: #c4c4c4;
+}
+
+.todo-list__item__inner .buttons-box button {
+  width: 2rem;
+}

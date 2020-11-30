@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+/********************* popup.css *********************/
+
+.pop-container {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  padding: 0 6%;
+}
+
+.pop__form {
+  width: 100%;
+  max-width: 40rem;
+  padding: 2.5rem;
+  background-color: #fff;
+  text-align: center;
+}
+
+.pop__form > strong {
+  font-size: 2rem;
+}
+
+.pop__form > :not(:first-child) {
+  margin-top: 2rem;
+}
+
+.pop__form .pop-btn-close {
+  display: block;
+  margin-top: .8rem;
+  font-size: 1.2rem;
+}
+
+.pop__form .pop-btn-close:after {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  background-color: rgba(0,0,0,.6);
+  cursor: default;
+  content: '';
+}
+
+#popup:target {
+  display: flex;
+}
