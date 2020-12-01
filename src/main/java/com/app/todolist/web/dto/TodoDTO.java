@@ -12,16 +12,16 @@ public class TodoDTO {
   Long todoId;
   String nickname;
   String title;
-  int compeledYn;
+  int completedYn;
   LocalDateTime createdDt;
 
   @QueryProjection
-  public TodoDTO(Long todoId, String nickname, String title, int compeledYn,
+  public TodoDTO(Long todoId, String nickname, String title, int completedYn,
       LocalDateTime createdDt) {
     this.todoId = todoId;
     this.nickname = nickname;
     this.title = title;
-    this.compeledYn = compeledYn;
+    this.completedYn = completedYn;
     this.createdDt = createdDt;
   }
 }

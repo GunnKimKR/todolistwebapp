@@ -69,7 +69,7 @@ $(function(){
 
   //수정
   $('#editBtn').click(function(){
-    checkedYn = $('#completedYnCheck').is(':checked') ? 'Y' : 'N';
+    checkedYn = $('#completedYnCheck').is(':checked') ? 1 : 0;
     $('#editForm input[name=completedYn]').val(checkedYn);
 
     todoId = $('#editForm input[name=todoId]').val() == ''? 0
@@ -119,7 +119,7 @@ $(function(){
 //상세보기
 $(document).on('click', 'tr.data', function(){
 
-  isChecked = $(this).attr('completedYn') == 'Y';
+  isChecked = $(this).attr('completedYn') == 1;
 
   $('#editForm input[name=title]').val($(this).attr('title'));
   $('#editForm #completedYnCheck').prop('checked', isChecked);
@@ -174,7 +174,8 @@ function todoAppendStr(todo){
     appendStr = '';
     appendStr += '<tr class="data" todoId="' + todo.todoId + '" title="' + todo.title + '" completedYn="' + todo.completedYn + '">';
     appendStr += '<td>' + todo.nickname + '</td>';
-    if(todo.completedYn == 'Y'){
+    console.log('@@@@@' + todo.completedYn);
+    if(todo.completedYn == 1){
       appendStr += '<td style="text-decoration:line-through;">' + title + '</td>';
     }else{
       appendStr += '<td>' + title + '</td>';
