@@ -25,7 +25,7 @@
 
 <script>
 import ModalPopup from '@/components/popup/common/ModalPopup.vue';
-import { focusInput, blurInput } from '@/scripts/common.js';
+import { focusInputEffect, blurInputEffect } from '@/scripts/common.js';
 
 export default {
   components: {
@@ -33,8 +33,12 @@ export default {
   },
   props: ['formActive'],
   methods: {
-    focusInput,
-    blurInput,
+    focusInput(event) {
+      focusInputEffect(event);
+    },
+    blurInput(event) {
+      blurInputEffect(event);
+    },
   },
 };
 </script>

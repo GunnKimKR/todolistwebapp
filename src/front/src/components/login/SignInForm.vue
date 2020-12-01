@@ -37,13 +37,17 @@
 </template>
 
 <script>
-import { focusInput, blurInput } from '@/scripts/common.js';
+import { focusInputEffect, blurInputEffect } from '@/scripts/common.js';
 
 export default {
   props: ['formActive'],
   methods: {
-    focusInput,
-    blurInput,
+    focusInput(event) {
+      focusInputEffect(event);
+    },
+    blurInput(event) {
+      blurInputEffect(event);
+    },
   },
 };
 </script>
