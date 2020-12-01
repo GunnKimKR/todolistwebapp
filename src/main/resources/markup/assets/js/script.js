@@ -2,11 +2,11 @@
 
 /******************** Login page *********************/
 if(document.querySelector('.sign-form-group')) {
-    
+
     // Toggle Button
     const toggleBtnBox = document.querySelector('.toggle-btn-box');
     const toggleBtnBg = document.querySelector('.toggle-btn-bg');
-    
+
     toggleBtnBox.addEventListener('click', (e) => {
         if(e.target.nextElementSibling === null) {
             e.target.previousElementSibling.classList.remove('active');
@@ -36,7 +36,7 @@ if(document.querySelector('.sign-form-group')) {
             if(signFormInput.className.includes('input-sign-form') && e.target.value === '') {
                 signFormInput.parentElement.classList.add('active');
             }
-    
+
             signFormInput.addEventListener('focusout', () => {
                 if(signFormInput.value === ''){
                     signFormInput.parentElement.classList.remove('active');
@@ -50,9 +50,25 @@ if(document.querySelector('.sign-form-group')) {
 if(document.querySelector('.btn-calendar-drop')) {
     const calendarDropBtn = document.querySelector('.btn-calendar-drop');
     const calendarBodyGroup = document.querySelector('.calendar-body-group');
-    
+
     calendarDropBtn.addEventListener('click', () => {
         calendarDropBtn.classList.toggle('active');
         calendarBodyGroup.classList.toggle('active');
     });
+}
+
+/********************* Plan Details *********************/
+if(document.querySelector('.plan-details-container')) {
+  const planDetailsCnt = document.querySelector('.plan-details-container');
+  const closeBtn = document.querySelector('.btn-close');
+
+  closeBtn.addEventListener('click', () => {
+    planDetailsCnt.classList.remove('active');
+  });
+
+  const planListItem = document.querySelector('.clip-plans-list');
+  planListItem.addEventListener('click', () => {
+    planDetailsCnt.classList.add('active');
+  })
+
 }

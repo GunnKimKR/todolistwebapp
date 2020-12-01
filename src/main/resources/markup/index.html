@@ -18,7 +18,7 @@
     <nav id="nav">
       <h2 class="blind">메뉴</h2>
       <ul class="nav__tabmenu">
-        <li class="nav__tabmenu__item">
+        <li class="nav__tabmenu__item active">
           <a href="./index.html">
             <img src="https://img.icons8.com/fluent-systems-regular/124/333333/clipboard.png" alt="클립보드" />
           </a>
@@ -26,11 +26,6 @@
         <li class="nav__tabmenu__item">
           <a href="./timetable.html">
             <img src="https://img.icons8.com/fluent-systems-regular/124/333333/overtime.png" alt="타임테이블" />
-          </a>
-        </li>
-        <li class="nav__tabmenu__item">
-          <a href="./todo.html">
-            <img src="https://img.icons8.com/material-rounded/124/333333/list.png" alt="투두 리스트" />
           </a>
         </li>
         <li class="nav__tabmenu__item">
@@ -55,7 +50,7 @@
         <h2 class="blind">달력</h2>
 
         <div class="calendar-header-group">
-          <a href="#;" class="calendar-year">2020</a>
+          <a href="#popup" class="calendar-year">2020</a>
           <a href="#;" class="calendar-month">Sep</a>
           <ul class="calendar-date-list">
             <li class="calendar-date-list__item">
@@ -389,24 +384,24 @@
         <ul class="clip-plans-list">
           <li class="clip-plans-list__item">
             <span class="clip-icon">
-              <i class="fas fa-star"></i>
+              <i class="fas fa-feather-alt"></i>
             </span>
             <span class="clip-plan-time">09:00</span>
-            <a href="#;" class="clip-plan">To Do List App 배포</a>
+            <span class="clip-plan">To Do List App 배포</span>
           </li>
           <li class="clip-plans-list__item">
             <span class="clip-icon">
-              <i class="fas fa-star"></i>
+              <i class="fas fa-feather-alt"></i>
             </span>
             <span class="clip-plan-time">09:00</span>
-            <a href="#;" class="clip-plan">To Do List App 배포</a>
+            <span class="clip-plan">To Do List App 배포</span>
           </li>
           <li class="clip-plans-list__item">
             <span class="clip-icon">
-              <i class="fas fa-star"></i>
+              <i class="fas fa-feather-alt"></i>
             </span>
-            <span class="clip-plan-time">09:00</span>
-            <a href="#;" class="clip-plan">To Do List App 배포</a>
+            <span class="clip-plan-time">--:--</span>
+            <span class="clip-plan">To Do List App 배포</span>
           </li>
         </ul>
       </section>
@@ -414,6 +409,65 @@
 
     </main>
     <!---------------------- //Main Container ---------------------->
+
+    <!---------------------- Plan Details Container ---------------------->
+    <section class="plan-details-container">
+      <h2 class="blind">일정 세부사항</h2>
+      <div class="button-area">
+        <button type="button" class="btn-close">
+          <i class="fas fa-times"></i>
+        </button>
+        <button type="button" class="btn-remove">
+          <i class="fas fa-trash"></i>
+        </button>
+      </div>
+      <header class="plan-details-header">
+        <div class="date-box">
+          <span class="date-box__date">15</span>
+          <span class="date-box__month">
+            September
+            <span class="date-box__year">2020</span>
+          </span>
+          <span class="date-box__day">Monday</span>
+        </div>
+      </header>
+      <div class="plan-details-body">
+        <ul class="plan-details">
+          <li>
+            <div class="square-label"></div>
+            <strong class="plan-detail-title">
+              To do List Webapp Project
+            </strong>
+            <button type="button" class="btn-clip clip-icon">
+              <i class="fas fa-feather-alt"></i>
+            </button>
+          </li>
+          <li>
+            <div class="plan-detail-icon">
+              <i class="far fa-clock"></i>
+            </div>
+            <div class="plan-detail-date">9월 15일(월) 09:00 - 12:00</div>
+          </li>
+          <li>
+            <div class="plan-detail-icon">
+              <i class="fas fa-redo-alt"></i>
+            </div>
+            <div class="plan-detail-repeat">매주</div>
+          </li>
+          <li class="plan-detail--note">
+            <div class="plan-detail-icon">
+              <i class="far fa-edit"></i>
+            </div>
+            <div class="plan-detail-note">
+              웹앱 기획(화면 레이아웃, 기능)<br>
+              메인 페이지 와이어프레임<br>
+              투두 웹앱 벤치마킹
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <!---------------------- //Plan Details Container ---------------------->
 
   </div>
 </body>

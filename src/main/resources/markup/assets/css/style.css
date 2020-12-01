@@ -67,7 +67,7 @@
 
 .toggle-btn-box .btn-toggle.active {
   color: #fff;
-  
+
 }
 
 /* sign-form-slider-container */
@@ -224,7 +224,7 @@
 }
 
 .pop__form .pop-btn-close {
-  display: block;
+  display: inline-block;
   margin-top: .8rem;
   font-size: 1.2rem;
 }
@@ -268,14 +268,28 @@
 
 .nav__tabmenu__item a {
   display: block;
+  position: relative;
   width: 3.8rem;
   padding: .5em;
   text-align: center;
 }
 
-.nav__tabmenu__item a img {
-  object-fit: cover;
-  object-position: center;
+.nav__tabmenu__item a:after {
+  display: none;
+  position: absolute;
+  right: 0;
+  bottom: .3rem;
+  left: 0;
+  width: .4rem;
+  height: .4rem;
+  margin: 0 auto;
+  border-radius: 3px;
+  background-color: #fbbc05;
+  content:'';
+}
+
+.nav__tabmenu__item.active a:after {
+  display: block;
 }
 
 /* main-container */
@@ -375,7 +389,7 @@
   position: relative;
 }
 
-.table-calendar .th-cell, 
+.table-calendar .th-cell,
 .table-calendar .td-cell {
   display: flex;
   justify-content: center;
@@ -423,12 +437,12 @@
 
 .td-cell .prev-month,
 .td-cell .next-month {
-  opacity: .5;
+  color: #aaa;
 }
 
 /* clip-plans-container */
-.clip-plans-container, 
-.timetable-container, 
+.clip-plans-container,
+.timetable-container,
 .todo-container{
   margin-top: 1rem;
   padding: 1rem 6%;
@@ -451,6 +465,11 @@
 .clip-plan-time {
   flex-shrink: 0;
   margin-right: 1.4rem;
+}
+
+.clip-plan-time {
+  flex-basis: 4rem;
+  text-align: center;
 }
 
 .clip-icon {
@@ -591,4 +610,105 @@
 
 .todo-list__item__inner .buttons-box button {
   width: 2rem;
+}
+
+/*************** plan-details-container ***************/
+.plan-details-container {
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -10;
+  padding: 0 6%;
+  background-color: #fff;
+  clip-path: circle(0%);
+  transition: .7s ease;
+  transition-property: visibility, z-index, clip-path;
+}
+
+.plan-details-container.active {
+  visibility: visible;
+  z-index: 30;
+  clip-path: circle(100%);
+}
+
+.plan-details-container .button-area {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+
+.plan-details-container .button-area .btn-close,
+.plan-details-container .button-area .btn-remove {
+  font-size: 2rem;
+  line-height: 1;
+  color: #333;
+}
+
+.plan-details-header .date-box {
+  display: flex;
+  align-items: center;
+}
+
+.plan-details-header .date-box__date {
+  font-weight: 700;
+  font-size: 4.8rem;
+  line-height: 1;
+}
+
+.plan-details-header .date-box__month {
+  margin-left: 1rem;
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 1.2;
+}
+
+.plan-details-header .date-box__year {
+  display: block;
+  font-weight: 400;
+  font-size: 1.4rem;
+}
+
+.plan-details-header .date-box__day {
+  margin-left: auto;
+}
+
+.plan-details-body {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #dadada;
+}
+
+.plan-details > li {
+  display: flex;
+  align-items: center;
+}
+
+.plan-details > li + li {
+  margin-top: 1rem;
+}
+
+.plan-details > .plan-detail--note {
+  align-items: flex-start;
+}
+
+.plan-details > li > :first-child {
+  margin-right: 1rem;
+}
+
+.plan-details .square-label {
+  flex-basis: 1.5rem;
+  height: 1.5rem;
+  border-radius: 2px;
+  background-color: tomato;
+}
+
+.plan-details .plan-detail-icon {
+  font-size: 1.6rem;
+}
+
+.plan-details .btn-clip {
+  margin: 0 0 0 auto;
 }
