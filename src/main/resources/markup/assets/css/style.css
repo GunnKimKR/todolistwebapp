@@ -254,7 +254,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 10;
+  z-index: 50;
   width: 100%;
   background-color: #fff;
 }
@@ -370,19 +370,16 @@
   content: '\f0de';
 }
 
+/* calendar-body-group */
 .calendar-body-group {
   overflow: hidden;
   max-height: 0;
+  padding: 1rem 6% 0;
   transition: max-height .5s ease;
 }
 
 .calendar-body-group.active {
   max-height: 26rem;
-}
-
-/* calendar-body-group */
-.calendar-body-group {
-  padding: 1rem 6% 0;
 }
 
 .table-calendar td {
@@ -442,8 +439,7 @@
 
 /* clip-plans-container */
 .clip-plans-container,
-.timetable-container,
-.todo-container{
+.todo-container {
   margin-top: 1rem;
   padding: 1rem 6%;
 }
@@ -487,75 +483,126 @@
 /*************** Timetable > To Do List ***************/
 
 /* timetable-container */
+.timetable-container {
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin-top: 2rem;
+  padding: 1rem 0 0 1.2rem;
+}
+
 .table-timetable {
-  table-layout: fixed;
-  width: 100%;
-  margin-top: 1rem;
+  text-align: left;
 }
 
-.table-timetable,
-.table-timetable th,
-.table-timetable td {
-  border: 1px solid #f3f3f3;
+.table-timetable colgroup col {
+  width: 6rem;
 }
 
-.table-timetable th {
-  width: 3rem;
-  font-weight: 500;
-  vertical-align: middle;
-}
-
+.table-timetable .th-cell,
 .table-timetable .td-cell {
-  display: flex;
-  flex-direction: column;
   position: relative;
+  z-index: 10;
   font-size: 1.2rem;
 }
 
-.table-timetable .td-cell:empty {
-  height: 4rem;
+.table-timetable .th-cell:before {
+  position: absolute;
+  bottom: -5px;
+  left: -2px;
+  z-index: 10;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #d3d3d3;
+  content: '';
 }
 
-.table-timetable .td-cell .time-plan {
+.table-timetable .th-cell.current-time:before {
+  width: 6px;
+  height: 6px;
+  background-color: #fbbc05;
+}
+
+.table-timetable .th-cell:after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  border-left: 1px solid #d3d3d3;
+  content: '';
+}
+
+.table-timetable .th-cell-inner {
+  margin-left: -1.2rem;
+  padding-bottom: .4rem;
+}
+
+.table-timetable .td-cell {
+  height: 7rem;
+  padding: .6rem 0;
+}
+
+.table-timetable .tr-empty .td-cell {
+  height: 2rem !important;
+}
+
+.plan-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding: .5rem 1rem;
+  border-radius: 6px;
+  color: #fff;
+}
+
+.plan-box .plan-title {
   overflow: hidden;
-  position: relative;
-  width: 70%;
-  padding-left: 7px;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
-.table-timetable .td-cell .time-plan[data-time="0030"] {
-  height: 2rem;
+.table-timetable .td-cell:after {
+  position: absolute;
+  top: -.6rem;
+  bottom: -.6rem;
+  left: 0;
+  z-index: -1;
+  border-left: 1px solid #d3d3d3;
+  content: '';
 }
 
-.table-timetable .td-cell .time-plan[data-time="0100"] {
-  height: 4rem;
+.table-timetable .td-cell.current-time:after {
+  border: 1px dashed #fbbc05;
 }
 
-.table-timetable .td-cell .time-plan[data-time="0130"] {
-  height: 6rem;
+.table-timetable tbody tr:nth-child(n+4) td:nth-child(3) .td-cell:after {
+  border: 1px dashed #fbbc05;
 }
 
-.table-timetable .td-cell .time-plan[data-time="0200"] {
-  height: 8rem;
+.table-timetable tbody tr:first-child .td-cell:after {
+  top: 0;
+}
+
+.table-timetable .td-cell:empty:before {
+  content: '\00a0';
 }
 
 /* label color */
 .table-timetable .label--orange {
-  box-shadow: inset 4px 0 #ffe600;
+  background-color: #ffbb28;
 }
 
 .table-timetable .label--skyblue {
-  box-shadow: inset 4px 0 #65caf1;
+  background-color:#65caf1;
 }
 
 .table-timetable .label--darkgreen {
   box-shadow: inset 4px 0 #a8a8a8;
 }
 
-.table-timetable .label--tomato {
-  box-shadow: inset 4px 0 #ff6347;
+.table-timetable .label--red {
+  background-color:#ff6347;
 }
 
 .table-timetable .label--yellowgreen {
@@ -563,53 +610,60 @@
 }
 
 /*************** To do > To Do List ***************/
-.todo-list__item {
+.todo-list {
   margin-top: 1.5rem;
-  padding: 1rem 1.5rem;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0,0,0,.3);
-  background-color: #fff;
 }
 
-.todo-list__item__inner {
+.todo-list__item {
   display: flex;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  padding: 1rem 1.5rem;
+  border-radius: 5px;
+  box-shadow: 0 0 4px rgba(0,0,0,.3);
+  background-color: #fff;
   font-size: 1.2rem;
 }
 
-.todo-list__item__inner .label-todo {
-  flex: 0 0 auto;
-  width: .8rem;
-  border-radius: 4px;
-  background-color: tomato;
+.todo-list__item + .todo-list__item {
+  margin-top: 2rem;
 }
 
-.todo-list__item__inner .text-todo {
+.todo-list__item .label-todo {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  border: 1px solid #ff6347;
+  border-radius: 2px;
+  background-color: #fff;
+}
+
+.todo-list__item .text-todo {
   flex-basis: 100%;
-  padding-left: 1rem;
+  padding: 0 1rem;
 }
 
-.todo-list__item__inner .buttons-box {
-  flex: 0 0 auto;
-  margin-left: auto;
+.todo-list__item .label-todo:after {
+  display: none;
+  width: .4rem;
+  height: .8rem;
+  margin-top: -.4rem;
+  border-right: 1px solid #ff6347;
+  border-bottom: 1px solid #ff6347;
+  transform: rotate(45deg);
+  content: '';
 }
 
-.todo-list__item__inner .buttons-box .btn-check:after {
-  font-weight: 400;
-  font-family: 'Font Awesome 5 Free';
-  color: #34a853;
-  content:'\f058';
+.todo-list__item.completed .label-todo:after {
+  display: block;
 }
 
-.todo-list__item__inner .buttons-box .btn-check.completed:after {
-  font-weight: 900;
-}
-
-.todo-list__item__inner .buttons-box .btn-delete {
-  color: #c4c4c4;
-}
-
-.todo-list__item__inner .buttons-box button {
-  width: 2rem;
+.todo-list__item .clip-icon {
+  margin-right: 0;
 }
 
 /*************** plan-details-container ***************/
