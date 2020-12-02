@@ -370,19 +370,16 @@
   content: '\f0de';
 }
 
+/* calendar-body-group */
 .calendar-body-group {
   overflow: hidden;
   max-height: 0;
+  padding: 1rem 6% 0;
   transition: max-height .5s ease;
 }
 
 .calendar-body-group.active {
   max-height: 26rem;
-}
-
-/* calendar-body-group */
-.calendar-body-group {
-  padding: 1rem 6% 0;
 }
 
 .table-calendar td {
@@ -441,7 +438,8 @@
 }
 
 /* clip-plans-container */
-.clip-plans-container {
+.clip-plans-container,
+.todo-container {
   margin-top: 1rem;
   padding: 1rem 6%;
 }
@@ -487,6 +485,7 @@
 /* timetable-container */
 .timetable-container {
   overflow-x: auto;
+  overflow-y: hidden;
   margin-top: 2rem;
   padding: 1rem 0 0 1.2rem;
 }
@@ -611,53 +610,60 @@
 }
 
 /*************** To do > To Do List ***************/
-.todo-list__item {
+.todo-list {
   margin-top: 1.5rem;
-  padding: 1rem 1.5rem;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0,0,0,.3);
-  background-color: #fff;
 }
 
-.todo-list__item__inner {
+.todo-list__item {
   display: flex;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  padding: 1rem 1.5rem;
+  border-radius: 5px;
+  box-shadow: 0 0 4px rgba(0,0,0,.3);
+  background-color: #fff;
   font-size: 1.2rem;
 }
 
-.todo-list__item__inner .label-todo {
-  flex: 0 0 auto;
-  width: .8rem;
-  border-radius: 4px;
-  background-color: tomato;
+.todo-list__item + .todo-list__item {
+  margin-top: 2rem;
 }
 
-.todo-list__item__inner .text-todo {
+.todo-list__item .label-todo {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  border: 1px solid #ff6347;
+  border-radius: 2px;
+  background-color: #fff;
+}
+
+.todo-list__item .text-todo {
   flex-basis: 100%;
-  padding-left: 1rem;
+  padding: 0 1rem;
 }
 
-.todo-list__item__inner .buttons-box {
-  flex: 0 0 auto;
-  margin-left: auto;
+.todo-list__item .label-todo:after {
+  display: none;
+  width: .4rem;
+  height: .8rem;
+  margin-top: -.4rem;
+  border-right: 1px solid #ff6347;
+  border-bottom: 1px solid #ff6347;
+  transform: rotate(45deg);
+  content: '';
 }
 
-.todo-list__item__inner .buttons-box .btn-check:after {
-  font-weight: 400;
-  font-family: 'Font Awesome 5 Free';
-  color: #34a853;
-  content:'\f058';
+.todo-list__item.completed .label-todo:after {
+  display: block;
 }
 
-.todo-list__item__inner .buttons-box .btn-check.completed:after {
-  font-weight: 900;
-}
-
-.todo-list__item__inner .buttons-box .btn-delete {
-  color: #c4c4c4;
-}
-
-.todo-list__item__inner .buttons-box button {
-  width: 2rem;
+.todo-list__item .clip-icon {
+  margin-right: 0;
 }
 
 /*************** plan-details-container ***************/
