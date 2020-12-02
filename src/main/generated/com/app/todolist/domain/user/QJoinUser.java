@@ -19,20 +19,9 @@ public class QJoinUser extends EntityPathBase<JoinUser> {
 
     public static final QJoinUser joinUser = new QJoinUser("joinUser");
 
-    public final com.app.todolist.domain.util.QBaseEntity _super = new com.app.todolist.domain.util.QBaseEntity(this);
-
-    //inherited
-    public final DateTimePath<java.time.LocalDateTime> createdDt = _super.createdDt;
-
     public final StringPath loginId = createString("loginId");
 
     public final StringPath password = createString("password");
-
-    //inherited
-    public final NumberPath<Integer> stateNo = _super.stateNo;
-
-    //inherited
-    public final DateTimePath<java.time.LocalDateTime> updatedDt = _super.updatedDt;
 
     public final NumberPath<Long> userId = createNumber("userId", Long.class);
 

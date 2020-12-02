@@ -1,15 +1,16 @@
 package com.app.todolist.domain.user;
 
-import com.app.todolist.domain.util.BaseEntity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @Entity
 @NoArgsConstructor
-public class JoinUser extends BaseEntity {
+@AllArgsConstructor
+public class JoinUser{
 
   @Id
   private Long userId;

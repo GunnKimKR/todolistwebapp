@@ -1,101 +1,105 @@
 <template>
   <section class="sign-form sign-up-form" :class="formActive">
-    <h2 class="blind">Sign up</h2>
-    <div class="sign-form__row">
-      <div class="input-box">
-        <label for="user-name" class="placeholder-input">User name</label>
-        <input
-          type="text"
-          id="user-name"
-          class="input-sign-form"
-          :class="usernameStatus.className"
-          v-model="username"
-          @focus="focusInput"
-          @blur="blurInput"
-        />
+    <form id="userForm" @submit.prevent="userFormSubmit">
+      <h2 class="blind">Sign up</h2>
+      <div class="sign-form__row">
+        <div class="input-box">
+          <label for="user-name" class="placeholder-input">User name</label>
+          <input
+            type="text"
+            id="user-name"
+            name="username"
+            class="input-sign-form"
+            :class="usernameStatus.className"
+            v-model="username"
+            @focus="focusInput"
+            @blur="blurInput"
+            ref="username"
+          />
+        </div>
+        <div v-if="!usernameStatus.isValid" class="error-message">
+          <p>
+            {{ error.usernameMsg }}
+          </p>
+        </div>
       </div>
-      <div v-if="!usernameStatus.isValid" class="error-message">
-        <p>
-          {{ error.usernameMsg }}
-        </p>
+      <div class="sign-form__row">
+        <div class="input-box">
+          <label for="input-join-email" class="placeholder-input">Email</label>
+          <input
+            type="text"
+            id="input-join-email"
+            name="email"
+            class="input-sign-form"
+            :class="emailStatus.className"
+            v-model="email"
+            @focus="focusInput"
+            @blur="blurInput"
+            ref="email"
+          />
+        </div>
+        <div v-if="!emailStatus.isValid" class="error-message">
+          <p>
+            {{ error.emailMsg }}
+          </p>
+        </div>
       </div>
-    </div>
-    <div class="sign-form__row">
-      <div class="input-box">
-        <label for="input-join-email" class="placeholder-input">Email</label>
-        <input
-          type="text"
-          id="input-join-email"
-          class="input-sign-form"
-          :class="emailStatus.className"
-          v-model="email"
-          @focus="focusInput"
-          @blur="blurInput"
-        />
+      <div class="sign-form__row">
+        <div class="input-box">
+          <label for="input-join-password" class="placeholder-input">
+            Password
+          </label>
+          <input
+            type="password"
+            id="input-join-password"
+            name="password"
+            class="input-sign-form"
+            :class="passwordStatus.className"
+            v-model="password"
+            @focus="focusInput"
+            @blur="blurInput"
+            ref="password"
+          />
+        </div>
+        <div v-if="!passwordStatus.isValid" class="error-message">
+          <p>
+            {{ error.passwordMsg }}
+          </p>
+        </div>
       </div>
-      <div v-if="!emailStatus.isValid" class="error-message">
-        <p>
-          {{ error.emailMsg }}
-        </p>
+      <div class="sign-form__row btn-area">
+        <button type="submit" class="btn-primary">Sign up</button>
       </div>
-    </div>
-    <div class="sign-form__row">
-      <div class="input-box">
-        <label for="input-join-password" class="placeholder-input">
-          Password
-        </label>
-        <input
-          type="password"
-          id="input-join-password"
-          class="input-sign-form"
-          :class="passwordStatus.className"
-          v-model="password"
-          @focus="focusInput"
-          @blur="blurInput"
-        />
-      </div>
-      <div v-if="!passwordStatus.isValid" class="error-message">
-        <p>
-          {{ error.passwordMsg }}
-        </p>
-      </div>
-    </div>
-    <div class="sign-form__row btn-area">
-      <button type="submit" class="btn-primary">Sign up</button>
-    </div>
+    </form>
   </section>
 </template>
 
 <script>
-import {
-  focusInputEffect,
-  blurInputEffect,
-  isEmailFormatValid,
-  isPasswordFormatValid,
-} from '@/scripts/common';
+import { focusInputEffect, blurInputEffect } from '@/scripts/common';
 
 import {
   initStatus,
-  validStatus,
-  errorStatus,
   initMsg,
-  emailFormatIncorrectMsg,
-  passwordIncorrectMsg,
+  changeUsername,
+  changeEmail,
+  changePassword,
+  changeInputStatus,
+  validateUserForm,
 } from '@/scripts/signup';
 
+import { signup } from '@/api/user';
+
 export default {
-  props: ['formActive'],
   data() {
     return {
-      /* form data */
       username: '',
       email: '',
       password: '',
-      /* form data */
 
       usernameStatus: { ...initStatus },
       emailStatus: { ...initStatus },
       passwordStatus: { ...initStatus },
+
       error: {
         usernameMsg: initMsg,
         emailMsg: initMsg,
@@ -103,48 +107,48 @@ export default {
       },
     };
   },
+  props: ['formActive'],
+  computed: {
+    userForm() {
+      return {
+        username: this.username,
+        email: this.email,
+        password: this.password,
+      };
+    },
+  },
   watch: {
-    username(value) {
-      this.usernameStatus = this.isUsernameValid(value)
-        ? validStatus
-        : errorStatus;
+    username() {
+      changeUsername(this);
     },
     email(value) {
-      this.emailStatus = this.isEmailValid(value) ? validStatus : errorStatus;
-      this.error.emailMsg =
-        value && !isEmailFormatValid(value) ? emailFormatIncorrectMsg : initMsg;
+      changeEmail(this);
     },
     password(value) {
-      this.passwordStatus = this.isPasswordValid(this.password)
-        ? validStatus
-        : errorStatus;
-      this.error.passwordMsg =
-        value && !isPasswordFormatValid(value) ? passwordIncorrectMsg : initMsg;
+      changePassword(this);
     },
   },
   methods: {
-    focusInputEffect,
-    blurInputEffect,
     focusInput(event) {
       focusInputEffect(event);
     },
     blurInput(event) {
       blurInputEffect(event);
-      if (!event.target.value) {
-        const id = event.target.getAttribute('id');
-        if (id == 'user-name') this.usernameStatus = errorStatus;
-        else if (id == 'input-join-email') this.emailStatus = errorStatus;
-        else if (id == 'input-join-password') this.passwordStatus = errorStatus;
+      changeInputStatus(this, event);
+    },
+    async userFormSubmit() {
+      try {
+        if (validateUserForm(this)) {
+          console.log('validate success');
+        } else {
+          console.log('validate fail');
+        }
+        const data = (await signup(this.userForm)).data.data;
+        console.log(data);
+      } catch (error) {
+        //TODO 에러처리
+        console.log(error);
       }
-    },
-    isUsernameValid(value) {
-      return value;
-    },
-    isEmailValid(value) {
-      return value && isEmailFormatValid(value);
-    },
-    isPasswordValid(value) {
-      return value && isPasswordFormatValid(value);
     },
   },
 };
@@ -162,5 +166,9 @@ export default {
 .sign-form__row.btn-area {
   margin-top: 1.8rem;
   min-height: 0;
+}
+
+#userForm {
+  width: 100%;
 }
 </style>
