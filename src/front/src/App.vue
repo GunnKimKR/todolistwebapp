@@ -3,11 +3,17 @@
     <transition name="page">
       <router-view></router-view>
     </transition>
+    <CommonPopup> </CommonPopup>
   </div>
 </template>
 
 <script>
-export default {};
+import CommonPopup from '@/components/popup/common/CommonPopup.vue';
+export default {
+  components: {
+    CommonPopup,
+  },
+};
 </script>
 
 <style>

@@ -4,8 +4,15 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
+  state: {
+    message: '',
+  },
+  mutations: {
+    openPopup(state, message) {
+      state.message = message;
+      location.href = '#commonPopup';
+    },
+  },
   actions: {},
   modules: {},
 });

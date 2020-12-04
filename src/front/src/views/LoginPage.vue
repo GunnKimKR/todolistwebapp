@@ -3,18 +3,18 @@
     <main id="main" class="sign-form-container">
       <div class="sign-form-group">
         <div class="toggle-btn-box" @click="slideForm">
-          <div class="toggle-btn-bg" :class="signUpActive"></div>
-          <strong class="btn-primary btn-toggle" :class="signInActive">
+          <div class="toggle-btn-bg" :class="activeClass[1]"></div>
+          <strong class="btn-primary btn-toggle" :class="activeClass[0]">
             Sign in
           </strong>
-          <strong class="btn-primary btn-toggle" :class="signUpActive">
+          <strong class="btn-primary btn-toggle" :class="activeClass[1]">
             Sign up
           </strong>
         </div>
 
         <div class="sign-form-slider-container">
-          <SignInForm :formActive="signUpActive"></SignInForm>
-          <SignUpForm :formActive="signUpActive"></SignUpForm>
+          <SignInForm :activeClass="activeClass[1]"></SignInForm>
+          <SignUpForm :activeClass="activeClass[1]"></SignUpForm>
         </div>
 
         <div class="sns-btn-area">
@@ -35,6 +35,7 @@
     </main>
 
     <ForgotPasswordPopup></ForgotPasswordPopup>
+    <SignupSuccessPopup @slideToLogin="slideToLogin"></SignupSuccessPopup>
   </div>
 </template>
 
@@ -42,32 +43,29 @@
 import SignInForm from '@/components/login/SignInForm.vue';
 import SignUpForm from '@/components/login/SignUpForm.vue';
 import ForgotPasswordPopup from '@/components/popup/ForgotPasswordPopup.vue';
+import SignupSuccessPopup from '@/components/popup/SignupSuccessPopup.vue';
 
 export default {
   components: {
     SignInForm,
     SignUpForm,
     ForgotPasswordPopup,
+    SignupSuccessPopup,
   },
   data() {
     return {
-      formActiveArray: ['active', null],
+      activeClass: ['active', null],
     };
-  },
-  computed: {
-    signInActive() {
-      return this.formActiveArray[0];
-    },
-    signUpActive() {
-      return this.formActiveArray[1];
-    },
   },
   methods: {
     slideForm(event) {
-      this.formActiveArray =
+      this.activeClass =
         event.target == document.querySelectorAll('.btn-toggle')[0]
           ? ['active', null]
           : [null, 'active'];
+    },
+    slideToLogin() {
+      this.activeClass = ['active', null];
     },
   },
 };

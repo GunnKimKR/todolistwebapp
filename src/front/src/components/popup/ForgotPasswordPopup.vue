@@ -1,26 +1,32 @@
 <template>
-  <ModalPopup>
-    <template slot="title">Reset Password</template>
-    <template slot="inputBox">
-      <label for="input-reset-password" class="placeholder-input">
-        Email
-      </label>
-      <input
-        type="text"
-        autocomplete="off"
-        id="input-reset-password"
-        class="input-sign-form"
-        @focus="focusInput"
-        @blur="blurInput"
-      />
-    </template>
-    <template slot="btnArea">
-      <button type="submit" class="btn-primary btn-link">
-        Send Reset Link
-      </button>
-      <a href="#" class="pop-btn-close">Back to sign in</a>
-    </template>
-  </ModalPopup>
+  <div id="forgotPasswordPopup" class="pop-container">
+    <ModalPopup>
+      <template slot="title">Reset Password</template>
+      <template slot="input">
+        <div class="input-box">
+          <label for="input-reset-password" class="placeholder-input">
+            Email
+          </label>
+          <input
+            type="text"
+            autocomplete="off"
+            id="input-reset-password"
+            class="input-sign-form"
+            @focus="focusInput"
+            @blur="blurInput"
+          />
+        </div>
+      </template>
+      <template slot="btn">
+        <button type="submit" class="btn-primary btn-link">
+          Send Reset Link
+        </button>
+      </template>
+      <template slot="link">
+        <a href="#" class="pop-btn-close">Back to sign in</a>
+      </template>
+    </ModalPopup>
+  </div>
 </template>
 
 <script>
@@ -31,7 +37,6 @@ export default {
   components: {
     ModalPopup,
   },
-  props: ['formActive'],
   methods: {
     focusInput(event) {
       focusInputEffect(event);
@@ -43,4 +48,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+#forgotPasswordPopup:target {
+  display: flex;
+}
+</style>

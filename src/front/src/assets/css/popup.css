@@ -52,6 +52,8 @@
   content: '';
 }
 
-#popup:target {
+.pop__form .button-area {
   display: flex;
+  justify-content: center;
 }
+

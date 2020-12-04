@@ -1,5 +1,5 @@
 <template>
-  <section class="sign-form sign-in-form" :class="formActive">
+  <section class="sign-form sign-in-form" :class="activeClass">
     <h2 class="blind">Sign in</h2>
     <div class="sign-form__row">
       <div class="input-box">
@@ -31,7 +31,9 @@
       </router-link>
     </div>
     <div class="sign-form__row hyperlink-area">
-      <a href="#popup" class="btn-ps-search">Forgot your password?</a>
+      <a href="#forgotPasswordPopup" class="btn-ps-search">
+        Forgot your password?
+      </a>
     </div>
   </section>
 </template>
@@ -40,7 +42,7 @@
 import { focusInputEffect, blurInputEffect } from '@/scripts/common.js';
 
 export default {
-  props: ['formActive'],
+  props: ['activeClass'],
   methods: {
     focusInput(event) {
       focusInputEffect(event);

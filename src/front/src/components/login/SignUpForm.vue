@@ -1,5 +1,5 @@
 <template>
-  <section class="sign-form sign-up-form" :class="formActive">
+  <section class="sign-form sign-up-form" :class="activeClass">
     <form id="userForm" @submit.prevent="userFormSubmit">
       <h2 class="blind">Sign up</h2>
       <div class="sign-form__row">
@@ -10,6 +10,7 @@
             id="user-name"
             name="username"
             class="input-sign-form"
+            maxlength="20"
             :class="usernameStatus.className"
             v-model="username"
             @focus="focusInput"
@@ -31,6 +32,7 @@
             id="input-join-email"
             name="email"
             class="input-sign-form"
+            maxlength="30"
             :class="emailStatus.className"
             v-model="email"
             @focus="focusInput"
@@ -54,6 +56,7 @@
             id="input-join-password"
             name="password"
             class="input-sign-form"
+            maxlength="20"
             :class="passwordStatus.className"
             v-model="password"
             @focus="focusInput"
@@ -107,7 +110,7 @@ export default {
       },
     };
   },
-  props: ['formActive'],
+  props: ['activeClass'],
   computed: {
     userForm() {
       return {
@@ -137,18 +140,35 @@ export default {
       changeInputStatus(this, event);
     },
     async userFormSubmit() {
-      try {
-        if (validateUserForm(this)) {
-          console.log('validate success');
-        } else {
-          console.log('validate fail');
-        }
-        const data = (await signup(this.userForm)).data.data;
-        console.log(data);
-      } catch (error) {
-        //TODO 에러처리
-        console.log(error);
+      if (validateUserForm(this)) {
+        await signup(this.userForm, this);
       }
+    },
+    initData() {
+      const vm = this;
+      vm.initUserForm();
+      setTimeout(() => {
+        vm.initUserStatus();
+      }, 100);
+    },
+    initUserForm() {
+      this.username = '';
+      this.email = '';
+      this.password = '';
+    },
+    initUserStatus() {
+      this.usernameStatus = { ...initStatus };
+      this.emailStatus = { ...initStatus };
+      this.passwordStatus = { ...initStatus };
+      this.inActivateInputBox();
+    },
+    inActivateInputBox() {
+      document
+        .querySelectorAll('.sign-up-form .input-box')
+        .forEach(node => node.classList.remove('active'));
+    },
+    openSignupSuccessModal() {
+      location.href = '#signupSuccessPopup';
     },
   },
 };
