@@ -8,6 +8,7 @@ import com.app.todolist.web.param.UserParams;
 import com.app.todolist.web.util.Response;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,10 +24,14 @@ public class UserController extends AbstractRestController {
 
   @PostMapping
   public Response signup(@RequestBody UserParams param) {
-
     userService.signup(param);
-
     return new Response(CREATED);
+  }
+
+  @GetMapping("/duplicateEmailCount")
+  public Response duplicateEmailCount(String email) {
+    int duplicateEmailCount = userService.duplicateEmailCount(email);
+    return new Response("duplicateEmailCount", duplicateEmailCount);
   }
 
 }

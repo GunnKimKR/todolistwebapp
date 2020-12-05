@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+/********************* signupFormCustom.css *********************/
+
+#sign-up-form-component .sign-form__row {
+  min-height: 5.2rem;
+}
+
+#sign-up-form-component .sign-form__row + .sign-form__row {
+  margin-top: 1rem;
+}
+
+#sign-up-form-component .sign-form__row.btn-area {
+  margin-top: 1.8rem;
+  min-height: 0;
+}
+
+#sign-up-form-component #userForm {
+  width: 100%;
+}

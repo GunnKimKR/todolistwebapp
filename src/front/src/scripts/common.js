@@ -3,7 +3,7 @@ function focusInputEffect(event) {
 }
 
 function blurInputEffect(event) {
-  if (event.target.value == '') {
+  if (!event.target.value) {
     event.target.parentNode.classList.remove('active');
   }
 }

@@ -16,8 +16,11 @@ public class UserService {
   public void signup(UserParams param) {
     User user = new User(param.getUsername(), param.getEmail());
     userRepository.saveAndFlush(user);
-    JoinUser joinUser = new JoinUser(user.getUserId(), param.getUsername(), param.getPassword());
+    JoinUser joinUser = new JoinUser(user.getUserId(), param.getEmail(), param.getPassword());
     joinUserRepository.save(joinUser);
   }
 
+  public int duplicateEmailCount(String email) {
+    return userRepository.findByEmail(email).size();
+  }
 }

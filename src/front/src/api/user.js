@@ -1,13 +1,14 @@
-import { instance } from './index';
+import { userApi } from './index';
+
+import { signupSuccess } from '@/scripts/signup';
 
 const defaultErrorMessage = 'Internal Server Error';
 
-function signup(userForm, vm) {
-  return instance
-    .post('/api/user', userForm)
+async function signup(vm, userForm) {
+  return await userApi
+    .post('', userForm)
     .then(() => {
-      vm.initData();
-      vm.openSignupSuccessModal();
+      signupSuccess();
     })
     .catch(error => {
       const errorMessage = error.response.data.error.errorMessage;
@@ -15,4 +16,16 @@ function signup(userForm, vm) {
     });
 }
 
-export { signup };
+async function checkDuplicateEmail(email) {
+  let isRegistered = false;
+  await userApi
+    .get('duplicateEmailCount', {
+      params: { email },
+    })
+    .then(res => {
+      isRegistered = res.data.data.duplicateEmailCount > 0;
+    });
+  return isRegistered;
+}
+
+export { signup, checkDuplicateEmail };
