@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-const instance = createInstance();
+const userApi = createInstance('/api/user');
 
-function createInstance() {
+function createInstance(url) {
   return axios.create({
-    baseURL: process.env.VUE_APP_API_URL,
+    baseURL: `${process.env.VUE_APP_API_URL}${url}`,
   });
 }
 
-export { instance };
+export { userApi };
