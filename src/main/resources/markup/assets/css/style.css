@@ -438,16 +438,6 @@
 }
 
 /* clip-plans-container */
-.clip-plans-container,
-.todo-container {
-  margin-top: 1rem;
-  padding: 1rem 6%;
-}
-
-.clip-plans-list {
-  padding: 1rem 0;
-}
-
 .clip-plans-list__item {
   display: flex;
   align-items: center;
@@ -457,37 +447,27 @@
   margin-top: 1rem;
 }
 
-.clip-icon,
-.clip-plan-time {
-  flex-shrink: 0;
-  margin-right: 1.4rem;
+.clip-plans-list__item .clip-icon,
+.clip-plans-list__item .clip-plan-time {
+  margin-right: 1rem;
 }
 
 .clip-plan-time {
-  flex-basis: 4rem;
+  flex: 0 0 5rem;
   text-align: center;
 }
 
-.clip-icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 2.4rem;
-  height: 2.4rem;
-  border-radius: 50%;
-  font-size: 1rem;
-  background-color: #fbbc05;
-  color: #fff;
-}
-
 /*************** Timetable > To Do List ***************/
+.plans-container.timetable {
+  margin-top: 2rem;
+  padding: 0;
+}
 
 /* timetable-container */
 .timetable-container {
   overflow-x: auto;
   overflow-y: hidden;
-  margin-top: 2rem;
-  padding: 1rem 0 0 1.2rem;
+  padding-left: 1.4rem;
 }
 
 .table-timetable {
@@ -610,17 +590,13 @@
 }
 
 /*************** To do > To Do List ***************/
-.todo-list {
-  margin-top: 1.5rem;
-}
-
 .todo-list__item {
   display: flex;
   align-items: center;
   overflow: hidden;
-  position: relative;
+  min-height: 4.4rem;
   padding: 1rem 1.5rem;
-  border-radius: 5px;
+  border-radius: 3px;
   box-shadow: 0 0 4px rgba(0,0,0,.3);
   background-color: #fff;
   font-size: 1.2rem;
@@ -630,40 +606,54 @@
   margin-top: 2rem;
 }
 
-.todo-list__item .label-todo {
-  flex: 0 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 1.8rem;
-  height: 1.8rem;
-  border: 1px solid #ff6347;
-  border-radius: 2px;
-  background-color: #fff;
-}
-
 .todo-list__item .text-todo {
   flex-basis: 100%;
   padding: 0 1rem;
 }
 
-.todo-list__item .label-todo:after {
-  display: none;
-  width: .4rem;
-  height: .8rem;
-  margin-top: -.4rem;
-  border-right: 1px solid #ff6347;
-  border-bottom: 1px solid #ff6347;
-  transform: rotate(45deg);
-  content: '';
+.todo-list__item .text-todo .time {
+  display: block;
 }
 
 .todo-list__item.completed .label-todo:after {
   display: block;
 }
 
-.todo-list__item .clip-icon {
-  margin-right: 0;
+/*************** Plan Search > To Do List ***************/
+.plan-search-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 6%;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.plan-search-header .input-box {
+  position: relative;
+  width: 100%;
+  padding: .5rem 1.5rem .5rem 4rem;
+  border: 1px solid #f1f1f1;
+  border-radius: 20px;
+}
+
+.plan-search-header .input-box .search-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 3.5rem;
+  color: #9c9c9c;
+}
+
+.plan-search-header .input-box input {
+  width: 100%;
+}
+
+.plan-search__group + .plan-search__group {
+  margin-top: 3rem;
 }
 
 /*************** plan-details-container ***************/
