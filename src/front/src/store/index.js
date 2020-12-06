@@ -5,11 +5,13 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    message: '',
+    title: '',
+    contents: '',
   },
   mutations: {
     openPopup(state, message) {
-      state.message = message;
+      state.title = message.title || 'Error';
+      state.contents = message.contents;
       location.href = '#commonPopup';
     },
   },

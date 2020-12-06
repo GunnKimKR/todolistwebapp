@@ -5,6 +5,13 @@ import {
   blurInputEffect,
 } from '@/scripts/common';
 
+import {
+  msg_mandatory_field,
+  msg_email_format_incorrect,
+  msg_email_already_registered,
+  msg_password_incorrect,
+} from '@/scripts/message';
+
 import { checkDuplicateEmail, signup } from '@/api/user';
 
 const usernameId = 'user-name';
@@ -17,11 +24,6 @@ const inputErrorClassName = 'input-error';
 const initStatus = { isValid: true, className: '' };
 const validStatus = { isValid: true, className: inputValidClassName };
 const errorStatus = { isValid: false, className: inputErrorClassName };
-
-const initMsg = 'Mandatory field';
-const emailFormatIncorrectMsg = 'The format is incorrect.';
-const emailRegisteredMsg = 'The email is already registered.';
-const passwordIncorrectMsg = 'Password must be at least 4 digits.';
 
 let vm = null;
 let isEmailRegistered = false;
@@ -48,10 +50,10 @@ function changeEmail() {
   vm.emailStatus = isEmailValid(email) ? validStatus : errorStatus;
   vm.error.emailMsg =
     email && !isEmailFormatValid(email)
-      ? emailFormatIncorrectMsg
+      ? msg_email_format_incorrect
       : isEmailRegistered
-      ? emailRegisteredMsg
-      : initMsg;
+      ? msg_email_already_registered
+      : msg_mandatory_field;
 }
 
 function changePassword() {
@@ -59,8 +61,8 @@ function changePassword() {
   vm.passwordStatus = isPasswordValid(password) ? validStatus : errorStatus;
   vm.error.passwordMsg =
     password && !isPasswordFormatValid(password)
-      ? passwordIncorrectMsg
-      : initMsg;
+      ? msg_password_incorrect
+      : msg_mandatory_field;
 }
 
 function changeInputStatus(event) {
@@ -70,7 +72,6 @@ function changeInputStatus(event) {
       vm.usernameStatus = errorStatus;
     } else if (id == emailId) {
       vm.emailStatus = errorStatus;
-      vm.error.emailMsg = initMsg;
     } else if (id == passwordId) {
       vm.passwordStatus = errorStatus;
     }
@@ -114,7 +115,7 @@ async function checkEmail(event) {
     isEmailRegistered = await checkDuplicateEmail(email);
     if (isEmailRegistered) {
       vm.emailStatus = errorStatus;
-      vm.error.emailMsg = emailRegisteredMsg;
+      vm.error.emailMsg = msg_email_already_registered;
     } else {
       vm.emailStatus = validStatus;
     }
@@ -166,9 +167,6 @@ export {
   initStatus,
   validStatus,
   errorStatus,
-  initMsg,
-  emailFormatIncorrectMsg,
-  passwordIncorrectMsg,
   changeUsername,
   changeEmail,
   changePassword,

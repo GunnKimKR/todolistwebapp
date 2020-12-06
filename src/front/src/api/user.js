@@ -2,7 +2,7 @@ import { userApi } from './index';
 
 import { signupSuccess } from '@/scripts/signup';
 
-const defaultErrorMessage = 'Internal Server Error';
+import { msg_server_error } from '@/scripts/message';
 
 async function signup(vm, userForm) {
   return await userApi
@@ -11,8 +11,9 @@ async function signup(vm, userForm) {
       signupSuccess();
     })
     .catch(error => {
-      const errorMessage = error.response.data.error.errorMessage;
-      vm.$store.commit('openPopup', errorMessage || defaultErrorMessage);
+      const contents =
+        error.response.data.error.errorMessage || msg_server_error;
+      vm.$store.commit('openPopup', { contents });
     });
 }
 
@@ -28,4 +29,17 @@ async function checkDuplicateEmail(email) {
   return isRegistered;
 }
 
-export { signup, checkDuplicateEmail };
+async function login(vm, loginForm) {
+  await userApi
+    .post('login', loginForm)
+    .then(() => {
+      //token
+      vm.$router.push('/main');
+    })
+    .catch(error => {
+      const title = error.response.data.error.errorMessage || msg_server_error;
+      vm.$store.commit('openPopup', { title });
+    });
+}
+
+export { signup, checkDuplicateEmail, login };

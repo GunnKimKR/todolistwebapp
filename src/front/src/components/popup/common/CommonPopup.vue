@@ -1,9 +1,13 @@
 <template>
   <div id="commonPopup" class="pop-container">
     <ModalPopup>
-      <template slot="title">Error</template>
+      <template slot="title">
+        {{ title }}
+      </template>
       <template slot="contents">
-        <div>{{ message }}</div>
+        <div>
+          {{ contents }}
+        </div>
       </template>
       <template slot="btn">
         <button
@@ -26,8 +30,11 @@ export default {
     ModalPopup,
   },
   computed: {
-    message() {
-      return this.$store.state.message;
+    contents() {
+      return this.$store.state.contents;
+    },
+    title() {
+      return this.$store.state.title;
     },
   },
   methods: {

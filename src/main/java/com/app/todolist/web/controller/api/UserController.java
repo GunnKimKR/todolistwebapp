@@ -7,7 +7,6 @@ import com.app.todolist.web.controller.util.AbstractRestController;
 import com.app.todolist.web.param.UserParams;
 import com.app.todolist.web.util.Response;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("/api/user")
 public class UserController extends AbstractRestController {
 
@@ -32,6 +30,12 @@ public class UserController extends AbstractRestController {
   public Response duplicateEmailCount(String email) {
     int duplicateEmailCount = userService.duplicateEmailCount(email);
     return new Response("duplicateEmailCount", duplicateEmailCount);
+  }
+
+  @PostMapping("/login")
+  public Response login(@RequestBody UserParams param) {
+    userService.login(param);
+    return new Response();
   }
 
 }

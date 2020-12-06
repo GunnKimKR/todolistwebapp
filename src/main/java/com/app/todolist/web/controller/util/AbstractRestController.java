@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AbstractRestController {
 
-  private final String DEFAULT_ERROR_MSG = "에러가 발생했습니다.";
+  private final String DEFAULT_ERROR_MSG = "Internal Server Error";
 
   @ExceptionHandler(AbstractException.class)
   public Response AbstractException(HttpServletRequest req, HttpServletResponse res,
@@ -37,7 +37,7 @@ public class AbstractRestController {
   }
 
   @ExceptionHandler(Exception.class)
-  @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR, reason = "Internal server error")
+  @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
   public Response exception(HttpServletRequest req, final Exception exception) {
     log.error("Exception : " + exception.getMessage());
     return new Response(new BaseException(exception.getMessage(), exception),
