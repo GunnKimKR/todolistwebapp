@@ -1,5 +1,4 @@
 import { login } from '@/api/user';
-
 import { msg_write_email, msg_write_password } from '@/scripts/message';
 
 let vm = null;

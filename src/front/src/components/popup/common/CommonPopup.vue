@@ -31,10 +31,10 @@ export default {
   },
   computed: {
     contents() {
-      return this.$store.state.contents;
+      return this.$store.state.popup.contents;
     },
     title() {
-      return this.$store.state.title;
+      return this.$store.state.popup.title;
     },
   },
   methods: {

@@ -17,9 +17,30 @@ function isPasswordFormatValid(passsword) {
   return passsword.length > 3;
 }
 
+function setToken(token) {
+  document.cookie = `token=${token}`;
+}
+
+function getToken() {
+  return document.cookie.replace(
+    /(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/,
+    '$1',
+  );
+}
+
+function getEmail() {
+  return document.cookie.replace(
+    /(?:(?:^|.*;\s*)email\s*=\s*([^;]*).*$)|^.*$/,
+    '$1',
+  );
+}
+
 export {
   focusInputEffect,
   blurInputEffect,
   isEmailFormatValid,
   isPasswordFormatValid,
+  setToken,
+  getToken,
+  getEmail,
 };

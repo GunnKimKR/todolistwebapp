@@ -1,8 +1,7 @@
 import { userApi } from './index';
-
 import { signupSuccess } from '@/scripts/signup';
-
 import { msg_server_error } from '@/scripts/message';
+import { setToken } from '@/scripts/common';
 
 async function signup(vm, userForm) {
   return await userApi
@@ -32,8 +31,9 @@ async function checkDuplicateEmail(email) {
 async function login(vm, loginForm) {
   await userApi
     .post('login', loginForm)
-    .then(() => {
-      //token
+    .then(res => {
+      const token = res.data.data.token;
+      setToken(token);
       vm.$router.push('/main');
     })
     .catch(error => {
