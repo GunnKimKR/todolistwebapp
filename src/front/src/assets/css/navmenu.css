@@ -21,6 +21,7 @@
 
 .nav__tabmenu__item a {
   display: block;
+  position: relative;
   width: 3.8rem;
   padding: .5em;
   text-align: center;
@@ -29,4 +30,22 @@
 .nav__tabmenu__item a img {
   object-fit: cover;
   object-position: center;
+}
+
+.nav__tabmenu__item a:after {
+  display: none;
+  position: absolute;
+  right: 0;
+  bottom: .3rem;
+  left: 0;
+  width: .4rem;
+  height: .4rem;
+  margin: 0 auto;
+  border-radius: 3px;
+  background-color: #fbbc05;
+  content:'';
+}
+
+.nav__tabmenu__item.active a:after {
+  display: block;
 }

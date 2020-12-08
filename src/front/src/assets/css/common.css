@@ -13,7 +13,6 @@ p, a, strong, i, b, em, img {
   margin: 0;
   padding: 0;
   font: inherit;
-  vertical-align: baseline;
   box-sizing: border-box;
 }
 
@@ -57,6 +56,14 @@ input, button {
   color: #fff;
 }
 
+.page-enter-active, .page-leave-active {
+  transition: opacity .3s;
+}
+.page-enter, .page-leave-to {
+  opacity: 0;
+}
+
+
 /********************* common *********************/
 html {
   font-size: .625rem;
@@ -96,6 +103,16 @@ dt, th, strong, b {
   padding: 0 6%;
 }
 
+.plans-container {
+  margin-top: .5rem;
+  padding: 1rem 6% 2rem;
+}
+
+.plans-container .plans-title {
+  display: block;
+  margin-bottom: 1rem;
+}
+
 .btn-primary {
   display: block;
   width: 100%;
@@ -108,10 +125,50 @@ dt, th, strong, b {
   cursor: pointer;
 }
 
-/* Router Transition */
-.page-enter-active, .page-leave-active {
-  transition: opacity .3s;
+.label-square,
+.label-square--checkbox {
+  flex: 0 0 auto;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 3px;
+  border: 1px solid #ff6347;
+  background-color: #fff;
 }
-.page-enter, .page-leave-to {
-  opacity: 0;
+
+.label-square {
+  background-color: #ff6347;
+}
+
+.label-square--checkbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.label-square--checkbox:after {
+  display: none;
+  width: .3rem;
+  height: .7rem;
+  margin-top: -.2rem;
+  border-right: 1px solid #ff6347;
+  border-bottom: 1px solid #ff6347;
+  transform: rotate(45deg);
+  content: '';
+}
+
+.label-square--checkbox.completed:after {
+  display: block;
+}
+
+.clip-icon {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  font-size: 1rem;
+  background-color: #fbbc05;
+  color: #fff;
 }

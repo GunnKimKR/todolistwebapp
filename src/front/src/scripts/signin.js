@@ -10,6 +10,7 @@ function registerSigninModel(model) {
 async function loginUser() {
   if (validateLoginForm()) {
     await login(vm, vm.loginForm);
+    vm.$router.push('/main');
   }
 }
 

@@ -1,7 +1,7 @@
 import { userApi } from './index';
 import { signupSuccess } from '@/scripts/signup';
 import { msg_server_error } from '@/scripts/message';
-import { setToken } from '@/scripts/common';
+import { saveUserToCookie } from '@/scripts/common';
 
 async function signup(vm, userForm) {
   return await userApi
@@ -32,9 +32,12 @@ async function login(vm, loginForm) {
   await userApi
     .post('login', loginForm)
     .then(res => {
-      const token = res.data.data.token;
-      setToken(token);
-      vm.$router.push('/main');
+      const user = {
+        token: res.data.data.token,
+        email: loginForm.email,
+      };
+      saveUserToCookie(user);
+      vm.$store.dispatch('saveUser', user);
     })
     .catch(error => {
       const title = error.response.data.error.errorMessage || msg_server_error;

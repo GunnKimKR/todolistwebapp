@@ -41,12 +41,12 @@
       <button
         type="button"
         class="btn-calendar-drop"
-        :class="calendarActive"
+        :class="calendarActiveClass"
         @click="dropCalendar"
       ></button>
     </div>
 
-    <div class="calendar-body-group" :class="calendarActive">
+    <div class="calendar-body-group" :class="calendarActiveClass">
       <table class="table-calendar">
         <thead>
           <tr>
@@ -343,7 +343,7 @@ export default {
     };
   },
   computed: {
-    calendarActive() {
+    calendarActiveClass() {
       return this.isCalenderActive ? 'active' : null;
     },
   },

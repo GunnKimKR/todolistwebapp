@@ -17,8 +17,9 @@ function isPasswordFormatValid(passsword) {
   return passsword.length > 3;
 }
 
-function setToken(token) {
-  document.cookie = `token=${token}`;
+function saveUserToCookie(user) {
+  document.cookie = `token=${user.token}`;
+  document.cookie = `email=${user.email}`;
 }
 
 function getToken() {
@@ -40,7 +41,7 @@ export {
   blurInputEffect,
   isEmailFormatValid,
   isPasswordFormatValid,
-  setToken,
+  saveUserToCookie,
   getToken,
   getEmail,
 };

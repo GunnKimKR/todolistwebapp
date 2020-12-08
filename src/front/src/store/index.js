@@ -6,9 +6,10 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    token: getToken() || '',
-    email: getEmail() || '',
-
+    user: {
+      token: getToken() || '',
+      email: getEmail() || '',
+    },
     popup: {
       title: '',
       contents: '',
@@ -16,7 +17,7 @@ export default new Vuex.Store({
   },
   getters: {
     isLogin(state) {
-      return state.token;
+      return state.user.token != '';
     },
   },
   mutations: {
@@ -25,7 +26,15 @@ export default new Vuex.Store({
       state.popup.contents = message.contents;
       location.href = '#commonPopup';
     },
+    setUser(state, user) {
+      state.user.token = user.token;
+      state.user.email = user.email;
+    },
   },
-  actions: {},
+  actions: {
+    saveUser({ commit }, user) {
+      commit('setUser', user);
+    },
+  },
   modules: {},
 });
