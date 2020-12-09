@@ -752,6 +752,4 @@
 export default {};
 </script>
 
-<style scoped>
-@import '~styles/timetable.css';
-</style>
+<style></style>

@@ -34,6 +34,12 @@ const router = new VueRouter({
       component: () => import('@/views/TodoPage.vue'),
       meta: { auth: true },
     },
+    {
+      path: '/search',
+      name: 'search',
+      component: () => import('@/views/SearchPage.vue'),
+      meta: { auth: true },
+    },
   ],
 });
 

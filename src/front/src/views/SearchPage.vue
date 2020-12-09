@@ -2,10 +2,9 @@
   <div id="wrap">
     <NavMenu></NavMenu>
     <main id="main" class="main-container">
-      <Calendar></Calendar>
-      <ClipPlans></ClipPlans>
+      <PlanSearchHeader></PlanSearchHeader>
+      <PlanSearch></PlanSearch>
     </main>
-    <ClipPlanDetail></ClipPlanDetail>
     <MyInfo></MyInfo>
   </div>
 </template>
@@ -13,19 +12,19 @@
 <script>
 import NavMenu from '@/components/common/NavMenu.vue';
 import MyInfo from '@/components/common/MyInfo.vue';
-import Calendar from '@/components/common/Calendar.vue';
-import ClipPlans from '@/components/main/ClipPlans.vue';
-import ClipPlanDetail from '@/components/main/ClipPlanDetail.vue';
+import PlanSearchHeader from '@/components/search/PlanSearchHeader.vue';
+import PlanSearch from '@/components/search/PlanSearch.vue';
 
 export default {
   components: {
     NavMenu,
     MyInfo,
-    Calendar,
-    ClipPlans,
-    ClipPlanDetail,
+    PlanSearchHeader,
+    PlanSearch,
   },
 };
 </script>
 
-<style></style>
+<style scoped>
+@import '~styles/search.css';
+</style>

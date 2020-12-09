@@ -34,6 +34,4 @@
 export default {};
 </script>
 
-<style scoped>
-@import '~styles/todo.css';
-</style>
+<style></style>

@@ -26,16 +26,16 @@
           />
         </router-link>
       </li>
-      <li class="nav__tabmenu__item">
-        <a href="#;">
+      <li class="nav__tabmenu__item" :class="tabmenuActiveClass[3]">
+        <router-link to="/search">
           <img
             src="https://img.icons8.com/fluent-systems-regular/124/333333/search.png"
             alt="검색"
           />
-        </a>
+        </router-link>
       </li>
       <li class="nav__tabmenu__item">
-        <a href="#;">
+        <a href="#myinfo">
           <img
             src="https://img.icons8.com/windows/124/333333/gender-neutral-user.png"
           />
@@ -49,7 +49,7 @@
 export default {
   data() {
     return {
-      tabmenuActiveClass: [null, null, null],
+      tabmenuActiveClass: [null, null, null, null],
     };
   },
   created() {
@@ -65,6 +65,8 @@ export default {
         ? 1
         : pageName == 'todo'
         ? 2
+        : pageName == 'search'
+        ? 3
         : null;
     },
   },
