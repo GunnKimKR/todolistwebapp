@@ -769,9 +769,12 @@
   align-items: center;
   width: 3.5rem;
   height: 3.5rem;
-  padding: .4rem;
   border: 1px solid #333;
   border-radius: 50%;
+}
+
+.myinfo-header__profile .unknown {
+  width: 2.5rem;
 }
 
 .myinfo-header .button-area {
@@ -780,13 +783,13 @@
   margin-top: .5rem;
 }
 
-.myinfo-header .button-area a {
+.myinfo-header .button-area button {
   flex: 0 0 auto;
   width: auto;
   font-size: 1rem;
 }
 
-.myinfo-header .button-area a + a {
+.myinfo-header .button-area button + button {
   margin-left: 1rem;
 }
 
@@ -829,3 +832,72 @@
 #myinfo:target .btn-close:after {
   display: block;
 }
+
+/*************** Task Input From Container ***************/
+.task-input-form-container {
+  margin-top: -9.9rem;
+  width: 100%;
+  padding: 1rem 6%;
+  background-color: #fff;
+  transition: margin .5s ease;
+}
+
+.task-input-form-container.active {
+  margin-top: 0;
+}
+
+.task-input-form__row {
+  display: flex;
+}
+
+.task-input-form__row:nth-of-type(2) {
+  margin-top: .4rem;
+}
+
+.task-input-form__row .checkbox-box {
+  flex: 0 0 10rem;
+}
+
+.task-input-btn {
+  position: fixed;
+  right: 6%;
+  bottom: 5.3rem;
+  z-index: 50;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid #333;
+  border-radius: 50%;
+  background-color: #333;
+  opacity: .8;
+}
+
+.task-input-btn:after,
+.task-input-btn:before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 2px;
+  background-color: #fff;
+  transform: translate(-50%, -50%) rotate(0deg);
+  transition: transform .3s ease;
+  content: '';
+}
+
+.task-input-btn:after {
+  width: 60%;
+  height: 3px;
+}
+
+.task-input-btn:before {
+  width: 3px;
+  height: 60%;
+}
+
+.task-input-btn.active:after {
+transform: translate(-50%, -50%) rotate(180deg);
+}
+
+.task-input-btn.active:before {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+

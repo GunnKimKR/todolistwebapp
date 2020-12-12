@@ -47,6 +47,36 @@
     </nav>
     <!---------------------- //Nav ---------------------->
 
+    <!---------------------- Task Input Container ---------------------->
+    <section class="task-input-form-container">
+      <h2 class="blind">일정 입력</h2>
+      <button type="button" class="task-input-btn"></button>
+      <div class="task-input-form__row">
+        <div class="input-box">
+          <input type="text" placeholder="+ Add a new task">
+        </div>
+      </div>
+      <div class="task-input-form__row">
+        <div class="checkbox-box">
+          <input type="checkbox" id="task-date">
+          <label class="checkbox" for="task-date"></label>Date
+        </div>
+        <div class="task-details">
+          Sep 21. 2020 17:00 - 21:00
+        </div>
+      </div>
+      <div class="task-input-form__row">
+        <div class="checkbox-box">
+          <input type="checkbox" id="task-recurring">
+          <label class="checkbox" for="task-recurring"></label>Recurring
+        </div>
+        <div class="task-details">
+          Everyday
+        </div>
+      </div>
+    </section>
+    <!---------------------- Task Input Container ---------------------->
+
     <!---------------------- Main Container ---------------------->
     <main id="main" class="main-container">
 
@@ -478,24 +508,26 @@
     </section>
     <!---------------------- //Plan Details Container ---------------------->
 
+
+    <!---------------------- Myinfo Container ---------------------->
     <section id="myinfo" class="myinfo-container">
       <div class="myinfo-container__inner">
         <h2 class="blind">나의 정보</h2>
         <header class="myinfo-header">
           <div class="myinfo-header__profile">
-            <img src="https://img.icons8.com/windows/124/333333/gender-neutral-user.png" alt="프로필" />
+            <img class="unknown" src="https://img.icons8.com/windows/124/333333/gender-neutral-user.png" alt="프로필" />
           </div>
           <div class="myinfo-header__info">
             <dl>
-              <dt>name: </dt>
+              <dt>Name: </dt>
               <dd>Kim Geon</dd>
               <dt>Email: </dt>
               <dd>kimgeonkr@gmail.com</dd>
             </dl>
           </div>
           <div class="button-area">
-            <a href="#;" class="btn-primary">Logout</a>
-            <a href="#;" class="btn-primary">Delete Account</a>
+            <button type="button" class="btn-primary">Logout</button>
+            <button type="button" class="btn-primary">Delete Account</button>
           </div>
         </header>
         <div class="myinfo-body">
@@ -513,8 +545,7 @@
       </div>
       <a href="#;" class="btn-close">close</a>
     </section>
-
-
+    <!---------------------- //Myinfo Container ---------------------->
   </div>
 </body>
 </html>
