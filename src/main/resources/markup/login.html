@@ -14,108 +14,159 @@
 <body>
   <div id="wrap">
 
-    <!-- form-container -->
-    <main id="main" class="sign-form-container">
-      <div class="sign-form-group">
+    <div id="container" class="member-registration-container">
 
-        <div class="toggle-btn-box">
+      <!-- Member Registration -->
+      <section class="member-registration">
+        <h2 class="blind">Member Registration</h2>
+        <header class="toggle-btn-group">
           <div class="toggle-btn-bg"></div>
           <strong class="btn-primary btn-toggle active">Sign in</strong>
           <strong class="btn-primary btn-toggle">Sign up</strong>
-        </div>
+        </header>
 
-        <div class="sign-form-slider-container">
-
+        <div class="sign-form-slider">
+    
           <!-- Sign In Form -->
           <section class="sign-form sign-in-form">
             <h2 class="blind">Sign in</h2>
             <div class="sign-form__row">
               <div class="input-box">
-                <label for="input-email" class="placeholder-input">Email</label>
-                <input type="text" id="input-email" class="input-sign-form">
+                <label for="input-email" class="input-placeholder">Email</label>
+                <input type="text" id="input-email">
               </div>
             </div>
             <div class="sign-form__row">
               <div class="input-box">
-                <label for="input-password" class="placeholder-input">Password</label>
-                <input type="password" id="input-password" class="input-sign-form">
+                <label for="input-password" class="input-placeholder">Password</label>
+                <input type="password" id="input-password">
               </div>
             </div>
             <div class="sign-form__row">
               <a href="./index.html" class="btn-primary">Sign in</a>
             </div>
-            <div class="sign-form__row hyperlink-area">
-              <a href="#popup" class="btn-ps-search">Forgot your password?</a>
-            </div>
+            <a href="#popup" class="btn-ps-find">Forgot your password?</a>
           </section>
           <!-- //Sign In Form -->
-
+    
           <!-- Sign Up Form -->
           <section class="sign-form sign-up-form">
             <h2 class="blind">Sign up</h2>
             <div class="sign-form__row">
-              <div class="input-box">
-                <label for="user-name" class="placeholder-input">User name</label>
-                <input type="text" id="user-name" class="input-sign-form input-success">
+              <div class="input-box input-success">
+                <label for="input-user-name" class="input-placeholder">User name</label>
+                <input type="text" id="input-user-name">
               </div>
             </div>
             <div class="sign-form__row">
-              <div class="input-box">
-                <label for="input-join-email" class="placeholder-input">Email</label>
-                <input type="text" id="input-join-email" class="input-sign-form input-error">
+              <div class="input-box input-error">
+                <label for="input-join-email" class="input-placeholder">Email</label>
+                <input type="text" id="input-join-email">
               </div>
               <div class="error-message">
-                <p>
-                  Mandatory field
-                </p>
+                <!-- 이미 가입된 이메일 계정이 있는 경우 -->
+                <p>An account already exists for this email.</p>
+                <!-- 입력하지 않았을 경우 -->
+                <!-- <p>Mandatory field.</p> -->
+                <!-- 잘못된 형식으로 입력된 경우 -->
+                <!-- <p>Invalid format.</p> -->
               </div>
             </div>
             <div class="sign-form__row">
-              <div class="input-box">
-                <label for="input-join-password" class="placeholder-input">Password</label>
-                <input type="password" id="input-join-password" class="input-sign-form input-error">
+              <div class="input-box input-error">
+                <label for="input-join-password" class="input-placeholder">Password</label>
+                <input type="password" id="input-join-password">
               </div>
               <div class="error-message">
-                <p>
-                  The format is incorrect.
-                </p>
+                <!-- 4자 미만으로 입력된 경우 -->
+                <p>Password must be at least 4 characters.</p>
               </div>
             </div>
             <div class="sign-form__row btn-area">
-              <button type="submit" class="btn-primary">Sign up</button>
+              <button type="submit" class="btn-primary">Sign up &amp; Sign in</button>
             </div>
           </section>
           <!-- //Sign Up Form -->
 
         </div>
+        
+          <div class="sns-btn-area">
+            <a href="#;" class="btn-primary google">
+              <i class="fab fa-google"></i>
+              Sign in with Google
+            </a>
+            <a href="#;" class="btn-primary facebook">
+              <i class="fab fa-facebook-f"></i>
+              Sign in with Facebook
+            </a>
+            <a href="#;" class="btn-primary instagram">
+              <i class="fab fa-instagram"></i>
+              Sign in with Istagram
+            </a>
+          </div>
+        </div>
+        
+      </section>
+      <!-- //Member Registration -->
 
-        <div class="sns-btn-area">
-          <a href="#;" class="btn-primary google">
-            <i class="fab fa-google"></i>
-            Sign in with Google
-          </a>
-          <a href="#;" class="btn-primary facebook">
-            <i class="fab fa-facebook-f"></i>
-            Sign in with Facebook
-          </a>
-          <a href="#;" class="btn-primary instagram">
-            <i class="fab fa-instagram"></i>
-            Sign in with Istagram
-          </a>
+    </div>
+    <!-- //Wrap -->
+    
+    <!-- Popup -->
+    <div id="popup" class="pop-wrap">
+      <div id="pop-container" class="pop-ps-find-form">
+
+        <!-- Popup Notice -->
+        <div class="pop-notice-content">
+
+          <!-- Reset Password -->
+          <!-- <strong>Reset Password</strong>
+          <div class="sign-form__row">
+            <div class="input-box">
+              <label for="input-verify-email" class="input-placeholder">Email</label>
+              <input type="text" id="input-verify-email">
+            </div>
+          </div> -->
+
+          <!-- New Password -->
+          <strong>New Password</strong>
+          <div class="sign-form__row">
+            <div class="input-box">
+              <label for="input-reset-password" class="input-placeholder">Reset password</label>
+              <input type="text" id="input-reset-password">
+            </div>
+          </div>
+          <div class="sign-form__row">
+            <div class="input-box">
+              <label for="input-retype-password" class="input-placeholder">Re-type password</label>
+              <input type="text" id="input-retype-password">
+            </div>
+          </div>
+
+
+          <!-- 재설정 링크 전송 완료 시 disabled 속성 추가 -->
+          <!-- <div class="sign-form__row">
+            <button type="submit" class="btn-primary">Send Reset Link</button>
+          </div> -->
+
+          <!-- 새로운 비밀번호 재설정 버튼 -->
+          <div class="sign-form__row">
+            <button type="submit" class="btn-primary">Reset &amp; Sign in</button>
+          </div>
+          <a href="#" class="pop-btn-close">Back to sign in</a>
+
+
+          <!-- Message Notification -->
+          <!-- <div class="icon-message">
+            <i class="fas fa-exclamation"></i>
+          </div>
+          <p class="pop-message">Please, put your email address exactly.</p> -->
+          <!-- <p class="pop-message">Please, put your password exactly.</p> -->
+          
+          <!-- <a href="#" class="btn-primary pop-btn-close">OK</a>  -->
         </div>
 
-      </div>
-    </main>
 
-    <div id="popup" class="pop-container">
-      <div class="pop__form">
-        <strong>Reset Password</strong>
-        <div class="input-box">
-          <label for="input-reset-passworld" class="placeholder-input">Email</label>
-          <input type="text" id="input-reset-passworld" class="input-sign-form">
-        </div>
-        <button type="submit" class="btn-primary btn-link">Send Reset Link</button>
-        <a href="#" class="pop-btn-close">Back to sign in</a>
       </div>
     </div>
   </div>

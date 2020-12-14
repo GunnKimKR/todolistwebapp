@@ -87,9 +87,12 @@ body, button, input, select, textarea {
   -webkit-tap-highlight-color: transparent;
 }
 
-h1, h2, h3, h4, h5, h6,
-dt, th, strong, b {
+h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
+}
+
+dt, th, strong, b {
+  font-weight: 500;
 }
 
 .blind {
@@ -107,11 +110,51 @@ dt, th, strong, b {
   text-overflow: ellipsis;
 }
 
-#main {
+/* Layout */
+#container {
   overflow: hidden;
   width: 100%;
+  min-height: 100vh;
+  padding: 0 6%;
+}
+
+#popup {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  width: 100vw;
   height: 100vh;
   padding: 0 6%;
+}
+
+#popup:target {
+  display: flex;
+}
+
+#pop-container {
+  width: 100%;
+  padding: 2.5rem;
+  border-radius: 2px;
+  background-color: #fff;
+}
+
+#pop-container .pop-btn-close:after {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  background-color: rgba(0,0,0,.6);
+  cursor: default;
+  content: '';
 }
 
 .plans-container {
@@ -181,6 +224,11 @@ input[type="checkbox"]:checked + .checkbox:after {
   cursor: pointer;
 }
 
+.btn-primary[disabled] {
+  background-color: #cacaca;
+  cursor: default;
+}
+
 /* plan label */
 .label-square,
 .label-square--checkbox {
@@ -189,10 +237,6 @@ input[type="checkbox"]:checked + .checkbox:after {
   height: 1.7rem;
   border-radius: 3px;
   border: 1px solid #ff6347;
-  background-color: #fff;
-}
-
-.label-square {
   background-color: #ff6347;
 }
 
@@ -200,6 +244,7 @@ input[type="checkbox"]:checked + .checkbox:after {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #fff;
 }
 
 .label-square--checkbox:after {

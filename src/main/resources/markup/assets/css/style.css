@@ -2,16 +2,14 @@
 
 
 /********************* login > To Do List *********************/
-
-/* sign-form-container */
-.sign-form-container {
+#container.member-registration-container {
   display: flex;
   justify-content: center;
   align-items: center;
   background: url(../images/bg_login-page.jpg) 50% 50%/cover no-repeat;
 }
 
-.sign-form-container:before {
+#container.member-registration-container::after {
   position: fixed;
   top: 0;
   right: 0;
@@ -21,7 +19,8 @@
   content: '';
 }
 
-.sign-form-group {
+/* Member Registration */
+.member-registration {
   position: relative;
   z-index: 10;
   width: 100%;
@@ -31,16 +30,16 @@
   box-shadow: 2px 2px 5px rgba(0,0,0,.3);
 }
 
-.toggle-btn-box {
+.toggle-btn-group {
   display: flex;
   position: relative;
   width: 75%;
   margin: 0 auto;
-  border-radius: 2rem;
+  border-radius: 20px;
   box-shadow: 0 0 15px rgba(0,0,0,.15);
 }
 
-.toggle-btn-bg {
+.toggle-btn-group .toggle-btn-bg {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -53,7 +52,7 @@
   content:'';
 }
 
-.toggle-btn-box .btn-toggle {
+.toggle-btn-group .btn-toggle {
   width: 50%;
   background-color: transparent;
   color: #333;
@@ -61,17 +60,16 @@
   transition: color .5s ease;
 }
 
-.toggle-btn-bg.active {
+.toggle-btn-group .toggle-btn-bg.active {
   left: 50%;
 }
 
-.toggle-btn-box .btn-toggle.active {
+.toggle-btn-group .btn-toggle.active {
   color: #fff;
-
 }
 
-/* sign-form-slider-container */
-.sign-form-group .sign-form-slider-container {
+/* sign-form-slider */
+.sign-form-slider {
   display: flex;
   overflow: hidden;
   width: 100%;
@@ -79,11 +77,8 @@
 }
 
 .sign-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-shrink: 0;
-  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
   padding: 2rem 3rem 0;
   transition: transform .5s ease;
 }
@@ -92,66 +87,68 @@
   transform: translateX(-100%);
 }
 
-.sign-form__row {
-  width: 100%;
-  text-align: center;
-}
-
 .sign-form__row + .sign-form__row {
   margin-top: 2rem;
 }
 
 .sign-form__row.hyperlink-area {
-  margin-top: .8rem;
+  margin-top: .5rem;
 }
 
-.input-box {
+.sign-form__row .input-box {
   position: relative;
 }
 
-.placeholder-input {
+.sign-form__row .input-placeholder {
   position: absolute;
   bottom: 0;
-  left: 5px;
-  padding: .5rem 0 .6rem;
+  left: 0;
+  padding: .5rem 0;
   transition: .4s ease;
   transition-property: bottom, padding, font-size;
 }
 
-.input-box.active .placeholder-input {
+.sign-form__row .input-box.active .input-placeholder {
+  left: 0;
   bottom: 85%;
   padding: 0;
   font-size: 1rem;
 }
 
-.input-sign-form {
+.sign-form__row .input-box {
   display: block;
   width: 100%;
   padding: .5rem 0;
+  border: none;
   border-bottom: 1px solid #333;
-  text-indent: 5px;
+  border-radius: 0;
 }
 
-.input-success {
+.sign-form__row .input-success,
+.sign-form__row .input-success input {
   border-bottom-color: #34a853;
   color: #34a853;
 }
 
-.input-error {
+.sign-form__row .input-error,
+.sign-form__row .input-error input {
   border-bottom-color: #ea4335;
   color: #ea4335;
 }
 
-.error-message {
+.sign-form__row .error-message {
   width: 100%;
   margin-top: .2rem;
   font-size: 1.2rem;
-  text-align: left;
   color: #e32a37;
+  text-align: left;
 }
 
-.btn-ps-search {
+.sign-form .btn-ps-find {
+  display: block;
+  margin-top: 1rem;
   font-size: 1.2rem;
+  text-align: center;
 }
 
 .sns-btn-area {
@@ -191,58 +188,44 @@
 }
 
 /* Popup Section */
-.pop-container {
-  display: none;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 100;
-  width: 100vw;
-  height: 100vh;
-  padding: 0 6%;
-}
-
-.pop__form {
+.pop-ps-find-form {
   width: 100%;
   max-width: 40rem;
   padding: 2.5rem;
+  border-radius: 2px;
   background-color: #fff;
   text-align: center;
 }
 
-.pop__form > strong {
+.pop-notice-content > strong {
   font-size: 2rem;
 }
 
-.pop__form > :not(:first-child) {
+.pop-notice-content .sign-form__row {
   margin-top: 2rem;
 }
 
-.pop__form .pop-btn-close {
-  display: inline-block;
-  margin-top: .8rem;
-  font-size: 1.2rem;
-}
-
-.pop__form .pop-btn-close:after {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
-  background-color: rgba(0,0,0,.6);
-  cursor: default;
-  content: '';
-}
-
-#popup:target {
+.icon-message {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  margin: 0 auto;
+  border-radius: 50%;
+  background-color: #ea4335;
+  font-size: 1.6rem;
+  color: #fff;
+}
+
+.pop-message {
+  margin: 1rem 0 2rem;
+}
+
+.pop-notice-content .pop-btn-close {
+  display: block;
+  margin-top: 1rem;
+  font-size: 1.2rem;
 }
 
 

@@ -1,13 +1,13 @@
 'use strict'
 
 /******************** Login page *********************/
-if(document.querySelector('.sign-form-group')) {
+if(document.querySelector('.member-registration')) {
 
     // Toggle Button
-    const toggleBtnBox = document.querySelector('.toggle-btn-box');
+    const toggleBtnGroup = document.querySelector('.toggle-btn-group');
     const toggleBtnBg = document.querySelector('.toggle-btn-bg');
 
-    toggleBtnBox.addEventListener('click', (e) => {
+    toggleBtnGroup.addEventListener('click', (e) => {
         if(e.target.nextElementSibling === null) {
             e.target.previousElementSibling.classList.remove('active');
             e.target.classList.add('active');
@@ -24,24 +24,28 @@ if(document.querySelector('.sign-form-group')) {
     });
 
     // Input Placeholder
-    const signFormContainer = document.querySelector('.sign-form-slider-container');
-    const popFormContainer = document.querySelector('.pop-container');
+    const signFormSlider = document.querySelector('.sign-form-slider');
+    const popWrap = document.querySelector('.pop-wrap');
 
-    signFormContainer.addEventListener('focusin', inputPlaceholderAnim(this));
-    popFormContainer.addEventListener('focusin', inputPlaceholderAnim(this));
+    inputPlaceholderAnim(signFormSlider);
+    inputPlaceholderAnim(popWrap);
 
     function inputPlaceholderAnim(form) {
         form.addEventListener('focusin', (e) => {
             const signFormInput = e.target;
-            if(signFormInput.className.includes('input-sign-form') && e.target.value === '') {
-                signFormInput.parentElement.classList.add('active');
+            if(signFormInput.localName === 'input') {
+                if(signFormInput.value === '' || signFormInput.value) {
+                    signFormInput.parentElement.classList.add('active');
+                }
             }
-
-            signFormInput.addEventListener('focusout', () => {
+        });
+        form.addEventListener('focusout', (e) => {
+            const signFormInput = e.target;
+            if(signFormInput.localName === 'input') {
                 if(signFormInput.value === ''){
                     signFormInput.parentElement.classList.remove('active');
                 }
-            });
+            }
         });
     }
 }
