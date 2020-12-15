@@ -91,10 +91,6 @@
   margin-top: 2rem;
 }
 
-.sign-form__row.hyperlink-area {
-  margin-top: .5rem;
-}
-
 .sign-form__row .input-box {
   position: relative;
 }
@@ -103,7 +99,7 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  padding: .5rem 0;
+  padding: .5em 0;
   transition: .4s ease;
   transition-property: bottom, padding, font-size;
 }
@@ -116,9 +112,7 @@
 }
 
 .sign-form__row .input-box {
-  display: block;
-  width: 100%;
-  padding: .5rem 0;
+  padding: .5em 0;
   border: none;
   border-bottom: 1px solid #333;
   border-radius: 0;
@@ -163,6 +157,7 @@
   display: flex;
   align-items: center;
   width: 100%;
+  padding: .5em 1em;
   color: #fff;
 }
 
