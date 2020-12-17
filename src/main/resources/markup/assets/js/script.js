@@ -61,21 +61,6 @@ if(document.querySelector('.btn-calendar-drop')) {
     });
 }
 
-/********************* Plan Details *********************/
-// if(document.querySelector('.plan-details-container')) {
-//     const planDetailsCnt = document.querySelector('.plan-details-container');
-//     const closeBtn = document.querySelector('.btn-close');
-
-//     closeBtn.addEventListener('click', () => {
-//         planDetailsCnt.classList.remove('active');
-//     });
-
-//     const planListItem = document.querySelector('.clip-plans-list');
-//     planListItem.addEventListener('click', () => {
-//         planDetailsCnt.classList.add('active');
-//     })
-// }
-
 /********************* Task Add Button *********************/
 if(document.querySelector('.task-form-container')) {
     const taskInputCnt = document.querySelector('.task-form-container');

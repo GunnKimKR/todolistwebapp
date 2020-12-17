@@ -663,95 +663,6 @@ transform: translate(-50%, -50%) rotate(180deg);
   margin-top: 2.5rem;
 }
 
-/*************** plan-details-container ***************/
-.plan-details-container {
-  display: none;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 60;
-  padding: 0 6%;
-  background-color: #fff;
-}
-
-.plan-details-container.active {
-  display: block;
-}
-
-.plan-details-container .button-area {
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem 0;
-}
-
-.plan-details-container .button-area .btn-close,
-.plan-details-container .button-area .btn-remove {
-  font-size: 2rem;
-  line-height: 1;
-  color: #333;
-}
-
-.plan-details-header .date-box {
-  display: flex;
-  align-items: center;
-}
-
-.plan-details-header .date-box__date {
-  font-weight: 700;
-  font-size: 4.8rem;
-  line-height: 1;
-}
-
-.plan-details-header .date-box__month {
-  margin-left: 1rem;
-  font-weight: 500;
-  font-size: 1.8rem;
-  line-height: 1.2;
-}
-
-.plan-details-header .date-box__year {
-  display: block;
-  font-weight: 400;
-  font-size: 1.4rem;
-}
-
-.plan-details-header .date-box__day {
-  margin-left: auto;
-}
-
-.plan-details-body {
-  margin-top: 1.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid #dadada;
-}
-
-.plan-details > li {
-  display: flex;
-  align-items: center;
-}
-
-.plan-details > li + li {
-  margin-top: 1rem;
-}
-
-.plan-details > .plan-detail--note {
-  align-items: flex-start;
-}
-
-.plan-details > li > :first-child {
-  margin-right: 1rem;
-}
-
-.plan-details .plan-detail-icon {
-  font-size: 1.6rem;
-}
-
-.plan-details .btn-clip {
-  margin: 0 0 0 auto;
-}
-
 /*************** Myinfo container ***************/
 .myinfo-container {
   position: fixed;
@@ -841,3 +752,91 @@ transform: translate(-50%, -50%) rotate(180deg);
 }
 
 
+/*************** Task Details Container ***************/
+.task-details-container {
+  text-align: left;
+}
+
+.task-details-container .button-area {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 1rem;
+  right: 2.5rem;
+  left: 2.5rem;
+}
+
+.task-details-container .button-area .pop-btn-close,
+.task-details-container .button-area .btn-remove {
+  font-size: 2rem;
+  line-height: 1;
+  color: #333;
+}
+
+.task-details__header {
+  margin-top: 1rem;
+}
+
+.task-details__header .date-box {
+  display: flex;
+  align-items: center;
+}
+
+.task-details__header .date-box__date {
+  font-weight: 700;
+  font-size: 4.8rem;
+  line-height: 1;
+}
+
+.task-details__header .date-box__month {
+  margin-left: 1rem;
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 1.2;
+}
+
+.task-details__header .date-box__year {
+  display: block;
+  font-weight: 400;
+  font-size: 1.4rem;
+}
+
+.task-details__header .date-box__day {
+  margin-left: auto;
+}
+
+.task-details__body {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #dadada;
+}
+
+.task-details__item {
+  display: flex;
+  align-items: center;
+}
+
+.task-details__item + .task-details__item {
+  margin-top: 1rem;
+}
+
+.task-details__item.note {
+  align-items: flex-start;
+}
+
+.task-details__item.note .task-detail-note {
+  overflow-y: auto;
+  max-height: 23.2rem;
+}
+
+.task-details__item > :first-child {
+  margin-right: 1rem;
+}
+
+.task-details__item .task-detail-icon {
+  font-size: 1.7rem;
+}
+
+.task-details__item .btn-pin {
+  margin: 0 0 0 auto;
+}

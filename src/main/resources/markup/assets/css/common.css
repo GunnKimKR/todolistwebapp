@@ -161,10 +161,12 @@ dt, th, strong, b {
 }
 
 #pop-container {
+  position: relative;
   width: 100%;
   padding: 2.5rem;
   border-radius: 2px;
   background-color: #fff;
+  box-shadow: 3px 3px 7px rgba(0,0,0,0.5);
 }
 
 #pop-container .pop-btn-close::after {
