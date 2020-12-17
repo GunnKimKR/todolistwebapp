@@ -33,6 +33,12 @@ const errorStatus = {
   activeClass: 'active',
 };
 
+const initError = {
+  usernameMsg: msg_mandatory_field,
+  emailMsg: msg_mandatory_field,
+  passwordMsg: msg_mandatory_field,
+};
+
 let vm = null;
 let isEmailRegistered = false;
 
@@ -146,6 +152,7 @@ function validateUserForm() {
 
 export {
   initStatus,
+  initError,
   changeUsername,
   changeEmail,
   changePassword,

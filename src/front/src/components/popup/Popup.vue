@@ -1,59 +1,20 @@
 <template>
-  <PopupFrame>
-    <div slot="pop-notice-content" class="pop-notice-content">
-      <template v-if="popup.name == 'message'">
-        <div class="icon-message">
-          <i class="fas fa-exclamation"></i>
-        </div>
-        <p class="pop-message">
-          {{ popup.message }}
-        </p>
-      </template>
-
-      <template v-if="popup.name == 'resetPassword'">
-        <strong>Reset Password</strong>
-        <div class="sign-form__row">
-          <div class="input-box">
-            <label for="input-verify-email" class="input-placeholder"
-              >Email</label
-            >
-            <input type="text" id="input-verify-email" />
-          </div>
-        </div>
-        <div class="sign-form__row">
-          <button type="button" class="btn-primary">
-            Send Verification Code
-          </button>
-        </div>
-        <div class="sign-form__row">
-          <div class="input-box">
-            <label for="input-verify-code" class="input-placeholder"
-              >Verification Code</label
-            >
-            <input type="text" id="input-verify-code" />
-          </div>
-          <div class="error-message">
-            <!-- 인증 코드가 올바르지 않을 경우 -->
-            <!-- <p>Invalid verification code.</p> -->
-          </div>
-        </div>
-      </template>
-
-      <div class="sign-form__row">
-        <button
-          type="button"
-          class="btn-primary pop-btn-close"
-          @click="closePopup"
-        >
-          OK
-        </button>
-      </div>
-    </div>
-  </PopupFrame>
+  <div id="popup" class="pop-wrap">
+    <MessagePopup
+      v-if="popup.name == 'message'"
+      @closePopup="closePopup"
+    ></MessagePopup>
+    <ResetPasswordPopup
+      v-if="popup.name == 'resetPassword'"
+      slot="pop-notice-content"
+      @closePopup="closePopup"
+    ></ResetPasswordPopup>
+  </div>
 </template>
 
 <script>
-import PopupFrame from '@/components/popup/PopupFrame.vue';
+import MessagePopup from '@/components/popup/MessagePopup.vue';
+import ResetPasswordPopup from '@/components/popup/ResetPasswordPopup.vue';
 export default {
   computed: {
     popup() {
@@ -61,7 +22,8 @@ export default {
     },
   },
   components: {
-    PopupFrame,
+    MessagePopup,
+    ResetPasswordPopup,
   },
   methods: {
     closePopup() {

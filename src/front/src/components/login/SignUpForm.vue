@@ -87,6 +87,7 @@
 <script>
 import {
   initStatus,
+  initError,
   changeUsername,
   changeEmail,
   changePassword,
@@ -95,8 +96,6 @@ import {
   registerUser,
   registerSignupModel,
 } from '@/scripts/signup';
-
-import { msg_mandatory_field } from '@/scripts/message';
 
 export default {
   data() {
@@ -109,11 +108,7 @@ export default {
       emailStatus: initStatus,
       passwordStatus: initStatus,
 
-      error: {
-        usernameMsg: msg_mandatory_field,
-        emailMsg: msg_mandatory_field,
-        passwordMsg: msg_mandatory_field,
-      },
+      error: initError,
     };
   },
   created() {
