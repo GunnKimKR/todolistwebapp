@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Plan Search :: To Do List</title>
+  <title>Task Search :: To Do List</title>
   <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;700&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
   <link rel="stylesheet" href="./assets/css/common.css">
@@ -14,134 +14,170 @@
 <body>
   <div id="wrap">
 
-    <!---------------------- Nav ---------------------->
+    <!--============================== Nav ==============================-->
     <nav id="nav">
-      <h2 class="blind">메뉴</h2>
+      <h2 class="blind">Menu</h2>
       <ul class="nav__tabmenu">
         <li class="nav__tabmenu__item">
           <a href="./index.html">
-            <img src="https://img.icons8.com/fluent-systems-regular/124/333333/clipboard.png" alt="클립보드" />
+            <img src="https://img.icons8.com/fluent-systems-regular/124/333333/clipboard.png" alt="Pin Tasks" />
           </a>
         </li>
         <li class="nav__tabmenu__item">
           <a href="./timetable.html">
-            <img src="https://img.icons8.com/fluent-systems-regular/124/333333/overtime.png" alt="타임테이블" />
+            <img src="https://img.icons8.com/fluent-systems-regular/124/333333/overtime.png" alt="Timetable" />
           </a>
         </li>
         <li class="nav__tabmenu__item">
           <a href="./todo.html">
-            <img src="https://img.icons8.com/material-rounded/64/333333/list.png" alt="투두 리스트" />
+            <img src="https://img.icons8.com/material-rounded/64/333333/list.png" alt="To-do List" />
           </a>
         </li>
         <li class="nav__tabmenu__item active">
           <a href="./search.html">
-            <img src="https://img.icons8.com/fluent-systems-regular/124/333333/search.png" alt="검색" />
+            <img src="https://img.icons8.com/fluent-systems-regular/124/333333/search.png" alt="Task Search" />
           </a>
         </li>
         <li class="nav__tabmenu__item">
           <a href="#myinfo">
-            <img src="https://img.icons8.com/windows/124/333333/gender-neutral-user.png" alt="나의 정보" />
+            <img src="https://img.icons8.com/windows/124/333333/gender-neutral-user.png" alt="My Information" />
           </a>
         </li>
       </ul>
     </nav>
-    <!---------------------- //Nav ---------------------->
-
-    <!---------------------- Main Container ---------------------->
-    <main id="main" class="main-container">
-
-      <header class="plan-search-header">
-        <h2 class="blind">일정 검색하기</h2>
+    <!--============================== //Nav ==============================-->
+    
+    <header class="task-search-header">
+      <h2 class="blind">Task Search</h2>
+      <div class="task-form__row">
         <div class="input-box">
-          <span class="search-icon">
+          <span class="icon-search">
             <i class="fas fa-search"></i>
           </span>
           <input type="search">
         </div>
-      </header>
-
-      <div class="plans-container">
-
-        <!---------------------- Plan Search Container ---------------------->
-        <section class="plan-search-container">
-          <h2 class="blind">검색된 일정 목록</h2>
-          <div class="plan-search__group">
-            <strong class="plans-title">Tue Sep 15. 2020</strong>
-            <ul class="todo-list">
-              <li class="todo-list__item">
-                <div class="label-square"></div>
-                <div class="text-todo">
-                  To Do List Webapp Project
-                  <span class="time">09:00 ~ 12:00</span>
-                </div>
-                <span class="clip-icon">
-                  <i class="fas fa-feather-alt"></i>
-                </span>
-              </li>
-              <li class="todo-list__item">
-                <div class="label-square--checkbox completed"></div>
-                <div class="text-todo">
-                  To Do List Webapp Project
-                </div>
-              </li>
-              <li class="todo-list__item">
-                <div class="label-square--checkbox"></div>
-                <div class="text-todo">
-                  To Do List Webapp Project
-                </div>
-                <span class="clip-icon">
-                  <i class="fas fa-feather-alt"></i>
-                </span>
-              </li>
-            </ul>
-          </div>
-          <div class="plan-search__group">
-            <strong class="plans-title">Thu Feb 6. 2020</strong>
-            <ul class="todo-list">
-              <li class="todo-list__item">
-                <div class="label-square"></div>
-                <div class="text-todo">
-                  To Do List Webapp Project
-                  <span class="time">09:00 ~ 12:00</span>
-                </div>
-                <span class="clip-icon">
-                  <i class="fas fa-feather-alt"></i>
-                </span>
-              </li>
-              <li class="todo-list__item">
-                <div class="label-square--checkbox"></div>
-                <div class="text-todo">
-                  To Do List Webapp Project
-                </div>
-              </li>
-              <li class="todo-list__item">
-                <div class="label-square--checkbox completed"></div>
-                <div class="text-todo">
-                  To Do List Webapp Project
-                </div>
-                <span class="clip-icon">
-                  <i class="fas fa-feather-alt"></i>
-                </span>
-              </li>
-              <li class="todo-list__item">
-                <div class="label-square--checkbox completed"></div>
-                <div class="text-todo">
-                  To Do List Webapp Project
-                </div>
-                <span class="clip-icon">
-                  <i class="fas fa-feather-alt"></i>
-                </span>
-              </li>
-            </ul>
-          </div>
-        </section>
-        <!---------------------- //Plan Search Container ---------------------->
-
+        <button type="button">OK</button>
       </div>
+    </header>
 
-      
-    </main>
-    <!---------------------- //Main Container ---------------------->
+    <!--============================== Container ==============================-->
+    <div id="container">
+
+      <!--============================== Task List Container ==============================-->
+      <section class="task-list-container">
+        <header class="task-list-header">
+          <h2 class="blind">Task Search Result</h2>
+        </header>
+        
+        <div class="task-list-body">
+
+          <div class="task-search__group">
+            <strong class="task-search__title">Tue Sep 15. 2020</strong>
+            <ul class="todo-list">
+              <li class="todo-list__item">
+                <a href="#;">
+                  <div class="label-square label--navy"></div>
+                  <div class="todo-list__item__text ellip">
+                    To Do List Webapp Project
+                    <span class="todo-list__item__time">09:00 ~ 12:00</span>
+                  </div>
+                  <span class="pin-icon">
+                    <i class="fas fa-feather-alt"></i>
+                  </span>
+                </a>
+              </li>
+              <li class="todo-list__item">
+                <a href="#;">
+                  <div class="label-square--checkbox label--orange completed"></div>
+                  <div class="todo-list__item__text ellip">
+                    To Do List Webapp Project
+                  </div>
+                </a>
+              </li>
+              <li class="todo-list__item">
+                <a href="#;">
+                  <div class="label-square--checkbox label--purple"></div>
+                  <div class="todo-list__item__text ellip">
+                    To Do List Webapp Project
+                  </div>
+                  <span class="pin-icon">
+                    <i class="fas fa-feather-alt"></i>
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="task-search__group">
+            <strong class="task-search__title">Thu Feb 6. 2020</strong>
+            <ul class="todo-list">
+              <li class="todo-list__item">
+                <a href="#;">
+                  <div class="label-square label--pink"></div>
+                  <div class="todo-list__item__text ellip">
+                    To Do List Webapp Project
+                    <span class="todo-list__item__time">09:00 ~ 12:00</span>
+                  </div>
+                  <span class="pin-icon">
+                    <i class="fas fa-feather-alt"></i>
+                  </span>
+                </a>
+              </li>
+              <li class="todo-list__item">
+                <a href="#;">
+                  <div class="label-square--checkbox"></div>
+                  <div class="todo-list__item__text ellip">
+                    To Do List Webapp Project
+                  </div>
+                </a>
+              </li>
+              <li class="todo-list__item">
+                <a href="#;">
+                  <div class="label-square--checkbox label--green completed"></div>
+                  <div class="todo-list__item__text ellip">
+                    To Do List Webapp Project
+                  </div>
+                </a>
+              </li>
+              <li class="todo-list__item">
+                <a href="#;">
+                  <div class="label-square--checkbox completed"></div>
+                  <div class="todo-list__item__text ellip">
+                    To Do List Webapp Project
+                  </div>
+                </a>
+              </li>
+              <li class="todo-list__item">
+                <a href="#;">
+                  <div class="label-square--checkbox completed"></div>
+                  <div class="todo-list__item__text ellip">
+                    To Do List Webapp Project
+                  </div>
+                </a>
+              </li>
+              <li class="todo-list__item">
+                <a href="#;">
+                  <div class="label-square--checkbox completed"></div>
+                  <div class="todo-list__item__text ellip">
+                    To Do List Webapp Project
+                  </div>
+                </a>
+              </li>
+              <li class="todo-list__item">
+                <a href="#;">
+                  <div class="label-square--checkbox completed"></div>
+                  <div class="todo-list__item__text ellip">
+                    To Do List Webapp Project
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <!--============================== //Task List Container ==============================-->
+
+    </div>
+    <!--============================== //Container ==============================-->
 
   </div>
 </body>

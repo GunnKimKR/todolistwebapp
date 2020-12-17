@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Calendar :: To Do List</title>
   <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;700&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
@@ -14,78 +14,78 @@
 <body>
   <div id="wrap">
 
-    <!---------------------- Nav ---------------------->
+    <!--============================== Nav ==============================-->
     <nav id="nav">
-      <h2 class="blind">메뉴</h2>
+      <h2 class="blind">Menu</h2>
       <ul class="nav__tabmenu">
         <li class="nav__tabmenu__item active">
           <a href="./index.html">
-            <img src="https://img.icons8.com/fluent-systems-regular/124/333333/clipboard.png" alt="클립보드" />
+            <img src="https://img.icons8.com/fluent-systems-regular/124/333333/clipboard.png" alt="Pin Tasks" />
           </a>
         </li>
         <li class="nav__tabmenu__item">
           <a href="./timetable.html">
-            <img src="https://img.icons8.com/fluent-systems-regular/124/333333/overtime.png" alt="타임테이블" />
+            <img src="https://img.icons8.com/fluent-systems-regular/124/333333/overtime.png" alt="Timetable" />
           </a>
         </li>
         <li class="nav__tabmenu__item">
           <a href="./todo.html">
-            <img src="https://img.icons8.com/material-rounded/64/333333/list.png" alt="투두 리스트" />
+            <img src="https://img.icons8.com/material-rounded/64/333333/list.png" alt="To-do List" />
           </a>
         </li>
         <li class="nav__tabmenu__item">
           <a href="./search.html">
-            <img src="https://img.icons8.com/fluent-systems-regular/124/333333/search.png" alt="검색" />
+            <img src="https://img.icons8.com/fluent-systems-regular/124/333333/search.png" alt="Task Search" />
           </a>
         </li>
         <li class="nav__tabmenu__item">
           <a href="#myinfo">
-            <img src="https://img.icons8.com/windows/124/333333/gender-neutral-user.png" alt="나의 정보" />
+            <img src="https://img.icons8.com/windows/124/333333/gender-neutral-user.png" alt="My Information" />
           </a>
         </li>
       </ul>
     </nav>
-    <!---------------------- //Nav ---------------------->
+    <!--============================== //Nav ==============================-->
 
-    <!---------------------- Task Input Container ---------------------->
-    <section class="task-input-form-container">
-      <h2 class="blind">일정 입력</h2>
-      <button type="button" class="task-input-btn"></button>
-      <div class="task-input-form__row">
-        <div class="input-box">
-          <input type="text" placeholder="+ Add a new task">
+    <!--============================== Container ==============================-->
+    <div id="container">
+      
+      <!--============================== Task From Container ==============================-->
+      <section class="task-form-container">
+        <h2 class="blind">Task from</h2>
+        <button type="button" class="task-input-btn" role="Task input button"></button>
+        <div class="task-form__row">
+          <div class="input-box">
+            <input type="text" placeholder="+ Add a new task">
+          </div>
         </div>
-      </div>
-      <div class="task-input-form__row">
-        <div class="checkbox-box">
-          <input type="checkbox" id="task-date">
-          <label class="checkbox" for="task-date"></label>Date
+        <div class="task-form__row">
+          <div class="checkbox-box">
+            <input type="checkbox" id="task-date">
+            <label class="checkbox" for="task-date"></label>Date
+          </div>
+          <div class="task-details">
+            Sep 21. 2020 / 17:00 - 21:00
+          </div>
         </div>
-        <div class="task-details">
-          Sep 21. 2020 17:00 - 21:00
+        <div class="task-form__row">
+          <div class="checkbox-box">
+            <input type="checkbox" id="task-recurring">
+            <label class="checkbox" for="task-recurring"></label>Recurring
+          </div>
+          <div class="task-details">
+            Everyday
+          </div>
         </div>
-      </div>
-      <div class="task-input-form__row">
-        <div class="checkbox-box">
-          <input type="checkbox" id="task-recurring">
-          <label class="checkbox" for="task-recurring"></label>Recurring
-        </div>
-        <div class="task-details">
-          Everyday
-        </div>
-      </div>
-    </section>
-    <!---------------------- Task Input Container ---------------------->
+      </section>
+      <!--============================== //Task Input Container ==============================-->
 
-    <!---------------------- Main Container ---------------------->
-    <main id="main" class="main-container">
-
-      <!---------------------- Calendar Container ---------------------->
+      <!--============================== Calendar Container ==============================-->
       <section class="calendar-container">
         <h2 class="blind">달력</h2>
-
+  
         <div class="calendar-header-group">
-          <a href="#popup" class="calendar-year">2020</a>
+          <a href="#;" class="calendar-year">2020</a>
           <a href="#;" class="calendar-month">Sep</a>
           <ul class="calendar-date-list">
             <li class="calendar-date-list__item">
@@ -122,7 +122,7 @@
           </ul>
           <button type="button" class="btn-calendar-drop"></button>
         </div>
-
+  
         <div class="calendar-body-group">
           <table class="table-calendar">
             <thead>
@@ -219,21 +219,21 @@
                 </td>
                 <td>
                   <div class="td-cell">
-                    <div class="td-style plans">
+                    <div class="td-style tasks">
                       9
                     </div>
                   </div>
                 </td>
                 <td>
                   <div class="td-cell">
-                    <div class="td-style plans">
+                    <div class="td-style tasks">
                       10
                     </div>
                   </div>
                 </td>
                 <td>
                   <div class="td-cell">
-                    <div class="td-style plans">
+                    <div class="td-style tasks">
                       11
                     </div>
                   </div>
@@ -263,14 +263,14 @@
                 </td>
                 <td>
                   <div class="td-cell">
-                    <div class="td-style plans today">
+                    <div class="td-style tasks today">
                       15
                     </div>
                   </div>
                 </td>
                 <td>
                   <div class="td-cell">
-                    <div class="td-style plans">
+                    <div class="td-style tasks">
                       16
                     </div>
                   </div>
@@ -307,7 +307,7 @@
               <tr>
                 <td>
                   <div class="td-cell">
-                    <div class="td-style plans">
+                    <div class="td-style tasks">
                       21
                     </div>
                   </div>
@@ -321,7 +321,7 @@
                 </td>
                 <td>
                   <div class="td-cell">
-                    <div class="td-style plans">
+                    <div class="td-style tasks">
                       23
                     </div>
                   </div>
@@ -335,7 +335,7 @@
                 </td>
                 <td>
                   <div class="td-cell">
-                    <div class="td-style plans">
+                    <div class="td-style tasks">
                       25
                     </div>
                   </div>
@@ -410,46 +410,91 @@
           </table>
         </div>
       </section>
-      <!---------------------- //Calendar Container ---------------------->
+      <!--============================== //Calendar Container ==============================-->
 
-      <div class="plans-container">
-
-        <!---------------- clip-plans-container ---------------->
-        <section class="clip-plans-container">
-          <h2 class="blind">주요 일정</h2>
-          <strong class="plans-title">Monday. 15</strong>
-          <ul class="clip-plans-list">
-            <li class="clip-plans-list__item">
-              <span class="clip-icon">
-                <i class="fas fa-feather-alt"></i>
-              </span>
-              <span class="clip-plan-time">09:00</span>
-              <span class="clip-plan ellip">To Do List App 배포</span>
-            </li>
-            <li class="clip-plans-list__item">
-              <span class="clip-icon">
-                <i class="fas fa-feather-alt"></i>
-              </span>
-              <span class="clip-plan-time">09:00</span>
-              <span class="clip-plan ellip">To Do List App 배포</span>
-            </li>
-            <li class="clip-plans-list__item">
-              <span class="clip-icon">
-                <i class="fas fa-feather-alt"></i>
-              </span>
-              <span class="clip-plan-time">--:--</span>
-              <span class="clip-plan ellip">To Do List App 배포</span>
-            </li>
-          </ul>
+        <!--============================== Task List Container ==============================-->
+        <section class="task-list-container">
+          <header class="task-list-header">
+            <h2 class="blind">Pin tasks</h2>
+            <strong class="task-title">Monday. 15</strong>
+          </header>
+          <div class="task-list-body">
+            <ul class="pin-tasks-list">
+              <li class="pin-tasks-list__item">
+                <a href="#;">
+                  <span class="pin-icon">
+                    <i class="fas fa-feather-alt"></i>
+                  </span>
+                  <span class="pin-task-time">09:00</span>
+                  <span class="pin-task-text ellip">To Do List App 배포</span>
+                </a>
+              </li>
+              <li class="pin-tasks-list__item">
+                <a href="#;">
+                  <span class="pin-icon">
+                    <i class="fas fa-feather-alt"></i>
+                  </span>
+                  <span class="pin-task-time">09:00</span>
+                  <span class="pin-task-text ellip">To Do List App 배포</span>
+                </a>
+              </li>
+              <li class="pin-tasks-list__item">
+                <a href="#;">
+                  <span class="pin-icon">
+                    <i class="fas fa-feather-alt"></i>
+                  </span>
+                  <span class="pin-task-time">--:--</span>
+                  <span class="pin-task-text ellip">To Do List App 배포</span>
+                </a>
+              </li>
+            </ul>
+          </div>
         </section>
-        <!---------------- //clip-plans-container ---------------->
+        <!--============================== //Task List Container ==============================-->
+  
+    </div>
+    <!--============================== //Container ==============================-->
 
+
+    <!--============================== Myinfo Container ==============================-->
+    <section id="myinfo" class="myinfo-container">
+      <div class="myinfo-container__inner">
+        <header class="myinfo-header">
+          <h2 class="blind">나의 정보</h2>
+          <div class="myinfo-header__profile">
+            <img class="unknown" src="https://img.icons8.com/windows/124/333333/gender-neutral-user.png" alt="프로필" />
+          </div>
+          <div class="myinfo-header__info">
+            <dl>
+              <dt>Name: </dt>
+              <dd>Kim Geon</dd>
+              <dt>Email: </dt>
+              <dd>kimgeonkr@gmail.com</dd>
+            </dl>
+          </div>
+          <div class="button-area">
+            <button type="button" class="btn-primary">Logout</button>
+            <button type="button" class="btn-primary">Delete Account</button>
+          </div>
+        </header>
+        <div class="myinfo-body">
+          <div class="myinfo-body__phrase">
+            <strong>Wise Quotes</strong>
+            <figure>
+              <blockquote>
+                <p>과거에서 교훈을 얻을 수는 있어도 과거 속에 살 수는 없다.</p>
+                <p>We can draw lessons from the past, but we cannot live in it.</p>
+              </blockquote>
+              <figcaption>— 린든 B. 존슨(Lyndon B. Johnson)</figcaption>
+          </figure>
+          </div>
+        </div>
       </div>
+      <a href="#;" class="btn-close"></a>
+    </section>
+    <!--============================== //Myinfo Container ==============================-->
 
-    </main>
-    <!---------------------- //Main Container ---------------------->
-
-    <!---------------------- Plan Details Container ---------------------->
+    <!--============================== Plan Details Container ==============================-->
     <section class="plan-details-container">
       <h2 class="blind">일정 세부사항</h2>
       <div class="button-area">
@@ -506,46 +551,8 @@
         </ul>
       </div>
     </section>
-    <!---------------------- //Plan Details Container ---------------------->
+    <!--============================== //Plan Details Container ==============================-->
 
-
-    <!---------------------- Myinfo Container ---------------------->
-    <section id="myinfo" class="myinfo-container">
-      <div class="myinfo-container__inner">
-        <h2 class="blind">나의 정보</h2>
-        <header class="myinfo-header">
-          <div class="myinfo-header__profile">
-            <img class="unknown" src="https://img.icons8.com/windows/124/333333/gender-neutral-user.png" alt="프로필" />
-          </div>
-          <div class="myinfo-header__info">
-            <dl>
-              <dt>Name: </dt>
-              <dd>Kim Geon</dd>
-              <dt>Email: </dt>
-              <dd>kimgeonkr@gmail.com</dd>
-            </dl>
-          </div>
-          <div class="button-area">
-            <button type="button" class="btn-primary">Logout</button>
-            <button type="button" class="btn-primary">Delete Account</button>
-          </div>
-        </header>
-        <div class="myinfo-body">
-          <div class="myinfo-body__phrase">
-            <strong>Wise Quotes</strong>
-            <figure>
-              <blockquote>
-                <p>과거에서 교훈을 얻을 수는 있어도 과거 속에 살 수는 없다.</p>
-                <p>We can draw lessons from the past, but we cannot live in it.</p>
-              </blockquote>
-              <figcaption>— 린든 B. 존슨(Lyndon B. Johnson)</figcaption>
-          </figure>
-          </div>
-        </div>
-      </div>
-      <a href="#;" class="btn-close">close</a>
-    </section>
-    <!---------------------- //Myinfo Container ---------------------->
   </div>
 </body>
 </html>

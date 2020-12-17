@@ -62,23 +62,23 @@ if(document.querySelector('.btn-calendar-drop')) {
 }
 
 /********************* Plan Details *********************/
-if(document.querySelector('.plan-details-container')) {
-    const planDetailsCnt = document.querySelector('.plan-details-container');
-    const closeBtn = document.querySelector('.btn-close');
+// if(document.querySelector('.plan-details-container')) {
+//     const planDetailsCnt = document.querySelector('.plan-details-container');
+//     const closeBtn = document.querySelector('.btn-close');
 
-    closeBtn.addEventListener('click', () => {
-        planDetailsCnt.classList.remove('active');
-    });
+//     closeBtn.addEventListener('click', () => {
+//         planDetailsCnt.classList.remove('active');
+//     });
 
-    const planListItem = document.querySelector('.clip-plans-list');
-    planListItem.addEventListener('click', () => {
-        planDetailsCnt.classList.add('active');
-    })
-}
+//     const planListItem = document.querySelector('.clip-plans-list');
+//     planListItem.addEventListener('click', () => {
+//         planDetailsCnt.classList.add('active');
+//     })
+// }
 
 /********************* Task Add Button *********************/
-if(document.querySelector('.task-input-form-container')) {
-    const taskInputCnt = document.querySelector('.task-input-form-container');
+if(document.querySelector('.task-form-container')) {
+    const taskInputCnt = document.querySelector('.task-form-container');
     const taskAddBtn = document.querySelector('.task-input-btn');
 
     taskAddBtn.addEventListener('click', () => {
