@@ -61,22 +61,31 @@
           <button type="button">OK</button>
         </div>
         <div class="task-form__row">
-          <div class="checkbox-box">
+          <label class="checkbox-box" for="task-date">
             <input type="checkbox" id="task-date">
-            <label class="checkbox" for="task-date"></label>Date
-          </div>
+            <div class="checkbox"></div>
+            Date
+          </label>
           <div class="task-details">
             Sep 21. 2020 / 17:00 - 21:00
           </div>
         </div>
         <div class="task-form__row">
-          <div class="checkbox-box">
+          <label class="checkbox-box" for="task-recurring">
             <input type="checkbox" id="task-recurring">
-            <label class="checkbox" for="task-recurring"></label>Recurring
-          </div>
+            <div class="checkbox"></div>
+            Recurring
+          </label>
           <div class="task-details">
             Everyday
           </div>
+        </div>
+        <div class="task-form__row">
+          <label class="checkbox-box" for="task-pin">
+            <input type="checkbox" id="task-pin">
+            <div class="checkbox"></div>
+            Pin
+          </label>
         </div>
       </section>
       <!--============================== //Task Input Container ==============================-->
@@ -423,7 +432,10 @@
           <ul class="todo-list">
             <li class="todo-list__item">
               <a href="#;">
-                <div class="label-square--checkbox completed"></div>
+                <label class="checkbox-box--label">
+                  <input type="checkbox">
+                  <div class="checkbox"></div>
+                </label>
                 <div class="todo-list__item__text ellip">
                   To Do List Webapp Project
                 </div>
@@ -434,7 +446,10 @@
             </li>
             <li class="todo-list__item">
               <a href="#;">
-                <div class="label-square--checkbox completed"></div>
+                <label class="checkbox-box--label">
+                  <input type="checkbox">
+                  <div class="checkbox label--orange"></div>
+                </label>
                 <div class="todo-list__item__text ellip">
                   To Do List Webapp Project
                 </div>
@@ -442,7 +457,10 @@
             </li>
             <li class="todo-list__item">
               <a href="#;">
-                <div class="label-square--checkbox"></div>
+                <label class="checkbox-box--label">
+                  <input type="checkbox">
+                  <div class="checkbox"></div>
+                </label>
                 <div class="todo-list__item__text ellip">
                   To Do List Webapp Project
                 </div>

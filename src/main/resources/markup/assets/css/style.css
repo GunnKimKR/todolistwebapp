@@ -6,6 +6,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0 6%;
   background: url(../images/bg_login-page.jpg) 50% 50%/cover no-repeat;
 }
 
@@ -272,7 +273,7 @@
 
 /*************** Task From Container ***************/
 .task-form-container {
-  margin-top: -10.3rem;
+  margin-top: -12.4rem;
   width: 100%;
   padding: 1rem 0;
   background-color: #fff;
