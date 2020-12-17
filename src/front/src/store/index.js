@@ -11,8 +11,8 @@ export default new Vuex.Store({
       email: getEmail() || '',
     },
     popup: {
-      title: '',
-      contents: '',
+      name: '',
+      message: '',
     },
   },
   getters: {
@@ -21,20 +21,19 @@ export default new Vuex.Store({
     },
   },
   mutations: {
-    openPopup(state, message) {
-      state.popup.title = message.title || 'Error';
-      state.popup.contents = message.contents;
-      location.href = '#commonPopup';
-    },
-    setUser(state, user) {
+    saveUser(state, user) {
       state.user.token = user.token;
       state.user.email = user.email;
     },
-  },
-  actions: {
-    saveUser({ commit }, user) {
-      commit('setUser', user);
+    openPopup(state, popup) {
+      state.popup.name = popup.name || '';
+      state.popup.message = popup.message || '';
+      location.href = '#popup';
+    },
+    initPopup(state) {
+      console.log(111);
+      state.popup.name = '';
+      state.popup.message = '';
     },
   },
-  modules: {},
 });

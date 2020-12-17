@@ -2,7 +2,7 @@
 
 /********************* popup.css *********************/
 
-.pop-container {
+#popup {
   display: none;
   justify-content: center;
   align-items: center;
@@ -18,29 +18,18 @@
   padding: 0 6%;
 }
 
-.pop__form {
+#popup:target {
+  display: flex;
+}
+
+#pop-container {
   width: 100%;
-  max-width: 40rem;
   padding: 2.5rem;
+  border-radius: 2px;
   background-color: #fff;
-  text-align: center;
 }
 
-.pop__form > strong {
-  font-size: 2rem;
-}
-
-.pop__form > :not(:first-child) {
-  margin-top: 2rem;
-}
-
-.pop__form .pop-btn-close {
-  display: block;
-  margin-top: .8rem;
-  font-size: 1.2rem;
-}
-
-.pop__form .pop-btn-close:after {
+#pop-container .pop-btn-close:after {
   position: fixed;
   top: 0;
   right: 0;
@@ -52,8 +41,43 @@
   content: '';
 }
 
-.pop__form .button-area {
-  display: flex;
-  justify-content: center;
+
+.pop-ps-find-form {
+  width: 100%;
+  max-width: 40rem;
+  padding: 2.5rem;
+  border-radius: 2px;
+  background-color: #fff;
+  text-align: center;
 }
 
+.pop-notice-content > strong {
+  font-size: 2rem;
+}
+
+.pop-notice-content .sign-form__row {
+  margin-top: 2rem;
+}
+
+.icon-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  margin: 0 auto;
+  border-radius: 50%;
+  background-color: #ea4335;
+  font-size: 1.6rem;
+  color: #fff;
+}
+
+.pop-message {
+  margin: 1rem 0 2rem;
+}
+
+.pop-notice-content .pop-btn-close {
+  display: block;
+  margin-top: 1rem;
+  font-size: 1.2rem;
+}

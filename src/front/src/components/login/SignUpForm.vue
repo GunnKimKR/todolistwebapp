@@ -7,15 +7,16 @@
     <form id="userForm" @submit.prevent="userFormSubmit">
       <h2 class="blind">Sign up</h2>
       <div class="sign-form__row">
-        <div class="input-box">
-          <label for="user-name" class="placeholder-input">User name</label>
+        <div
+          class="input-box"
+          :class="[usernameStatus.className, usernameStatus.activeClass]"
+        >
+          <label for="user-name" class="input-placeholder">User name</label>
           <input
             type="text"
             id="user-name"
             name="username"
-            class="input-sign-form"
             maxlength="20"
-            :class="usernameStatus.className"
             v-model="username"
             @focus="inputFocus"
             @blur="inputBlur"
@@ -29,15 +30,16 @@
         </div>
       </div>
       <div class="sign-form__row">
-        <div class="input-box">
-          <label for="input-join-email" class="placeholder-input">Email</label>
+        <div
+          class="input-box"
+          :class="[emailStatus.className, emailStatus.activeClass]"
+        >
+          <label for="input-join-email" class="input-placeholder">Email</label>
           <input
             type="text"
             id="input-join-email"
             name="email"
-            class="input-sign-form"
             maxlength="30"
-            :class="emailStatus.className"
             v-model="email"
             @focus="inputFocus"
             @blur="inputBlur"
@@ -51,17 +53,18 @@
         </div>
       </div>
       <div class="sign-form__row">
-        <div class="input-box">
-          <label for="input-join-password" class="placeholder-input">
+        <div
+          class="input-box"
+          :class="[passwordStatus.className, passwordStatus.activeClass]"
+        >
+          <label for="input-join-password" class="input-placeholder">
             Password
           </label>
           <input
             type="password"
             id="input-join-password"
             name="password"
-            class="input-sign-form"
             maxlength="20"
-            :class="passwordStatus.className"
             v-model="password"
             @focus="inputFocus"
             @blur="inputBlur"
@@ -75,7 +78,7 @@
         </div>
       </div>
       <div class="sign-form__row btn-area">
-        <button type="submit" class="btn-primary">Sign up</button>
+        <button type="submit" class="btn-primary">Sign up &amp; Sign in</button>
       </div>
     </form>
   </section>
