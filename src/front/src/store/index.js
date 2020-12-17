@@ -21,19 +21,30 @@ export default new Vuex.Store({
     },
   },
   mutations: {
-    saveUser(state, user) {
-      state.user.token = user.token;
-      state.user.email = user.email;
+    saveLoginUser(state, user) {
+      state.user = {
+        token: user.token,
+        email: user.email,
+      };
+    },
+    deleteLoginUser(state) {
+      state.user = {
+        token: '',
+        email: '',
+      };
     },
     openPopup(state, popup) {
-      state.popup.name = popup.name || '';
-      state.popup.message = popup.message || '';
+      state.popup = {
+        name: popup.name || '',
+        message: popup.message || '',
+      };
       location.href = '#popup';
     },
     initPopup(state) {
-      console.log(111);
-      state.popup.name = '';
-      state.popup.message = '';
+      state.popup = {
+        name: '',
+        message: '',
+      };
     },
   },
 });

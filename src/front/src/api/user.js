@@ -25,7 +25,7 @@ async function login(vm, loginForm) {
         email: loginForm.email,
       };
       saveUserToCookie(user);
-      vm.$store.commit('saveUser', user);
+      vm.$store.commit('saveLoginUser', user);
       vm.$router.push('/main');
     })
     .catch(error => {

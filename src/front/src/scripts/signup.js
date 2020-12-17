@@ -102,7 +102,6 @@ async function checkEmailRegistered(email) {
   isEmailRegistered = await checkDuplicateEmail(email);
   if (isEmailRegistered) {
     vm.emailStatus = errorStatus;
-    vm.error.emailMsg = msg_email_already_registered;
   } else {
     vm.emailStatus = isEmailValid(email) ? validStatus : errorStatus;
   }
