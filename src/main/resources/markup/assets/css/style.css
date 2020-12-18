@@ -193,7 +193,7 @@
   text-align: center;
 }
 
-.pop-notice-content > strong {
+.pop-notice-content__header > strong {
   font-size: 2rem;
 }
 
