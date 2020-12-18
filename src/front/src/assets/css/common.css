@@ -141,6 +141,11 @@ dt, th, strong, b {
   cursor: pointer;
 }
 
+.btn-primary[disabled] {
+  background-color: #cacaca;
+  cursor: default;
+}
+
 .label-square,
 .label-square--checkbox {
   flex: 0 0 auto;

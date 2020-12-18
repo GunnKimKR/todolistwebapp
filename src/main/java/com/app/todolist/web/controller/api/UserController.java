@@ -42,4 +42,9 @@ public class UserController extends AbstractRestController {
     return new Response("token", token);
   }
 
+  @GetMapping("/sendVerifyCode")
+  public Response sendVerifyCode(String email){
+    return new Response("verifyCode", 1234);
+  }
+
 }

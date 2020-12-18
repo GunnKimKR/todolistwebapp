@@ -17,23 +17,10 @@ function isPasswordFormatValid(passsword) {
   return passsword.length > 3;
 }
 
-function saveUserToCookie(user) {
-  document.cookie = `token=${user.token}`;
-  document.cookie = `email=${user.email}`;
-}
-
-function getToken() {
-  return document.cookie.replace(
-    /(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/,
-    '$1',
-  );
-}
-
-function getEmail() {
-  return document.cookie.replace(
-    /(?:(?:^|.*;\s*)email\s*=\s*([^;]*).*$)|^.*$/,
-    '$1',
-  );
+function getCookie(name) {
+  var results = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+  if (results) return unescape(results[2]);
+  else return null;
 }
 
 export {
@@ -41,7 +28,5 @@ export {
   blurInputEffect,
   isEmailFormatValid,
   isPasswordFormatValid,
-  saveUserToCookie,
-  getToken,
-  getEmail,
+  getCookie,
 };

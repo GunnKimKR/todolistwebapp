@@ -1,6 +1,5 @@
 import { userApi } from './index';
 import { msg_server_error } from '@/scripts/message';
-import { saveUserToCookie } from '@/scripts/common';
 
 async function signup(vm, userForm) {
   await userApi
@@ -24,7 +23,6 @@ async function login(vm, loginForm) {
         token: res.data.data.token,
         email: loginForm.email,
       };
-      saveUserToCookie(user);
       vm.$store.commit('saveLoginUser', user);
       vm.$router.push('/main');
     })
@@ -48,4 +46,16 @@ async function checkDuplicateEmail(email) {
   return isRegistered;
 }
 
-export { signup, checkDuplicateEmail, login };
+async function sendVerifyCode(email) {
+  let verifyCode = null;
+  await userApi
+    .get('sendVerifyCode', {
+      params: { email },
+    })
+    .then(res => {
+      verifyCode = res.data.data.verifyCode;
+    });
+  return verifyCode;
+}
+
+export { signup, checkDuplicateEmail, login, sendVerifyCode };

@@ -27,8 +27,7 @@ export default {
   },
   methods: {
     closePopup() {
-      location.href = '#';
-      this.$store.commit('initPopup');
+      this.$store.commit('closePopup');
     },
   },
 };

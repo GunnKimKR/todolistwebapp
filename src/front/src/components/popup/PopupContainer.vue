@@ -1,6 +1,16 @@
 <template>
   <div id="pop-container" class="pop-ps-find-form">
-    <slot name="pop-notice-content"></slot>
+    <div class="pop-notice-content">
+      <header class="pop-notice-content__header">
+        <slot name="header"></slot>
+      </header>
+      <div class="pop-notice-content__body">
+        <slot name="body"></slot>
+      </div>
+      <footer class="pop-notice-content__footer">
+        <slot name="footer"></slot>
+      </footer>
+    </div>
   </div>
 </template>
 

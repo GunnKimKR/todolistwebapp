@@ -1,50 +1,35 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { getToken, getEmail } from '@/scripts/common';
+import { getCookie } from '@/scripts/common';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    user: {
-      token: getToken() || '',
-      email: getEmail() || '',
-    },
-    popup: {
-      name: '',
-      message: '',
-    },
+    user: JSON.parse(getCookie('user')) || '',
+    popup: JSON.parse(getCookie('popup')) || '',
   },
   getters: {
     isLogin(state) {
-      return state.user.token != '';
+      return state.user != '';
     },
   },
   mutations: {
     saveLoginUser(state, user) {
-      state.user = {
-        token: user.token,
-        email: user.email,
-      };
+      state.user = { ...user };
+      document.cookie = 'user=' + JSON.stringify(user);
     },
     deleteLoginUser(state) {
-      state.user = {
-        token: '',
-        email: '',
-      };
+      state.user = '';
+      document.cookie = 'user=; expires=Thu, 01 Jan 1970 00:00:00 UTC;';
     },
     openPopup(state, popup) {
-      state.popup = {
-        name: popup.name || '',
-        message: popup.message || '',
-      };
+      state.popup = { ...popup };
+      document.cookie = 'popup=' + JSON.stringify(popup);
       location.href = '#popup';
     },
-    initPopup(state) {
-      state.popup = {
-        name: '',
-        message: '',
-      };
+    closePopup(state) {
+      location.href = '#';
     },
   },
 });

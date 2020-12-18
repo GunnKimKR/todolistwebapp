@@ -1,22 +1,21 @@
 <template>
   <PopupContainer>
-    <div slot="pop-notice-content" class="pop-notice-content">
-      <div class="icon-message">
-        <i class="fas fa-exclamation"></i>
-      </div>
-      <p class="pop-message">
-        {{ popup.message }}
-      </p>
+    <div slot="header" class="icon-message">
+      <i class="fas fa-exclamation"></i>
+    </div>
 
-      <div class="sign-form__row">
-        <button
-          type="button"
-          class="btn-primary pop-btn-close"
-          @click="closePopup"
-        >
-          OK
-        </button>
-      </div>
+    <p slot="body" class="pop-message">
+      {{ popup.message }}
+    </p>
+
+    <div slot="footer" class="sign-form__row">
+      <button
+        type="button"
+        class="btn-primary pop-btn-close"
+        @click="closePopup"
+      >
+        OK
+      </button>
     </div>
   </PopupContainer>
 </template>
