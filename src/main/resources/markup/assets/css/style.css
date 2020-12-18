@@ -293,6 +293,16 @@
   margin-top: .4rem;
 }
 
+.task-form__row.task-recur {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height .5s ease;
+}
+
+.task-form__row.date-pick + .task-form__row.task-recur {
+  max-height: 2.5rem;
+}
+
 .input-box ~ button {
   flex: 0 0 auto;
   display: flex;
