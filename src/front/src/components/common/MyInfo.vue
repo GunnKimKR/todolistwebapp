@@ -18,7 +18,7 @@
           </dl>
         </div>
         <div class="button-area">
-          <a href="#;" class="btn-primary">Logout</a>
+          <a href="#;" @click="logout" class="btn-primary">Logout</a>
           <a href="#;" class="btn-primary">Delete Account</a>
         </div>
       </header>
@@ -43,7 +43,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    logout() {
+      this.$store.commit('deleteLoginUser');
+    },
+  },
+};
 </script>
 
 <style scoped>

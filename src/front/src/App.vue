@@ -3,15 +3,15 @@
     <transition name="page">
       <router-view></router-view>
     </transition>
-    <CommonPopup> </CommonPopup>
+    <Popup></Popup>
   </div>
 </template>
 
 <script>
-import CommonPopup from '@/components/popup/common/CommonPopup.vue';
+import Popup from '@/components/popup/Popup.vue';
 export default {
   components: {
-    CommonPopup,
+    Popup,
   },
 };
 </script>

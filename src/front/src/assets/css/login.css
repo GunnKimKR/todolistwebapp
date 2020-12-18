@@ -68,7 +68,7 @@
   
 }
 
-.sign-form-group .sign-form-slider-container {
+.sign-form-slider {
   display: flex;
   overflow: hidden;
   width: 100%;
@@ -76,11 +76,8 @@
 }
 
 .sign-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-shrink: 0;
-  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
   padding: 2rem 3rem 0;
   transition: transform .5s ease;
 }
@@ -89,66 +86,62 @@
   transform: translateX(-100%);
 }
 
-.sign-form__row {
-  width: 100%;
-  text-align: center;
-}
-
 .sign-form__row + .sign-form__row {
   margin-top: 2rem;
 }
 
-.sign-form__row.hyperlink-area {
-  margin-top: .8rem;
-}
-
-.input-box {
+.sign-form__row .input-box {
   position: relative;
 }
 
-.placeholder-input {
+.sign-form__row .input-placeholder {
   position: absolute;
   bottom: 0;
-  left: 5px;
-  padding: .5rem 0 .6rem;
+  left: 0;
+  padding: .5em 0;
   transition: .4s ease;
   transition-property: bottom, padding, font-size;
 }
 
-.input-box.active .placeholder-input {
+.sign-form__row .input-box.active .input-placeholder {
+  left: 0;
   bottom: 85%;
   padding: 0;
   font-size: 1rem;
 }
 
-.input-sign-form {
-  display: block;
-  width: 100%;
-  padding: .5rem 0;
+.sign-form__row .input-box {
+  padding: .5em 0;
+  border: none;
   border-bottom: 1px solid #333;
-  text-indent: 5px;
+  border-radius: 0;
 }
 
-.input-success {
+.sign-form__row .input-success,
+.sign-form__row .input-success input {
   border-bottom-color: #34a853;
   color: #34a853;
 }
 
-.input-error {
+.sign-form__row .input-error,
+.sign-form__row .input-error input {
   border-bottom-color: #ea4335;
   color: #ea4335;
 }
 
-.error-message {
+.sign-form__row .error-message {
   width: 100%;
   margin-top: .2rem;
   font-size: 1.2rem;
-  text-align: left;
   color: #e32a37;
+  text-align: left;
 }
 
-.btn-ps-search {
+.sign-form .btn-ps-find {
+  display: block;
+  margin-top: 1rem;
   font-size: 1.2rem;
+  text-align: center;
 }
 
 .sns-btn-area {
@@ -184,5 +177,28 @@
 
 .sns-btn-area .btn-primary i {
   margin-right: 1.2rem;
-  font-size: 1.6rem;
 }
+
+.sign-form__row .input-placeholder {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: .5em 0;
+  transition: .4s ease;
+  transition-property: bottom, padding, font-size;
+}
+
+.sign-form__row .input-box.active .input-placeholder {
+  left: 0;
+  bottom: 85%;
+  padding: 0;
+  font-size: 1rem;
+}
+
+.sign-form .btn-ps-find {
+  display: block;
+  margin: 1rem auto 0;
+  font-size: 1.2rem;
+}
+
+

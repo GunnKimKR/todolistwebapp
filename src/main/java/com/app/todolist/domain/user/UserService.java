@@ -32,7 +32,7 @@ public class UserService {
 
   public JoinUser login(UserParams param) {
     JoinUser joinUser = joinUserRepository.findByLoginId(param.getEmail())
-        .orElseThrow(() -> new IllegalArgumentException(Message.EMAIL_NOT_EXIST));
+        .orElseThrow(() -> new IllegalArgumentException(Message.WRONG_EMAIL));
 
     if(!BCrypt.checkpw(param.getPassword(), joinUser.getPassword())){
       throw new IllegalArgumentException(Message.WRONG_PASSWORD);

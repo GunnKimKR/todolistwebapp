@@ -1,18 +1,38 @@
 import { userApi } from './index';
-import { signupSuccess } from '@/scripts/signup';
 import { msg_server_error } from '@/scripts/message';
 import { saveUserToCookie } from '@/scripts/common';
 
 async function signup(vm, userForm) {
-  return await userApi
+  await userApi
     .post('', userForm)
     .then(() => {
-      signupSuccess();
+      login(vm, userForm);
     })
     .catch(error => {
-      const contents =
-        error.response.data.error.errorMessage || msg_server_error;
-      vm.$store.commit('openPopup', { contents });
+      vm.$store.commit('openPopup', {
+        name: 'message',
+        message: error.response.data.error.errorMessage || msg_server_error,
+      });
+    });
+}
+
+async function login(vm, loginForm) {
+  await userApi
+    .post('login', loginForm)
+    .then(res => {
+      const user = {
+        token: res.data.data.token,
+        email: loginForm.email,
+      };
+      saveUserToCookie(user);
+      vm.$store.commit('saveLoginUser', user);
+      vm.$router.push('/main');
+    })
+    .catch(error => {
+      vm.$store.commit('openPopup', {
+        name: 'message',
+        message: error.response.data.error.errorMessage || msg_server_error,
+      });
     });
 }
 
@@ -26,23 +46,6 @@ async function checkDuplicateEmail(email) {
       isRegistered = res.data.data.duplicateEmailCount > 0;
     });
   return isRegistered;
-}
-
-async function login(vm, loginForm) {
-  await userApi
-    .post('login', loginForm)
-    .then(res => {
-      const user = {
-        token: res.data.data.token,
-        email: loginForm.email,
-      };
-      saveUserToCookie(user);
-      vm.$store.dispatch('saveUser', user);
-    })
-    .catch(error => {
-      const title = error.response.data.error.errorMessage || msg_server_error;
-      vm.$store.commit('openPopup', { title });
-    });
 }
 
 export { signup, checkDuplicateEmail, login };

@@ -21,9 +21,23 @@ const passwordId = 'input-join-password';
 const inputValidClassName = 'input-success';
 const inputErrorClassName = 'input-error';
 
-const initStatus = { isValid: true, className: '' };
-const validStatus = { isValid: true, className: inputValidClassName };
-const errorStatus = { isValid: false, className: inputErrorClassName };
+const initStatus = { isValid: true, className: '', activeClass: '' };
+const validStatus = {
+  isValid: true,
+  className: inputValidClassName,
+  activeClass: 'active',
+};
+const errorStatus = {
+  isValid: false,
+  className: inputErrorClassName,
+  activeClass: 'active',
+};
+
+const initError = {
+  usernameMsg: msg_mandatory_field,
+  emailMsg: msg_mandatory_field,
+  passwordMsg: msg_mandatory_field,
+};
 
 let vm = null;
 let isEmailRegistered = false;
@@ -41,19 +55,63 @@ function inputBlurEvent(event) {
   changeInputStatus(event);
 }
 
+function changeInputStatus(event) {
+  const blurWithErrorStaus = {
+    ...errorStatus,
+    activeClass: '',
+  };
+
+  if (!event.target.value) {
+    const id = event.target.getAttribute('id');
+    if (id == usernameId) {
+      vm.usernameStatus = blurWithErrorStaus;
+    } else if (id == emailId) {
+      vm.emailStatus = blurWithErrorStaus;
+    } else if (id == passwordId) {
+      vm.passwordStatus = blurWithErrorStaus;
+    }
+  } else {
+    if (event.target.value && event.target.getAttribute('id') == emailId) {
+      const email = event.target.value;
+      checkEmailRegistered(email);
+    }
+  }
+}
+
 function changeUsername() {
   vm.usernameStatus = isUsernameValid(vm.username) ? validStatus : errorStatus;
+}
+
+function isUsernameValid(username) {
+  return username;
 }
 
 function changeEmail() {
   const email = vm.email;
   vm.emailStatus = isEmailValid(email) ? validStatus : errorStatus;
-  vm.error.emailMsg =
-    email && !isEmailFormatValid(email)
-      ? msg_email_format_incorrect
-      : isEmailRegistered
-      ? msg_email_already_registered
-      : msg_mandatory_field;
+  if (!email) {
+    vm.error.emailMsg = msg_mandatory_field;
+  } else if (!isEmailFormatValid(email)) {
+    vm.error.emailMsg = msg_email_format_incorrect;
+  } else if (checkEmailRegistered(email)) {
+    vm.error.emailMsg = msg_email_already_registered;
+  } else {
+    vm.error.emailMsg = '';
+  }
+}
+
+function isEmailValid(email) {
+  return email && isEmailFormatValid(email) && !isEmailRegistered;
+}
+
+async function checkEmailRegistered(email) {
+  isEmailRegistered = await checkDuplicateEmail(email);
+  if (isEmailRegistered) {
+    vm.emailStatus = errorStatus;
+  } else {
+    vm.emailStatus = isEmailValid(email) ? validStatus : errorStatus;
+  }
+  return isEmailRegistered;
 }
 
 function changePassword() {
@@ -65,18 +123,13 @@ function changePassword() {
       : msg_mandatory_field;
 }
 
-function changeInputStatus(event) {
-  if (!event.target.value) {
-    const id = event.target.getAttribute('id');
-    if (id == usernameId) {
-      vm.usernameStatus = errorStatus;
-    } else if (id == emailId) {
-      vm.emailStatus = errorStatus;
-    } else if (id == passwordId) {
-      vm.passwordStatus = errorStatus;
-    }
-  } else {
-    checkEmail(event);
+function isPasswordValid(password) {
+  return password && isPasswordFormatValid(password);
+}
+
+async function registerUser() {
+  if (validateUserForm()) {
+    await signup(vm, vm.userForm);
   }
 }
 
@@ -97,85 +150,14 @@ function validateUserForm() {
   return true;
 }
 
-function isUsernameValid(username) {
-  return username;
-}
-
-function isEmailValid(email) {
-  return email && isEmailFormatValid(email) && !isEmailRegistered;
-}
-
-function isPasswordValid(password) {
-  return password && isPasswordFormatValid(password);
-}
-
-async function checkEmail(event) {
-  if (event.target.value && event.target.getAttribute('id') == emailId) {
-    const email = event.target.value;
-    isEmailRegistered = await checkDuplicateEmail(email);
-    if (isEmailRegistered) {
-      vm.emailStatus = errorStatus;
-      vm.error.emailMsg = msg_email_already_registered;
-    } else {
-      vm.emailStatus = validStatus;
-    }
-  }
-}
-
-async function registerUser() {
-  if (validateUserForm()) {
-    await signup(vm, vm.userForm);
-  }
-}
-
-function signupSuccess() {
-  initUserData();
-  openSignupSuccessModal();
-}
-
-function initUserData() {
-  initUserForm();
-  setTimeout(() => {
-    initUserStatus();
-  }, 100);
-}
-
-function initUserForm() {
-  vm.username = '';
-  vm.email = '';
-  vm.password = '';
-}
-
-function initUserStatus() {
-  vm.usernameStatus = initStatus;
-  vm.emailStatus = initStatus;
-  vm.passwordStatus = initStatus;
-  inActivateInputBox();
-}
-
-function inActivateInputBox() {
-  document
-    .querySelectorAll('.sign-up-form .input-box')
-    .forEach(node => node.classList.remove('active'));
-}
-
-function openSignupSuccessModal() {
-  location.href = '#signupSuccessPopup';
-}
-
 export {
   initStatus,
-  validStatus,
-  errorStatus,
+  initError,
   changeUsername,
   changeEmail,
   changePassword,
-  changeInputStatus,
-  validateUserForm,
-  checkEmail,
   inputFocusEvent,
   inputBlurEvent,
   registerUser,
-  signupSuccess,
   registerSignupModel,
 };

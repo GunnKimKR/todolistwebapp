@@ -4,29 +4,29 @@
       <h2 class="blind">Sign in</h2>
       <div class="sign-form__row">
         <div class="input-box">
-          <label for="input-email" class="placeholder-input">Email</label>
+          <label for="input-email" class="input-placeholder">Email</label>
           <input
             type="text"
             id="input-email"
             name="email"
-            class="input-sign-form"
             @focus="focusInput"
             @blur="blurInput"
             v-model="email"
+            ref="email"
           />
         </div>
       </div>
       <div class="sign-form__row">
         <div class="input-box">
-          <label for="input-password" class="placeholder-input">Password</label>
+          <label for="input-password" class="input-placeholder">Password</label>
           <input
             type="password"
             id="input-password"
             name="password"
-            class="input-sign-form"
             @focus="focusInput"
             @blur="blurInput"
             v-model="password"
+            ref="password"
           />
         </div>
       </div>
@@ -36,9 +36,9 @@
         </button>
       </div>
       <div class="sign-form__row hyperlink-area">
-        <a href="#forgotPasswordPopup" class="btn-ps-search">
+        <button type="button" @click="resetPasswordPopup" class="btn-ps-find">
           Forgot your password?
-        </a>
+        </button>
       </div>
     </form>
   </section>
@@ -76,6 +76,11 @@ export default {
     },
     loginFormSubmit() {
       loginUser();
+    },
+    resetPasswordPopup() {
+      this.$store.commit('openPopup', {
+        name: 'resetPassword',
+      });
     },
   },
 };

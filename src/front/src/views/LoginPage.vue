@@ -12,7 +12,7 @@
           </strong>
         </div>
 
-        <div class="sign-form-slider-container">
+        <div class="sign-form-slider">
           <SignInForm :activeClass="activeClass[1]"></SignInForm>
           <SignUpForm :activeClass="activeClass[1]"></SignUpForm>
         </div>
@@ -33,24 +33,17 @@
         </div>
       </div>
     </main>
-
-    <ForgotPasswordPopup></ForgotPasswordPopup>
-    <SignupSuccessPopup @slideToLogin="slideToLogin"></SignupSuccessPopup>
   </div>
 </template>
 
 <script>
 import SignInForm from '@/components/login/SignInForm.vue';
 import SignUpForm from '@/components/login/SignUpForm.vue';
-import ForgotPasswordPopup from '@/components/popup/ForgotPasswordPopup.vue';
-import SignupSuccessPopup from '@/components/popup/SignupSuccessPopup.vue';
 
 export default {
   components: {
     SignInForm,
     SignUpForm,
-    ForgotPasswordPopup,
-    SignupSuccessPopup,
   },
   data() {
     return {
