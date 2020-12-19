@@ -1,0 +1,46 @@
+.spinner {
+  display: inline-block;
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 200;
+}
+
+.spinner div {
+  display: inline-block;
+  position: absolute;
+  left: 6px;
+  width: 7px;
+  animation: spinner 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+  background: rgb(50, 0, 100);
+}
+
+.spinner div:nth-child(1) {
+  left: 7px;
+  animation-delay: -0.24s;
+}
+
+.spinner div:nth-child(2) {
+  left: 21px;
+  animation-delay: -0.12s;
+}
+
+.spinner div:nth-child(3) {
+  left: 35px;
+  animation-delay: 0;
+}
+
+@keyframes spinner {
+  0% {
+    top: 2px;
+    height: 26px;
+  }
+  50%,
+  100% {
+    top: 7px;
+    height: 13px;
+  }
+}
