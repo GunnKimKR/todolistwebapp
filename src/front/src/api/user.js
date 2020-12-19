@@ -1,5 +1,6 @@
 import { userApi } from './index';
 import { msg_server_error } from '@/scripts/message';
+import { initAndClose } from '@/scripts/resetpassword';
 
 async function signup(vm, userForm) {
   await userApi
@@ -31,7 +32,7 @@ async function login(vm, loginForm) {
 }
 
 async function checkDuplicateEmail(email) {
-  let isRegistered = false;
+  let isRegistered;
   await userApi
     .get('duplicateEmailCount', {
       params: { email },
@@ -43,7 +44,7 @@ async function checkDuplicateEmail(email) {
 }
 
 async function sendVerifyCode(email) {
-  let verifyCode = null;
+  let verifyCode;
   await userApi
     .get('sendVerifyCode', {
       params: { email },
@@ -61,7 +62,7 @@ async function resetPassword(vm, email, password) {
       password,
     })
     .then(res => {
-      vm.$store.commit('closePopup');
+      initAndClose();
       vm.$store.commit('saveLoginUser', res.data.data.user);
       vm.$router.push('/main');
     });

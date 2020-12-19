@@ -98,6 +98,7 @@ import {
 } from '@/scripts/signup';
 
 export default {
+  props: ['activeClass'],
   data() {
     return {
       username: '',
@@ -114,7 +115,6 @@ export default {
   created() {
     registerSignupModel(this);
   },
-  props: ['activeClass'],
   computed: {
     userForm() {
       return {

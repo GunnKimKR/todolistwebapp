@@ -1,6 +1,5 @@
 <template>
   <div class="plans-container">
-    <!---------------------- Plan Search Container ---------------------->
     <section class="plan-search-container">
       <h2 class="blind">검색된 일정 목록</h2>
       <div class="plan-search__group">
@@ -73,7 +72,6 @@
         </ul>
       </div>
     </section>
-    <!---------------------- //Plan Search Container ---------------------->
   </div>
 </template>
 

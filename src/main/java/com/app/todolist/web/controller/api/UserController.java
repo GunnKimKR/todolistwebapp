@@ -47,18 +47,18 @@ public class UserController extends AbstractRestController {
   }
 
   @GetMapping("/sendVerifyCode")
-  public Response sendVerifyCode(String email){
+  public Response sendVerifyCode(String email) {
     String verifyCode = "T-";
-    for(int i = 0; i < 6; i++) {
+    for (int i = 0; i < 6; i++) {
       double dValue = Math.random() * 10;
-      verifyCode += (int)dValue;
+      verifyCode += (int) dValue;
     }
     mailService.sendMail(email, verifyCode);
     return new Response("verifyCode", verifyCode);
   }
 
   @PutMapping("/resetPassword")
-  public Response resetPassword(@RequestBody UserParams param){
+  public Response resetPassword(@RequestBody UserParams param) {
     UserDTO user = userService.resetPassword(param);
     return new Response("user", user);
   }

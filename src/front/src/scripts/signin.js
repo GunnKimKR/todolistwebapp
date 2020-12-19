@@ -1,6 +1,6 @@
 import { login } from '@/api/user';
 
-let vm = null;
+let vm;
 
 function registerSigninModel(model) {
   vm = model;

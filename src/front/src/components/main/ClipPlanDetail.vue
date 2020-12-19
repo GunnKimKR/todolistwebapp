@@ -58,22 +58,22 @@
 </template>
 
 <script>
-import { eventBus } from '@/scripts/main';
+import { clipEventBus } from '@/scripts/clip';
 
 export default {
   data() {
     return {
-      planActiveClass: null,
+      planActiveClass: '',
     };
   },
   created() {
-    eventBus.$on('clipPlanDetail', planNo => {
+    clipEventBus.$on('clipPlanDetail', planNo => {
       this.planActiveClass = 'active';
     });
   },
   methods: {
     closePlanDetail() {
-      this.planActiveClass = null;
+      this.planActiveClass = '';
     },
   },
 };

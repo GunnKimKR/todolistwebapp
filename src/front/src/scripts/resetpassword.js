@@ -5,6 +5,7 @@ import {
 } from '@/scripts/common';
 
 import { checkDuplicateEmail, sendVerifyCode, resetPassword } from '@/api/user';
+import bus from '@/scripts/bus';
 
 const inputValidClassName = 'input-success';
 const inputErrorClassName = 'input-error';
@@ -21,7 +22,7 @@ const errorStatus = {
   activeClass: 'active',
 };
 
-let vm = null;
+let vm;
 
 function registerResetPasswordModel(model) {
   vm = model;
@@ -40,7 +41,10 @@ async function changeEmail() {
 }
 
 async function sendEmail() {
+  bus.$emit('startSpinner');
   vm.verifyCode = await sendVerifyCode(vm.email);
+  bus.$emit('endSpinner');
+
   vm.resetOrder++;
 }
 
@@ -52,7 +56,7 @@ function changePassword() {
       vm.password2Status = validStatus;
       vm.isPasswordAllValid = true;
     }
-  } else {
+  } else if (vm.password) {
     vm.passwordStatus = errorStatus;
   }
 }
@@ -62,7 +66,7 @@ function changePassword2() {
   if (isPasswordValid(vm.password2) && vm.password == vm.password2) {
     vm.password2Status = validStatus;
     vm.isPasswordAllValid = true;
-  } else {
+  } else if (vm.password2) {
     vm.password2Status = errorStatus;
   }
 }

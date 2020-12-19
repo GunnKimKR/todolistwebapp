@@ -49,16 +49,16 @@ import { focusInputEffect, blurInputEffect } from '@/scripts/common.js';
 import { registerSigninModel, loginUser } from '@/scripts/signin';
 
 export default {
-  created() {
-    registerSigninModel(this);
-  },
+  props: ['activeClass'],
   data() {
     return {
       email: '',
       password: '',
     };
   },
-  props: ['activeClass'],
+  created() {
+    registerSigninModel(this);
+  },
   computed: {
     loginForm() {
       return {

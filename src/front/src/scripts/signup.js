@@ -39,7 +39,7 @@ const initError = {
   passwordMsg: msg_mandatory_field,
 };
 
-let vm = null;
+let vm;
 let isEmailRegistered = false;
 
 function registerSignupModel(model) {

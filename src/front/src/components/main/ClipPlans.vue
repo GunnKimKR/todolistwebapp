@@ -29,12 +29,12 @@
 </template>
 
 <script>
-import { eventBus } from '@/scripts/main';
+import { clipEventBus } from '@/scripts/clip';
 
 export default {
   methods: {
     showClipPlanDetail() {
-      eventBus.clipPlanDetail(123);
+      clipEventBus.$emit('clipPlanDetail', 123);
     },
   },
 };

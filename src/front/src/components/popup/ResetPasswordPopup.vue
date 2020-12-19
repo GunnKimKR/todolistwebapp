@@ -119,7 +119,7 @@
 </template>
 
 <script>
-import PopupContainer from '@/components/popup/PopupContainer.vue';
+import PopupContainer from '@/components/common/PopupContainer.vue';
 import {
   registerResetPasswordModel,
   initStatus,
@@ -135,8 +135,8 @@ import {
 } from '@/scripts/resetpassword';
 
 export default {
-  created() {
-    registerResetPasswordModel(this);
+  components: {
+    PopupContainer,
   },
   data() {
     return {
@@ -156,10 +156,9 @@ export default {
       resetOrder: 1,
     };
   },
-  components: {
-    PopupContainer,
+  created() {
+    registerResetPasswordModel(this);
   },
-  computed: {},
   watch: {
     email() {
       changeEmail();

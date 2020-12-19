@@ -47,18 +47,18 @@ export default {
   },
   data() {
     return {
-      activeClass: ['active', null],
+      activeClass: ['active', ''],
     };
   },
   methods: {
     slideForm(event) {
       this.activeClass =
         event.target == document.querySelectorAll('.btn-toggle')[0]
-          ? ['active', null]
-          : [null, 'active'];
+          ? ['active', '']
+          : ['', 'active'];
     },
     slideToLogin() {
-      this.activeClass = ['active', null];
+      this.activeClass = ['active', ''];
     },
   },
 };

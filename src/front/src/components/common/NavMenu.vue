@@ -49,26 +49,12 @@
 export default {
   data() {
     return {
-      tabmenuActiveClass: [null, null, null, null],
+      tabmenuActiveClass: ['', '', '', ''],
     };
   },
   created() {
-    const pageName = this.$router.currentRoute.name;
-    const activeIdx = this.getPageIdx(pageName);
-    this.tabmenuActiveClass[activeIdx] = 'active';
-  },
-  methods: {
-    getPageIdx(pageName) {
-      return pageName == 'main'
-        ? 0
-        : pageName == 'timeTable'
-        ? 1
-        : pageName == 'todo'
-        ? 2
-        : pageName == 'search'
-        ? 3
-        : null;
-    },
+    const pageIndex = this.$router.currentRoute.meta.navIdx;
+    this.tabmenuActiveClass[pageIndex] = 'active';
   },
 };
 </script>
