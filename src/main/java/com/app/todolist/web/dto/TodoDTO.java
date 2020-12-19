@@ -7,8 +7,6 @@ import lombok.Data;
 @Data
 public class TodoDTO {
 
-  //todo번호, 닉네임, todo 제목, 완료여부, 작성일자 조회
-
   Long todoId;
   String nickname;
   String title;

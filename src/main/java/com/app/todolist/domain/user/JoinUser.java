@@ -17,4 +17,7 @@ public class JoinUser{
   private String loginId;
   private String password;
 
+  public void updatePassword(String password) {
+    this.password = password;
+  }
 }

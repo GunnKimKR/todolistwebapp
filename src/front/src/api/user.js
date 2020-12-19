@@ -19,11 +19,7 @@ async function login(vm, loginForm) {
   await userApi
     .post('login', loginForm)
     .then(res => {
-      const user = {
-        token: res.data.data.token,
-        email: loginForm.email,
-      };
-      vm.$store.commit('saveLoginUser', user);
+      vm.$store.commit('saveLoginUser', res.data.data.user);
       vm.$router.push('/main');
     })
     .catch(error => {
@@ -58,4 +54,17 @@ async function sendVerifyCode(email) {
   return verifyCode;
 }
 
-export { signup, checkDuplicateEmail, login, sendVerifyCode };
+async function resetPassword(vm, email, password) {
+  await userApi
+    .put('resetPassword', {
+      email,
+      password,
+    })
+    .then(res => {
+      vm.$store.commit('closePopup');
+      vm.$store.commit('saveLoginUser', res.data.data.user);
+      vm.$router.push('/main');
+    });
+}
+
+export { signup, checkDuplicateEmail, login, sendVerifyCode, resetPassword };

@@ -1,5 +1,25 @@
-import { focusInputEffect, blurInputEffect } from '@/scripts/common';
-import { checkDuplicateEmail, sendVerifyCode } from '@/api/user';
+import {
+  focusInputEffect,
+  blurInputEffect,
+  isPasswordFormatValid,
+} from '@/scripts/common';
+
+import { checkDuplicateEmail, sendVerifyCode, resetPassword } from '@/api/user';
+
+const inputValidClassName = 'input-success';
+const inputErrorClassName = 'input-error';
+
+const initStatus = { isValid: true, className: '', activeClass: '' };
+const validStatus = {
+  isValid: true,
+  className: inputValidClassName,
+  activeClass: 'active',
+};
+const errorStatus = {
+  isValid: false,
+  className: inputErrorClassName,
+  activeClass: 'active',
+};
 
 let vm = null;
 
@@ -13,28 +33,49 @@ function inputFocusEvent(event) {
 
 function inputBlurEvent(event) {
   blurInputEffect(event);
-  changeInputStatus(event);
 }
-
-function changeInputStatus(event) {}
 
 async function changeEmail() {
   vm.isEmailValid = await checkDuplicateEmail(vm.email);
 }
 
-function changeVerifyCodeInput() {
-  //
+async function sendEmail() {
+  vm.verifyCode = await sendVerifyCode(vm.email);
+  vm.resetOrder++;
 }
 
-async function sendEmail() {
-  const verifyCode = await sendVerifyCode(vm.email);
-  vm.verifyCode = verifyCode;
-  vm.resetOrder++;
+function changePassword() {
+  vm.isPasswordAllValid = false;
+  if (isPasswordValid(vm.password)) {
+    vm.passwordStatus = validStatus;
+    if (vm.password == vm.password2) {
+      vm.password2Status = validStatus;
+      vm.isPasswordAllValid = true;
+    }
+  } else {
+    vm.passwordStatus = errorStatus;
+  }
+}
+
+function changePassword2() {
+  vm.isPasswordAllValid = false;
+  if (isPasswordValid(vm.password2) && vm.password == vm.password2) {
+    vm.password2Status = validStatus;
+    vm.isPasswordAllValid = true;
+  } else {
+    vm.password2Status = errorStatus;
+  }
+}
+
+function isPasswordValid(password) {
+  return password && isPasswordFormatValid(password);
 }
 
 function checkVerifyCode() {
   if (vm.verifyCodeInput == vm.verifyCode) {
     vm.resetOrder++;
+  } else {
+    vm.isCodeValid = false;
   }
 }
 
@@ -45,17 +86,28 @@ function initAndClose() {
   vm.password = '';
   vm.password2 = '';
   vm.isEmailValid = false;
+  vm.isCodeValid = true;
+  vm.isPasswordAllValid = false;
+  vm.passwordStatus = initStatus;
+  vm.password2Status = initStatus;
   vm.resetOrder = 1;
   vm.$emit('closePopup');
 }
 
+async function resetPasswordAndSignIn() {
+  await resetPassword(vm, vm.email, vm.password);
+}
+
 export {
   registerResetPasswordModel,
+  initStatus,
   inputFocusEvent,
   inputBlurEvent,
   changeEmail,
-  changeVerifyCodeInput,
+  changePassword,
+  changePassword2,
   sendEmail,
   checkVerifyCode,
   initAndClose,
+  resetPasswordAndSignIn,
 };

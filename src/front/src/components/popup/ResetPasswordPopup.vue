@@ -26,44 +26,55 @@
         <input
           type="text"
           id="input-verify-code"
+          maxlength="10"
           v-model="verifyCodeInput"
           @focus="inputFocus"
           @blur="inputBlur"
-          ref="verifyCodeInput"
         />
       </div>
-      <div class="error-message">
+      <div v-if="!isCodeValid" class="error-message">
         <p>Invalid verification code.</p>
       </div>
     </div>
     <div v-show="resetOrder == 3" slot="body" class="sign-form__row">
-      <div class="input-box">
+      <div
+        class="input-box"
+        :class="[passwordStatus.activeClass, passwordStatus.className]"
+      >
         <label for="input-reset-password" class="input-placeholder"
           >Reset password</label
         >
         <input
           type="password"
           id="input-reset-password"
+          maxlength="20"
           v-model="password"
           @focus="inputFocus"
           @blur="inputBlur"
         />
       </div>
+      <div v-if="!passwordStatus.isValid" class="error-message">
+        <p>Password must be at least 4 digits.</p>
+      </div>
     </div>
     <div v-show="resetOrder == 3" slot="body" class="sign-form__row">
-      <div class="input-box input-error">
+      <div
+        class="input-box"
+        :class="[password2Status.activeClass, password2Status.className]"
+      >
         <label for="input-retype-password" class="input-placeholder"
           >Re-type password</label
         >
         <input
           type="password"
           id="input-retype-password"
+          maxlength="20"
           v-model="password2"
           @focus="inputFocus"
           @blur="inputBlur"
         />
       </div>
-      <div class="error-message">
+      <div v-if="!password2Status.isValid" class="error-message">
         <p>Passwords do not match.</p>
       </div>
     </div>
@@ -86,7 +97,13 @@
       >
         OK
       </button>
-      <button v-show="resetOrder == 3" type="submit" class="btn-primary">
+      <button
+        v-show="resetOrder == 3"
+        type="submit"
+        class="btn-primary"
+        :disabled="!isPasswordAllValid"
+        @click="resetAndSignIn"
+      >
         Reset &amp; Sign in
       </button>
 
@@ -105,13 +122,16 @@
 import PopupContainer from '@/components/popup/PopupContainer.vue';
 import {
   registerResetPasswordModel,
+  initStatus,
   inputFocusEvent,
   inputBlurEvent,
   changeEmail,
-  changeVerifyCodeInput,
+  changePassword,
+  changePassword2,
   sendEmail,
   checkVerifyCode,
   initAndClose,
+  resetPasswordAndSignIn,
 } from '@/scripts/resetpassword';
 
 export default {
@@ -127,18 +147,28 @@ export default {
       password2: '',
 
       isEmailValid: false,
+      isCodeValid: true,
+      isPasswordAllValid: false,
+
+      passwordStatus: initStatus,
+      password2Status: initStatus,
+
       resetOrder: 1,
     };
   },
   components: {
     PopupContainer,
   },
+  computed: {},
   watch: {
     email() {
       changeEmail();
     },
-    verifyCodeInput() {
-      changeVerifyCodeInput();
+    password() {
+      changePassword();
+    },
+    password2() {
+      changePassword2();
     },
   },
   methods: {
@@ -156,6 +186,9 @@ export default {
     },
     clickCheckButton() {
       checkVerifyCode();
+    },
+    resetAndSignIn() {
+      resetPasswordAndSignIn();
     },
   },
 };

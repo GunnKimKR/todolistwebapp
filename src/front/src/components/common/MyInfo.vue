@@ -12,9 +12,9 @@
         <div class="myinfo-header__info">
           <dl>
             <dt>name:</dt>
-            <dd>Kim Geon</dd>
+            <dd>{{ user.nickname }}</dd>
             <dt>Email:</dt>
-            <dd>kimgeonkr@gmail.com</dd>
+            <dd>{{ user.email }}</dd>
           </dl>
         </div>
         <div class="button-area">
@@ -44,6 +44,11 @@
 
 <script>
 export default {
+  computed: {
+    user() {
+      return this.$store.state.user;
+    },
+  },
   methods: {
     logout() {
       this.$store.commit('deleteLoginUser');
