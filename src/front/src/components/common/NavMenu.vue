@@ -1,44 +1,30 @@
 <template>
   <nav id="nav">
-    <h2 class="blind">메뉴</h2>
+    <h2 class="blind">Menu</h2>
     <ul class="nav__tabmenu">
       <li class="nav__tabmenu__item" :class="tabmenuActiveClass[0]">
         <router-link to="/main">
-          <img
-            src="https://img.icons8.com/fluent-systems-regular/124/333333/clipboard.png"
-            alt="클립보드"
-          />
+          <img src="https://img.icons8.com/fluent-systems-regular/124/333333/clipboard.png" alt="Pin Tasks" />
         </router-link>
       </li>
       <li class="nav__tabmenu__item" :class="tabmenuActiveClass[1]">
         <router-link to="/timeTable">
-          <img
-            src="https://img.icons8.com/fluent-systems-regular/124/333333/overtime.png"
-            alt="타임테이블"
-          />
+          <img src="https://img.icons8.com/fluent-systems-regular/124/333333/overtime.png" alt="Timetable" />
         </router-link>
       </li>
       <li class="nav__tabmenu__item" :class="tabmenuActiveClass[2]">
         <router-link to="/todo">
-          <img
-            src="https://img.icons8.com/material-rounded/124/333333/list.png"
-            alt="투두 리스트"
-          />
+          <img src="https://img.icons8.com/material-rounded/64/333333/list.png" alt="To-do List" />
         </router-link>
       </li>
       <li class="nav__tabmenu__item" :class="tabmenuActiveClass[3]">
         <router-link to="/search">
-          <img
-            src="https://img.icons8.com/fluent-systems-regular/124/333333/search.png"
-            alt="검색"
-          />
+          <img src="https://img.icons8.com/fluent-systems-regular/124/333333/search.png" alt="Task Search" />
         </router-link>
       </li>
       <li class="nav__tabmenu__item">
         <a href="#myinfo">
-          <img
-            src="https://img.icons8.com/windows/124/333333/gender-neutral-user.png"
-          />
+          <img src="https://img.icons8.com/windows/124/333333/gender-neutral-user.png" alt="My Information" />
         </a>
       </li>
     </ul>
