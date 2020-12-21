@@ -1,8 +1,9 @@
 <template>
   <div id="wrap">
-    <main id="main" class="sign-form-container">
-      <div class="sign-form-group">
-        <div class="toggle-btn-box" @click="slideForm">
+    <div id="container" class="member-registration-container">
+      <section class="member-registration">
+        <h2 class="blind">Member Registration</h2>
+        <header class="toggle-btn-group" @click="slideForm">
           <div class="toggle-btn-bg" :class="activeClass[1]"></div>
           <strong class="btn-primary btn-toggle" :class="activeClass[0]">
             Sign in
@@ -10,7 +11,7 @@
           <strong class="btn-primary btn-toggle" :class="activeClass[1]">
             Sign up
           </strong>
-        </div>
+        </header>
 
         <div class="sign-form-slider">
           <SignInForm :activeClass="activeClass[1]"></SignInForm>
@@ -31,8 +32,10 @@
             Sign in with Instagram
           </a>
         </div>
-      </div>
-    </main>
+
+      </section>
+
+    </div>
   </div>
 </template>
 
