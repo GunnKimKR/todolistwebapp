@@ -3,7 +3,7 @@
     <NavMenu></NavMenu>
     <div id="container">
       <Calendar></Calendar>
-      <ClipPlans></ClipPlans>
+      <PinTasks></PinTasks>
     </div>
     <ClipPlanDetail></ClipPlanDetail>
     <MyInfo></MyInfo>
@@ -14,7 +14,7 @@
 import NavMenu from '@/components/common/NavMenu.vue';
 import MyInfo from '@/components/common/MyInfo.vue';
 import Calendar from '@/components/common/Calendar.vue';
-import ClipPlans from '@/components/main/ClipPlans.vue';
+import PinTasks from '@/components/main/PinTasks.vue';
 import ClipPlanDetail from '@/components/main/ClipPlanDetail.vue';
 
 export default {
@@ -22,10 +22,12 @@ export default {
     NavMenu,
     MyInfo,
     Calendar,
-    ClipPlans,
+    PinTasks,
     ClipPlanDetail,
   },
 };
 </script>
 
-<style></style>
+<style>
+@import '~styles/main.css';
+</style>
