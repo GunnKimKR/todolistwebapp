@@ -5,8 +5,12 @@
         <h2 class="blind">Member Registration</h2>
         <header class="toggle-btn-group" @click="slideForm">
           <div class="toggle-btn-bg" :class="activeClass[1]"></div>
-          <strong class="btn-primary btn-toggle" :class="activeClass[0]">Sign in</strong>
-          <strong class="btn-primary btn-toggle" :class="activeClass[1]">Sign up</strong>
+          <strong class="btn-primary btn-toggle" :class="activeClass[0]">
+            Sign in
+          </strong>
+          <strong class="btn-primary btn-toggle" :class="activeClass[1]">
+            Sign up
+          </strong>
         </header>
 
         <div class="sign-form-slider">
@@ -23,7 +27,7 @@
             <i class="fas fa-glasses"></i>
             Guest Sign in
           </a>
-        </div>      
+        </div>
       </section>
     </div>
   </div>

@@ -34,7 +34,9 @@
         <button type="submit" class="btn-primary">Sign in</button>
       </div>
       <div class="sign-form__row btn-area">
-        <button type="button" @click="resetPasswordPopup" class="btn-ps-find">Forgot your password?</button>
+        <button type="button" @click="resetPasswordPopup" class="btn-ps-find">
+          Forgot your password?
+        </button>
       </div>
     </form>
   </section>
@@ -82,5 +84,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
