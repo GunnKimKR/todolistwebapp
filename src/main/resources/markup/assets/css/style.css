@@ -139,11 +139,14 @@
   text-align: left;
 }
 
-.sign-form .btn-ps-find {
-  display: block;
+.sign-form__row.btn-area {
   margin-top: 1rem;
-  font-size: 1.2rem;
   text-align: center;
+}
+
+.sign-form__row .btn-ps-find {
+  display: inline-block;
+  font-size: 1.2rem;
 }
 
 .sns-btn-area {
@@ -157,9 +160,6 @@
 .sns-btn-area .btn-primary {
   display: flex;
   align-items: center;
-  width: 100%;
-  padding: .5em 1em;
-  color: #fff;
 }
 
 .sns-btn-area .btn-primary + .btn-primary {
@@ -170,13 +170,13 @@
   background: linear-gradient(-120deg, #4285f4, #34a853, #fbbc05, #ea4335);
 }
 
-.sns-btn-area .btn-primary.facebook {
+.sns-btn-area .btn-primary.guest {
   background: linear-gradient(180deg, #3b5998, #2b4170);
 }
 
-.sns-btn-area .btn-primary.instagram {
+/* .sns-btn-area .btn-primary.instagram {
   background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
-}
+} */
 
 .sns-btn-area .btn-primary i {
   margin-right: 1.2rem;

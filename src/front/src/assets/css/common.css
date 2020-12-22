@@ -1,7 +1,5 @@
 @charset "UTF-8";
 
-/********************* common.css *********************/
-
 /********************* Reset *********************/
 div, span, body,
 header, main, nav, section, footer,
@@ -52,9 +50,19 @@ input, button {
   -webkit-appearance: none;
 }
 
-::selection {
-  background-color: #333;
-  color: #fff;
+input[type="checkbox"],
+input[type="radio"] {
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  clip: rect(0, 0, 0, 0);
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .page-enter-active, .page-leave-active {
@@ -66,6 +74,11 @@ input, button {
 
 
 /********************* common *********************/
+::selection {
+  background-color: #333;
+  color: #fff;
+}
+
 html {
   font-size: .625rem;
 }
@@ -84,7 +97,7 @@ body, button, input, select, textarea {
 
 h1, h2, h3, h4, h5, h6, 
 dt, th, strong, b {
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .blind {
@@ -96,28 +109,46 @@ dt, th, strong, b {
   clip: rect(0 0 0 0);
 }
 
-#main {
+.ellip {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* Layout */
+#container {
   overflow: hidden;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
+  padding: 0 6% 3.9rem;
+}
+
+#container.timetable {
+  padding: 0;
+}
+
+#container.timetable .task-form-container {
+  padding: 1rem 6%;
+}
+
+#container.timetable .calendar-container {
   padding: 0 6%;
 }
 
-#main.main-container {
-  overflow-y: auto;
-  padding: 0 0 3.9rem;
+.task-list-container {
+  margin-top: 1rem;
+  padding-bottom: 1rem;
 }
 
-.plans-container {
-  margin-top: .5rem;
-  padding: 1rem 6% 2rem;
+.task-list-container .task-list-header .task-title {
+  font-weight: 700;
 }
 
-.plans-container .plans-title {
-  display: block;
-  margin-bottom: 1rem;
+.task-list-container .task-list-body {
+  margin-top: 1rem;
 }
 
+/* Input */
 .input-box {
   width: 100%;
   padding: .5em 1em;
@@ -129,10 +160,42 @@ dt, th, strong, b {
   width: 100%;
 }
 
+.checkbox {
+  display: inline-block;
+  position: relative;
+  width: 1.4rem;
+  height: 1.4rem;
+  margin: -.2rem .2rem 0 0;
+  border: 1px solid #333;
+  border-radius: 3px;
+  vertical-align: middle;
+}
+
+.checkbox::after {
+  display: none;
+  position: absolute;
+  width: .2rem;
+  height: .6rem;
+  margin: .2rem 0 0 .5rem;
+  border-bottom: 1px solid #fff;
+  border-right: 1px solid #fff;
+  transform: rotate(45deg);
+  content: '';
+}
+
+input[type="checkbox"]:checked + .checkbox {
+  background-color: #333;
+}
+
+input[type="checkbox"]:checked + .checkbox::after {
+  display: block;
+}
+
+/* Button */
 .btn-primary {
   display: block;
   width: 100%;
-  padding: .6em 1.2em;
+  padding: .5em 1em;
   border-radius: 3px;
   background-color: #333;
   font-weight: 700;
@@ -144,44 +207,87 @@ dt, th, strong, b {
 .btn-primary[disabled] {
   background-color: #cacaca;
   cursor: default;
+  pointer-events: none;
 }
 
-.label-square,
-.label-square--checkbox {
+/* Task label */
+.label-square {
   flex: 0 0 auto;
   width: 1.7rem;
   height: 1.7rem;
   border-radius: 3px;
-  border: 1px solid #ff6347;
+  border: 1px solid #cacaca;
+  background-color:#cacaca;
+}
+.checkbox-box--label .checkbox {
+  flex: 0 0 auto;
+  width: 1.7rem;
+  height: 1.7rem;
+  margin: -.2rem 0 0 0;
+  border: 1px solid #cacaca;
+  background-color: #fff !important;
+}
+
+.checkbox-box--label .checkbox::after {
+  display: none;
+  position: absolute;
+  width: .3rem;
+  height: .8rem;
+  margin: .2rem 0 0 .6rem;
+  border-bottom: 1px solid #cacaca;
+  border-right: 1px solid #cacaca;
+  background-color: #fff !important;
+}
+
+.checkbox-box--label input[type="checkbox"]:checked + .checkbox {
   background-color: #fff;
 }
 
-.label-square {
-  background-color: #ff6347;
+/* Task label color */
+.label--gray,
+.checkbox-box--label .checkbox.label--gray::after {
+  border-color: #cacaca !important;
+  background-color:#cacaca;
 }
 
-.label-square--checkbox {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.label--red,
+.checkbox-box--label .checkbox.label--red::after {
+  border-color: #ea4335 !important;
+  background-color:#ea4335;
 }
 
-.label-square--checkbox:after {
-  display: none;
-  width: .3rem;
-  height: .7rem;
-  margin-top: -.2rem;
-  border-right: 1px solid #ff6347;
-  border-bottom: 1px solid #ff6347;
-  transform: rotate(45deg);
-  content: '';
+.label--orange,
+.checkbox-box--label .checkbox.label--orange::after {
+  border-color: #fbbc05 !important;
+  background-color: #fbbc05;
 }
 
-.label-square--checkbox.completed:after {
-  display: block;
+.label--green,
+.checkbox-box--label .checkbox.label--green::after {
+  border-color: #34a853 !important;
+  background-color: #34a853;
 }
 
-.clip-icon {
+.label--navy,
+.checkbox-box--label .checkbox.label--navy::after {
+  border-color: #3b5998 !important;
+  background-color: #3b5998;
+}
+
+.label--purple,
+.checkbox-box--label .checkbox.label--purple::after {
+  border-color: #833ab4 !important;
+  background-color: #833ab4;
+}
+
+.label--pink,
+.checkbox-box--label .checkbox.label--pink::after {
+  border-color: #e1306c !important;
+  background-color: #e1306c;
+}
+
+/* Pin icon */
+.pin-icon {
   flex: 0 0 auto;
   display: flex;
   justify-content: center;
@@ -192,168 +298,4 @@ dt, th, strong, b {
   font-size: 1rem;
   background-color: #fbbc05;
   color: #fff;
-}
-
-/********************* Clip Plans *********************/
-
-.clip-plans-container{
-  margin-top: .5rem;
-  padding: 1rem 6%;
-}
-
-.clip-plans-list {
-  padding: 1rem 0;
-}
-
-.clip-plans-list__item {
-  display: flex;
-  align-items: center;
-}
-
-.clip-plans-list__item + .clip-plans-list__item{
-  margin-top: 1rem;
-}
-
-.clip-plans-list__item .clip-icon,
-.clip-plans-list__item .clip-plan-time {
-  margin-right: 1rem;
-}
-
-.clip-plan-time {
-  flex: 0 0 5rem;
-  text-align: center;
-}
-
-
-.clip-icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 2.4rem;
-  height: 2.4rem;
-  border-radius: 50%;
-  font-size: 1rem;
-  background-color: #fbbc05;
-  color: #fff;
-}
-
-/********************* Clip Plan Detail *********************/
-
-.plan-details-container {
-  display: none;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 60;
-  padding: 0 6%;
-  background-color: #fff;
-}
-
-.plan-details-container.active {
-  display: block;
-}
-
-.plan-details-container .button-area {
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem 0;
-}
-
-.plan-details-container .button-area .btn-close,
-.plan-details-container .button-area .btn-remove {
-  font-size: 2rem;
-  line-height: 1;
-  color: #333;
-}
-
-.plan-details-header .date-box {
-  display: flex;
-  align-items: center;
-}
-
-.plan-details-header .date-box__date {
-  font-weight: 700;
-  font-size: 4.8rem;
-  line-height: 1;
-}
-
-.plan-details-header .date-box__month {
-  margin-left: 1rem;
-  font-weight: 500;
-  font-size: 1.8rem;
-  line-height: 1.2;
-}
-
-.plan-details-header .date-box__year {
-  display: block;
-  font-weight: 400;
-  font-size: 1.4rem;
-}
-
-.plan-details-header .date-box__day {
-  margin-left: auto;
-}
-
-.plan-details-body {
-  margin-top: 1.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid #dadada;
-}
-
-.plan-details > li {
-  display: flex;
-  align-items: center;
-}
-
-.plan-details > li + li {
-  margin-top: 1rem;
-}
-
-.plan-details > .plan-detail--note {
-  align-items: flex-start;
-}
-
-.plan-details > li > :first-child {
-  margin-right: 1rem;
-}
-
-.plan-details .plan-detail-icon {
-  font-size: 1.6rem;
-}
-
-.plan-details .btn-clip {
-  margin: 0 0 0 auto;
-}
-
-/********************* To Do List *********************/
-
-.todo-list__item {
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  min-height: 4.4rem;
-  padding: 1rem 1.5rem;
-  border-radius: 3px;
-  box-shadow: 0 0 4px rgba(0,0,0,.3);
-  background-color: #fff;
-  font-size: 1.2rem;
-}
-
-.todo-list__item + .todo-list__item {
-  margin-top: 2rem;
-}
-
-.todo-list__item .text-todo {
-  flex-basis: 100%;
-  padding: 0 1rem;
-}
-
-.todo-list__item .text-todo .time {
-  display: block;
-}
-
-.todo-list__item.completed .label-todo:after {
-  display: block;
 }

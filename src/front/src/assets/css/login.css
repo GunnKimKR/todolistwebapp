@@ -1,15 +1,14 @@
 @charset "UTF-8";
 
-/********************* login.css *********************/
-
-.sign-form-container {
+#container.member-registration-container {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0 6%;
   background: url(../images/bg_login-page.jpg) 50% 50%/cover no-repeat;
 }
 
-.sign-form-container:before {
+#container.member-registration-container::after {
   position: fixed;
   top: 0;
   right: 0;
@@ -19,7 +18,7 @@
   content: '';
 }
 
-.sign-form-group {
+.member-registration {
   position: relative;
   z-index: 10;
   width: 100%;
@@ -29,12 +28,12 @@
   box-shadow: 2px 2px 5px rgba(0,0,0,.3);
 }
 
-.toggle-btn-box {
+.toggle-btn-group {
   display: flex;
   position: relative;
   width: 75%;
   margin: 0 auto;
-  border-radius: 2rem;
+  border-radius: 20px;
   box-shadow: 0 0 15px rgba(0,0,0,.15);
 }
 
@@ -51,7 +50,7 @@
   content:'';
 }
 
-.toggle-btn-box .btn-toggle {
+.toggle-btn-group .btn-toggle {
   width: 50%;
   background-color: transparent;
   color: #333;
@@ -59,13 +58,12 @@
   transition: color .5s ease;
 }
 
-.toggle-btn-bg.active {
+.toggle-btn-group .toggle-btn-bg.active {
   left: 50%;
 }
 
-.toggle-btn-box .btn-toggle.active {
+.toggle-btn-group .btn-toggle.active {
   color: #fff;
-  
 }
 
 .sign-form-slider {
@@ -137,11 +135,14 @@
   text-align: left;
 }
 
-.sign-form .btn-ps-find {
-  display: block;
+.sign-form__row.btn-area {
   margin-top: 1rem;
-  font-size: 1.2rem;
   text-align: center;
+}
+
+.sign-form__row .btn-ps-find {
+  display: inline-block;
+  font-size: 1.2rem;
 }
 
 .sns-btn-area {
@@ -155,8 +156,6 @@
 .sns-btn-area .btn-primary {
   display: flex;
   align-items: center;
-  width: 100%;
-  color: #fff;
 }
 
 .sns-btn-area .btn-primary + .btn-primary {
@@ -167,16 +166,14 @@
   background: linear-gradient(-120deg, #4285f4, #34a853, #fbbc05, #ea4335);
 }
 
-.sns-btn-area .btn-primary.facebook {
+.sns-btn-area .btn-primary.guest {
   background: linear-gradient(180deg, #3b5998, #2b4170);
 }
 
-.sns-btn-area .btn-primary.instagram {
-  background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
-}
 
 .sns-btn-area .btn-primary i {
   margin-right: 1.2rem;
+  font-size: 1.6rem;
 }
 
 .sign-form__row .input-placeholder {
@@ -187,18 +184,3 @@
   transition: .4s ease;
   transition-property: bottom, padding, font-size;
 }
-
-.sign-form__row .input-box.active .input-placeholder {
-  left: 0;
-  bottom: 85%;
-  padding: 0;
-  font-size: 1rem;
-}
-
-.sign-form .btn-ps-find {
-  display: block;
-  margin: 1rem auto 0;
-  font-size: 1.2rem;
-}
-
-

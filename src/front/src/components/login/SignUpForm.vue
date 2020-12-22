@@ -149,6 +149,4 @@ export default {
 };
 </script>
 
-<style scoped>
-@import '~styles/custom/signupFormCustom.css';
-</style>
+<style scoped></style>

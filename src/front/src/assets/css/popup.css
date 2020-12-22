@@ -1,7 +1,5 @@
 @charset "UTF-8";
 
-/********************* popup.css *********************/
-
 #popup {
   display: none;
   justify-content: center;
@@ -23,24 +21,25 @@
 }
 
 #pop-container {
+  position: relative;
   width: 100%;
   padding: 2.5rem;
   border-radius: 2px;
   background-color: #fff;
+  box-shadow: 3px 3px 7px rgba(0,0,0,0.5);
 }
 
-#pop-container .pop-btn-close:after {
+#pop-container .pop-btn-close::after {
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   z-index: -1;
-  background-color: rgba(0,0,0,.6);
+  background-color: rgba(0,0,0,.4);
   cursor: default;
   content: '';
 }
-
 
 .pop-ps-find-form {
   width: 100%;

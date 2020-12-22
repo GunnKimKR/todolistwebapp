@@ -31,14 +31,10 @@
         </div>
       </div>
       <div class="sign-form__row">
-        <button type="submit" class="btn-primary">
-          Sign in
-        </button>
+        <button type="submit" class="btn-primary">Sign in</button>
       </div>
-      <div class="sign-form__row hyperlink-area">
-        <button type="button" @click="resetPasswordPopup" class="btn-ps-find">
-          Forgot your password?
-        </button>
+      <div class="sign-form__row btn-area">
+        <button type="button" @click="resetPasswordPopup" class="btn-ps-find">Forgot your password?</button>
       </div>
     </form>
   </section>
@@ -87,7 +83,4 @@ export default {
 </script>
 
 <style scoped>
-#loginForm {
-  width: 100%;
-}
 </style>
