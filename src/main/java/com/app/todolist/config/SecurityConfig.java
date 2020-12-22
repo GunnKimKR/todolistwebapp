@@ -23,7 +23,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   public CorsConfigurationSource corsConfigurationSource() {
     CorsConfiguration configuration = new CorsConfiguration();
 
-    configuration.addAllowedOrigin("http://localhost:8080");
+    String profile = System.getProperty("profile");
+    String allowedUrl = "";
+    if(profile != null && profile.equals("local")){
+      allowedUrl = "http://localhost:8080";
+    }else{
+      allowedUrl = "http://todo-spring-app.s3-website.ap-northeast-2.amazonaws.com";
+    }
+    configuration.addAllowedOrigin(allowedUrl);
     configuration.addAllowedHeader("*");
     configuration.addAllowedMethod("*");
     configuration.setAllowCredentials(true);

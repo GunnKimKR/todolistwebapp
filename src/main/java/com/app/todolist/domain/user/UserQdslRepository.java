@@ -20,7 +20,7 @@ public class UserQdslRepository extends QdslSupport {
         .from(user)
         .join(joinUser)
         .on(user.userId.eq(joinUser.userId))
-        .where(user.email.contains(email))
+        .where(user.email.eq(email))
         .fetchOne();
   }
 
