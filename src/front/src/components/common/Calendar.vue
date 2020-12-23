@@ -1,6 +1,6 @@
 <template>
   <section class="calendar-container">
-    <h2 class="blind">달력</h2>
+    <h2 class="blind">Calendar</h2>
 
     <div class="calendar-header-group">
       <a href="#;" class="calendar-year">2020</a>
@@ -142,21 +142,21 @@
             </td>
             <td>
               <div class="td-cell">
-                <div class="td-style plans">
+                <div class="td-style task">
                   9
                 </div>
               </div>
             </td>
             <td>
               <div class="td-cell">
-                <div class="td-style plans">
+                <div class="td-style task">
                   10
                 </div>
               </div>
             </td>
             <td>
               <div class="td-cell">
-                <div class="td-style plans">
+                <div class="td-style task">
                   11
                 </div>
               </div>
@@ -186,14 +186,14 @@
             </td>
             <td>
               <div class="td-cell">
-                <div class="td-style plans today">
+                <div class="td-style task today">
                   15
                 </div>
               </div>
             </td>
             <td>
               <div class="td-cell">
-                <div class="td-style plans">
+                <div class="td-style task">
                   16
                 </div>
               </div>
@@ -230,7 +230,7 @@
           <tr>
             <td>
               <div class="td-cell">
-                <div class="td-style plans">
+                <div class="td-style task">
                   21
                 </div>
               </div>
@@ -244,7 +244,7 @@
             </td>
             <td>
               <div class="td-cell">
-                <div class="td-style plans">
+                <div class="td-style task">
                   23
                 </div>
               </div>
@@ -258,7 +258,7 @@
             </td>
             <td>
               <div class="td-cell">
-                <div class="td-style plans">
+                <div class="td-style task">
                   25
                 </div>
               </div>

@@ -1,10 +1,10 @@
 <template>
   <div id="wrap">
     <NavMenu></NavMenu>
-    <main id="main" class="main-container">
+    <div id="container">
       <Calendar></Calendar>
       <ClipPlans></ClipPlans>
-    </main>
+    </div>
     <ClipPlanDetail></ClipPlanDetail>
     <MyInfo></MyInfo>
   </div>
