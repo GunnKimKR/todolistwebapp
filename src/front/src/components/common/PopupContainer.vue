@@ -1,5 +1,5 @@
 <template>
-  <div id="pop-container" class="pop-ps-find-form">
+  <div id="pop-container">
     <div class="pop-notice-content">
       <header class="pop-notice-content__header">
         <slot name="header"></slot>

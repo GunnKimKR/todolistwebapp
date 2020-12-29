@@ -23,6 +23,7 @@
 #pop-container {
   position: relative;
   width: 100%;
+  max-width: 40rem;
   padding: 2.5rem;
   border-radius: 2px;
   background-color: #fff;
@@ -41,8 +42,7 @@
   content: '';
 }
 
-.pop-ps-find-form {
-  max-width: 40rem;
+.pop-notice-content {
   text-align: center;
 }
 
