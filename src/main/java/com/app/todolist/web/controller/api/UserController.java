@@ -10,7 +10,9 @@ import com.app.todolist.web.dto.UserDTO;
 import com.app.todolist.web.param.UserParams;
 import com.app.todolist.web.util.Response;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,6 +34,12 @@ public class UserController extends AbstractRestController {
     return new Response(CREATED);
   }
 
+  @DeleteMapping("/{userId}")
+  public Response deleteAccount(@PathVariable Long userId) {
+    userService.deleteAccount(userId);
+    return new Response();
+  }
+
   @GetMapping("/duplicateEmailCount")
   public Response duplicateEmailCount(String email) {
     int duplicateEmailCount = userService.duplicateEmailCount(email);
@@ -41,6 +49,14 @@ public class UserController extends AbstractRestController {
   @PostMapping("/login")
   public Response login(@RequestBody UserParams param) {
     UserDTO user = userService.login(param);
+    String token = jwtService.create("user", user, "joinUser");
+    user.setToken(token);
+    return new Response("user", user);
+  }
+
+  @PostMapping("/guestLogin")
+  public Response guestLogin() {
+    UserDTO user = userService.guestLogin();
     String token = jwtService.create("user", user, "joinUser");
     user.setToken(token);
     return new Response("user", user);

@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import mutations from '@/store/mutations.js';
 import { getCookie } from '@/scripts/common';
+import { deleteAccount } from '@/api/user';
 
 Vue.use(Vuex);
 
@@ -14,22 +16,10 @@ export default new Vuex.Store({
       return state.user != '';
     },
   },
-  mutations: {
-    saveLoginUser(state, user) {
-      state.user = { ...user };
-      document.cookie = 'user=' + JSON.stringify(user);
-    },
-    deleteLoginUser(state) {
-      state.user = '';
-      document.cookie = 'user=; expires=Thu, 01 Jan 1970 00:00:00 UTC;';
-    },
-    openPopup(state, popup) {
-      state.popup = { ...popup };
-      document.cookie = 'popup=' + JSON.stringify(popup);
-      location.href = '#popup';
-    },
-    closePopup(state) {
-      location.href = '#';
+  mutations,
+  actions: {
+    fnDeleteAccount() {
+      deleteAccount(this.state.user.userId);
     },
   },
 });

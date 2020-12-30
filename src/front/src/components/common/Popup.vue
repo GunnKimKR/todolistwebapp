@@ -6,7 +6,6 @@
     ></MessagePopup>
     <ResetPasswordPopup
       v-if="popup.name == 'resetPassword'"
-      slot="pop-notice-content"
       @closePopup="closePopup"
     ></ResetPasswordPopup>
   </div>

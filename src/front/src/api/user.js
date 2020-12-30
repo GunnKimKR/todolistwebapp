@@ -31,6 +31,21 @@ async function login(vm, loginForm) {
     });
 }
 
+async function guestLogin(vm) {
+  await userApi
+    .post('guestLogin')
+    .then(res => {
+      vm.$store.commit('saveLoginUser', res.data.data.user);
+      vm.$router.push('/main');
+    })
+    .catch(error => {
+      vm.$store.commit('openPopup', {
+        name: 'message',
+        message: error.response.data.error.errorMessage || msg_server_error,
+      });
+    });
+}
+
 async function checkDuplicateEmail(email) {
   let isRegistered;
   await userApi
@@ -68,4 +83,16 @@ async function resetPassword(vm, email, password) {
     });
 }
 
-export { signup, checkDuplicateEmail, login, sendVerifyCode, resetPassword };
+async function deleteAccount(userId) {
+  await userApi.delete(`/${userId}`);
+}
+
+export {
+  signup,
+  checkDuplicateEmail,
+  login,
+  guestLogin,
+  sendVerifyCode,
+  resetPassword,
+  deleteAccount,
+};

@@ -18,7 +18,9 @@ public class MailService {
     simpleMessage.setTo(email);
     simpleMessage.setSubject("To-Do-List-App Verification Code");
     simpleMessage.setText("Verification Code : " + verifyCode);
-    javaMailSender.send(simpleMessage);
+    try {
+      javaMailSender.send(simpleMessage);
+    }catch(Exception e){}
   }
 
 }

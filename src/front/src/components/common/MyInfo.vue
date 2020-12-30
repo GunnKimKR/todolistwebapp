@@ -18,8 +18,15 @@
           </dl>
         </div>
         <div class="button-area">
-          <a href="#;" @click="logout" class="btn-primary">Logout</a>
-          <a href="#;" class="btn-primary">Delete Account</a>
+          <a href="#" @click="logout" class="btn-primary">Logout</a>
+          <a
+            href="#popup"
+            class="btn-primary"
+            @click="fnClickDeleteBtn"
+            :disabled="isGuestUser"
+          >
+            Delete Account
+          </a>
         </div>
       </header>
       <div class="myinfo-body">
@@ -43,15 +50,23 @@
 </template>
 
 <script>
+import { deleteAccountPopup } from '@/scripts/myinfo';
+
 export default {
   computed: {
     user() {
       return this.$store.state.user;
     },
+    isGuestUser() {
+      return this.$store.state.user.email == 'guest';
+    },
   },
   methods: {
     logout() {
       this.$store.commit('deleteLoginUser');
+    },
+    fnClickDeleteBtn() {
+      deleteAccountPopup(this);
     },
   },
 };

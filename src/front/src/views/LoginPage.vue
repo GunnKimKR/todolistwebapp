@@ -23,7 +23,7 @@
             <i class="fab fa-google"></i>
             Sign in with Google
           </a>
-          <a href="#;" class="btn-primary guest">
+          <a href="#;" class="btn-primary guest" @click="fnGuestLogin">
             <i class="fas fa-glasses"></i>
             Guest Sign in
           </a>
@@ -36,6 +36,7 @@
 <script>
 import SignInForm from '@/components/login/SignInForm.vue';
 import SignUpForm from '@/components/login/SignUpForm.vue';
+import { guestUserLogin } from '@/scripts/signin.js';
 
 export default {
   components: {
@@ -54,8 +55,8 @@ export default {
           ? ['active', '']
           : ['', 'active'];
     },
-    slideToLogin() {
-      this.activeClass = ['active', ''];
+    fnGuestLogin() {
+      guestUserLogin();
     },
   },
 };

@@ -15,12 +15,15 @@ public class UserQdslRepository extends QdslSupport {
     super(User.class);
   }
 
-  UserDTO findUserByEmail(String email) {
+  UserDTO findByEmail(String email) {
     return select(new QUserDTO(user.userId, user.nickname, user.email, joinUser.password))
         .from(user)
         .join(joinUser)
         .on(user.userId.eq(joinUser.userId))
-        .where(user.email.eq(email))
+        .where(
+            user.email.eq(email),
+            user.stateNo.eq(0)
+        )
         .fetchOne();
   }
 

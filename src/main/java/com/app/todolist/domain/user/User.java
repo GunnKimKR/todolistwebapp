@@ -18,14 +18,16 @@ public class User extends BaseEntity {
   private Long userId;
   private String nickname;
   private String email;
+  private int stateNo;
 
   public User(String nickname, String email) {
     this.nickname = nickname;
     this.email = email;
   }
 
-  public void updateNickname(String nickname){
-    this.nickname = nickname;
+  public void deleteUser(){
+    this.email = "["+ this.userId + "-DELETED]" + this.email;
+    this.stateNo = 1;
   }
 
 }

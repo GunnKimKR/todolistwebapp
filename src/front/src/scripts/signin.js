@@ -1,4 +1,4 @@
-import { login } from '@/api/user';
+import { login, guestLogin } from '@/api/user';
 
 let vm;
 
@@ -12,6 +12,10 @@ async function loginUser() {
   }
 }
 
+async function guestUserLogin() {
+  await guestLogin(vm);
+}
+
 function validateLoginForm() {
   if (!vm.email) {
     vm.$refs.email.focus();
@@ -23,4 +27,4 @@ function validateLoginForm() {
   return true;
 }
 
-export { loginUser, registerSigninModel };
+export { loginUser, guestUserLogin, registerSigninModel };

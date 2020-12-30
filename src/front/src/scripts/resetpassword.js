@@ -42,7 +42,7 @@ async function changeEmail() {
 
 async function sendEmail() {
   bus.$emit('startSpinner');
-  vm.verifyCode = await sendVerifyCode(vm.email);
+  vm.verifyCode = await sendVerifyCode(vm, vm.email);
   bus.$emit('endSpinner');
 
   vm.resetOrder++;

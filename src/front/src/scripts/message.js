@@ -5,3 +5,4 @@ export const msg_email_already_registered = 'The email is already registered.';
 export const msg_password_incorrect = 'Password must be at least 4 digits.';
 export const msg_write_email = 'Please write email.';
 export const msg_write_password = 'Please write password.';
+export const msg_confirm_delete_account = 'Wanna Delete Your Account?';

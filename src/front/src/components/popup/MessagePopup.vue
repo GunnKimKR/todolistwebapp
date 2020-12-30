@@ -8,7 +8,23 @@
       {{ popup.message }}
     </p>
 
-    <div slot="footer" class="sign-form__row">
+    <div slot="footer" v-if="popup.confirm" class="sign-form__row">
+      <button
+        type="button"
+        class="btn-primary pop-btn-close"
+        @click="fnConfirm"
+      >
+        OK
+      </button>
+      <button
+        type="button"
+        class="btn-primary pop-btn-close"
+        @click="closePopup"
+      >
+        CANCEL
+      </button>
+    </div>
+    <div slot="footer" v-else class="sign-form__row">
       <button
         type="button"
         class="btn-primary pop-btn-close"
@@ -32,6 +48,10 @@ export default {
     },
   },
   methods: {
+    fnConfirm() {
+      this.$store.commit('popupConfirm', this.popup.popupName);
+      this.$emit('closePopup');
+    },
     closePopup() {
       this.$emit('closePopup');
     },
