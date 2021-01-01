@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-//@CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("/api/todo")
 public class TodoController extends AbstractRestController {
 

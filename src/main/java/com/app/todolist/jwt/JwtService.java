@@ -61,7 +61,6 @@ public class JwtService{
     }
     @SuppressWarnings("unchecked")
     Map<String, Object> value = (LinkedHashMap<String, Object>)claims.getBody().get(key);
-    System.out.println(value);
     return value;
   }
 

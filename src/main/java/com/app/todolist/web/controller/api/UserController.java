@@ -9,6 +9,7 @@ import com.app.todolist.web.controller.util.AbstractRestController;
 import com.app.todolist.web.dto.UserDTO;
 import com.app.todolist.web.param.UserParams;
 import com.app.todolist.web.util.Response;
+import javax.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +28,8 @@ public class UserController extends AbstractRestController {
   private final UserService userService;
   private final JwtService jwtService;
   private final MailService mailService;
+
+  private final HttpSession httpSession;
 
   @PostMapping
   public Response signup(@RequestBody UserParams param) {
@@ -76,6 +79,12 @@ public class UserController extends AbstractRestController {
   @PutMapping("/resetPassword")
   public Response resetPassword(@RequestBody UserParams param) {
     UserDTO user = userService.resetPassword(param);
+    return new Response("user", user);
+  }
+
+  @GetMapping("/getOauthUser")
+  public Response getOauthUser(UserParams param) {
+    UserDTO user = userService.getOauthUser(param);
     return new Response("user", user);
   }
 

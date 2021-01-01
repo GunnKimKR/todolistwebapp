@@ -129,7 +129,7 @@ function isPasswordValid(password) {
 
 async function registerUser() {
   if (validateUserForm()) {
-    await signup(vm, vm.userForm);
+    await signup(vm.userForm);
   }
 }
 

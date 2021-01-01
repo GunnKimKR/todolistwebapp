@@ -42,7 +42,7 @@ async function changeEmail() {
 
 async function sendEmail() {
   bus.$emit('startSpinner');
-  vm.verifyCode = await sendVerifyCode(vm, vm.email);
+  vm.verifyCode = await sendVerifyCode(vm.email);
   bus.$emit('endSpinner');
 
   vm.resetOrder++;
@@ -99,7 +99,7 @@ function initAndClose() {
 }
 
 async function resetPasswordAndSignIn() {
-  await resetPassword(vm, vm.email, vm.password);
+  await resetPassword(vm.email, vm.password);
 }
 
 export {

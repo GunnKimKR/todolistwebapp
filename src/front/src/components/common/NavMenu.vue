@@ -54,8 +54,7 @@ export default {
     };
   },
   created() {
-    const pageIndex = this.$router.currentRoute.meta.navIdx;
-    this.tabmenuActiveClass[pageIndex] = 'active';
+    this.tabmenuActiveClass[this.$router.currentRoute.meta.navIdx] = 'active';
   },
 };
 </script>

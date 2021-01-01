@@ -74,4 +74,7 @@ public class UserService {
     return user;
   }
 
+  public UserDTO getOauthUser(UserParams param) {
+    return userQdslRepository.findSnsUserByEmail(param);
+  }
 }

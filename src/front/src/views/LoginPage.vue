@@ -19,7 +19,7 @@
         </div>
 
         <div class="sns-btn-area">
-          <a href="#;" class="btn-primary google">
+          <a :href="googleLoginUrl" class="btn-primary google">
             <i class="fab fa-google"></i>
             Sign in with Google
           </a>
@@ -45,6 +45,7 @@ export default {
   },
   data() {
     return {
+      googleLoginUrl: `${process.env.VUE_APP_API_URL}/oauth2/authorization/google`,
       activeClass: ['active', ''],
     };
   },

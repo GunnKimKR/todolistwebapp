@@ -5,10 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Data
+@Getter
 @Entity
 @NoArgsConstructor
 public class User extends BaseEntity {
@@ -18,6 +18,7 @@ public class User extends BaseEntity {
   private Long userId;
   private String nickname;
   private String email;
+  private String picture;
   private int stateNo;
 
   public User(String nickname, String email) {
@@ -25,9 +26,20 @@ public class User extends BaseEntity {
     this.email = email;
   }
 
+  public User(String nickname, String email, String picture) {
+    this.nickname = nickname;
+    this.email = email;
+    this.picture = picture;
+  }
+
   public void deleteUser(){
     this.email = "["+ this.userId + "-DELETED]" + this.email;
     this.stateNo = 1;
+  }
+
+  public void updateSnsInfo(String nickname, String picture){
+    this.nickname = nickname;
+    this.picture = picture;
   }
 
 }

@@ -3,11 +3,16 @@
     <div class="myinfo-container__inner">
       <h2 class="blind">나의 정보</h2>
       <header class="myinfo-header">
-        <div class="myinfo-header__profile">
+        <div
+          class="myinfo-header__profile"
+          :class="{ sns_user: isExistPicture }"
+        >
           <img
+            v-if="!isExistPicture"
             src="https://img.icons8.com/windows/124/333333/gender-neutral-user.png"
             alt="프로필"
           />
+          <img v-else :src="picture" />
         </div>
         <div class="myinfo-header__info">
           <dl>
@@ -23,7 +28,7 @@
             href="#popup"
             class="btn-primary"
             @click="fnClickDeleteBtn"
-            :disabled="isGuestUser"
+            :disabled="isGuestUser || isSnsUser"
           >
             Delete Account
           </a>
@@ -53,12 +58,23 @@
 import { deleteAccountPopup } from '@/scripts/myinfo';
 
 export default {
+  data() {
+    return {
+      picture: this.$store.state.user.picture,
+    };
+  },
   computed: {
     user() {
       return this.$store.state.user;
     },
     isGuestUser() {
       return this.$store.state.user.email == 'guest';
+    },
+    isSnsUser() {
+      return this.$store.state.user.snsType != null;
+    },
+    isExistPicture() {
+      return this.$store.state.user.picture != null;
     },
   },
   methods: {
@@ -74,4 +90,8 @@ export default {
 
 <style scoped>
 @import '~styles/myinfo.css';
+
+.myinfo-header__profile.sns_user {
+  border: none;
+}
 </style>

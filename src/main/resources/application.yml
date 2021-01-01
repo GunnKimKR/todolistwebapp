@@ -27,4 +27,13 @@ spring:
       mail.smtp.auth: true
       mail.smtp.starttls.enable: true
 
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: 827160312323-gfigf7lvp9n0ddq6423pueivp50gkgjg.apps.googleusercontent.com
+            clientSecret: ENC(a1XPIzIp/ogJHiNdbW+E1DjduiJkS40ga50a+8Nkr1zKIJwtN8KJ4w==)
+            scope: profile, email
+
 

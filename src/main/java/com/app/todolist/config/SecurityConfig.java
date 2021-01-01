@@ -1,5 +1,7 @@
 package com.app.todolist.config;
 
+import com.app.todolist.web.util.AppVariable;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -8,29 +10,32 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+@RequiredArgsConstructor
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+  private final CustomOAuth2UserService customOAuth2UserService;
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     http.csrf().disable()
         .authorizeRequests()
         .antMatchers("/**").permitAll()
-        .and().cors();
+        .and()
+        .cors()
+        .and()
+        .logout()
+        .logoutSuccessUrl("/")
+        .and()
+        .oauth2Login()
+        .userInfoEndpoint()
+        .userService(customOAuth2UserService);
   }
 
   @Bean
   public CorsConfigurationSource corsConfigurationSource() {
     CorsConfiguration configuration = new CorsConfiguration();
-
-    String profile = System.getProperty("profile");
-    String allowedUrl = "";
-    if(profile != null && profile.equals("local")){
-      allowedUrl = "http://localhost:8080";
-    }else{
-      allowedUrl = "http://todo-spring-app.s3-website.ap-northeast-2.amazonaws.com";
-    }
-    configuration.addAllowedOrigin(allowedUrl);
+    configuration.addAllowedOrigin(AppVariable.FRONT_URL());
     configuration.addAllowedHeader("*");
     configuration.addAllowedMethod("*");
     configuration.setAllowCredentials(true);
@@ -39,4 +44,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     source.registerCorsConfiguration("/**", configuration);
     return source;
   }
+
 }

@@ -1,45 +1,47 @@
 import { userApi } from './index';
 import { msg_server_error } from '@/scripts/message';
 import { initAndClose } from '@/scripts/resetpassword';
+import store from '@/store/store';
+import router from '@/router/router';
 
-async function signup(vm, userForm) {
+async function signup(userForm) {
   await userApi
     .post('', userForm)
     .then(() => {
-      login(vm, userForm);
+      login(userForm);
     })
     .catch(error => {
-      vm.$store.commit('openPopup', {
+      store.commit('openPopup', {
         name: 'message',
         message: error.response.data.error.errorMessage || msg_server_error,
       });
     });
 }
 
-async function login(vm, loginForm) {
+async function login(loginForm) {
   await userApi
     .post('login', loginForm)
     .then(res => {
-      vm.$store.commit('saveLoginUser', res.data.data.user);
-      vm.$router.push('/main');
+      store.commit('saveLoginUser', res.data.data.user);
+      router.push('/main');
     })
     .catch(error => {
-      vm.$store.commit('openPopup', {
+      store.commit('openPopup', {
         name: 'message',
         message: error.response.data.error.errorMessage || msg_server_error,
       });
     });
 }
 
-async function guestLogin(vm) {
+async function guestLogin() {
   await userApi
     .post('guestLogin')
     .then(res => {
-      vm.$store.commit('saveLoginUser', res.data.data.user);
-      vm.$router.push('/main');
+      store.commit('saveLoginUser', res.data.data.user);
+      router.push('/main');
     })
     .catch(error => {
-      vm.$store.commit('openPopup', {
+      store.commit('openPopup', {
         name: 'message',
         message: error.response.data.error.errorMessage || msg_server_error,
       });
@@ -70,7 +72,7 @@ async function sendVerifyCode(email) {
   return verifyCode;
 }
 
-async function resetPassword(vm, email, password) {
+async function resetPassword(email, password) {
   await userApi
     .put('resetPassword', {
       email,
@@ -78,13 +80,30 @@ async function resetPassword(vm, email, password) {
     })
     .then(res => {
       initAndClose();
-      vm.$store.commit('saveLoginUser', res.data.data.user);
-      vm.$router.push('/main');
+      store.commit('saveLoginUser', res.data.data.user);
+      router.push('/main');
     });
 }
 
 async function deleteAccount(userId) {
   await userApi.delete(`/${userId}`);
+}
+
+async function getOauthUser(userId) {
+  await userApi
+    .get('getOauthUser', {
+      params: { userId },
+    })
+    .then(res => {
+      store.commit('saveLoginUser', res.data.data.user);
+      router.push('/main');
+    })
+    .catch(error => {
+      store.commit('openPopup', {
+        name: 'message',
+        message: error.response.data.error.errorMessage || msg_server_error,
+      });
+    });
 }
 
 export {
@@ -95,4 +114,5 @@ export {
   sendVerifyCode,
   resetPassword,
   deleteAccount,
+  getOauthUser,
 };

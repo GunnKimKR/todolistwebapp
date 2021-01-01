@@ -174,7 +174,6 @@ function todoAppendStr(todo){
     appendStr = '';
     appendStr += '<tr class="data" todoId="' + todo.todoId + '" title="' + todo.title + '" completedYn="' + todo.completedYn + '">';
     appendStr += '<td>' + todo.nickname + '</td>';
-    console.log('@@@@@' + todo.completedYn);
     if(todo.completedYn == 1){
       appendStr += '<td style="text-decoration:line-through;">' + title + '</td>';
     }else{

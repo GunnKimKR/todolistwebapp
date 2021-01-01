@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import mutations from '@/store/mutations.js';
 import { getCookie } from '@/scripts/common';
-import { deleteAccount } from '@/api/user';
+import { deleteAccount, getOauthUser } from '@/api/user';
 
 Vue.use(Vuex);
 
@@ -20,6 +20,9 @@ export default new Vuex.Store({
   actions: {
     fnDeleteAccount() {
       deleteAccount(this.state.user.userId);
+    },
+    fnGetOauthUser(state, userId) {
+      getOauthUser(userId);
     },
   },
 });

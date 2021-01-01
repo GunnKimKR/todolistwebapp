@@ -8,12 +8,12 @@ function registerSigninModel(model) {
 
 async function loginUser() {
   if (validateLoginForm()) {
-    await login(vm, vm.loginForm);
+    await login(vm.loginForm);
   }
 }
 
 async function guestUserLogin() {
-  await guestLogin(vm);
+  await guestLogin();
 }
 
 function validateLoginForm() {

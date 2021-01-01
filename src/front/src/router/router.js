@@ -40,6 +40,11 @@ const router = new VueRouter({
       component: () => import('@/views/SearchPage.vue'),
       meta: { auth: true, navIdx: 3 },
     },
+    {
+      path: '/oAuthLogin',
+      name: 'oAuthLogin',
+      component: () => import('@/views/OAuthLogin.vue'),
+    },
   ],
 });
 
