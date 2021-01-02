@@ -6,7 +6,6 @@
       <Calendar></Calendar>
       <ClipPlans></ClipPlans>
     </div>
-    <!-- <ClipPlanDetail></ClipPlanDetail> -->
     <MyInfo></MyInfo>
   </div>
 </template>
@@ -17,8 +16,7 @@ import TaskForm from '@/components/common/TaskForm.vue';
 import MyInfo from '@/components/common/MyInfo.vue';
 import Calendar from '@/components/common/Calendar.vue';
 import ClipPlans from '@/components/main/ClipPlans.vue';
-// import ClipPlanDetail from '@/components/main/ClipPlanDetail.vue';
-import FetchDataMixin from '@/mixins/fetchDataMixin';
+import FetchDataMixin from '@/mixins/FetchDataMixin';
 
 export default {
   components: {
@@ -27,7 +25,6 @@ export default {
     MyInfo,
     Calendar,
     ClipPlans,
-    // ClipPlanDetail,
   },
   mixins: [FetchDataMixin],
 };

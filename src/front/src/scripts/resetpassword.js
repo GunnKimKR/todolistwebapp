@@ -7,6 +7,8 @@ import {
 import { checkDuplicateEmail, sendVerifyCode, resetPassword } from '@/api/user';
 import bus from '@/scripts/bus';
 
+import store from '@/store/store';
+
 const inputValidClassName = 'input-success';
 const inputErrorClassName = 'input-error';
 
@@ -95,7 +97,7 @@ function initAndClose() {
   vm.passwordStatus = initStatus;
   vm.password2Status = initStatus;
   vm.resetOrder = 1;
-  vm.$emit('closePopup');
+  store.commit('closePopup');
 }
 
 async function resetPasswordAndSignIn() {

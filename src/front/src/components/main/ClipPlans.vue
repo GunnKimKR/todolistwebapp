@@ -7,7 +7,7 @@
     <div class="task-list-body">
       <ul class="pin-tasks-list">
         <li class="pin-tasks-list__item">
-          <a href="#popup">
+          <a href="#popup" @click="showClipPlanDetail">
             <span class="pin-icon">
               <i class="fas fa-feather-alt"></i>
             </span>
@@ -16,7 +16,7 @@
           </a>
         </li>
         <li class="pin-tasks-list__item">
-          <a href="#popup">
+          <a href="#popup" @click="showClipPlanDetail">
             <span class="pin-icon">
               <i class="fas fa-feather-alt"></i>
             </span>
@@ -25,7 +25,7 @@
           </a>
         </li>
         <li class="pin-tasks-list__item">
-          <a href="#popup">
+          <a href="#popup" @click="showClipPlanDetail">
             <span class="pin-icon">
               <i class="fas fa-feather-alt"></i>
             </span>
@@ -36,42 +36,15 @@
       </ul>
     </div>
   </section>
-  <!-- <section class="clip-plans-container">
-    <h2 class="blind">주요 일정</h2>
-    <strong class="plans-title">Monday. 15</strong>
-    <ul class="clip-plans-list">
-      <li class="clip-plans-list__item" @click="showClipPlanDetail">
-        <span class="clip-icon">
-          <i class="fas fa-feather-alt"></i>
-        </span>
-        <span class="clip-plan-time">09:00</span>
-        <span class="clip-plan ellip">To Do List App 배포</span>
-      </li>
-      <li class="clip-plans-list__item" @click="showClipPlanDetail">
-        <span class="clip-icon">
-          <i class="fas fa-feather-alt"></i>
-        </span>
-        <span class="clip-plan-time">09:00</span>
-        <span class="clip-plan ellip">To Do List App 배포</span>
-      </li>
-      <li class="clip-plans-list__item" @click="showClipPlanDetail">
-        <span class="clip-icon">
-          <i class="fas fa-feather-alt"></i>
-        </span>
-        <span class="clip-plan-time">--:--</span>
-        <span class="clip-plan ellip">To Do List App 배포</span>
-      </li>
-    </ul>
-  </section> -->
 </template>
 
 <script>
-import { clipEventBus } from '@/scripts/clip';
-
 export default {
   methods: {
     showClipPlanDetail() {
-      clipEventBus.$emit('clipPlanDetail', 123);
+      this.$store.commit('openPopup', {
+        name: 'clipPlanDetail',
+      });
     },
   },
 };

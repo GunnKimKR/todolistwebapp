@@ -16,7 +16,7 @@ import TaskForm from '@/components/common/TaskForm.vue';
 import MyInfo from '@/components/common/MyInfo.vue';
 import Calendar from '@/components/common/Calendar.vue';
 import TodoList from '@/components/todo/TodoList.vue';
-import FetchDataMixin from '@/mixins/fetchDataMixin';
+import FetchDataMixin from '@/mixins/FetchDataMixin';
 
 export default {
   components: {

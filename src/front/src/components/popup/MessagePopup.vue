@@ -53,7 +53,7 @@ export default {
       this.$emit('closePopup');
     },
     closePopup() {
-      this.$emit('closePopup');
+      this.$store.commit('closePopup');
     },
   },
 };
