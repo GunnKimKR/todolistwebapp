@@ -18,14 +18,17 @@ public class TodoQdslRepository extends QdslSupport {
     super(Todo.class);
   }
 
-  public List<TodoDTO> selectTodoDTO(TodoParams param){
+  public List<TodoDTO> selectTodoDTO(TodoParams param) {
     return select(new QTodoDTO(todo.todoId, user.nickname,
-          todo.title, todo.completedYn, todo.createdDt))
+        todo.title, todo.completedYn, todo.createdDt))
         .from(user)
         .join(todo)
         .on(user.userId.eq(todo.userId))
         .where(
             StringUtils.isEmpty(param.getUserId()) ? null : user.userId.eq(param.getUserId()),
+            StringUtils.isEmpty(param.getLoc()) ? null :
+                param.getLoc().equals("main") ? todo.clipYn.eq(1) :
+                    param.getLoc().equals("timeTable") ? todo.startDt.isNotNull() : null,
             todo.stateNo.eq(0)
         )
         .fetch();
@@ -34,13 +37,13 @@ public class TodoQdslRepository extends QdslSupport {
   public TodoDTO selectTodoDtoById(Long todoId) {
     return select(new QTodoDTO(todo.todoId, user.nickname,
         todo.title, todo.completedYn, todo.createdDt))
-      .from(user)
-      .join(todo)
-      .on(user.userId.eq(todo.userId))
-      .where(
-          todo.todoId.eq(todoId),
-          todo.stateNo.eq(0)
-      )
-      .fetchOne();
+        .from(user)
+        .join(todo)
+        .on(user.userId.eq(todo.userId))
+        .where(
+            todo.todoId.eq(todoId),
+            todo.stateNo.eq(0)
+        )
+        .fetchOne();
   }
 }

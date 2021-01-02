@@ -8,6 +8,7 @@ export default {
   deleteLoginUser(state) {
     state.user = '';
     document.cookie = 'user=; expires=Thu, 01 Jan 1970 00:00:00 UTC;';
+    location.reload();
   },
   openPopup(state, popup) {
     state.popup = popup;

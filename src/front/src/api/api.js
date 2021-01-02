@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const userApi = createInstance('/api/user');
+const todoApi = createInstance('/api/todo');
 
 function createInstance(url) {
   return axios.create({
@@ -8,4 +9,4 @@ function createInstance(url) {
   });
 }
 
-export { userApi };
+export { userApi, todoApi };

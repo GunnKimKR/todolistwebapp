@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import mutations from '@/store/mutations.js';
 import { getCookie } from '@/scripts/common';
 import { deleteAccount, getOauthUser } from '@/api/user';
+import { fetchList } from '@/api/todo';
 
 Vue.use(Vuex);
 
@@ -23,6 +24,9 @@ export default new Vuex.Store({
     },
     fnGetOauthUser(state, userId) {
       getOauthUser(userId);
+    },
+    fnFetchList(state, param) {
+      fetchList(param);
     },
   },
 });

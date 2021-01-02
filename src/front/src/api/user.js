@@ -1,4 +1,4 @@
-import { userApi } from './index';
+import { userApi } from '@/api/api';
 import { msg_server_error } from '@/scripts/message';
 import { initAndClose } from '@/scripts/resetpassword';
 import store from '@/store/store';

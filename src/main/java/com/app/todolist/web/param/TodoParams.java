@@ -7,6 +7,7 @@ import lombok.Data;
 public class TodoParams {
 
   Long userId;
+  String loc;
   String title;
   int completedYn;
 

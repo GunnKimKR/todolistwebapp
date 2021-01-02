@@ -69,14 +69,10 @@ public class TodoController extends AbstractRestController {
   }
 
   @GetMapping("/user/{userId}")
-  public Response selectTodoByUserId(@PathVariable Long userId) {
-
+  public Response selectTodoByUserId(@PathVariable Long userId, TodoParams param) {
     if (userId < 1) {
       throw new InvalidRequestException("유효하지 않은 회원번호입니다.");
     }
-
-    TodoParams param = new TodoParams();
-    param.setUserId(userId);
 
     return todoListResponse(param);
   }

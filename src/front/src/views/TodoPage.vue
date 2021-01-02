@@ -14,6 +14,7 @@ import NavMenu from '@/components/common/NavMenu.vue';
 import MyInfo from '@/components/common/MyInfo.vue';
 import Calendar from '@/components/common/Calendar.vue';
 import TodoList from '@/components/todo/TodoList.vue';
+import FetchDataMixin from '@/mixins/fetchDataMixin.js';
 
 export default {
   components: {
@@ -22,6 +23,7 @@ export default {
     Calendar,
     TodoList,
   },
+  mixins: [FetchDataMixin],
 };
 </script>
 

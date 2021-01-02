@@ -5,7 +5,7 @@
       <header class="myinfo-header">
         <div
           class="myinfo-header__profile"
-          :class="{ sns_user: isExistPicture }"
+          :class="{ exist_picture: isExistPicture }"
         >
           <img
             v-if="!isExistPicture"
@@ -91,7 +91,7 @@ export default {
 <style scoped>
 @import '~styles/myinfo.css';
 
-.myinfo-header__profile.sns_user {
+.myinfo-header__profile.exist_picture {
   border: none;
 }
 </style>

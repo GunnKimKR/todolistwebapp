@@ -18,6 +18,7 @@ import MyInfo from '@/components/common/MyInfo.vue';
 import Calendar from '@/components/common/Calendar.vue';
 import ClipPlans from '@/components/main/ClipPlans.vue';
 // import ClipPlanDetail from '@/components/main/ClipPlanDetail.vue';
+import FetchDataMixin from '@/mixins/fetchDataMixin.js';
 
 export default {
   components: {
@@ -28,6 +29,7 @@ export default {
     ClipPlans,
     // ClipPlanDetail,
   },
+  mixins: [FetchDataMixin],
 };
 </script>
 

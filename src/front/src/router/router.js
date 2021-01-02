@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import store from '@/store/store';
+import { findGetParameter } from '@/scripts/common';
 
 Vue.use(VueRouter);
 
@@ -43,7 +44,9 @@ const router = new VueRouter({
     {
       path: '/oAuthLogin',
       name: 'oAuthLogin',
-      component: () => import('@/views/OAuthLogin.vue'),
+      beforeEnter: () => {
+        store.dispatch('fnGetOauthUser', findGetParameter('userId'));
+      },
     },
   ],
 });
