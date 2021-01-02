@@ -4,23 +4,18 @@
 
 /********************* Plan Search Header *********************/
 
-.plan-search-header {
+.task-search-header {
   display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 1rem 6%;
   border-bottom: 1px solid #f1f1f1;
 }
 
-.plan-search-header .input-box {
+.task-search-header .input-box {
   position: relative;
-  width: 100%;
-  padding: .5rem 1.5rem .5rem 4rem;
-  border: 1px solid #f1f1f1;
-  border-radius: 20px;
+  padding: .5em 1em .5em 4rem;
 }
 
-.plan-search-header .input-box .search-icon {
+.task-search-header .input-box .icon-search {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,10 +27,11 @@
   color: #9c9c9c;
 }
 
-.plan-search-header .input-box input {
-  width: 100%;
+.task-search__title + .todo-list {
+  margin-top: 1rem;
 }
 
-.plan-search__group + .plan-search__group {
-  margin-top: 3rem;
+
+.task-search__group + .task-search__group {
+  margin-top: 2.5rem;
 }

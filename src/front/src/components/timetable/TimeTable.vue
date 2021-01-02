@@ -1,7 +1,7 @@
 <template>
-  <div class="plans-container timetable">
-    <section class="timetable-container">
-      <h2 class="blind">타임테이블</h2>
+  <section class="task-list-container">
+    <h2 class="blind">타임테이블</h2>
+    <div class="task-list-body timetable">
       <table class="table-timetable">
         <colgroup>
           <col span="2" />
@@ -744,8 +744,8 @@
           </tr>
         </tbody>
       </table>
-    </section>
-  </div>
+    </div>
+  </section>
 </template>
 
 <script>

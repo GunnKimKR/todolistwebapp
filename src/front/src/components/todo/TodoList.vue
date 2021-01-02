@@ -1,33 +1,50 @@
 <template>
-  <div class="plans-container">
-    <section class="todo-container">
-      <h2 class="blind">투두 리스트</h2>
-      <strong class="plans-title">Monday. 15</strong>
+  <section class="task-list-container">
+    <header class="task-list-header">
+      <h2 class="blind">Task List</h2>
+      <strong class="task-title">Monday. 15</strong>
+    </header>
+    <div class="task-list-body">
       <ul class="todo-list">
         <li class="todo-list__item">
-          <div class="label-square--checkbox completed"></div>
-          <div class="text-todo ellip">
-            To Do List Webapp Project
-          </div>
-          <span class="clip-icon">
-            <i class="fas fa-feather-alt"></i>
-          </span>
+          <a href="#;">
+            <label class="checkbox-box--label">
+              <input type="checkbox" />
+              <div class="checkbox"></div>
+            </label>
+            <div class="todo-list__item__text ellip">
+              To Do List Webapp Project
+            </div>
+            <span class="pin-icon">
+              <i class="fas fa-feather-alt"></i>
+            </span>
+          </a>
         </li>
         <li class="todo-list__item">
-          <div class="label-square--checkbox completed"></div>
-          <div class="text-todo ellip">
-            To Do List Webapp Project
-          </div>
+          <a href="#;">
+            <label class="checkbox-box--label">
+              <input type="checkbox" />
+              <div class="checkbox label--orange"></div>
+            </label>
+            <div class="todo-list__item__text ellip">
+              To Do List Webapp Project
+            </div>
+          </a>
         </li>
         <li class="todo-list__item">
-          <div class="label-square--checkbox"></div>
-          <div class="text-todo ellip">
-            To Do List Webapp Project
-          </div>
+          <a href="#;">
+            <label class="checkbox-box--label">
+              <input type="checkbox" />
+              <div class="checkbox"></div>
+            </label>
+            <div class="todo-list__item__text ellip">
+              To Do List Webapp Project
+            </div>
+          </a>
         </li>
       </ul>
-    </section>
-  </div>
+    </div>
+  </section>
 </template>
 
 <script>

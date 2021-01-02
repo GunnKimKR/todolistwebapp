@@ -135,6 +135,7 @@ dt, th, strong, b {
   padding: 0 6%;
 }
 
+/* Task List Container */
 .task-list-container {
   margin-top: 1rem;
   padding-bottom: 1rem;
@@ -148,6 +149,46 @@ dt, th, strong, b {
   margin-top: 1rem;
 }
 
+.pin-tasks-list__item > a {
+  display: flex;
+  align-items: center;
+}
+
+.pin-tasks-list__item + .pin-tasks-list__item{
+  margin-top: 1rem;
+}
+
+.pin-tasks-list__item .pin-task-time {
+  flex: 0 0 5rem;
+  text-align: center;
+  margin: 0 1rem;
+}
+
+.todo-list__item > a {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  min-height: 4.4rem;
+  padding: 1rem 1.5rem;
+  border-radius: 3px;
+  box-shadow: 0 0 4px rgba(0,0,0,.3);
+  background-color: #fff;
+  font-size: 1.2rem;
+}
+
+.todo-list__item + .todo-list__item {
+  margin-top: 2rem;
+}
+
+.todo-list__item__text {
+  flex-basis: 100%;
+  padding: 0 1rem;
+}
+
+.todo-list__item__time {
+  display: block;
+}
+
 /* Input */
 .input-box {
   width: 100%;
@@ -158,6 +199,14 @@ dt, th, strong, b {
 
 .input-box input {
   width: 100%;
+}
+
+.input-box ~ button {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 1.5rem;
 }
 
 .checkbox {
@@ -298,4 +347,10 @@ input[type="checkbox"]:checked + .checkbox::after {
   font-size: 1rem;
   background-color: #fbbc05;
   color: #fff;
+}
+
+
+.task-form__row {
+  display: flex;
+  width: 100%;
 }

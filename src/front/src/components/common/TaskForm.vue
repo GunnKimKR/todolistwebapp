@@ -35,6 +35,13 @@
       </div>
     </div>
     <div class="task-form__row">
+      <label class="checkbox-box" for="task-pin">
+        <input type="checkbox" id="task-pin" />
+        <div class="checkbox"></div>
+        Pin
+      </label>
+    </div>
+    <div class="task-form__row">
       <label class="checkbox-box" for="task-label-color">
         <input type="checkbox" id="task-label-color" />
         <div class="checkbox"></div>
@@ -43,13 +50,6 @@
       <div class="task-details">
         <div class="label-square label--green"></div>
       </div>
-    </div>
-    <div class="task-form__row">
-      <label class="checkbox-box" for="task-pin">
-        <input type="checkbox" id="task-pin" />
-        <div class="checkbox"></div>
-        Pin
-      </label>
     </div>
   </section>
 </template>

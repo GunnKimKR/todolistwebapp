@@ -1,10 +1,10 @@
 <template>
   <div id="wrap">
     <NavMenu></NavMenu>
-    <main id="main" class="main-container">
-      <PlanSearchHeader></PlanSearchHeader>
+    <PlanSearchHeader></PlanSearchHeader>
+    <div id="container">
       <PlanSearch></PlanSearch>
-    </main>
+    </div>
     <MyInfo></MyInfo>
   </div>
 </template>

@@ -2,16 +2,10 @@
 
 /********************* timetable.css *********************/
 
-.plans-container.timetable {
-  margin-top: 2rem;
-  padding: 0;
-}
-
-/* timetable-container */
-.timetable-container {
+.task-list-body.timetable {
   overflow-x: auto;
   overflow-y: hidden;
-  padding-left: 1.4rem;
+  padding: 1rem 1.4rem 0;
 }
 
 .table-timetable {
@@ -25,34 +19,33 @@
 .table-timetable .th-cell,
 .table-timetable .td-cell {
   position: relative;
-  z-index: 10;
   font-size: 1.2rem;
 }
 
-.table-timetable .th-cell:before {
+.table-timetable .th-cell::before {
   position: absolute;
-  bottom: -5px;
-  left: -2px;
+  bottom: -.5rem;
+  left: -.2rem;
   z-index: 10;
-  width: 5px;
-  height: 5px;
+  width: .5rem;
+  height: .5rem;
   border-radius: 50%;
-  background-color: #d3d3d3;
+  background-color: #dadada;
   content: '';
 }
 
-.table-timetable .th-cell.current-time:before {
-  width: 6px;
-  height: 6px;
+.table-timetable .th-cell.current-time::before {
+  width: .6rem;
+  height: .6rem;
   background-color: #fbbc05;
 }
 
-.table-timetable .th-cell:after {
+.table-timetable .th-cell::after {
   position: absolute;
   top: 0;
   bottom: 0;
   left: 50%;
-  border-left: 1px solid #d3d3d3;
+  border-left: 1px solid #dadada;
   content: '';
 }
 
@@ -69,6 +62,43 @@
 .table-timetable .tr-empty .td-cell {
   height: 2rem !important;
 }
+
+.task-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding: .5rem 1rem;
+  border-radius: 3px;
+  color: #fff;
+}
+
+.table-timetable .td-cell::after {
+  position: absolute;
+  top: -.7rem;
+  bottom: -.6rem;
+  left: 0;
+  z-index: -1;
+  border-left: 1px solid #dadada;
+  content: '';
+}
+
+.table-timetable .td-cell:empty:before {
+  content: '\00a0';
+}
+
+.table-timetable tbody tr:first-child .td-cell::after {
+  top: 0;
+}
+
+.table-timetable .td-cell.current-time::after {
+  border: 1px dashed #fbbc05;
+}
+
+.table-timetable tbody tr:nth-child(n+4) td:nth-child(3) .td-cell::after {
+  border: 1px dashed #fbbc05;
+}
+
 
 .plan-box {
   display: flex;

@@ -1,24 +1,27 @@
 <template>
   <div id="wrap">
     <NavMenu></NavMenu>
-    <main id="main" class="main-container">
+    <div id="container" class="timetable">
+      <TaskForm></TaskForm>
       <Calendar></Calendar>
       <TimeTable></TimeTable>
-    </main>
+    </div>
     <MyInfo></MyInfo>
   </div>
 </template>
 
 <script>
 import NavMenu from '@/components/common/NavMenu.vue';
+import TaskForm from '@/components/common/TaskForm.vue';
 import MyInfo from '@/components/common/MyInfo.vue';
 import Calendar from '@/components/common/Calendar.vue';
 import TimeTable from '@/components/timetable/TimeTable.vue';
-import FetchDataMixin from '@/mixins/fetchDataMixin.js';
+import FetchDataMixin from '@/mixins/fetchDataMixin';
 
 export default {
   components: {
     NavMenu,
+    TaskForm,
     MyInfo,
     Calendar,
     TimeTable,
