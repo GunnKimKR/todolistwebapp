@@ -30,31 +30,36 @@
   display: block;
 }
 
-.calendar-header-date-wrap > li {
+.calendar-header-date-wrap li {
   position: relative;
+  font-weight: 500;
+}
+
+.calendar-date {
+  word-spacing: 0.5rem;
+}
+
+.calendar-year, .calendar-month{
   display: inline-block;
   width: 50%;
 }
 
-.calendar-header-date-wrap li .fas {
+.arrow-left, .arrow-right{
   position: absolute;
-  top: 0.3rem;
-  padding: 0 1rem;
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
 }
 
-.calendar-header-date-wrap li .fa-chevron-left {
+.arrow-left{
   left: 0;
 }
 
-.calendar-header-date-wrap li .fa-chevron-right {
+.arrow-right{
   right: 0;
 }
 
-.calendar-date {
-  text-align: center;
-  font-weight: 500;
-  word-spacing: 0.5rem;
-}
+
 
 .calendar-date-list {
   flex: 1 1 auto;

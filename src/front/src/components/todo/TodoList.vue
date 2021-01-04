@@ -2,7 +2,6 @@
   <section class="task-list-container">
     <header class="task-list-header">
       <h2 class="blind">Task List</h2>
-      <strong class="task-title">Monday. 15</strong>
     </header>
     <div class="task-list-body">
       <ul class="todo-list">

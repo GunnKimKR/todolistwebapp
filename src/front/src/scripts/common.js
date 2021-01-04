@@ -1,3 +1,35 @@
+const month_names = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+
+const month_names_short = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
+];
+
+const day_names = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
 function focusInputEffect(event) {
   event.target.parentNode.classList.add('active');
 }
@@ -37,6 +69,9 @@ function findGetParameter(parameterName) {
 }
 
 export {
+  month_names,
+  month_names_short,
+  day_names,
   focusInputEffect,
   blurInputEffect,
   isEmailFormatValid,

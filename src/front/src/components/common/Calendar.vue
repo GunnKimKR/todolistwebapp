@@ -8,7 +8,13 @@
         :class="{ active: !isCalendarActive }"
       >
         <li class="calendar-date" @click="dropCalendar">
-          <a href="#;">2020 Sep 15th</a>
+          <a href="#;" class="arrow-left">
+            <i class="fas fa-chevron-left"></i>
+          </a>
+          <a href="#;">{{ curDateFull }}</a>
+          <a href="#;" class="arrow-right">
+            <i class="fas fa-chevron-right"></i>
+          </a>
         </li>
       </ul>
 
@@ -16,15 +22,23 @@
         class="calendar-header-date-wrap"
         :class="{ active: isCalendarActive }"
       >
-        <li>
-          <i class="fas fa-chevron-left"></i>
-          <a href="#;">2020</a>
-          <i class="fas fa-chevron-right"></i>
+        <li class="calendar-year">
+          <a href="#;" class="arrow-left">
+            <i class="fas fa-chevron-left"></i>
+          </a>
+          <a href="#;">{{ curDate.year }}</a>
+          <a href="#;" class="arrow-right">
+            <i class="fas fa-chevron-right"></i>
+          </a>
         </li>
-        <li>
-          <i class="fas fa-chevron-left"></i>
-          <a href="#;">September</a>
-          <i class="fas fa-chevron-right"></i>
+        <li class="calendar-month">
+          <a href="#;" class="arrow-left">
+            <i class="fas fa-chevron-left"></i>
+          </a>
+          <a href="#;">{{ curDate.monthName }}</a>
+          <a href="#;" class="arrow-right">
+            <i class="fas fa-chevron-right"></i>
+          </a>
         </li>
       </ul>
     </div>
@@ -324,11 +338,32 @@
 </template>
 
 <script>
+import { registerCalendarModel, setCurDate } from '@/scripts/calendar';
+
 export default {
   data() {
     return {
       isCalendarActive: false,
+      curDate: {
+        obj: '',
+        yymmdd: '',
+        year: '',
+        month: '',
+        monthName: '',
+        monthNameShort: '',
+        date: '',
+        day: '',
+      },
     };
+  },
+  created() {
+    registerCalendarModel(this);
+    setCurDate();
+  },
+  computed: {
+    curDateFull() {
+      return `${this.curDate.year} ${this.curDate.monthNameShort} ${this.curDate.date} (${this.curDate.day})`;
+    },
   },
   methods: {
     dropCalendar() {
