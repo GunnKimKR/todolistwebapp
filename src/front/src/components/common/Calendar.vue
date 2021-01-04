@@ -3,50 +3,33 @@
     <h2 class="blind">Calendar</h2>
 
     <div class="calendar-header-group">
-      <a href="#;" class="calendar-year">2020</a>
-      <a href="#;" class="calendar-month">Sep</a>
-      <ul class="calendar-date-list">
-        <li class="calendar-date-list__item">
-          <a href="#;">
-            <i class="fas fa-chevron-left"></i>
-          </a>
-        </li>
-        <li class="calendar-date-list__item">
-          <a href="#">14</a>
-        </li>
-        <li class="calendar-date-list__item today">
-          <a href="#">15</a>
-        </li>
-        <li class="calendar-date-list__item">
-          <a href="#">16</a>
-        </li>
-        <li class="calendar-date-list__item">
-          <a href="#">17</a>
-        </li>
-        <li class="calendar-date-list__item">
-          <a href="#">18</a>
-        </li>
-        <li class="calendar-date-list__item">
-          <a href="#">19</a>
-        </li>
-        <li class="calendar-date-list__item">
-          <a href="#">20</a>
-        </li>
-        <li class="calendar-date-list__item">
-          <a href="#;">
-            <i class="fas fa-chevron-right"></i>
-          </a>
+      <ul
+        class="calendar-header-date-wrap"
+        :class="{ active: !isCalendarActive }"
+      >
+        <li class="calendar-date" @click="dropCalendar">
+          <a href="#;">2020 Sep 15th</a>
         </li>
       </ul>
-      <button
-        type="button"
-        class="btn-calendar-drop"
-        :class="calendarActiveClass"
-        @click="dropCalendar"
-      ></button>
+
+      <ul
+        class="calendar-header-date-wrap"
+        :class="{ active: isCalendarActive }"
+      >
+        <li>
+          <i class="fas fa-chevron-left"></i>
+          <a href="#;">2020</a>
+          <i class="fas fa-chevron-right"></i>
+        </li>
+        <li>
+          <i class="fas fa-chevron-left"></i>
+          <a href="#;">September</a>
+          <i class="fas fa-chevron-right"></i>
+        </li>
+      </ul>
     </div>
 
-    <div class="calendar-body-group" :class="calendarActiveClass">
+    <div class="calendar-body-group" :class="{ active: isCalendarActive }">
       <table class="table-calendar">
         <thead>
           <tr>
@@ -331,6 +314,11 @@
           </tr>
         </tbody>
       </table>
+      <button
+        type="button"
+        class="btn-calendar-drop active"
+        @click="dropCalendar"
+      ></button>
     </div>
   </section>
 </template>
@@ -339,17 +327,12 @@
 export default {
   data() {
     return {
-      isCalenderActive: false,
+      isCalendarActive: false,
     };
-  },
-  computed: {
-    calendarActiveClass() {
-      return this.isCalenderActive ? 'active' : null;
-    },
   },
   methods: {
     dropCalendar() {
-      this.isCalenderActive = !this.isCalenderActive;
+      this.isCalendarActive = !this.isCalendarActive;
     },
   },
 };

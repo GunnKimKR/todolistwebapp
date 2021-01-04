@@ -20,16 +20,40 @@
   content: '';
 }
 
-.calendar-year {
-  flex: 1 0 100%;
-  margin-bottom: 0.5rem;
+.calendar-header-date-wrap {
+  display: none;
+  flex: 1 1 auto;
   text-align: center;
 }
 
-.calendar-month {
-  flex: 0 0 auto;
-  margin: 0 0.3rem 0 0.9rem;
+.calendar-header-date-wrap.active {
+  display: block;
+}
+
+.calendar-header-date-wrap > li {
+  position: relative;
+  display: inline-block;
+  width: 50%;
+}
+
+.calendar-header-date-wrap li .fas {
+  position: absolute;
+  top: 0.3rem;
+  padding: 0 1rem;
+}
+
+.calendar-header-date-wrap li .fa-chevron-left {
+  left: 0;
+}
+
+.calendar-header-date-wrap li .fa-chevron-right {
+  right: 0;
+}
+
+.calendar-date {
+  text-align: center;
   font-weight: 500;
+  word-spacing: 0.5rem;
 }
 
 .calendar-date-list {
@@ -59,8 +83,7 @@
 }
 
 .btn-calendar-drop {
-  position: absolute;
-  top: 100%;
+  position: relative;
   left: 50%;
   width: 1.3rem;
   height: 1.3rem;
@@ -86,12 +109,13 @@
 .calendar-body-group {
   overflow: hidden;
   max-height: 0;
-  margin-top: 2rem;
+  margin-top: 1rem;
   transition: max-height 0.5s ease;
 }
 
 .calendar-body-group.active {
-  max-height: 26rem;
+  max-height: 30rem;
+  margin-bottom: 1rem;
 }
 
 .table-calendar .th-cell,

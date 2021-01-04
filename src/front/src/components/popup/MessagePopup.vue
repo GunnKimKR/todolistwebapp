@@ -50,7 +50,7 @@ export default {
   methods: {
     fnConfirm() {
       this.$store.commit('popupConfirm', this.popup.popupName);
-      this.$emit('closePopup');
+      this.closePopup();
     },
     closePopup() {
       this.$store.commit('closePopup');
