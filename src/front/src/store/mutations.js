@@ -9,6 +9,8 @@ export default {
   deleteLoginUser(state) {
     state.user = '';
     document.cookie = 'user=; expires=Thu, 01 Jan 1970 00:00:00 UTC;';
+    state.date = '';
+    document.cookie = 'date=; expires=Thu, 01 Jan 1970 00:00:00 UTC;';
     router.push('/');
   },
   openPopup(state, popup) {
@@ -21,5 +23,9 @@ export default {
   },
   popupConfirm(state, popupName) {
     popupConfirmCallback(this, popupName);
+  },
+  setDate(state, date) {
+    state.date = date;
+    document.cookie = 'date=' + JSON.stringify(date);
   },
 };

@@ -31,7 +31,7 @@ const month_names_short = [
 const day_names = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const maxGapFromCurrentYear = 5;
 
-let curDate = {
+let curDateInit = {
   obj: '',
   yymmdd: '',
   year: '',
@@ -52,26 +52,32 @@ function registerCalendarModel(model) {
 }
 
 function setCurDate_calendar(date) {
-  let today = date ? date : new Date();
-  let year = today.getFullYear();
-  let month = today.getMonth();
+  let year = date.getFullYear();
+  let month = date.getMonth();
 
   vm.curDate = {
-    obj: today,
-    yymmdd: today
-      .toJSON()
-      .slice(0, 10)
-      .replace(/-/g, ''),
+    yyyymmdd: getFormatDate(date),
     year,
     month,
     monthName: month_names[month],
     monthNameShort: month_names_short[month],
-    date: today.getDate(),
-    day: day_names[today.getDay()],
+    date: date.getDate(),
+    day: day_names[date.getDay()],
     firstDayOfMonth: new Date(year, month, 1).getDay(),
     lastDateOfMonth: new Date(year, month + 1, 0).getDate(),
     lastDateOfPrevMonth: new Date(year, month, 0).getDate(),
   };
+
+  vm.$store.commit('setDate', vm.curDate);
+}
+
+function getFormatDate(date) {
+  var year = date.getFullYear();
+  var month = 1 + date.getMonth();
+  month = month >= 10 ? month : '0' + month;
+  var day = date.getDate();
+  day = day >= 10 ? day : '0' + day;
+  return year + '' + month + '' + day;
 }
 
 function curDateInfo_calendar() {
@@ -171,7 +177,7 @@ function changeCurDate_calendar(i, j) {
 }
 
 export {
-  curDate,
+  curDateInit,
   registerCalendarModel,
   setCurDate_calendar,
   curDateInfo_calendar,

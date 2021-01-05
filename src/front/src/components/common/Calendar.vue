@@ -98,7 +98,7 @@
 
 <script>
 import {
-  curDate,
+  curDateInit,
   registerCalendarModel,
   setCurDate_calendar,
   curDateInfo_calendar,
@@ -119,12 +119,15 @@ export default {
   data() {
     return {
       isCalendarActive: false,
-      curDate,
+      curDate: this.$store.state.date || curDateInit,
     };
   },
   created() {
     registerCalendarModel(this);
-    setCurDate_calendar();
+
+    if (this.$store.state.date == '') {
+      setCurDate_calendar(new Date());
+    }
   },
   computed: {
     curDateInfo() {
