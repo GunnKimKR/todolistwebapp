@@ -29,6 +29,7 @@ const month_names_short = [
 ];
 
 const day_names = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const maxGapFromCurrentYear = 5;
 
 let curDate = {
   obj: '',
@@ -98,13 +99,75 @@ function getDateValue_calendar(i, j) {
 }
 
 function getPrevOrNextMonthDateValue_calendar(value) {
-  let result;
-  if (value < 1) {
-    result = value + vm.curDate.lastDateOfPrevMonth;
-  } else if (value > vm.curDate.lastDateOfMonth) {
-    result = value - vm.curDate.lastDateOfMonth;
+  return value < 1
+    ? value + vm.curDate.lastDateOfPrevMonth
+    : value > vm.curDate.lastDateOfMonth
+    ? value - vm.curDate.lastDateOfMonth
+    : '';
+}
+
+function goPrevYear_calendar() {
+  if (vm.curDate.year != new Date().getFullYear() - maxGapFromCurrentYear) {
+    setCurDate_calendar(getNewDate(-1, 0));
   }
-  return result;
+}
+
+function goNextYear_calendar() {
+  if (vm.curDate.year != new Date().getFullYear() + maxGapFromCurrentYear) {
+    setCurDate_calendar(getNewDate(1, 0));
+  }
+}
+
+function goPrevMonth_calendar() {
+  if (
+    vm.curDate.year != new Date().getFullYear() - maxGapFromCurrentYear ||
+    vm.curDate.month != 0
+  ) {
+    setCurDate_calendar(getNewDate(0, -1));
+  }
+}
+
+function goPrevDate_calendar() {
+  if (
+    vm.curDate.year != new Date().getFullYear() - maxGapFromCurrentYear ||
+    vm.curDate.month != 0 ||
+    vm.curDate.date != 1
+  ) {
+    setCurDate_calendar(
+      new Date(vm.curDate.year, vm.curDate.month, vm.curDate.date - 1),
+    );
+  }
+}
+
+function goNextDate_calendar() {
+  if (
+    vm.curDate.year != new Date().getFullYear() + maxGapFromCurrentYear ||
+    vm.curDate.month != 11 ||
+    vm.curDate.date != vm.curDate.lastDateOfMonth
+  ) {
+    setCurDate_calendar(
+      new Date(vm.curDate.year, vm.curDate.month, vm.curDate.date + 1),
+    );
+  }
+}
+
+function goNextMonth_calendar() {
+  if (
+    vm.curDate.year != new Date().getFullYear() + maxGapFromCurrentYear ||
+    vm.curDate.month != 11
+  ) {
+    setCurDate_calendar(getNewDate(0, 1));
+  }
+}
+
+function getNewDate(gap_year, gap_month) {
+  return new Date(vm.curDate.year + gap_year, vm.curDate.month + gap_month, 1);
+}
+
+function changeCurDate_calendar(i, j) {
+  setCurDate_calendar(
+    new Date(vm.curDate.year, vm.curDate.month, vm.getDateOriginalValue(i, j)),
+  );
 }
 
 export {
@@ -116,4 +179,11 @@ export {
   getDateOriginalValue_calendar,
   getDateValue_calendar,
   getPrevOrNextMonthDateValue_calendar,
+  goPrevYear_calendar,
+  goNextYear_calendar,
+  goPrevMonth_calendar,
+  goNextMonth_calendar,
+  goPrevDate_calendar,
+  goNextDate_calendar,
+  changeCurDate_calendar,
 };

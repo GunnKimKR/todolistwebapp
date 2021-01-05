@@ -7,12 +7,12 @@
         class="calendar-header-date-wrap"
         :class="{ active: !isCalendarActive }"
       >
-        <li class="calendar-date" @click="dropCalendar">
-          <a href="#;" class="arrow-left">
+        <li class="calendar-date">
+          <a href="#;" class="arrow-left" @click="goPrevDate">
             <i class="fas fa-chevron-left"></i>
           </a>
-          <a href="#;">{{ curDateInfo }}</a>
-          <a href="#;" class="arrow-right">
+          <a href="#;" @click="dropCalendar">{{ curDateInfo }}</a>
+          <a href="#;" class="arrow-right" @click="goNextDate">
             <i class="fas fa-chevron-right"></i>
           </a>
         </li>
@@ -23,20 +23,20 @@
         :class="{ active: isCalendarActive }"
       >
         <li class="calendar-year">
-          <a href="#;" class="arrow-left">
+          <a href="#;" class="arrow-left" @click="goPrevYear">
             <i class="fas fa-chevron-left"></i>
           </a>
           <a href="#;">{{ curDate.year }}</a>
-          <a href="#;" class="arrow-right">
+          <a href="#;" class="arrow-right" @click="goNextYear">
             <i class="fas fa-chevron-right"></i>
           </a>
         </li>
         <li class="calendar-month">
-          <a href="#;" class="arrow-left">
+          <a href="#;" class="arrow-left" @click="goPrevMonth">
             <i class="fas fa-chevron-left"></i>
           </a>
           <a href="#;">{{ curDate.monthName }}</a>
-          <a href="#;" class="arrow-right">
+          <a href="#;" class="arrow-right" @click="goNextMonth">
             <i class="fas fa-chevron-right"></i>
           </a>
         </li>
@@ -74,8 +74,13 @@
           <tr v-for="i in 6" :key="i">
             <td v-for="j in 7" :key="j">
               <div class="td-cell">
-                <div class="td-style" :class="dateCellClass(i, j)">
-                  {{ getDateValue(i, j) }}
+                <div
+                  class="td-style"
+                  :class="[dateCellClass(i, j), { today: isToday(i, j) }]"
+                >
+                  <a href="#;" @click="clickDate(i, j)">
+                    {{ getDateValue(i, j) }}
+                  </a>
                 </div>
               </div>
             </td>
@@ -101,6 +106,13 @@ import {
   getDateOriginalValue_calendar,
   getDateValue_calendar,
   getPrevOrNextMonthDateValue_calendar,
+  goPrevYear_calendar,
+  goNextYear_calendar,
+  goPrevMonth_calendar,
+  goNextMonth_calendar,
+  goPrevDate_calendar,
+  goNextDate_calendar,
+  changeCurDate_calendar,
 } from '@/scripts/calendar';
 
 export default {
@@ -123,6 +135,11 @@ export default {
         return dateCellClass_calendar(i, j);
       };
     },
+    isToday() {
+      return (i, j) => {
+        return this.curDate.date == this.getDateOriginalValue(i, j);
+      };
+    },
   },
   methods: {
     dropCalendar() {
@@ -136,6 +153,27 @@ export default {
     },
     getPrevOrNextMonthDateValue(value) {
       return getPrevOrNextMonthDateValue_calendar(value);
+    },
+    goPrevYear() {
+      goPrevYear_calendar();
+    },
+    goNextYear() {
+      goNextYear_calendar();
+    },
+    goPrevMonth() {
+      goPrevMonth_calendar();
+    },
+    goNextMonth() {
+      goNextMonth_calendar();
+    },
+    goPrevDate() {
+      goPrevDate_calendar();
+    },
+    goNextDate() {
+      goNextDate_calendar();
+    },
+    clickDate(i, j) {
+      changeCurDate_calendar(i, j);
     },
   },
 };
