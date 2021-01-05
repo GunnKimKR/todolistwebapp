@@ -19,7 +19,7 @@ public class IndexController {
   public void index(HttpServletResponse response) throws IOException {
     Object user = httpSession.getAttribute("user");
     if(user != null){
-      response.sendRedirect(AppVariable.FRONT_URL() + "/oAuthLogin?userId=" + ((UserDTO)user).getUserId());
+      response.sendRedirect(AppVariable.FRONT_URL() + "?oAuthUserId=" + ((UserDTO)user).getUserId());
     }
   }
 

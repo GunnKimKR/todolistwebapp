@@ -41,21 +41,21 @@ const router = new VueRouter({
       component: () => import('@/views/SearchPage.vue'),
       meta: { auth: true, navIdx: 3 },
     },
-    {
-      path: '/oAuthLogin',
-      name: 'oAuthLogin',
-      beforeEnter: () => {
-        store.dispatch('fnGetOauthUser', findGetParameter('userId'));
-      },
-    },
   ],
 });
 
 router.beforeEach((to, from, next) => {
+  const oAuthUserId = findGetParameter('oAuthUserId');
+  if (oAuthUserId != null && !store.getters.isLogin) {
+    store.dispatch('fnGetOauthUser', oAuthUserId);
+    return;
+  }
+
   if (to.meta.auth && !store.getters.isLogin) {
     next('/login');
     return;
   }
+
   if (to.name == 'login' && store.getters.isLogin) {
     next('/main');
     return;
