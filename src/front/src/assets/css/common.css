@@ -244,6 +244,14 @@ input[type="checkbox"]:checked + .checkbox::after {
   display: block;
 }
 
+input[type="checkbox"]:disabled + .checkbox {
+  border-color: lightgray;
+}
+
+input[type="checkbox"]:disabled + .checkbox + span {
+  color: lightgray;
+}
+
 /* Button */
 .btn-primary {
   display: block;

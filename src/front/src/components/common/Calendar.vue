@@ -98,10 +98,8 @@
 
 <script>
 import {
-  curDateInit,
   registerCalendarModel,
   setCurDate_calendar,
-  curDateInfo_calendar,
   dateCellClass_calendar,
   getDateOriginalValue_calendar,
   getDateValue_calendar,
@@ -115,11 +113,14 @@ import {
   changeCurDate_calendar,
 } from '@/scripts/calendar';
 
+import { dateInfo } from '@/scripts/date';
+import bus from '@/scripts/bus';
+
 export default {
   data() {
     return {
       isCalendarActive: false,
-      curDate: this.$store.state.date || curDateInit,
+      curDate: this.$store.state.date || '',
     };
   },
   created() {
@@ -128,10 +129,17 @@ export default {
     if (this.$store.state.date == '') {
       setCurDate_calendar(new Date());
     }
+
+    bus.$on('showTaskForm', () => {
+      this.isCalendarActive = false;
+    });
+  },
+  beforeDestroy() {
+    bus.$off('showTaskForm');
   },
   computed: {
     curDateInfo() {
-      return curDateInfo_calendar();
+      return dateInfo(this.curDate);
     },
     dateCellClass() {
       return (i, j) => {
@@ -147,6 +155,9 @@ export default {
   methods: {
     dropCalendar() {
       this.isCalendarActive = !this.isCalendarActive;
+      if (this.isCalendarActive) {
+        bus.$emit('showCalendar');
+      }
     },
     getDateOriginalValue(i, j) {
       return getDateOriginalValue_calendar(i, j);

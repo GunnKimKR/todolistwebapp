@@ -16,22 +16,32 @@
     </div>
     <div class="task-form__row">
       <label class="checkbox-box" for="task-date">
-        <input type="checkbox" id="task-date" />
+        <input type="checkbox" id="task-date" v-model="taskDate" />
         <div class="checkbox"></div>
-        Date
+        Date/Time
       </label>
-      <div class="task-details">
-        Sep 21. 2020 / 17:00 - 21:00
+      <div class="task-details" :class="{ active: isDateChecked }">
+        <a :href="`#${isDateChecked ? 'popup' : ''}`" @click="clickDateInfo">
+          {{ dateInfo }} / Not Selected
+        </a>
       </div>
     </div>
-    <div class="task-form__row task-recur">
+    <div class="task-form__row">
       <label class="checkbox-box" for="task-recurring">
-        <input type="checkbox" id="task-recurring" />
+        <input
+          type="checkbox"
+          id="task-recurring"
+          v-model="taskRecurring"
+          :disabled="!isDateChecked"
+        />
         <div class="checkbox"></div>
-        Recurring
+        <span> Recurring </span>
       </label>
-      <div class="task-details">
-        3 Cycle
+      <div
+        class="task-details"
+        :class="{ active: isDateChecked && isRecurringChecked }"
+      >
+        Every Day
       </div>
     </div>
     <div class="task-form__row">
@@ -55,15 +65,55 @@
 </template>
 
 <script>
+import { dateInfo_2 } from '@/scripts/date';
+import { registerTaskFormModel, timePopup } from '@/scripts/taskform';
+import bus from '@/scripts/bus';
+
 export default {
   data() {
     return {
       isActive: false,
+      date: this.$store.state.date || '',
+      time: '',
+      taskDate: false,
+      taskRecurring: false,
     };
+  },
+  created() {
+    registerTaskFormModel(this);
+
+    bus.$on('showCalendar', () => {
+      this.isActive = false;
+    });
+  },
+  beforeDestroy() {
+    bus.$off('showCalendar');
+  },
+  computed: {
+    isDateChecked() {
+      return this.taskDate;
+    },
+    isRecurringChecked() {
+      return this.taskRecurring;
+    },
+    dateInfo() {
+      return dateInfo_2(this.$store.state.date);
+    },
+  },
+  watch: {
+    taskDate(nval) {
+      if (!nval) this.taskRecurring = false;
+    },
   },
   methods: {
     taskFormShow() {
       this.isActive = !this.isActive;
+      if (this.isActive) {
+        bus.$emit('showTaskForm');
+      }
+    },
+    clickDateInfo() {
+      timePopup();
     },
   },
 };

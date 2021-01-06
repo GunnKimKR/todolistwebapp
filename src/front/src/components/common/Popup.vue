@@ -7,6 +7,7 @@
     <ClipPlanDetailPopup
       v-if="popup.name == 'clipPlanDetail'"
     ></ClipPlanDetailPopup>
+    <TimeFormPopup v-if="popup.name == 'timeForm'"></TimeFormPopup>
   </div>
 </template>
 
@@ -14,11 +15,14 @@
 import MessagePopup from '@/components/popup/MessagePopup.vue';
 import ResetPasswordPopup from '@/components/popup/ResetPasswordPopup.vue';
 import ClipPlanDetailPopup from '@/components/popup/ClipPlanDetailPopup.vue';
+import TimeFormPopup from '@/components/popup/TimeFormPopup.vue';
+
 export default {
   components: {
     MessagePopup,
     ResetPasswordPopup,
     ClipPlanDetailPopup,
+    TimeFormPopup,
   },
   computed: {
     popup() {

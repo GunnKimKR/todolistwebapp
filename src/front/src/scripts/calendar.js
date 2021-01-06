@@ -1,49 +1,13 @@
-const month_names = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-];
+import {
+  month_names,
+  month_names_short,
+  day_names,
+  getFormatDate,
+} from '@/scripts/date';
 
-const month_names_short = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
-  'May',
-  'Jun',
-  'Jul',
-  'Aug',
-  'Sep',
-  'Oct',
-  'Nov',
-  'Dec',
-];
+import store from '@/store/store';
 
-const day_names = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const maxGapFromCurrentYear = 5;
-
-let curDateInit = {
-  obj: '',
-  yymmdd: '',
-  year: '',
-  month: '',
-  monthName: '',
-  monthNameShort: '',
-  date: '',
-  day: '',
-  firstDayOfMonth: '',
-  lastDateOfMonth: '',
-  lastDateOfPrevMonth: '',
-};
 
 let vm;
 
@@ -68,20 +32,7 @@ function setCurDate_calendar(date) {
     lastDateOfPrevMonth: new Date(year, month, 0).getDate(),
   };
 
-  vm.$store.commit('setDate', vm.curDate);
-}
-
-function getFormatDate(date) {
-  var year = date.getFullYear();
-  var month = 1 + date.getMonth();
-  month = month >= 10 ? month : '0' + month;
-  var day = date.getDate();
-  day = day >= 10 ? day : '0' + day;
-  return year + '' + month + '' + day;
-}
-
-function curDateInfo_calendar() {
-  return `${vm.curDate.year} ${vm.curDate.monthNameShort} ${vm.curDate.date} (${vm.curDate.day})`;
+  store.commit('setDate', vm.curDate);
 }
 
 function dateCellClass_calendar(i, j) {
@@ -177,10 +128,8 @@ function changeCurDate_calendar(i, j) {
 }
 
 export {
-  curDateInit,
   registerCalendarModel,
   setCurDate_calendar,
-  curDateInfo_calendar,
   dateCellClass_calendar,
   getDateOriginalValue_calendar,
   getDateValue_calendar,

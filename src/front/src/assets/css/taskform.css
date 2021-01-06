@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 .task-form-container {
-  margin-top: -12.4rem;
+  margin-top: -14.5rem;
   width: 100%;
   padding: 1rem 0;
   background-color: #fff;
@@ -70,4 +70,12 @@
 
 .task-input-btn.active::before {
   transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.task-form__row .task-details{
+  color: lightgray;
+}
+
+.task-form__row .task-details.active{
+  color: black;
 }
