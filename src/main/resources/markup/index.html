@@ -66,7 +66,7 @@
             <div class="checkbox"></div>
             Date
           </label>
-          <div class="task-details">
+          <div class="task-detail">
             Sep 21. 2020 / 17:00 - 21:00
           </div>
         </div>
@@ -76,8 +76,8 @@
             <div class="checkbox"></div>
             Recurring
           </label>
-          <div class="task-details">
-            Everyday
+          <div class="task-detail">
+            7-day cycle
           </div>
         </div>
         <div class="task-form__row">
@@ -93,8 +93,14 @@
             <div class="checkbox"></div>
             Label Color
           </label>
-          <div class="task-details">
+          <div class="task-detail label-color">
+            <div class="label-square label--gray"></div>
+            <div class="label-square label--red"></div>
+            <div class="label-square label--orange"></div>
             <div class="label-square label--green"></div>
+            <div class="label-square label--navy"></div>
+            <div class="label-square label--purple"></div>
+            <div class="label-square label--pink"></div>
           </div>
         </div>
       </section>
@@ -102,7 +108,7 @@
 
       <!--============================== Calendar Container ==============================-->
       <section class="calendar-container">
-        <h2 class="blind">달력</h2>
+        <h2 class="blind">Calendar</h2>
   
         <div class="calendar-header-group">
           <a href="#;" class="calendar-year">2020</a>
@@ -276,14 +282,14 @@
               <tr>
                 <td>
                   <div class="td-cell">
-                    <div class="td-style">
+                    <div class="td-style tasks today">
                       14
                     </div>
                   </div>
                 </td>
                 <td>
                   <div class="td-cell">
-                    <div class="td-style tasks today">
+                    <div class="td-style">
                       15
                     </div>
                   </div>
@@ -318,7 +324,7 @@
                 </td>
                 <td>
                   <div class="td-cell">
-                    <div class="td-style">
+                    <div class="td-style selected-date">
                       20
                     </div>
                   </div>
@@ -439,32 +445,45 @@
             <strong class="task-title">Monday. 15</strong>
           </header>
           <div class="task-list-body">
-            <ul class="pin-tasks-list">
-              <li class="pin-tasks-list__item">
+            <ul class="todo-list">
+              <li class="todo-list__item">
                 <a href="#popup">
+                  <div class="label-square label--navy"></div>
+                  <div class="todo-list__item__text ellip">
+                    To Do List Webapp Project
+                    <span class="todo-list__item__time">09:00 ~ 12:00</span>
+                  </div>
                   <span class="pin-icon">
                     <i class="fas fa-feather-alt"></i>
                   </span>
-                  <span class="pin-task-time">09:00</span>
-                  <span class="pin-task-text ellip">To Do List App 배포</span>
                 </a>
               </li>
-              <li class="pin-tasks-list__item">
-                <a href="#popup">
+              <li class="todo-list__item">
+                <a href="#;">
+                  <label class="checkbox-box--label">
+                    <input type="checkbox">
+                    <div class="checkbox label--orange"></div>
+                  </label>
+                  <div class="todo-list__item__text ellip">
+                    To Do List Webapp Project
+                  </div>
                   <span class="pin-icon">
                     <i class="fas fa-feather-alt"></i>
                   </span>
-                  <span class="pin-task-time">09:00</span>
-                  <span class="pin-task-text ellip">To Do List App 배포</span>
                 </a>
               </li>
-              <li class="pin-tasks-list__item">
-                <a href="#popup">
+              <li class="todo-list__item">
+                <a href="#;">
+                  <label class="checkbox-box--label">
+                    <input type="checkbox">
+                    <div class="checkbox label--purple"></div>
+                  </label>
+                  <div class="todo-list__item__text ellip">
+                    To Do List Webapp Project
+                  </div>
                   <span class="pin-icon">
                     <i class="fas fa-feather-alt"></i>
                   </span>
-                  <span class="pin-task-time">--:--</span>
-                  <span class="pin-task-text ellip">To Do List App 배포</span>
                 </a>
               </li>
             </ul>
@@ -480,9 +499,9 @@
     <section id="myinfo" class="myinfo-container">
       <div class="myinfo-container__inner">
         <header class="myinfo-header">
-          <h2 class="blind">나의 정보</h2>
+          <h2 class="blind">My Information</h2>
           <div class="myinfo-header__profile">
-            <img class="unknown" src="https://img.icons8.com/windows/124/333333/gender-neutral-user.png" alt="프로필" />
+            <img class="unknown" src="https://img.icons8.com/windows/124/333333/gender-neutral-user.png" alt="profile" />
           </div>
           <div class="myinfo-header__info">
             <dl>
@@ -519,7 +538,7 @@
 
         <!--============================== Task Details Container ==============================-->
         <section class="task-details-container">
-          <h2 class="blind">일정 세부사항</h2>
+          <h2 class="blind">Task Details</h2>
           <div class="button-area">
             <a href="#;" class="pop-btn-close">
               <i class="fas fa-times"></i>
@@ -553,13 +572,15 @@
                 <div class="task-detail-icon">
                   <i class="far fa-clock"></i>
                 </div>
-                <div class="task-detail-date">9월 15일(월) 09:00 - 12:00</div>
+                <div class="task-detail-date">
+                  Sep 21. 2020 / 17:00 - 21:00
+                </div>
               </li>
               <li class="task-details__item">
                 <div class="task-detail-icon">
                   <i class="fas fa-redo"></i>
                 </div>
-                <div class="task-detail-recur">3</div>
+                <div class="task-detail-recur">7-day cycle</div>
               </li>
               <li class="task-details__item note">
                 <div class="task-detail-icon">
@@ -577,9 +598,11 @@
           </div>
         </section>
         <!--============================== //Task Details Container ==============================-->
+
+        <!--  -->
       </div>
     </div>
 
-  </div>task-details-container
+  </div>
 </body>
 </html>

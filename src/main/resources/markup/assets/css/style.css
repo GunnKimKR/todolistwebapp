@@ -1,13 +1,12 @@
 @charset "UTF-8";
 
-
 /********************* login > To Do List *********************/
 #container.member-registration-container {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0 6%;
-  background: url(../images/bg_login-page.jpg) 50% 50%/cover no-repeat;
+  background: url(../images/bg_login-page.jpg) 50% 50% / cover no-repeat;
 }
 
 #container.member-registration-container::after {
@@ -16,7 +15,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: rgba(0,0,0,.1);
+  background-color: rgba(0, 0, 0, 0.1);
   content: '';
 }
 
@@ -28,7 +27,7 @@
   max-width: 40rem;
   padding: 3rem 0;
   background-color: #fff;
-  box-shadow: 2px 2px 5px rgba(0,0,0,.3);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .toggle-btn-group {
@@ -37,7 +36,7 @@
   width: 75%;
   margin: 0 auto;
   border-radius: 20px;
-  box-shadow: 0 0 15px rgba(0,0,0,.15);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
 }
 
 .toggle-btn-group .toggle-btn-bg {
@@ -49,8 +48,8 @@
   width: 50%;
   border-radius: 2rem;
   background-color: #333;
-  transition: left .5s ease;
-  content:'';
+  transition: left 0.5s ease;
+  content: '';
 }
 
 .toggle-btn-group .btn-toggle {
@@ -58,7 +57,7 @@
   background-color: transparent;
   color: #333;
   text-align: center;
-  transition: color .5s ease;
+  transition: color 0.5s ease;
 }
 
 .toggle-btn-group .toggle-btn-bg.active {
@@ -81,7 +80,7 @@
   min-width: 100%;
   max-width: 100%;
   padding: 2rem 3rem 0;
-  transition: transform .5s ease;
+  transition: transform 0.5s ease;
 }
 
 .sign-form.active {
@@ -100,8 +99,8 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  padding: .5em 0;
-  transition: .4s ease;
+  padding: 0.5em 0;
+  transition: 0.4s ease;
   transition-property: bottom, padding, font-size;
 }
 
@@ -113,7 +112,7 @@
 }
 
 .sign-form__row .input-box {
-  padding: .5em 0;
+  padding: 0.5em 0;
   border: none;
   border-bottom: 1px solid #333;
   border-radius: 0;
@@ -133,7 +132,7 @@
 
 .sign-form__row .error-message {
   width: 100%;
-  margin-top: .2rem;
+  margin-top: 0.2rem;
   font-size: 1.2rem;
   color: #e32a37;
   text-align: left;
@@ -224,7 +223,6 @@
   font-size: 1.2rem;
 }
 
-
 /********************* Calendar > To Do List *********************/
 
 /* nav */
@@ -249,7 +247,7 @@
   display: block;
   position: relative;
   width: 3.8rem;
-  padding: .5em;
+  padding: 0.5em;
   text-align: center;
 }
 
@@ -257,14 +255,14 @@
   display: none;
   position: absolute;
   right: 0;
-  bottom: .3rem;
+  bottom: 0.3rem;
   left: 0;
-  width: .4rem;
-  height: .4rem;
+  width: 0.4rem;
+  height: 0.4rem;
   margin: 0 auto;
   border-radius: 3px;
   background-color: #fbbc05;
-  content:'';
+  content: '';
 }
 
 .nav__tabmenu__item.active a:after {
@@ -277,7 +275,7 @@
   width: 100%;
   padding: 1rem 0;
   background-color: #fff;
-  transition: margin .5s ease;
+  transition: margin 0.5s ease;
 }
 
 .task-form-container.active {
@@ -290,13 +288,13 @@
 }
 
 .task-form__row:nth-of-type(2) {
-  margin-top: .4rem;
+  margin-top: 0.4rem;
 }
 
 .task-form__row.task-recur {
   overflow: hidden;
   max-height: 0;
-  transition: max-height .5s ease;
+  transition: max-height 0.5s ease;
 }
 
 .task-form__row.date-pick + .task-form__row.task-recur {
@@ -315,6 +313,14 @@
   flex: 0 0 10rem;
 }
 
+.task-detail.label-color {
+  display: flex;
+}
+
+.task-detail.label-color > .label-square + .label-square {
+  margin-left: 0.5rem;
+}
+
 .task-input-btn {
   position: fixed;
   right: 6%;
@@ -324,7 +330,7 @@
   height: 3rem;
   border-radius: 50%;
   background-color: #333;
-  opacity: .65;
+  opacity: 0.65;
 }
 
 .task-input-btn::after,
@@ -335,7 +341,7 @@
   border-radius: 2px;
   background-color: #fff;
   transform: translate(-50%, -50%) rotate(0deg);
-  transition: transform .3s ease;
+  transition: transform 0.3s ease;
   content: '';
 }
 
@@ -350,13 +356,12 @@
 }
 
 .task-input-btn.active::after {
-transform: translate(-50%, -50%) rotate(180deg);
+  transform: translate(-50%, -50%) rotate(180deg);
 }
 
 .task-input-btn.active::before {
   transform: translate(-50%, -50%) rotate(90deg);
 }
-
 
 /* calendar-header-group */
 .calendar-header-group {
@@ -364,7 +369,7 @@ transform: translate(-50%, -50%) rotate(180deg);
   flex-wrap: wrap;
   align-items: center;
   position: relative;
-  padding: .7em 0 .9em;
+  padding: 0.7em 0 0.9em;
   color: #fff;
 }
 
@@ -381,13 +386,13 @@ transform: translate(-50%, -50%) rotate(180deg);
 
 .calendar-year {
   flex: 1 0 100%;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
   text-align: center;
 }
 
 .calendar-month {
   flex: 0 0 auto;
-  margin: 0 .3rem 0 .9rem;
+  margin: 0 0.3rem 0 0.9rem;
   font-weight: 500;
 }
 
@@ -401,7 +406,6 @@ transform: translate(-50%, -50%) rotate(180deg);
   width: 2.7rem;
   height: 2.7rem;
 }
-
 
 .calendar-date-list .calendar-date-list__item a {
   display: block;
@@ -424,7 +428,7 @@ transform: translate(-50%, -50%) rotate(180deg);
   left: 50%;
   width: 1.3rem;
   height: 1.3rem;
-  margin-top: .7rem;
+  margin-top: 0.7rem;
   color: #333;
   transform: translateX(-50%);
 }
@@ -447,7 +451,7 @@ transform: translate(-50%, -50%) rotate(180deg);
   overflow: hidden;
   max-height: 0;
   margin-top: 2rem;
-  transition: max-height .5s ease;
+  transition: max-height 0.5s ease;
 }
 
 .calendar-body-group.active {
@@ -476,19 +480,22 @@ transform: translate(-50%, -50%) rotate(180deg);
   border-radius: 50%;
 }
 
-.table-calendar .td-style.today.tasks {
-  box-shadow: 0 2px 10px rgba(66,133,244,.65);
+.table-calendar .td-style.today {
   background-color: #4285f4;
   color: #fff;
+}
+
+.table-calendar .td-style.selected-date {
+  border: 1px solid #4285f4;
 }
 
 .table-calendar .tasks::after {
   position: absolute;
   right: 0;
-  bottom: .5rem;
+  bottom: 0.5rem;
   left: 0;
-  width: .4rem;
-  height: .4rem;
+  width: 0.4rem;
+  height: 0.4rem;
   margin: 0 auto;
   border-radius: 50%;
   background-color: #fbbc05;
@@ -506,7 +513,7 @@ transform: translate(-50%, -50%) rotate(180deg);
   align-items: center;
 }
 
-.pin-tasks-list__item + .pin-tasks-list__item{
+.pin-tasks-list__item + .pin-tasks-list__item {
   margin-top: 1rem;
 }
 
@@ -539,19 +546,19 @@ transform: translate(-50%, -50%) rotate(180deg);
 
 .table-timetable .th-cell::before {
   position: absolute;
-  bottom: -.5rem;
-  left: -.2rem;
+  bottom: -0.5rem;
+  left: -0.2rem;
   z-index: 10;
-  width: .5rem;
-  height: .5rem;
+  width: 0.5rem;
+  height: 0.5rem;
   border-radius: 50%;
   background-color: #dadada;
   content: '';
 }
 
 .table-timetable .th-cell.current-time::before {
-  width: .6rem;
-  height: .6rem;
+  width: 0.6rem;
+  height: 0.6rem;
   background-color: #fbbc05;
 }
 
@@ -566,12 +573,12 @@ transform: translate(-50%, -50%) rotate(180deg);
 
 .table-timetable .th-cell-inner {
   margin-left: -1.2rem;
-  padding-bottom: .4rem;
+  padding-bottom: 0.4rem;
 }
 
 .table-timetable .td-cell {
   height: 7rem;
-  padding: .6rem 0;
+  padding: 0.6rem 0;
 }
 
 .table-timetable .tr-empty .td-cell {
@@ -583,15 +590,15 @@ transform: translate(-50%, -50%) rotate(180deg);
   flex-direction: column;
   justify-content: center;
   height: 100%;
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
   border-radius: 3px;
   color: #fff;
 }
 
 .table-timetable .td-cell::after {
   position: absolute;
-  top: -.7rem;
-  bottom: -.6rem;
+  top: -0.7rem;
+  bottom: -0.6rem;
   left: 0;
   z-index: -1;
   border-left: 1px solid #dadada;
@@ -610,7 +617,7 @@ transform: translate(-50%, -50%) rotate(180deg);
   border: 1px dashed #fbbc05;
 }
 
-.table-timetable tbody tr:nth-child(n+4) td:nth-child(3) .td-cell::after {
+.table-timetable tbody tr:nth-child(n + 4) td:nth-child(3) .td-cell::after {
   border: 1px dashed #fbbc05;
 }
 
@@ -622,7 +629,7 @@ transform: translate(-50%, -50%) rotate(180deg);
   min-height: 4.4rem;
   padding: 1rem 1.5rem;
   border-radius: 3px;
-  box-shadow: 0 0 4px rgba(0,0,0,.3);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
   background-color: #fff;
   font-size: 1.2rem;
 }
@@ -649,7 +656,7 @@ transform: translate(-50%, -50%) rotate(180deg);
 
 .task-search-header .input-box {
   position: relative;
-  padding: .5em 1em .5em 4rem;
+  padding: 0.5em 1em 0.5em 4rem;
 }
 
 .task-search-header .input-box .icon-search {
@@ -668,7 +675,6 @@ transform: translate(-50%, -50%) rotate(180deg);
   margin-top: 1rem;
 }
 
-
 .task-search__group + .task-search__group {
   margin-top: 2.5rem;
 }
@@ -677,10 +683,10 @@ transform: translate(-50%, -50%) rotate(180deg);
 .myinfo-container {
   position: fixed;
   top: 0;
-  right: -100%;
+  right: -200%;
   bottom: 0;
   z-index: 100;
-  transition: right .5s ease;
+  transition: right 0.5s ease;
 }
 
 .myinfo-container__inner {
@@ -688,7 +694,7 @@ transform: translate(-50%, -50%) rotate(180deg);
   height: 100%;
   padding: 1.5rem;
   background-color: #fff;
-  box-shadow: 0px 0px 10px rgba(0,0,0,0.7);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
 }
 
 .myinfo-header__profile {
@@ -708,7 +714,7 @@ transform: translate(-50%, -50%) rotate(180deg);
 .myinfo-header .button-area {
   display: flex;
   justify-content: center;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 }
 
 .myinfo-header .button-area button {
@@ -726,11 +732,11 @@ transform: translate(-50%, -50%) rotate(180deg);
 }
 
 .myinfo-body__phrase figure {
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 }
 
 .myinfo-body__phrase figcaption {
-  margin-top: .4rem;
+  margin-top: 0.4rem;
   font-size: 1.2rem;
   text-align: right;
 }
@@ -748,7 +754,7 @@ transform: translate(-50%, -50%) rotate(180deg);
   bottom: 0;
   left: 0;
   z-index: -1;
-  background-color: rgba(0,0,0,.4);
+  background-color: rgba(0, 0, 0, 0.4);
   content: '';
 }
 
@@ -760,7 +766,6 @@ transform: translate(-50%, -50%) rotate(180deg);
 #myinfo:target .btn-close:after {
   display: block;
 }
-
 
 /*************** Task Details Container ***************/
 .task-details-container {
