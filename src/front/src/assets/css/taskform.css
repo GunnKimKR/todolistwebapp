@@ -30,6 +30,14 @@
   flex: 0 0 10rem;
 }
 
+.task-detail.label-color {
+  display: flex;
+}
+
+.task-detail.label-color > .label-square{
+  margin-right: 0.5rem;
+}
+
 .task-input-btn {
   position: fixed;
   right: 6%;
@@ -78,4 +86,27 @@
 
 .task-form__row .task-details.active{
   color: black;
+}
+
+.task-form__row .label-square {
+  opacity: 0.3;
+}
+
+.task-form__row .label-square.selected {
+  opacity: 1;
+  border: 0.2rem solid black !important;
+}
+
+.pin-icon-taskform{
+  position: relative;
+  left: -0.2rem;
+  bottom: 0.1rem;
+  transform: scale(0.8);
+  width: 2rem;
+  height: 2rem;
+  opacity: 0.4;
+}
+
+.pin-icon-taskform.active{
+  opacity: 1;
 }

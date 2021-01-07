@@ -15,7 +15,7 @@
   left: 6px;
   width: 7px;
   animation: spinner 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
-  background: rgb(50, 0, 100);
+  background: rgba(0,0,0,.4)
 }
 
 .spinner div:nth-child(1) {

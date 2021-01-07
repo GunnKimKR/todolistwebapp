@@ -6,7 +6,7 @@
       class="task-input-btn"
       role="Task input button"
       v-bind:class="{ active: isActive }"
-      @click="taskFormShow"
+      @click="showTaskForm"
     ></button>
     <div class="task-form__row">
       <div class="input-box">
@@ -16,7 +16,7 @@
     </div>
     <div class="task-form__row">
       <label class="checkbox-box" for="task-date">
-        <input type="checkbox" id="task-date" v-model="taskDate" />
+        <input type="checkbox" id="task-date" v-model="checkDate" />
         <div class="checkbox"></div>
         Date/Time
       </label>
@@ -31,7 +31,7 @@
         <input
           type="checkbox"
           id="task-recurring"
-          v-model="taskRecurring"
+          v-model="checkRecurring"
           :disabled="!isDateChecked"
         />
         <div class="checkbox"></div>
@@ -41,24 +41,65 @@
         class="task-details"
         :class="{ active: isDateChecked && isRecurringChecked }"
       >
-        Every Day
+        <a
+          :href="`#${isRecurringChecked ? 'popup' : ''}`"
+          @click="clickRecurringInfo"
+        >
+          Not Selected
+        </a>
       </div>
     </div>
     <div class="task-form__row">
       <label class="checkbox-box" for="task-pin">
-        <input type="checkbox" id="task-pin" />
+        <input type="checkbox" id="task-pin" v-model="checkPin" />
         <div class="checkbox"></div>
         Pin
       </label>
+      <span
+        class="pin-icon pin-icon-taskform"
+        :class="{ active: isPinChecked }"
+      >
+        <i class="fas fa-feather-alt"> </i>
+      </span>
     </div>
     <div class="task-form__row">
       <label class="checkbox-box" for="task-label-color">
-        <input type="checkbox" id="task-label-color" />
+        <input type="checkbox" id="task-label-color" v-model="checkLabel" />
         <div class="checkbox"></div>
         Label Color
       </label>
-      <div class="task-details">
-        <div class="label-square label--green"></div>
+      <div class="task-detail label-color">
+        <a
+          href="#"
+          class="label-square label--gray"
+          @click="selectLabel(0)"
+        ></a>
+        <a href="#" class="label-square label--red" @click="selectLabel(1)"></a>
+        <a
+          href="#"
+          class="label-square label--orange"
+          @click="selectLabel(2)"
+        ></a>
+        <a
+          href="#"
+          class="label-square label--green"
+          @click="selectLabel(3)"
+        ></a>
+        <a
+          href="#"
+          class="label-square label--navy"
+          @click="selectLabel(4)"
+        ></a>
+        <a
+          href="#"
+          class="label-square label--purple"
+          @click="selectLabel(5)"
+        ></a>
+        <a
+          href="#"
+          class="label-square label--pink"
+          @click="selectLabel(6)"
+        ></a>
       </div>
     </div>
   </section>
@@ -66,7 +107,14 @@
 
 <script>
 import { dateInfo_2 } from '@/scripts/date';
-import { registerTaskFormModel, timePopup } from '@/scripts/taskform';
+import {
+  registerTaskFormModel,
+  timePopup,
+  selectRecurringPopup,
+  selectLabel_taskform,
+  checkLabel_taskform,
+  showTaskForm_,
+} from '@/scripts/taskform';
 import bus from '@/scripts/bus';
 
 export default {
@@ -75,8 +123,10 @@ export default {
       isActive: false,
       date: this.$store.state.date || '',
       time: '',
-      taskDate: false,
-      taskRecurring: false,
+      checkDate: '',
+      checkRecurring: '',
+      checkPin: '',
+      checkLabel: '',
     };
   },
   created() {
@@ -91,29 +141,38 @@ export default {
   },
   computed: {
     isDateChecked() {
-      return this.taskDate;
+      return this.checkDate;
     },
     isRecurringChecked() {
-      return this.taskRecurring;
+      return this.checkRecurring;
+    },
+    isPinChecked() {
+      return this.checkPin;
     },
     dateInfo() {
       return dateInfo_2(this.$store.state.date);
     },
   },
   watch: {
-    taskDate(nval) {
-      if (!nval) this.taskRecurring = false;
+    checkDate(nval) {
+      if (!nval) this.checkRecurring = false;
+    },
+    checkLabel(nval) {
+      checkLabel_taskform(nval);
     },
   },
   methods: {
-    taskFormShow() {
-      this.isActive = !this.isActive;
-      if (this.isActive) {
-        bus.$emit('showTaskForm');
-      }
+    showTaskForm() {
+      showTaskForm_();
     },
     clickDateInfo() {
       timePopup();
+    },
+    clickRecurringInfo() {
+      selectRecurringPopup();
+    },
+    selectLabel(index) {
+      selectLabel_taskform(index);
     },
   },
 };

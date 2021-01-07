@@ -4,33 +4,33 @@
       Input Begin / End Time
     </strong>
 
-    <div slot="body" class="time-form__row">
+    <div slot="body" class="task-popup-form__row time">
       <div class="input-box-wrap">
         <div class="input-box active">
           <label class="input-placeholder">hh</label>
-          <input type="text" maxlength="2" />
+          <input type="text" maxlength="2" v-model="time_1" />
         </div>
         :
         <div class="input-box active">
           <label class="input-placeholder">mm</label>
-          <input type="text" maxlength="2" />
+          <input type="text" maxlength="2" v-model="time_2" />
         </div>
       </div>
       -
       <div class="input-box-wrap">
         <div class="input-box active">
           <label class="input-placeholder">hh</label>
-          <input type="text" maxlength="2" />
+          <input type="text" maxlength="2" v-model="time_3" />
         </div>
         :
         <div class="input-box active">
           <label class="input-placeholder">mm</label>
-          <input type="text" maxlength="2" />
+          <input type="text" maxlength="2" v-model="time_4" />
         </div>
       </div>
     </div>
 
-    <div slot="footer" class="time-form__row footer">
+    <div slot="footer" class="task-popup-form__row footer">
       <button type="button" class="btn-primary" disabled>
         OK
       </button>
@@ -50,6 +50,14 @@
 import PopupContainer from '@/components/common/PopupContainer.vue';
 
 export default {
+  data() {
+    return {
+      time_1: '',
+      time_2: '',
+      time_3: '',
+      time_4: '',
+    };
+  },
   components: {
     PopupContainer,
   },
@@ -62,5 +70,5 @@ export default {
 </script>
 
 <style scoped>
-@import '~styles/timeformpopup.css';
+@import '~styles/taskformpopup.css';
 </style>
