@@ -9,24 +9,37 @@
         <div class="input-box active">
           <label class="input-placeholder">hh</label>
           <input
-            type="number"
-            min="0"
-            max="23"
+            type="text"
             onkeydown="return false"
-            v-model="time[0]"
+            readonly
+            v-model="time1"
           />
+          <ul class="number-step-btn">
+            <li ref="time1UpBtn">
+              <i class="fas fa-chevron-up"></i>
+            </li>
+            <li ref="time1DownBtn">
+              <i class="fas fa-chevron-down"></i>
+            </li>
+          </ul>
         </div>
         :
         <div class="input-box active">
           <label class="input-placeholder">mm</label>
           <input
-            type="number"
-            min="0"
-            max="55"
-            step="5"
+            type="text"
             onkeydown="return false"
-            v-model="time[1]"
+            readonly
+            v-model="time2"
           />
+          <ul class="number-step-btn">
+            <li ref="time2UpBtn">
+              <i class="fas fa-chevron-up"></i>
+            </li>
+            <li ref="time2DownBtn">
+              <i class="fas fa-chevron-down"></i>
+            </li>
+          </ul>
         </div>
       </div>
       ~
@@ -34,24 +47,37 @@
         <div class="input-box active">
           <label class="input-placeholder">hh</label>
           <input
-            type="number"
-            min="0"
-            max="23"
+            type="text"
             onkeydown="return false"
-            v-model="time[2]"
+            readonly
+            v-model="time3"
           />
+          <ul class="number-step-btn">
+            <li ref="time3UpBtn">
+              <i class="fas fa-chevron-up"></i>
+            </li>
+            <li ref="time3DownBtn">
+              <i class="fas fa-chevron-down"></i>
+            </li>
+          </ul>
         </div>
         :
         <div class="input-box active">
           <label class="input-placeholder">mm</label>
           <input
-            type="number"
-            min="0"
-            max="55"
-            step="5"
+            type="text"
             onkeydown="return false"
-            v-model="time[3]"
+            readonly
+            v-model="time4"
           />
+          <ul class="number-step-btn">
+            <li ref="time4UpBtn">
+              <i class="fas fa-chevron-up"></i>
+            </li>
+            <li ref="time4DownBtn">
+              <i class="fas fa-chevron-down"></i>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -80,35 +106,55 @@
 <script>
 import PopupContainer from '@/components/common/PopupContainer.vue';
 import bus from '@/scripts/bus';
+import { registerTimeFormModel, addTouchEvent } from '@/scripts/timeformpopup';
+
+let interval;
+let vm;
 
 export default {
   data() {
     return {
-      time: ['00', '00', '00', '00'],
+      time1: '00',
+      time2: '00',
+      time3: '00',
+      time4: '00',
+      isTouchEnd: false,
     };
+  },
+  created() {
+    vm = this;
+    registerTimeFormModel(this);
+  },
+  mounted() {
+    addTouchEvent();
   },
   components: {
     PopupContainer,
   },
   computed: {
     isTimeValid() {
-      return this.time[2] + this.time[3] >= this.time[0] + this.time[1];
+      return this.time3 + this.time4 >= this.time1 + this.time2;
     },
     timeResult() {
       return {
-        beginTime: this.time[0] + this.time[1],
-        endTime: this.time[2] + this.time[3],
-        resultString: `${this.time[0]}:${this.time[1]} ~ ${this.time[2]}:${this.time[3]}`,
+        beginTime: this.time1 + this.time2,
+        endTime: this.time3 + this.time4,
+        resultString: `${this.time1}:${this.time2} ~ ${this.time3}:${this.time4}`,
       };
     },
   },
   watch: {
-    time(nval) {
-      nval.forEach((value, i) => {
-        if (value.length == 1) {
-          this.time[i] = '0' + value;
-        }
-      });
+    time1(nval) {
+      if (nval.toString().length == 1) this.time1 = '0' + nval;
+    },
+    time2(nval) {
+      if (nval.toString().length == 1) this.time2 = '0' + nval;
+    },
+    time3(nval) {
+      if (nval.toString().length == 1) this.time3 = '0' + nval;
+    },
+    time4(nval) {
+      if (nval.toString().length == 1) this.time4 = '0' + nval;
     },
   },
   methods: {
@@ -118,6 +164,60 @@ export default {
     clickOk() {
       bus.$emit('inputTime', this.timeResult);
       this.$store.commit('closePopup');
+    },
+    time1_up() {
+      this.changeTime(() => {
+        if (vm.time1 < 23) vm.time1++;
+      });
+    },
+    time1_down() {
+      this.changeTime(() => {
+        if (vm.time1 > 0) vm.time1--;
+      });
+    },
+    time2_up() {
+      this.changeTime(() => {
+        if (vm.time2 < 51) vm.time2 = parseInt(vm.time2) + 5;
+      });
+    },
+    time2_down() {
+      this.changeTime(() => {
+        if (vm.time2 > 0) vm.time2 = parseInt(vm.time2) - 5;
+      });
+    },
+    time3_up() {
+      this.changeTime(() => {
+        if (vm.time3 < 23) vm.time3++;
+      });
+    },
+    time3_down() {
+      this.changeTime(() => {
+        if (vm.time3 > 0) vm.time3--;
+      });
+    },
+    time4_up() {
+      this.changeTime(() => {
+        if (vm.time4 < 51) vm.time4 = parseInt(vm.time4) + 5;
+      });
+    },
+    time4_down() {
+      this.changeTime(() => {
+        if (vm.time4 > 0) vm.time4 = parseInt(vm.time4) - 5;
+      });
+    },
+    changeTime(fn) {
+      clearInterval(interval);
+      this.isTouchEnd = false;
+      fn();
+      interval = setInterval(() => {
+        if (!this.isTouchEnd) {
+          fn();
+        }
+      }, 80);
+    },
+    finishTimeChange() {
+      this.isTouchEnd = true;
+      clearInterval(interval);
     },
   },
 };

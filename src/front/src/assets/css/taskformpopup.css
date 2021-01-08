@@ -1,6 +1,6 @@
 input[type='number']::-webkit-inner-spin-button,
 input[type='number']::-webkit-outer-spin-button {
-  opacity: 1;
+  opacity: 0;
 }
 
 .pop-notice-content__header > strong.recurring {
@@ -43,7 +43,6 @@ input[type='number']::-webkit-outer-spin-button {
   position: relative;
   padding: 0.2em 0;
   border: none;
-  border-bottom: 1px solid #333;
   border-radius: 0;
 }
 
@@ -97,6 +96,8 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 .task-popup-form__row.time input {
+  position: relative;
+  right: 1rem;
   font-size: 2.5rem;
 }
 
@@ -155,4 +156,28 @@ input[type='number']::-webkit-outer-spin-button {
 
 .type-options ul li a {
   display: block;
+}
+
+.number-step-btn {
+  position: absolute;
+  top: 3px;
+  right: 0;
+  width: 1.6rem;
+  border: 1px solid #888;
+  border-radius: 2px;
+}
+
+.number-step-btn li {
+  height: 1.7rem;
+}
+
+.number-step-btn li:first-child{
+  border-bottom: 1px solid #888; 
+}
+
+.number-step-btn li .fas{
+  position: relative;
+  font-size: 1.2rem;
+  color: #888;
+  bottom: 2px;
 }
