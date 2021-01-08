@@ -18,11 +18,11 @@
       <label class="checkbox-box" for="task-date">
         <input type="checkbox" id="task-date" v-model="checkDate" />
         <div class="checkbox"></div>
-        Date/Time
+        Date / Time
       </label>
       <div class="task-details" :class="{ active: isDateChecked }">
         <a :href="`#${isDateChecked ? 'popup' : ''}`" @click="clickDateInfo">
-          {{ dateInfo }} / Not Selected
+          {{ dateInfo }} / {{ time.resultString }}
         </a>
       </div>
     </div>
@@ -113,7 +113,6 @@ import {
   selectRecurringPopup,
   selectLabel_taskform,
   checkLabel_taskform,
-  showTaskForm_,
 } from '@/scripts/taskform';
 import bus from '@/scripts/bus';
 
@@ -122,7 +121,9 @@ export default {
     return {
       isActive: false,
       date: this.$store.state.date || '',
-      time: '',
+      time: {
+        resultString: '00:00 ~ 00:00',
+      },
       checkDate: '',
       checkRecurring: '',
       checkPin: '',
@@ -134,6 +135,10 @@ export default {
 
     bus.$on('showCalendar', () => {
       this.isActive = false;
+    });
+
+    bus.$on('inputTime', res => {
+      this.time = res;
     });
   },
   beforeDestroy() {
@@ -163,7 +168,10 @@ export default {
   },
   methods: {
     showTaskForm() {
-      showTaskForm_();
+      this.isActive = !this.isActive;
+      if (this.isActive) {
+        bus.$emit('showTaskForm');
+      }
     },
     clickDateInfo() {
       timePopup();

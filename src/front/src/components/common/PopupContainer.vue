@@ -1,5 +1,5 @@
 <template>
-  <div id="pop-container">
+  <div id="pop-container" :class="popclass">
     <div v-if="popup.name == 'clipPlanDetail'" class="task-details-container">
       <div class="button-area">
         <slot name="btn"></slot>
@@ -22,7 +22,7 @@
       <header class="pop-notice-content__header">
         <slot name="header"></slot>
       </header>
-      <div class="pop-notice-content__body">
+      <div class="pop-notice-content__body" :class="popclass">
         <slot name="body"></slot>
       </div>
       <footer class="pop-notice-content__footer">
@@ -37,6 +37,11 @@ export default {
   computed: {
     popup() {
       return this.$store.state.popup;
+    },
+    popclass() {
+      return this.$store.state.popup.name == 'selectRecurring'
+        ? 'recurring'
+        : '';
     },
   },
 };

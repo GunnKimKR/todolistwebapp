@@ -40,11 +40,18 @@ function getFormatDate(date) {
 }
 
 function dateInfo(date) {
-  return `${date.year} ${date.monthNameShort} ${date.date} (${date.day})`;
+  return `${date.year} ${date.monthNameShort} ${getDateWithSuf(date.date)} (${
+    date.day
+  })`;
 }
 
 function dateInfo_2(date) {
-  return `${date.year} ${date.monthNameShort} ${date.date}`;
+  return `${date.year} ${date.monthNameShort} ${getDateWithSuf(date.date)}`;
+}
+
+function getDateWithSuf(dt) {
+  const suf = dt == 1 ? 'st' : dt == 2 ? 'nd' : dt == 3 ? 'rd' : 'th';
+  return dt + suf;
 }
 
 export {
@@ -54,4 +61,5 @@ export {
   getFormatDate,
   dateInfo,
   dateInfo_2,
+  getDateWithSuf,
 };

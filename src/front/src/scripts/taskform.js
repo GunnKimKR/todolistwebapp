@@ -1,5 +1,4 @@
 import store from '@/store/store';
-import bus from '@/scripts/bus';
 
 let vm;
 
@@ -40,18 +39,10 @@ function checkLabel_taskform(nval) {
   }
 }
 
-function showTaskForm_() {
-  vm.isActive = !vm.isActive;
-  if (vm.isActive) {
-    bus.$emit('showTaskForm');
-  }
-}
-
 export {
   registerTaskFormModel,
   timePopup,
   selectRecurringPopup,
   selectLabel_taskform,
   checkLabel_taskform,
-  showTaskForm_,
 };

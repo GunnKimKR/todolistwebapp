@@ -30,6 +30,10 @@
   box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.5);
 }
 
+#pop-container.recurring {
+  min-height: 33rem;
+}
+
 #pop-container .pop-btn-close::after {
   position: fixed;
   top: 0;
@@ -52,6 +56,10 @@
 
 .pop-notice-content .sign-form__row {
   margin-top: 2rem;
+}
+
+.pop-notice-content__body.recurring {
+  min-height: 13rem;
 }
 
 .icon-message {

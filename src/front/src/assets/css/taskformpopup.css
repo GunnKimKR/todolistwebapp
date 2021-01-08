@@ -1,3 +1,8 @@
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  opacity: 1;
+}
+
 .pop-notice-content__header > strong.recurring {
   font-size: 1.9rem;
 }
@@ -6,6 +11,12 @@
   display: flex;
   align-items: center;
   margin-top: 2rem;
+}
+
+.task-popup-form__row.recurring-details {
+  height: 7rem;
+  justify-content: center;
+  align-items: center;
 }
 
 .task-popup-form__row.footer {
@@ -38,7 +49,14 @@
 
 .task-popup-form__row .input-box.input-inline {
   margin: 0 1rem;
+}
+
+.task-popup-form__row .input-box.input-inline-4 {
   width: 4rem;
+}
+
+.task-popup-form__row .input-box.input-inline-8 {
+  width: 8rem;
 }
 
 .task-popup-form__row.select-box .input-box{
@@ -88,6 +106,10 @@
   right: 2.5rem;
 }
 
+.btn-select-drop.active {
+  margin-top: 1rem;
+}
+
 .btn-select-drop::before {
   display: inline-block;
   font-weight: 900;
@@ -95,4 +117,42 @@
   line-height: 1.3rem;
   font-family: 'Font Awesome 5 Free';
   content: '\f0d7';
+}
+
+.btn-select-drop.active::before {
+  content: '\f0de';
+}
+
+.pop-notice-content .pop-btn-close{
+  font-size: 1.4rem;
+}
+
+.type-options {
+  position: absolute;
+  top: 11rem;
+  right: 0;
+  width: 100%;
+  z-index: 1;
+  padding: 0 2.5rem;
+}
+
+.type-options ul {
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+  border-radius: 3px;
+  background: white;
+}
+
+.type-options ul li {
+  margin: 0 2rem;
+  padding: 0.1rem 0;
+  border-bottom: 1px solid;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.type-options ul li:last-child {
+  border: none;
+}
+
+.type-options ul li a {
+  display: block;
 }
