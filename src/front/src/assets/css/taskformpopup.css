@@ -74,6 +74,7 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 .task-popup-form__row.time .input-box {
+  padding: 0;
   border-bottom: none;
 }
 
@@ -126,9 +127,12 @@ input[type='number']::-webkit-outer-spin-button {
   font-weight: 500;
 }
 
+.task-popup-form__row.time .input-box .fas {
+  font-size: 2.5rem;
+  color: #eee;
+}
+
 .task-popup-form__row.time input {
-  position: relative;
-  right: 1rem;
   font-size: 2.5rem;
 }
 
@@ -196,19 +200,4 @@ input[type='number']::-webkit-outer-spin-button {
   width: 1.6rem;
   border: 1px solid #888;
   border-radius: 2px;
-}
-
-.number-step-btn li {
-  height: 1.7rem;
-}
-
-.number-step-btn li:first-child{
-  border-bottom: 1px solid #888; 
-}
-
-.number-step-btn li .fas{
-  position: relative;
-  font-size: 1.2rem;
-  color: #888;
-  bottom: 2px;
 }

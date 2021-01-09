@@ -7,77 +7,49 @@
     <div slot="body" class="task-popup-form__row time">
       <div class="input-box-wrap">
         <div class="input-box active">
-          <label class="input-placeholder">hh</label>
+          <p ref="time1UpBtn"><i class="fas fa-chevron-up"></i></p>
           <input
             type="text"
             onkeydown="return false"
             readonly
             v-model="time1"
           />
-          <ul class="number-step-btn">
-            <li ref="time1UpBtn">
-              <i class="fas fa-chevron-up"></i>
-            </li>
-            <li ref="time1DownBtn">
-              <i class="fas fa-chevron-down"></i>
-            </li>
-          </ul>
+          <p ref="time1DownBtn"><i class="fas fa-chevron-down"></i></p>
         </div>
         :
         <div class="input-box active">
-          <label class="input-placeholder">mm</label>
+          <p ref="time2UpBtn"><i class="fas fa-chevron-up"></i></p>
           <input
             type="text"
             onkeydown="return false"
             readonly
             v-model="time2"
           />
-          <ul class="number-step-btn">
-            <li ref="time2UpBtn">
-              <i class="fas fa-chevron-up"></i>
-            </li>
-            <li ref="time2DownBtn">
-              <i class="fas fa-chevron-down"></i>
-            </li>
-          </ul>
+          <p ref="time2DownBtn"><i class="fas fa-chevron-down"></i></p>
         </div>
       </div>
       ~
       <div class="input-box-wrap">
         <div class="input-box active">
-          <label class="input-placeholder">hh</label>
+          <p ref="time3UpBtn"><i class="fas fa-chevron-up"></i></p>
           <input
             type="text"
             onkeydown="return false"
             readonly
             v-model="time3"
           />
-          <ul class="number-step-btn">
-            <li ref="time3UpBtn">
-              <i class="fas fa-chevron-up"></i>
-            </li>
-            <li ref="time3DownBtn">
-              <i class="fas fa-chevron-down"></i>
-            </li>
-          </ul>
+          <p ref="time3DownBtn"><i class="fas fa-chevron-down"></i></p>
         </div>
         :
         <div class="input-box active">
-          <label class="input-placeholder">mm</label>
+          <p ref="time4UpBtn"><i class="fas fa-chevron-up"></i></p>
           <input
             type="text"
             onkeydown="return false"
             readonly
             v-model="time4"
           />
-          <ul class="number-step-btn">
-            <li ref="time4UpBtn">
-              <i class="fas fa-chevron-up"></i>
-            </li>
-            <li ref="time4DownBtn">
-              <i class="fas fa-chevron-down"></i>
-            </li>
-          </ul>
+          <p ref="time4DownBtn"><i class="fas fa-chevron-down"></i></p>
         </div>
       </div>
     </div>
@@ -133,7 +105,7 @@ export default {
   },
   computed: {
     isTimeValid() {
-      return this.time3 + this.time4 >= this.time1 + this.time2;
+      return `${this.time3}${this.time4}` >= `${this.time1}${this.time2}`;
     },
     timeForm() {
       return {
