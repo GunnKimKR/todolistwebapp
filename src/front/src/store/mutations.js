@@ -1,5 +1,6 @@
 import { popupConfirmCallback } from '@/scripts/popup';
 import router from '@/router/router';
+import { clearCookie } from '@/scripts/common';
 
 export default {
   saveLoginUser(state, user) {
@@ -8,9 +9,11 @@ export default {
   },
   deleteLoginUser(state) {
     state.user = '';
-    document.cookie = 'user=; expires=Thu, 01 Jan 1970 00:00:00 UTC;';
+    state.popup = '';
     state.date = '';
-    document.cookie = 'date=; expires=Thu, 01 Jan 1970 00:00:00 UTC;';
+    state.timeForm = '';
+    state.recurringForm = '';
+    clearCookie(['user', 'popup', 'date', 'timeForm', 'recurringForm']);
     router.push('/');
   },
   openPopup(state, popup) {
@@ -27,5 +30,13 @@ export default {
   setDate(state, date) {
     state.date = date;
     document.cookie = 'date=' + JSON.stringify(date);
+  },
+  saveTimeForm(state, timeForm) {
+    state.timeForm = timeForm;
+    document.cookie = 'timeForm=' + JSON.stringify(timeForm);
+  },
+  saveRecurringForm(state, recurringForm) {
+    state.recurringForm = recurringForm;
+    document.cookie = 'recurringForm=' + JSON.stringify(recurringForm);
   },
 };

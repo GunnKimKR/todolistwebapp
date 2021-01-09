@@ -135,8 +135,12 @@ export default {
     isTimeValid() {
       return this.time3 + this.time4 >= this.time1 + this.time2;
     },
-    timeResult() {
+    timeForm() {
       return {
+        time1: this.time1,
+        time2: this.time2,
+        time3: this.time3,
+        time4: this.time4,
         beginTime: this.time1 + this.time2,
         endTime: this.time3 + this.time4,
         resultString: `${this.time1}:${this.time2} ~ ${this.time3}:${this.time4}`,
@@ -159,10 +163,18 @@ export default {
   },
   methods: {
     closePopup() {
+      this.initTimeForm();
       this.$store.commit('closePopup');
     },
+    initTimeForm() {
+      this.time1 = this.$store.state.timeForm.time1 || '00';
+      this.time2 = this.$store.state.timeForm.time2 || '00';
+      this.time3 = this.$store.state.timeForm.time3 || '00';
+      this.time4 = this.$store.state.timeForm.time4 || '00';
+    },
     clickOk() {
-      bus.$emit('inputTime', this.timeResult);
+      bus.$emit('inputTime', this.timeForm);
+      this.$store.commit('saveTimeForm', this.timeForm);
       this.$store.commit('closePopup');
     },
     time1_up() {

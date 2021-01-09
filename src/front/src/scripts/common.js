@@ -23,6 +23,12 @@ function getCookie(name) {
   else return null;
 }
 
+function clearCookie(nameArr) {
+  nameArr.forEach(name => {
+    document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
+  });
+}
+
 function findGetParameter(parameterName) {
   let result = null;
   let tmp = [];
@@ -42,5 +48,6 @@ export {
   isEmailFormatValid,
   isPasswordFormatValid,
   getCookie,
+  clearCookie,
   findGetParameter,
 };

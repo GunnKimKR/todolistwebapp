@@ -11,6 +11,8 @@ export default new Vuex.Store({
     user: JSON.parse(getCookie('user')) || '',
     popup: JSON.parse(getCookie('popup')) || '',
     date: JSON.parse(getCookie('date')) || '',
+    timeForm: JSON.parse(getCookie('timeForm')) || '',
+    recurringForm: JSON.parse(getCookie('recurringForm')) || '',
   },
   getters: {
     isLogin(state) {

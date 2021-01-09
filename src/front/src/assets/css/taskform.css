@@ -84,6 +84,9 @@
 
 .task-form__row .task-details{
   color: lightgray;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .task-form__row .task-details.active{

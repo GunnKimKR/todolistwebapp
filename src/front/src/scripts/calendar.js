@@ -2,6 +2,7 @@ import {
   month_names,
   month_names_short,
   day_names,
+  day_names_short,
   getFormatDate,
   getDateWithSuf,
 } from '@/scripts/date';
@@ -29,6 +30,7 @@ function setCurDate_calendar(date) {
     date: date.getDate(),
     dateWithSuf: getDateWithSuf(date.getDate()),
     day: day_names[date.getDay()],
+    dayShort: day_names_short[date.getDay()],
     firstDayOfMonth: new Date(year, month, 1).getDay(),
     lastDateOfMonth: new Date(year, month + 1, 0).getDate(),
     lastDateOfPrevMonth: new Date(year, month, 0).getDate(),

@@ -45,7 +45,7 @@
           :href="`#${isRecurringChecked ? 'popup' : ''}`"
           @click="clickRecurringInfo"
         >
-          Not Selected
+          {{ recurring.resultString }}
         </a>
       </div>
     </div>
@@ -124,6 +124,9 @@ export default {
       time: {
         resultString: '00:00 ~ 00:00',
       },
+      recurring: {
+        resultString: 'Not Selected',
+      },
       checkDate: '',
       checkRecurring: '',
       checkPin: '',
@@ -137,12 +140,24 @@ export default {
       this.isActive = false;
     });
 
-    bus.$on('inputTime', res => {
-      this.time = res;
+    bus.$on('changeDate', () => {
+      this.checkRecurring = false;
+      this.recurring.resultString = 'Not Selected';
+    });
+
+    bus.$on('inputTime', time => {
+      this.time = time;
+    });
+
+    bus.$on('decideRecurringOption', recurring => {
+      this.recurring = recurring;
     });
   },
   beforeDestroy() {
     bus.$off('showCalendar');
+    bus.$off('changeDate');
+    bus.$off('inputTime');
+    bus.$off('decideRecurringOption');
   },
   computed: {
     isDateChecked() {

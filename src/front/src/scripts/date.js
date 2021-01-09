@@ -28,7 +28,16 @@ const month_names_short = [
   'Dec',
 ];
 
-const day_names = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const day_names = [
+  'Sunday',
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+];
+const day_names_short = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
 function getFormatDate(date) {
   let year = date.getFullYear();
@@ -41,7 +50,7 @@ function getFormatDate(date) {
 
 function dateInfo(date) {
   return `${date.year} ${date.monthNameShort} ${getDateWithSuf(date.date)} (${
-    date.day
+    date.dayShort
   })`;
 }
 
@@ -58,6 +67,7 @@ export {
   month_names,
   month_names_short,
   day_names,
+  day_names_short,
   getFormatDate,
   dateInfo,
   dateInfo_2,

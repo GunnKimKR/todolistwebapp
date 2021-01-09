@@ -169,25 +169,30 @@ export default {
       return getPrevOrNextMonthDateValue_calendar(value);
     },
     goPrevYear() {
-      goPrevYear_calendar();
+      this.emitDate(goPrevYear_calendar);
     },
     goNextYear() {
-      goNextYear_calendar();
+      this.emitDate(goNextYear_calendar);
     },
     goPrevMonth() {
-      goPrevMonth_calendar();
+      this.emitDate(goPrevMonth_calendar);
     },
     goNextMonth() {
-      goNextMonth_calendar();
+      this.emitDate(goNextMonth_calendar);
     },
     goPrevDate() {
-      goPrevDate_calendar();
+      this.emitDate(goPrevDate_calendar);
     },
     goNextDate() {
-      goNextDate_calendar();
+      this.emitDate(goNextDate_calendar);
     },
     clickDate(i, j) {
       changeCurDate_calendar(i, j);
+      bus.$emit('changeDate');
+    },
+    emitDate(fn) {
+      fn();
+      bus.$emit('changeDate');
     },
   },
 };
