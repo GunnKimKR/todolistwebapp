@@ -29,6 +29,7 @@ function setCurDate_calendar(date) {
     monthNameShort: month_names_short[month],
     date: date.getDate(),
     dateWithSuf: getDateWithSuf(date.getDate()),
+    dayNumber: date.getDay(),
     day: day_names[date.getDay()],
     dayShort: day_names_short[date.getDay()],
     firstDayOfMonth: new Date(year, month, 1).getDay(),

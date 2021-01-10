@@ -7,7 +7,7 @@
     <div slot="body" class="task-popup-form__row select-box">
       <a href="#popup" class="input-box" @click="showOptionList">
         <label for="input-verify-email" class="input-placeholder">
-          {{ showingOption }}
+          {{ selectedOption }}
         </label>
       </a>
       <button
@@ -31,7 +31,7 @@
           Every
         </p>
         <div class="input-box input-inline-4">
-          <input type="text" maxlength="3" v-model="dayValue" />
+          <input type="text" maxlength="3" v-model="subValue" />
         </div>
         <p>
           Day(s)
@@ -52,7 +52,7 @@
         <p>
           <a
             href="#popup"
-            :class="{ selected: isDateOptionSelected }"
+            :class="{ selected: subIndex == 0 }"
             @click="selectMonthOption(0)"
           >
             {{ dateOfMonth }}
@@ -60,7 +60,7 @@
           |
           <a
             href="#popup"
-            :class="{ selected: !isDateOptionSelected }"
+            :class="{ selected: subIndex != 0 }"
             @click="selectMonthOption(1)"
           >
             {{ dayOfMonth }}
@@ -102,28 +102,27 @@ import PopupContainer from '@/components/common/PopupContainer.vue';
 import { day_names, getDateWithSuf } from '@/scripts/date';
 import bus from '@/scripts/bus';
 
+const optionList = ['Every Day', 'Every Week', 'Every Month', 'Every Year'];
+
 export default {
   data() {
     return {
-      optionList: ['Every Day', 'Every Week', 'Every Month', 'Every Year'],
+      optionList,
       isOptionListOpen: false,
-      selectedOption: '',
-      dayValue: 1,
-      isDateOptionSelected: true,
+      selectedOption:
+        this.$store.state.recurringForm.selectedOption || optionList[0],
+      optionIndex: this.$store.state.recurringForm.optionIndex || 0,
+      subIndex: this.$store.state.recurringForm.subIndex || '',
+      subValue: this.$store.state.recurringForm.subValue || 1,
+      subDayIndex: this.$store.state.recurringForm.subDayIndex || '',
     };
   },
   components: {
     PopupContainer,
   },
   computed: {
-    showingOption() {
-      return this.selectedOption ? this.selectedOption : this.optionList[0];
-    },
-    optionIndex() {
-      return this.optionList.indexOf(this.showingOption);
-    },
     isOptionValid() {
-      if (this.optionIndex == 0 && this.dayValue == '') {
+      if (this.optionIndex == 0 && this.subValue == '') {
         return false;
       }
       return true;
@@ -132,16 +131,7 @@ export default {
       return this.$store.state.date.day;
     },
     resultOfMonth() {
-      return this.isDateOptionSelected ? this.dateOfMonth : this.dayOfMonth;
-    },
-    valueOfMonth() {
-      return this.isDateOptionSelected
-        ? { subIndex: 0, value: this.$store.state.date.date }
-        : {
-            subIndex: 1,
-            value: this.$store.state.date.day,
-            indexOfDay: Math.ceil(this.$store.state.date.date / 7),
-          };
+      return this.subIndex == 0 ? this.dateOfMonth : this.dayOfMonth;
     },
     dateOfMonth() {
       return `${getDateWithSuf(this.$store.state.date.date)} Date`;
@@ -156,18 +146,61 @@ export default {
         this.$store.state.date.date,
       )}`;
     },
-    resultValue() {
-      return this.optionIndex == 0
-        ? { value: this.dayValue }
-        : this.optionIndex == 2
-        ? this.valueOfMonth
-        : '';
+  },
+  watch: {
+    subValue(nval) {
+      if (isNaN(nval) || nval < 1) this.subValue = '';
     },
-    resultString() {
+  },
+  methods: {
+    closePopup() {
+      this.initRecurringForm();
+      this.$store.commit('closePopup');
+    },
+    initRecurringForm() {
+      this.optionIndex = this.$store.state.recurringForm.optionIndex || 0;
+      this.selectedOption = this.optionList[this.optionIndex];
+      this.subValue = this.$store.state.recurringForm.subValue || '';
+      if (this.$store.state.recurringForm.optionIndex == 2) {
+        this.subIndex = this.$store.state.recurringForm.subIndex;
+      } else {
+        this.subIndex = '';
+      }
+    },
+    getRecurringForm() {
+      return {
+        optionIndex: this.optionIndex,
+        selectedOption: this.selectedOption,
+        subIndex: this.optionIndex == 2 ? this.subIndex : '',
+        subDayIndex:
+          this.optionIndex == 2 && this.subIndex == 1
+            ? Math.ceil(this.$store.state.date.date / 7)
+            : '',
+        subValue: this.getSubValue(),
+        resultString: this.getResultString(),
+      };
+    },
+    getSubValue() {
+      let result;
+      if (this.optionIndex == 0) {
+        result = this.subValue;
+      } else if (this.optionIndex == 1) {
+        result = this.$store.state.date.dayNumber;
+      } else if (this.optionIndex == 2) {
+        result =
+          this.subIndex == 0
+            ? this.$store.state.date.date
+            : this.$store.state.date.dayNumber;
+      } else {
+        result = '';
+      }
+      return result;
+    },
+    getResultString() {
       let result;
       if (this.optionIndex == 0) {
         result =
-          this.dayValue == 1 ? 'Every Day' : `Every ${this.dayValue} Days`;
+          this.subValue == 1 ? 'Every Day' : `Every ${this.subValue} Days`;
       } else if (this.optionIndex == 1) {
         result = `Every ${this.dayOfWeek}`;
       } else if (this.optionIndex == 2) {
@@ -177,44 +210,16 @@ export default {
       }
       return result;
     },
-  },
-  watch: {
-    dayValue(nval) {
-      if (isNaN(nval) || nval < 1) this.dayValue = '';
-    },
-  },
-  methods: {
-    closePopup() {
-      this.initRecurringForm();
-      this.$store.commit('closePopup');
-    },
-    initRecurringForm() {
-      this.selectedOption =
-        this.optionList[this.$store.state.recurringForm.optionIndex] || '';
-      this.dayValue = this.$store.state.recurringForm.subOption.value || 1;
-      if (this.$store.state.recurringForm.optionIndex == 2) {
-        this.isDateOptionSelected =
-          this.$store.state.recurringForm.subOption.subIndex == 0;
-      } else {
-        this.isDateOptionSelected = true;
-      }
-    },
-    getRecurringForm() {
-      return {
-        optionIndex: this.optionList.indexOf(this.showingOption),
-        subOption: this.resultValue,
-        resultString: this.resultString,
-      };
-    },
     showOptionList() {
       this.isOptionListOpen = !this.isOptionListOpen;
     },
     selectOption(index) {
+      this.optionIndex = index;
       this.selectedOption = this.optionList[index];
       this.isOptionListOpen = false;
     },
     selectMonthOption(index) {
-      this.isDateOptionSelected = index == 0 ? true : false;
+      this.subIndex = index;
     },
     decideOption() {
       bus.$emit('decideRecurringOption', this.getRecurringForm());

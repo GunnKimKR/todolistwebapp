@@ -28,7 +28,7 @@ public class TodoQdslRepository extends QdslSupport {
             StringUtils.isEmpty(param.getUserId()) ? null : user.userId.eq(param.getUserId()),
             StringUtils.isEmpty(param.getLoc()) ? null :
                 param.getLoc().equals("main") ? todo.clipYn.eq(1) :
-                    param.getLoc().equals("timeTable") ? todo.startDt.isNotNull() : null,
+                    param.getLoc().equals("timeTable") ? todo.beginDate.isNotNull() : null,
             todo.stateNo.eq(0)
         )
         .fetch();

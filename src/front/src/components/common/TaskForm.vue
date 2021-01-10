@@ -1,18 +1,18 @@
 <template>
-  <section class="task-form-container" v-bind:class="{ active: isActive }">
+  <section class="task-form-container" :class="{ active: isActive }">
     <h2 class="blind">Task form</h2>
     <button
       type="button"
       class="task-input-btn"
       role="Task input button"
-      v-bind:class="{ active: isActive }"
+      :class="{ active: isActive }"
       @click="showTaskForm"
     ></button>
     <div class="task-form__row">
       <div class="input-box">
-        <input type="text" placeholder="+ Add a new task" />
+        <input type="text" placeholder="+ Add a new task" v-model="title" />
       </div>
-      <button type="button">OK</button>
+      <button type="button" @click="submitTaskForm">OK</button>
     </div>
     <div class="task-form__row">
       <label class="checkbox-box" for="task-date">
@@ -113,6 +113,8 @@ import {
   selectRecurringPopup,
   selectLabel_taskform,
   checkLabel_taskform,
+  setTodoForm,
+  submitTodo,
 } from '@/scripts/taskform';
 import bus from '@/scripts/bus';
 
@@ -122,15 +124,24 @@ export default {
       isActive: false,
       date: this.$store.state.date || '',
       time: {
-        resultString: '00:00 ~ 00:00',
+        ...this.$store.state.timeForm,
+        beginTime: this.$store.state.timeForm.beginTime || '',
+        endTime: this.$store.state.timeForm.endTime || '',
+        resultString:
+          this.$store.state.timeForm.resultString || '00:00 ~ 00:00',
       },
       recurring: {
-        resultString: 'Not Selected',
+        ...this.$store.state.recurringForm,
+        resultString:
+          this.$store.state.recurringForm.resultString || 'Not Selected',
       },
-      checkDate: '',
-      checkRecurring: '',
-      checkPin: '',
-      checkLabel: '',
+      checkDate: false,
+      checkRecurring: false,
+      checkPin: false,
+      checkLabel: false,
+      title: '',
+      selectedLabelIndex: '',
+      todoForm: {},
     };
   },
   created() {
@@ -169,6 +180,9 @@ export default {
     isPinChecked() {
       return this.checkPin;
     },
+    isLabelChecked() {
+      return this.checkLabel;
+    },
     dateInfo() {
       return dateInfo_2(this.$store.state.date);
     },
@@ -196,6 +210,10 @@ export default {
     },
     selectLabel(index) {
       selectLabel_taskform(index);
+    },
+    submitTaskForm() {
+      setTodoForm();
+      submitTodo();
     },
   },
 };

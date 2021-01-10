@@ -86,10 +86,10 @@ let vm;
 export default {
   data() {
     return {
-      time1: '00',
-      time2: '00',
-      time3: '00',
-      time4: '00',
+      time1: this.$store.state.timeForm.time1 || '00',
+      time2: this.$store.state.timeForm.time2 || '00',
+      time3: this.$store.state.timeForm.time3 || '00',
+      time4: this.$store.state.timeForm.time4 || '00',
       isTouchEnd: false,
     };
   },
@@ -113,8 +113,8 @@ export default {
         time2: this.time2,
         time3: this.time3,
         time4: this.time4,
-        beginTime: this.time1 + this.time2,
-        endTime: this.time3 + this.time4,
+        beginTime: `${this.time1}${this.time2}`,
+        endTime: `${this.time3}${this.time4}`,
         resultString: `${this.time1}:${this.time2} ~ ${this.time3}:${this.time4}`,
       };
     },

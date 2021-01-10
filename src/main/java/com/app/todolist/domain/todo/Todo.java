@@ -1,7 +1,6 @@
 package com.app.todolist.domain.todo;
 
 import com.app.todolist.domain.util.BaseEntity;
-import java.time.LocalDateTime;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,12 +18,21 @@ public class Todo extends BaseEntity {
   private Long todoId;
   private Long userId;
   private String title;
-  private String labelCd;
+  private String contents;
+  private int labelCd;
   private int clipYn;
+  private int sectionNo;
   private int completedYn;
-  private LocalDateTime startDt;
-  private LocalDateTime endDt;
   private int orderNo;
+  private int beginDate;
+  private int beginTime;
+  private int endTime;
+  private int recurYn;
+  private int recurOption;
+  private String recurContents;
+  private int recurSubIndex;
+  private int recurSubDayIndex;
+  private int recurSubValue;
 
   public Todo(Long userId, String title, int completedYn) {
     this.userId = userId;
