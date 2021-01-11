@@ -75,6 +75,10 @@
   color: #fff;
 }
 
+.icon-message.success {
+  background-color: yellowgreen;
+}
+
 .pop-message {
   margin: 1rem 0 2rem;
 }

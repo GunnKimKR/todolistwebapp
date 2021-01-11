@@ -140,7 +140,7 @@ export default {
       checkPin: false,
       checkLabel: false,
       title: '',
-      selectedLabelIndex: '',
+      labelCd: '',
       todoForm: {},
     };
   },
@@ -213,7 +213,10 @@ export default {
     },
     submitTaskForm() {
       setTodoForm();
-      submitTodo();
+      if (submitTodo()) {
+        this.title = '';
+        this.isActive = false;
+      }
     },
   },
 };

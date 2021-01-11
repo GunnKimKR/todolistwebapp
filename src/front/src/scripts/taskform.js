@@ -1,5 +1,10 @@
 import store from '@/store/store';
 import { addTodo } from '@/api/todo';
+import {
+  msg_write_title,
+  msg_select_recur,
+  msg_select_label,
+} from '@/scripts/message';
 
 let vm;
 
@@ -29,7 +34,7 @@ function selectLabel_taskform(index) {
           node.classList.add('selected');
         }
       });
-    vm.selectedLabelIndex = index;
+    vm.labelCd = index;
   }
 }
 
@@ -38,6 +43,7 @@ function checkLabel_taskform(nval) {
     document.querySelectorAll('.task-detail .label-square').forEach(node => {
       node.classList.remove('selected');
     });
+    vm.labelCd = '';
   }
 }
 
@@ -55,12 +61,35 @@ function setTodoForm() {
     recurSubDayIndex: vm.isRecurringChecked ? vm.recurring.subDayIndex : '',
     recurSubValue: vm.isRecurringChecked ? vm.recurring.subValue : '',
     clipYn: vm.isPinChecked ? 1 : 0,
-    labelCd: vm.isLabelChecked ? vm.selectedLabelIndex : '',
+    labelCd: vm.isLabelChecked ? vm.labelCd : '',
   };
 }
 
 function submitTodo() {
-  addTodo(vm.todoForm);
+  if (validateTodoForm()) {
+    return addTodo(vm.todoForm);
+  }
+}
+
+function validateTodoForm() {
+  let message;
+  if (vm.todoForm.title.trim() === '') {
+    message = msg_write_title;
+  } else if (vm.isRecurringChecked && !vm.todoForm.recurSubValue) {
+    message = msg_select_recur;
+  } else if (vm.isLabelChecked && vm.todoForm.labelCd === '') {
+    message = msg_select_label;
+  }
+
+  if (message) {
+    store.commit('openPopup', {
+      name: 'message',
+      message,
+    });
+    return false;
+  }
+
+  return true;
 }
 
 export {

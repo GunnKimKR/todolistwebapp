@@ -1,7 +1,10 @@
 <template>
   <PopupContainer>
-    <div slot="header" class="icon-message">
-      <i class="fas fa-exclamation"></i>
+    <div slot="header" class="icon-message" :class="{ success: popup.success }">
+      <i
+        class="fas"
+        :class="{ 'fa-check': popup.success, 'fa-exclamation': !popup.success }"
+      ></i>
     </div>
 
     <p slot="body" class="pop-message">

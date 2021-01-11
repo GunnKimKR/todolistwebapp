@@ -1,6 +1,7 @@
 package com.app.todolist.domain.todo;
 
 import com.app.todolist.domain.util.BaseEntity;
+import com.app.todolist.web.param.TodoParams;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,25 +20,35 @@ public class Todo extends BaseEntity {
   private Long userId;
   private String title;
   private String contents;
-  private int labelCd;
+  private String labelCd;
   private int clipYn;
   private int sectionNo;
   private int completedYn;
   private int orderNo;
-  private int beginDate;
-  private int beginTime;
-  private int endTime;
+  private String beginDate;
+  private String beginTime;
+  private String endTime;
   private int recurYn;
   private int recurOption;
   private String recurContents;
   private int recurSubIndex;
   private int recurSubDayIndex;
-  private int recurSubValue;
+  private String recurSubValue;
 
-  public Todo(Long userId, String title, int completedYn) {
-    this.userId = userId;
-    this.title = title;
-    this.completedYn = completedYn;
+  public Todo(TodoParams param) {
+    this.userId = param.getUserId();
+    this.title = param.getTitle();
+    this.labelCd = param.getLabelCd();
+    this.clipYn = param.getClipYn();
+    this.beginDate = param.getBeginDate();
+    this.beginTime = param.getBeginTime();
+    this.endTime = param.getEndTime();
+    this.recurYn = param.getRecurYn();
+    this.recurOption = param.getRecurOption();
+    this.recurContents = param.getRecurContents();
+    this.recurSubIndex = param.getRecurSubIndex();
+    this.recurSubDayIndex = param.getRecurSubDayIndex();
+    this.recurSubValue = param.getRecurSubValue();
   }
 
   public void updateTodo(String title, int completedYn) {

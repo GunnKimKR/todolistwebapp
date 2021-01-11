@@ -80,10 +80,8 @@ public class TodoController extends AbstractRestController {
 
   @PostMapping
   public Response writeTodo(@RequestBody TodoParams param) {
-
-//    Todo todo = new Todo(param.getUserId(), param.getTitle(), param.getCompletedYn());
-//    todoService.save(todo);
-
+    Todo todo = new Todo(param);
+    todoService.save(todo);
     return new Response(CREATED);
   }
 

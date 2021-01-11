@@ -31,7 +31,7 @@
           Every
         </p>
         <div class="input-box input-inline-4">
-          <input type="text" maxlength="3" v-model="subValue" />
+          <input type="text" maxlength="3" v-model="subValueOfDays" />
         </div>
         <p>
           Day(s)
@@ -113,8 +113,12 @@ export default {
         this.$store.state.recurringForm.selectedOption || optionList[0],
       optionIndex: this.$store.state.recurringForm.optionIndex || 0,
       subIndex: this.$store.state.recurringForm.subIndex || '',
-      subValue: this.$store.state.recurringForm.subValue || 1,
+      subValue: this.$store.state.recurringForm.subValue || '',
       subDayIndex: this.$store.state.recurringForm.subDayIndex || '',
+      subValueOfDays:
+        this.$store.state.recurringForm.optionIndex == 0
+          ? this.$store.state.recurringForm.subValue
+          : '',
     };
   },
   components: {
@@ -148,8 +152,12 @@ export default {
     },
   },
   watch: {
-    subValue(nval) {
-      if (isNaN(nval) || nval < 1) this.subValue = '';
+    subValueOfDays(nval) {
+      if (isNaN(nval) || nval < 1) {
+        this.subValueOfDays = '';
+      } else {
+        this.subValue = nval;
+      }
     },
   },
   methods: {
@@ -191,6 +199,8 @@ export default {
           this.subIndex == 0
             ? this.$store.state.date.date
             : this.$store.state.date.dayNumber;
+      } else if (this.optionIndex == 3) {
+        result = this.$store.state.date.yyyymmdd.substring(4, 8);
       } else {
         result = '';
       }

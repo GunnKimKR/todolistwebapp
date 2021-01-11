@@ -6,3 +6,7 @@ export const msg_password_incorrect = 'Password must be at least 4 digits.';
 export const msg_write_email = 'Please write email.';
 export const msg_write_password = 'Please write password.';
 export const msg_confirm_delete_account = 'Wanna Delete Your Account?';
+export const msg_write_title = 'Please Write Title.';
+export const msg_select_recur = 'Please Select Recurring Type.';
+export const msg_select_label = 'Please Select Label Color.';
+export const msg_add_success = 'Registered Successfully';
