@@ -8,7 +8,8 @@ export default {
   fnGetOauthUser(state, userId) {
     getOauthUser(userId);
   },
-  fnFetchList(state, param) {
-    fetchList(param);
+  async fnFetchList({ commit }, param) {
+    const dataList = await fetchList(param);
+    return dataList;
   },
 };

@@ -213,10 +213,7 @@ export default {
     },
     submitTaskForm() {
       setTodoForm();
-      if (submitTodo()) {
-        this.title = '';
-        this.isActive = false;
-      }
+      submitTodo();
     },
   },
 };

@@ -4,16 +4,9 @@ import bus from '@/scripts/bus';
 import { msg_add_success } from '@/scripts/message';
 
 async function fetchList(param) {
-  await todoApi
-    .get(`/user/${param.userId}`, {
-      params: param,
-    })
-    .then(res => {
-      //
-    })
-    .catch(() => {
-      //
-    });
+  return await todoApi.get(`/user/${param.userId}`, {
+    params: param,
+  });
 }
 
 async function addTodo(todoForm) {
@@ -24,6 +17,7 @@ async function addTodo(todoForm) {
     .then(() => {
       success = true;
       bus.$emit('endSpinner');
+      bus.$emit('addTodo');
       store.commit('openPopup', {
         name: 'message',
         success: true,

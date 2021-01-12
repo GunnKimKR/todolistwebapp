@@ -32,10 +32,6 @@ public class TodoController extends AbstractRestController {
   private Response todoListResponse(TodoParams param) {
     List<TodoDTO> todoList = todoService.selectTodoDto(param);
 
-    if (todoList.size() == 0) {
-      throw new BaseException("데이터가 존재하지 않습니다.");
-    }
-
     return new Response("todoList", todoList);
   }
 

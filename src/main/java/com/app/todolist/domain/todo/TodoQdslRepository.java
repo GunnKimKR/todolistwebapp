@@ -7,6 +7,8 @@ import com.app.todolist.util.QdslSupport;
 import com.app.todolist.web.dto.QTodoDTO;
 import com.app.todolist.web.dto.TodoDTO;
 import com.app.todolist.web.param.TodoParams;
+import com.querydsl.core.types.Expression;
+import com.querydsl.core.types.dsl.Expressions;
 import java.util.List;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
@@ -14,36 +16,37 @@ import org.springframework.util.StringUtils;
 @Repository
 public class TodoQdslRepository extends QdslSupport {
 
+  final Expression<String> emptyValue = Expressions.stringTemplate("''");
+
   public TodoQdslRepository() {
     super(Todo.class);
   }
 
   public List<TodoDTO> selectTodoDTO(TodoParams param) {
-    return select(new QTodoDTO(todo.todoId, user.nickname,
-        todo.title, todo.completedYn, todo.createdDt))
+    return select(
+        new QTodoDTO(user.userId, user.nickname, todo.todoId, todo.title, todo.completedYn,
+            todo.labelCd, todo.clipYn, todo.sectionNo, todo.orderNo, todo.beginDate,
+            todo.beginTime, todo.endTime, todo.recurYn, todo.recurOption, todo.recurContents,
+            todo.recurSubIndex, todo.recurSubDayIndex, todo.recurSubValue))
         .from(user)
         .join(todo)
         .on(user.userId.eq(todo.userId))
         .where(
             StringUtils.isEmpty(param.getUserId()) ? null : user.userId.eq(param.getUserId()),
             StringUtils.isEmpty(param.getLoc()) ? null :
-                param.getLoc().equals("main") ? todo.clipYn.eq(1) :
-                    param.getLoc().equals("timeTable") ? todo.beginDate.isNotNull() : null,
+                param.getLoc().equals("main") ?
+                    todo.clipYn.eq(1)
+                    .and(todo.beginDate.eq(emptyValue)
+                      .or(todo.beginDate.eq(param.getBeginDate()))
+                    ) :
+                param.getLoc().equals("timeTable") ? todo.beginDate.isNotNull() : null,
             todo.stateNo.eq(0)
         )
+        .orderBy(todo.createdDt.asc())
         .fetch();
   }
 
   public TodoDTO selectTodoDtoById(Long todoId) {
-    return select(new QTodoDTO(todo.todoId, user.nickname,
-        todo.title, todo.completedYn, todo.createdDt))
-        .from(user)
-        .join(todo)
-        .on(user.userId.eq(todo.userId))
-        .where(
-            todo.todoId.eq(todoId),
-            todo.stateNo.eq(0)
-        )
-        .fetchOne();
+    return null;
   }
 }

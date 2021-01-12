@@ -189,6 +189,10 @@ dt, th, strong, b {
   padding: 0 1rem;
 }
 
+.todo-list__item__text.no-data{
+  text-align: center;
+}
+
 .todo-list__item__time {
   display: block;
 }
@@ -345,6 +349,12 @@ input[type="checkbox"]:disabled + .checkbox + span {
 .checkbox-box--label .checkbox.label--pink::after {
   border-color: #e1306c !important;
   background-color: #e1306c;
+}
+
+.label--none,
+.checkbox-box--label .checkbox.label--none::after {
+  border-color: black !important;
+  background-color:#cacaca;
 }
 
 /* Pin icon */

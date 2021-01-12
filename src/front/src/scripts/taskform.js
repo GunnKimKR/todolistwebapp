@@ -5,6 +5,7 @@ import {
   msg_select_recur,
   msg_select_label,
 } from '@/scripts/message';
+import router from '@/router/router';
 
 let vm;
 
@@ -67,7 +68,10 @@ function setTodoForm() {
 
 function submitTodo() {
   if (validateTodoForm()) {
-    return addTodo(vm.todoForm);
+    if (addTodo(vm.todoForm)) {
+      vm.title = '';
+      vm.isActive = false;
+    }
   }
 }
 

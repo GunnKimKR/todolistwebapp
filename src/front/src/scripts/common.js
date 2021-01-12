@@ -42,6 +42,16 @@ function findGetParameter(parameterName) {
   return result;
 }
 
+const labelColors = [
+  'gray',
+  'red',
+  'orange',
+  'green',
+  'navy',
+  'purple',
+  'pink',
+];
+
 export {
   focusInputEffect,
   blurInputEffect,
@@ -50,4 +60,5 @@ export {
   getCookie,
   clearCookie,
   findGetParameter,
+  labelColors,
 };

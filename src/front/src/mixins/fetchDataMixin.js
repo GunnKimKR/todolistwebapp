@@ -1,13 +1,27 @@
+import bus from '@/scripts/bus';
+
 export default {
   data() {
     return {
-      todoParams: {
-        userId: this.$store.state.user.userId,
-        loc: this.$route.name,
-      },
+      dataList: this.$store.state.dataList,
     };
   },
   created() {
-    this.$store.dispatch('fnFetchList', this.todoParams);
+    this.showDataList();
+    bus.$on('addTodo', () => this.showDataList());
+    bus.$on('changeDate', () => this.showDataList());
+  },
+  methods: {
+    showDataList() {
+      this.$store
+        .dispatch('fnFetchList', {
+          loc: this.$route.name,
+          userId: this.$store.state.user.userId,
+          beginDate: this.$store.state.date.yyyymmdd,
+        })
+        .then(res => {
+          this.dataList = res.data.data.todoList;
+        });
+    },
   },
 };

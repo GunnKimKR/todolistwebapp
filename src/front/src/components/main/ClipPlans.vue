@@ -5,44 +5,37 @@
     </header>
     <div class="task-list-body">
       <ul class="todo-list">
-        <li class="todo-list__item">
+        <li
+          v-for="(data, index) in dataList"
+          :key="index"
+          class="todo-list__item"
+        >
           <a href="#popup" @click="showClipPlanDetail">
-            <div class="label-square label--navy"></div>
+            <div
+              v-if="isTimeExist(index)"
+              class="label-square"
+              :class="timeLabelClass(index)"
+            ></div>
+            <label v-else class="checkbox-box--label">
+              <input type="checkbox" />
+              <div class="checkbox" :class="timeLabelClass(index)"></div>
+            </label>
             <div class="todo-list__item__text ellip">
-              To Do List Webapp Project
-              <span class="todo-list__item__time">09:00 ~ 12:00</span>
+              {{ data.title }}
+              <span v-if="isTimeExist(index)" class="todo-list__item__time">
+                {{ timeStr(index) }}
+              </span>
             </div>
             <span class="pin-icon">
               <i class="fas fa-feather-alt"></i>
             </span>
           </a>
         </li>
-        <li class="todo-list__item">
-          <a href="#popup" @click="showClipPlanDetail">
-            <label class="checkbox-box--label">
-              <input type="checkbox" />
-              <div class="checkbox label--orange"></div>
-            </label>
-            <div class="todo-list__item__text ellip">
-              To Do List Webapp Project
+        <li v-if="dataList == ''" class="todo-list__item">
+          <a href="#popup">
+            <div class="todo-list__item__text ellip no-data">
+              No Data Found
             </div>
-            <span class="pin-icon">
-              <i class="fas fa-feather-alt"></i>
-            </span>
-          </a>
-        </li>
-        <li class="todo-list__item">
-          <a href="#popup" @click="showClipPlanDetail">
-            <label class="checkbox-box--label">
-              <input type="checkbox" />
-              <div class="checkbox label--purple"></div>
-            </label>
-            <div class="todo-list__item__text ellip">
-              To Do List Webapp Project
-            </div>
-            <span class="pin-icon">
-              <i class="fas fa-feather-alt"></i>
-            </span>
           </a>
         </li>
       </ul>
@@ -51,13 +44,25 @@
 </template>
 
 <script>
+import {
+  registerClipPlansModel,
+  showClipPlanDetail,
+  timeStr,
+  isTimeExist,
+  timeLabelClass,
+} from '@/scripts/clipplans';
+import FetchDataMixin from '@/mixins/FetchDataMixin';
+
 export default {
+  created() {
+    registerClipPlansModel(this);
+  },
+  mixins: [FetchDataMixin],
   methods: {
-    showClipPlanDetail() {
-      this.$store.commit('openPopup', {
-        name: 'clipPlanDetail',
-      });
-    },
+    showClipPlanDetail,
+    timeStr,
+    isTimeExist,
+    timeLabelClass,
   },
 };
 </script>
