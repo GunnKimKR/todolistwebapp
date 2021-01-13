@@ -39,7 +39,7 @@ public class TodoQdslRepository extends QdslSupport {
                     .and(todo.beginDate.eq(emptyValue)
                       .or(todo.beginDate.eq(param.getBeginDate()))
                     ) :
-                param.getLoc().equals("timeTable") ? todo.beginDate.isNotNull() : null,
+                param.getLoc().equals("timeTable") ? todo.beginDate.eq(param.getBeginDate()) : null,
             todo.stateNo.eq(0)
         )
         .orderBy(todo.createdDt.asc())

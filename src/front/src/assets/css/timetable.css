@@ -95,9 +95,9 @@
   border: 1px dashed #fbbc05;
 }
 
-.table-timetable tbody tr:nth-child(n+4) td:nth-child(3) .td-cell::after {
+/* .table-timetable tbody tr:nth-child(n+4) td:nth-child(3) .td-cell::after {
   border: 1px dashed #fbbc05;
-}
+} */
 
 
 .plan-box {
@@ -130,9 +130,9 @@
   border: 1px dashed #fbbc05;
 }
 
-.table-timetable tbody tr:nth-child(n+4) td:nth-child(3) .td-cell:after {
+/* .table-timetable tbody tr:nth-child(n+4) td:nth-child(3) .td-cell:after {
   border: 1px dashed #fbbc05;
-}
+} */
 
 .table-timetable tbody tr:first-child .td-cell:after {
   top: 0;
