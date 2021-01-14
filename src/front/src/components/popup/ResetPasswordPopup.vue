@@ -119,6 +119,6 @@
 </template>
 
 <script>
-import resetpassword from '@/scripts/resetpassword';
-export default resetpassword;
+import resetpasswordpopup from '@/scripts/resetpasswordpopup';
+export default resetpasswordpopup;
 </script>
