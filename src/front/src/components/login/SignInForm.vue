@@ -43,45 +43,8 @@
 </template>
 
 <script>
-import { focusInputEffect, blurInputEffect } from '@/scripts/common.js';
-import { registerSigninModel, loginUser } from '@/scripts/signin';
-
-export default {
-  props: ['activeClass'],
-  data() {
-    return {
-      email: '',
-      password: '',
-    };
-  },
-  created() {
-    registerSigninModel(this);
-  },
-  computed: {
-    loginForm() {
-      return {
-        email: this.email,
-        password: this.password,
-      };
-    },
-  },
-  methods: {
-    focusInput(event) {
-      focusInputEffect(event);
-    },
-    blurInput(event) {
-      blurInputEffect(event);
-    },
-    loginFormSubmit() {
-      loginUser();
-    },
-    resetPasswordPopup() {
-      this.$store.commit('openPopup', {
-        name: 'resetPassword',
-      });
-    },
-  },
-};
+import signin from '@/scripts/signin';
+export default signin;
 </script>
 
 <style scoped></style>

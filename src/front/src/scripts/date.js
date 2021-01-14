@@ -37,7 +37,9 @@ const day_names = [
   'Friday',
   'Saturday',
 ];
+
 const day_names_short = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const day_names_short_upper = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 
 function getFormatDate(date) {
   let year = date.getFullYear();
@@ -68,6 +70,7 @@ export {
   month_names_short,
   day_names,
   day_names_short,
+  day_names_short_upper,
   getFormatDate,
   dateInfo,
   dateInfo_2,

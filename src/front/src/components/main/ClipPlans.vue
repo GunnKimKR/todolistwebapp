@@ -14,11 +14,11 @@
             <div
               v-if="isTimeExist(index)"
               class="label-square"
-              :class="timeLabelClass(index)"
+              :class="labelClass(data.labelCd)"
             ></div>
             <label v-else class="checkbox-box--label">
               <input type="checkbox" />
-              <div class="checkbox" :class="timeLabelClass(index)"></div>
+              <div class="checkbox" :class="labelClass(data.labelCd)"></div>
             </label>
             <div class="todo-list__item__text ellip">
               {{ data.title }}
@@ -44,27 +44,6 @@
 </template>
 
 <script>
-import {
-  registerClipPlansModel,
-  showClipPlanDetail,
-  timeStr,
-  isTimeExist,
-  timeLabelClass,
-} from '@/scripts/clipplans';
-import FetchDataMixin from '@/mixins/FetchDataMixin';
-
-export default {
-  created() {
-    registerClipPlansModel(this);
-  },
-  mixins: [FetchDataMixin],
-  methods: {
-    showClipPlanDetail,
-    timeStr,
-    isTimeExist,
-    timeLabelClass,
-  },
-};
+import clipplans from '@/scripts/clipplans';
+export default clipplans;
 </script>
-
-<style></style>

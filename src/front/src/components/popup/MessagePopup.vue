@@ -40,26 +40,6 @@
 </template>
 
 <script>
-import PopupContainer from '@/components/common/PopupContainer.vue';
-export default {
-  components: {
-    PopupContainer,
-  },
-  computed: {
-    popup() {
-      return this.$store.state.popup;
-    },
-  },
-  methods: {
-    fnConfirm() {
-      this.$store.commit('popupConfirm', this.popup.popupName);
-      this.closePopup();
-    },
-    closePopup() {
-      this.$store.commit('closePopup');
-    },
-  },
-};
+import messagepopup from '@/scripts/messagepopup';
+export default messagepopup;
 </script>
-
-<style></style>

@@ -20,9 +20,9 @@
         <div class="checkbox"></div>
         Date / Time
       </label>
-      <div class="task-details" :class="{ active: isDateChecked }">
-        <a :href="`#${isDateChecked ? 'popup' : ''}`" @click="clickDateInfo">
-          {{ dateInfo }} / {{ time.resultString }}
+      <div class="task-details" :class="{ active: isDateChecked() }">
+        <a :href="`#${isDateChecked() ? 'popup' : ''}`" @click="clickDateInfo">
+          {{ dateInfo() }} / {{ time.resultString }}
         </a>
       </div>
     </div>
@@ -32,17 +32,17 @@
           type="checkbox"
           id="task-recurring"
           v-model="checkRecurring"
-          :disabled="!isDateChecked"
+          :disabled="!isDateChecked()"
         />
         <div class="checkbox"></div>
         <span> Recurring </span>
       </label>
       <div
         class="task-details"
-        :class="{ active: isDateChecked && isRecurringChecked }"
+        :class="{ active: isDateChecked() && isRecurringChecked() }"
       >
         <a
-          :href="`#${isRecurringChecked ? 'popup' : ''}`"
+          :href="`#${isRecurringChecked() ? 'popup' : ''}`"
           @click="clickRecurringInfo"
         >
           {{ recurring.resultString }}
@@ -57,7 +57,7 @@
       </label>
       <span
         class="pin-icon pin-icon-taskform"
-        :class="{ active: isPinChecked }"
+        :class="{ active: isPinChecked() }"
       >
         <i class="fas fa-feather-alt"> </i>
       </span>
@@ -106,117 +106,8 @@
 </template>
 
 <script>
-import { dateInfo_2 } from '@/scripts/date';
-import {
-  registerTaskFormModel,
-  timePopup,
-  selectRecurringPopup,
-  selectLabel_taskform,
-  checkLabel_taskform,
-  setTodoForm,
-  submitTodo,
-} from '@/scripts/taskform';
-import bus from '@/scripts/bus';
-
-export default {
-  data() {
-    return {
-      isActive: false,
-      date: this.$store.state.date || '',
-      time: {
-        ...this.$store.state.timeForm,
-        beginTime: this.$store.state.timeForm.beginTime || '',
-        endTime: this.$store.state.timeForm.endTime || '',
-        resultString:
-          this.$store.state.timeForm.resultString || '00:00 ~ 00:00',
-      },
-      recurring: {
-        ...this.$store.state.recurringForm,
-        resultString:
-          this.$store.state.recurringForm.resultString || 'Not Selected',
-      },
-      checkDate: false,
-      checkRecurring: false,
-      checkPin: false,
-      checkLabel: false,
-      title: '',
-      labelCd: '',
-      todoForm: {},
-    };
-  },
-  created() {
-    registerTaskFormModel(this);
-
-    bus.$on('showCalendar', () => {
-      this.isActive = false;
-    });
-
-    bus.$on('changeDate', () => {
-      this.checkRecurring = false;
-      this.recurring.resultString = 'Not Selected';
-    });
-
-    bus.$on('inputTime', time => {
-      this.time = time;
-    });
-
-    bus.$on('decideRecurringOption', recurring => {
-      this.recurring = recurring;
-    });
-  },
-  beforeDestroy() {
-    bus.$off('showCalendar');
-    bus.$off('changeDate');
-    bus.$off('inputTime');
-    bus.$off('decideRecurringOption');
-  },
-  computed: {
-    isDateChecked() {
-      return this.checkDate;
-    },
-    isRecurringChecked() {
-      return this.checkRecurring;
-    },
-    isPinChecked() {
-      return this.checkPin;
-    },
-    isLabelChecked() {
-      return this.checkLabel;
-    },
-    dateInfo() {
-      return dateInfo_2(this.$store.state.date);
-    },
-  },
-  watch: {
-    checkDate(nval) {
-      if (!nval) this.checkRecurring = false;
-    },
-    checkLabel(nval) {
-      checkLabel_taskform(nval);
-    },
-  },
-  methods: {
-    showTaskForm() {
-      this.isActive = !this.isActive;
-      if (this.isActive) {
-        bus.$emit('showTaskForm');
-      }
-    },
-    clickDateInfo() {
-      timePopup();
-    },
-    clickRecurringInfo() {
-      selectRecurringPopup();
-    },
-    selectLabel(index) {
-      selectLabel_taskform(index);
-    },
-    submitTaskForm() {
-      setTodoForm();
-      submitTodo();
-    },
-  },
-};
+import taskform from '@/scripts/taskform';
+export default taskform;
 </script>
 
 <style scoped>

@@ -20,6 +20,7 @@ import ResetPasswordPopup from '@/components/popup/ResetPasswordPopup.vue';
 import ClipPlanDetailPopup from '@/components/popup/ClipPlanDetailPopup.vue';
 import TimeFormPopup from '@/components/popup/TimeFormPopup.vue';
 import SelectRecurringPopup from '@/components/popup/SelectRecurringPopup.vue';
+import store from '@/store/store';
 
 export default {
   components: {
@@ -31,10 +32,8 @@ export default {
   },
   computed: {
     popup() {
-      return this.$store.state.popup;
+      return store.state.popup;
     },
   },
 };
 </script>
-
-<style></style>

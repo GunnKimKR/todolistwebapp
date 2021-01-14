@@ -1,9 +1,11 @@
 import bus from '@/scripts/bus';
+import store from '@/store/store';
+import router from '@/router/router';
 
 export default {
   data() {
     return {
-      dataList: this.$store.state.dataList,
+      dataList: store.state.dataList,
     };
   },
   created() {
@@ -13,11 +15,11 @@ export default {
   },
   methods: {
     showDataList() {
-      this.$store
+      store
         .dispatch('fnFetchList', {
-          loc: this.$route.name,
-          userId: this.$store.state.user.userId,
-          beginDate: this.$store.state.date.yyyymmdd,
+          loc: router.name,
+          userId: store.state.user.userId,
+          beginDate: store.state.date.yyyymmdd,
         })
         .then(res => {
           this.dataList = res.data.data.todoList;

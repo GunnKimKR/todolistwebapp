@@ -1,11 +1,21 @@
 import store from '@/store/store';
-import { labelColors } from '@/scripts/common';
+import { labelClass } from '@/scripts/common';
+import FetchDataMixin from '@/mixins/FetchDataMixin';
 
 let vm;
 
-function registerClipPlansModel(model) {
-  vm = model;
-}
+export default {
+  created() {
+    vm = this;
+  },
+  mixins: [FetchDataMixin],
+  methods: {
+    showClipPlanDetail,
+    timeStr,
+    isTimeExist,
+    labelClass,
+  },
+};
 
 function showClipPlanDetail() {
   store.commit('openPopup', {
@@ -25,16 +35,3 @@ function isTimeExist(index) {
   const endTime = vm.dataList[index].endTime;
   return beginTime && endTime && parseInt(beginTime) + parseInt(endTime) > 0;
 }
-
-function timeLabelClass(index) {
-  const labelCd = vm.dataList[index].labelCd;
-  return labelCd == '' ? 'label--none' : `label--${labelColors[labelCd]}`;
-}
-
-export {
-  registerClipPlansModel,
-  showClipPlanDetail,
-  timeStr,
-  isTimeExist,
-  timeLabelClass,
-};

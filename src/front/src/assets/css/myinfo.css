@@ -30,6 +30,10 @@
   border-radius: 50%;
 }
 
+.myinfo-header__profile.exist_picture {
+  border: none;
+}
+
 .myinfo-header .button-area {
   display: flex;
   justify-content: center;

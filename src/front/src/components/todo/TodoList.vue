@@ -5,40 +5,22 @@
     </header>
     <div class="task-list-body">
       <ul class="todo-list">
-        <li class="todo-list__item">
+        <li
+          v-for="(data, index) in dataList"
+          :key="index"
+          class="todo-list__item"
+        >
           <a href="#;">
             <label class="checkbox-box--label">
               <input type="checkbox" />
-              <div class="checkbox"></div>
+              <div class="checkbox" :class="labelClass(data.labelCd)"></div>
             </label>
             <div class="todo-list__item__text ellip">
-              To Do List Webapp Project
+              {{ data.title }}
             </div>
             <span class="pin-icon">
               <i class="fas fa-feather-alt"></i>
             </span>
-          </a>
-        </li>
-        <li class="todo-list__item">
-          <a href="#;">
-            <label class="checkbox-box--label">
-              <input type="checkbox" />
-              <div class="checkbox label--orange"></div>
-            </label>
-            <div class="todo-list__item__text ellip">
-              To Do List Webapp Project
-            </div>
-          </a>
-        </li>
-        <li class="todo-list__item">
-          <a href="#;">
-            <label class="checkbox-box--label">
-              <input type="checkbox" />
-              <div class="checkbox"></div>
-            </label>
-            <div class="todo-list__item__text ellip">
-              To Do List Webapp Project
-            </div>
           </a>
         </li>
       </ul>
@@ -47,7 +29,13 @@
 </template>
 
 <script>
-export default {};
-</script>
+import FetchDataMixin from '@/mixins/FetchDataMixin';
+import { labelClass } from '@/scripts/common';
 
-<style></style>
+export default {
+  mixins: [FetchDataMixin],
+  methods: {
+    labelClass,
+  },
+};
+</script>

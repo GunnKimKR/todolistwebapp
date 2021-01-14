@@ -52,6 +52,10 @@ const labelColors = [
   'pink',
 ];
 
+function labelClass(labelCd) {
+  return labelCd == '' ? 'label--none' : `label--${labelColors[labelCd]}`;
+}
+
 export {
   focusInputEffect,
   blurInputEffect,
@@ -61,4 +65,5 @@ export {
   clearCookie,
   findGetParameter,
   labelColors,
+  labelClass,
 };

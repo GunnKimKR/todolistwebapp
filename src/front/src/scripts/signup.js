@@ -4,14 +4,12 @@ import {
   focusInputEffect,
   blurInputEffect,
 } from '@/scripts/common';
-
 import {
   msg_mandatory_field,
   msg_email_format_incorrect,
   msg_email_already_registered,
   msg_password_incorrect,
 } from '@/scripts/message';
-
 import { checkDuplicateEmail, signup } from '@/api/user';
 
 const usernameId = 'user-name';
@@ -39,46 +37,49 @@ const initError = {
   passwordMsg: msg_mandatory_field,
 };
 
-let vm;
 let isEmailRegistered = false;
+let vm;
 
-function registerSignupModel(model) {
-  vm = model;
-}
+export default {
+  data() {
+    return {
+      username: '',
+      email: '',
+      password: '',
 
-function inputFocusEvent(event) {
-  focusInputEffect(event);
-}
+      usernameStatus: initStatus,
+      emailStatus: initStatus,
+      passwordStatus: initStatus,
 
-function inputBlurEvent(event) {
-  blurInputEffect(event);
-  changeInputStatus(event);
-}
+      error: initError,
+    };
+  },
+  created() {
+    vm = this;
+  },
+  props: ['activeClass'],
+  computed: {
+    userForm() {
+      return {
+        username: this.username,
+        email: this.email,
+        password: this.password,
+      };
+    },
+  },
+  watch: {
+    username,
+    email,
+    password,
+  },
+  methods: {
+    inputFocus,
+    inputBlur,
+    userFormSubmit,
+  },
+};
 
-function changeInputStatus(event) {
-  const blurWithErrorStaus = {
-    ...errorStatus,
-    activeClass: '',
-  };
-
-  if (!event.target.value) {
-    const id = event.target.getAttribute('id');
-    if (id == usernameId) {
-      vm.usernameStatus = blurWithErrorStaus;
-    } else if (id == emailId) {
-      vm.emailStatus = blurWithErrorStaus;
-    } else if (id == passwordId) {
-      vm.passwordStatus = blurWithErrorStaus;
-    }
-  } else {
-    if (event.target.value && event.target.getAttribute('id') == emailId) {
-      const email = event.target.value;
-      checkEmailRegistered(email);
-    }
-  }
-}
-
-function changeUsername() {
+function username() {
   vm.usernameStatus = isUsernameValid(vm.username) ? validStatus : errorStatus;
 }
 
@@ -86,7 +87,7 @@ function isUsernameValid(username) {
   return username;
 }
 
-function changeEmail() {
+function email() {
   const email = vm.email;
   vm.emailStatus = isEmailValid(email) ? validStatus : errorStatus;
   if (!email) {
@@ -114,7 +115,7 @@ async function checkEmailRegistered(email) {
   return isEmailRegistered;
 }
 
-function changePassword() {
+function password() {
   const password = vm.password;
   vm.passwordStatus = isPasswordValid(password) ? validStatus : errorStatus;
   vm.error.passwordMsg =
@@ -127,9 +128,41 @@ function isPasswordValid(password) {
   return password && isPasswordFormatValid(password);
 }
 
-async function registerUser() {
+function inputFocus(event) {
+  focusInputEffect(event);
+}
+
+function inputBlur(event) {
+  blurInputEffect(event);
+  changeInputStatus(event);
+}
+
+async function userFormSubmit() {
   if (validateUserForm()) {
     await signup(vm.userForm);
+  }
+}
+
+function changeInputStatus(event) {
+  const blurWithErrorStaus = {
+    ...errorStatus,
+    activeClass: '',
+  };
+
+  if (!event.target.value) {
+    const id = event.target.getAttribute('id');
+    if (id == usernameId) {
+      vm.usernameStatus = blurWithErrorStaus;
+    } else if (id == emailId) {
+      vm.emailStatus = blurWithErrorStaus;
+    } else if (id == passwordId) {
+      vm.passwordStatus = blurWithErrorStaus;
+    }
+  } else {
+    if (event.target.value && event.target.getAttribute('id') == emailId) {
+      const email = event.target.value;
+      checkEmailRegistered(email);
+    }
   }
 }
 
@@ -149,15 +182,3 @@ function validateUserForm() {
   }
   return true;
 }
-
-export {
-  initStatus,
-  initError,
-  changeUsername,
-  changeEmail,
-  changePassword,
-  inputFocusEvent,
-  inputBlurEvent,
-  registerUser,
-  registerSignupModel,
-};

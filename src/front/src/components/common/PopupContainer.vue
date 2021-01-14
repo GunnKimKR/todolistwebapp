@@ -33,15 +33,14 @@
 </template>
 
 <script>
+import store from '@/store/store';
 export default {
   computed: {
     popup() {
-      return this.$store.state.popup;
+      return store.state.popup;
     },
     popclass() {
-      return this.$store.state.popup.name == 'selectRecurring'
-        ? 'recurring'
-        : '';
+      return store.state.popup.name == 'selectRecurring' ? 'recurring' : '';
     },
   },
 };

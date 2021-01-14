@@ -1,19 +1,48 @@
-import { login, guestLogin } from '@/api/user';
+import { login } from '@/api/user';
+import { focusInputEffect, blurInputEffect } from '@/scripts/common.js';
+import store from '@/store/store';
 
 let vm;
 
-function registerSigninModel(model) {
-  vm = model;
+export default {
+  data() {
+    return {
+      email: '',
+      password: '',
+    };
+  },
+  created() {
+    vm = this;
+  },
+  props: ['activeClass'],
+  computed: {
+    loginForm() {
+      return {
+        email: this.email,
+        password: this.password,
+      };
+    },
+  },
+  methods: {
+    focusInput,
+    blurInput,
+    loginFormSubmit,
+    resetPasswordPopup,
+  },
+};
+
+function focusInput(event) {
+  focusInputEffect(event);
 }
 
-async function loginUser() {
+function blurInput(event) {
+  blurInputEffect(event);
+}
+
+async function loginFormSubmit() {
   if (validateLoginForm()) {
     await login(vm.loginForm);
   }
-}
-
-async function guestUserLogin() {
-  await guestLogin();
 }
 
 function validateLoginForm() {
@@ -27,4 +56,8 @@ function validateLoginForm() {
   return true;
 }
 
-export { loginUser, guestUserLogin, registerSigninModel };
+function resetPasswordPopup() {
+  store.commit('openPopup', {
+    name: 'resetPassword',
+  });
+}

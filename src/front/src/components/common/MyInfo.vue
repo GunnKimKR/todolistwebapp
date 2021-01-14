@@ -5,14 +5,14 @@
       <header class="myinfo-header">
         <div
           class="myinfo-header__profile"
-          :class="{ exist_picture: isExistPicture }"
+          :class="{ exist_picture: isExistPicture() }"
         >
           <img
-            v-if="!isExistPicture"
+            v-if="!isExistPicture()"
             src="https://img.icons8.com/windows/124/333333/gender-neutral-user.png"
             alt="프로필"
           />
-          <img v-else :src="picture" />
+          <img v-else :src="user.picture" />
         </div>
         <div class="myinfo-header__info">
           <dl>
@@ -27,8 +27,8 @@
           <a
             href="#popup"
             class="btn-primary"
-            @click="fnClickDeleteBtn"
-            :disabled="isGuestUser || isSnsUser"
+            @click="deleteAccountPopup"
+            :disabled="isGuestUser() || isSnsUser()"
           >
             Delete Account
           </a>
@@ -55,43 +55,10 @@
 </template>
 
 <script>
-import { deleteAccountPopup } from '@/scripts/myinfo';
-
-export default {
-  data() {
-    return {
-      picture: this.$store.state.user.picture,
-    };
-  },
-  computed: {
-    user() {
-      return this.$store.state.user;
-    },
-    isGuestUser() {
-      return this.$store.state.user.email == 'guest';
-    },
-    isSnsUser() {
-      return this.$store.state.user.snsType != null;
-    },
-    isExistPicture() {
-      return this.$store.state.user.picture != null;
-    },
-  },
-  methods: {
-    logout() {
-      this.$store.commit('deleteLoginUser');
-    },
-    fnClickDeleteBtn() {
-      deleteAccountPopup(this);
-    },
-  },
-};
+import myinfo from '@/scripts/myinfo';
+export default myinfo;
 </script>
 
 <style scoped>
 @import '~styles/myinfo.css';
-
-.myinfo-header__profile.exist_picture {
-  border: none;
-}
 </style>

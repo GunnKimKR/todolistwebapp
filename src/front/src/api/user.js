@@ -1,6 +1,6 @@
 import { userApi } from '@/api/api';
 import { msg_server_error } from '@/scripts/message';
-import { initAndClose } from '@/scripts/resetpassword';
+import { closePopup } from '@/scripts/resetpassword';
 import store from '@/store/store';
 import router from '@/router/router';
 
@@ -79,7 +79,7 @@ async function resetPassword(email, password) {
       password,
     })
     .then(res => {
-      initAndClose();
+      closePopup();
       store.commit('saveLoginUser', res.data.data.user);
       router.push('/main');
     });
